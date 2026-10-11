@@ -1,0 +1,65 @@
+plugins { id 'net.fabricmc.fabric-loom' version '1.16.3' }
+version = '1.7.0'
+group = 'com.celik.kingdoms'
+base { archivesName = 'kingdoms' }
+repositories { mavenCentral() }
+dependencies {
+    minecraft 'com.mojang:minecraft:26.2'
+    implementation 'net.fabricmc:fabric-loader:0.19.5'
+    implementation 'net.fabricmc.fabric-api:fabric-api:0.160.0+26.2'
+    compileOnly files('libs/economycraft-fabric-1.10.0_26.2.jar')
+    compileOnly files('libs/placeholder-api-3.1.0-beta.1+26.2.jar')
+    runtimeOnly fileTree('libs') { include '*.jar' }
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.12.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand version: project.version }
+}
+java { toolchain { languageVersion = JavaLanguageVersion.of(25) }; sourceCompatibility = JavaVersion.VERSION_25; targetCompatibility = JavaVersion.VERSION_25; withSourcesJar() }
+tasks.withType(JavaCompile).configureEach { options.release = 25; options.encoding = 'UTF-8' }
+test { useJUnitPlatform() }
+sourceSets {
+    integration {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+loom {
+    mods {
+        kingdoms { sourceSet sourceSets.main }
+        kingdoms_test { sourceSet sourceSets.integration }
+    }
+    runs {
+        integration {
+            server()
+            source sourceSets.integration
+            runDir 'run-test'
+            vmArg '-Dkingdoms.integration=true'
+        }
+    }
+}
+tasks.named('runIntegration') {
+    doFirst {
+        file('run-test').mkdirs()
+        file('run-test/integration-result.txt').text = 'RUNNING\n'
+        file('run-test/eula.txt').text = 'eula=true\n'
+        file('run-test/server.properties').text = '''server-port=25691
+server-ip=127.0.0.1
+online-mode=false
+level-name=integration-world
+level-type=minecraft:flat
+generate-structures=false
+view-distance=2
+simulation-distance=2
+spawn-protection=0
+max-tick-time=-1
+'''
+    }
+    doLast {
+        def result = file('run-test/integration-result.txt').text
+        if (!result.startsWith('PASS ')) throw new GradleException('Integration checks failed: ' + result)
+        logger.lifecycle(result.trim())
+    }
+}

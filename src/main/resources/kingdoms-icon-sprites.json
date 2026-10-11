@@ -1,0 +1,2437 @@
+{
+  "minecraft": "26.2",
+  "sprites": {
+    "minecraft:acacia_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/acacia_boat"
+    },
+    "minecraft:acacia_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/acacia_chest_boat"
+    },
+    "minecraft:acacia_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/acacia_door"
+    },
+    "minecraft:acacia_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/acacia_hanging_sign"
+    },
+    "minecraft:acacia_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/acacia_sign"
+    },
+    "minecraft:allay_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/allay_spawn_egg"
+    },
+    "minecraft:amethyst_shard": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/amethyst_shard"
+    },
+    "minecraft:angler_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/angler_pottery_sherd"
+    },
+    "minecraft:apple": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/apple"
+    },
+    "minecraft:archer_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/archer_pottery_sherd"
+    },
+    "minecraft:armadillo_scute": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/armadillo_scute"
+    },
+    "minecraft:armadillo_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/armadillo_spawn_egg"
+    },
+    "minecraft:armor_stand": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/armor_stand"
+    },
+    "minecraft:arms_up_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/arms_up_pottery_sherd"
+    },
+    "minecraft:arrow": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/arrow"
+    },
+    "minecraft:axolotl_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/axolotl_bucket"
+    },
+    "minecraft:axolotl_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/axolotl_spawn_egg"
+    },
+    "minecraft:baked_potato": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/baked_potato"
+    },
+    "minecraft:bamboo_chest_raft": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bamboo_chest_raft"
+    },
+    "minecraft:bamboo_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bamboo_door"
+    },
+    "minecraft:bamboo_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bamboo_hanging_sign"
+    },
+    "minecraft:bamboo_raft": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bamboo_raft"
+    },
+    "minecraft:bamboo_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bamboo_sign"
+    },
+    "minecraft:bamboo": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bamboo"
+    },
+    "minecraft:barrier": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/barrier"
+    },
+    "minecraft:bat_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bat_spawn_egg"
+    },
+    "minecraft:bee_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bee_spawn_egg"
+    },
+    "minecraft:beef": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/beef"
+    },
+    "minecraft:beetroot_seeds": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/beetroot_seeds"
+    },
+    "minecraft:beetroot_soup": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/beetroot_soup"
+    },
+    "minecraft:beetroot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/beetroot"
+    },
+    "minecraft:bell": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bell"
+    },
+    "minecraft:birch_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/birch_boat"
+    },
+    "minecraft:birch_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/birch_chest_boat"
+    },
+    "minecraft:birch_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/birch_door"
+    },
+    "minecraft:birch_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/birch_hanging_sign"
+    },
+    "minecraft:birch_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/birch_sign"
+    },
+    "minecraft:black_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/black_bundle"
+    },
+    "minecraft:black_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/black_candle"
+    },
+    "minecraft:black_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/black_dye"
+    },
+    "minecraft:black_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/black_harness"
+    },
+    "minecraft:blade_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blade_pottery_sherd"
+    },
+    "minecraft:blaze_powder": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blaze_powder"
+    },
+    "minecraft:blaze_rod": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blaze_rod"
+    },
+    "minecraft:blaze_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blaze_spawn_egg"
+    },
+    "minecraft:blue_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blue_bundle"
+    },
+    "minecraft:blue_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blue_candle"
+    },
+    "minecraft:blue_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blue_dye"
+    },
+    "minecraft:blue_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blue_egg"
+    },
+    "minecraft:blue_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/blue_harness"
+    },
+    "minecraft:bogged_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bogged_spawn_egg"
+    },
+    "minecraft:bolt_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bolt_armor_trim_smithing_template"
+    },
+    "minecraft:bone_meal": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bone_meal"
+    },
+    "minecraft:bone": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bone"
+    },
+    "minecraft:book": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/book"
+    },
+    "minecraft:bordure_indented_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bordure_indented_banner_pattern"
+    },
+    "minecraft:bow": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bow"
+    },
+    "minecraft:bowl": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bowl"
+    },
+    "minecraft:bread": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bread"
+    },
+    "minecraft:breeze_rod": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/breeze_rod"
+    },
+    "minecraft:breeze_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/breeze_spawn_egg"
+    },
+    "minecraft:brewer_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brewer_pottery_sherd"
+    },
+    "minecraft:brewing_stand": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brewing_stand"
+    },
+    "minecraft:brick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brick"
+    },
+    "minecraft:brown_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brown_bundle"
+    },
+    "minecraft:brown_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brown_candle"
+    },
+    "minecraft:brown_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brown_dye"
+    },
+    "minecraft:brown_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brown_egg"
+    },
+    "minecraft:brown_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brown_harness"
+    },
+    "minecraft:brush": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/brush"
+    },
+    "minecraft:bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bucket"
+    },
+    "minecraft:bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bundle"
+    },
+    "minecraft:burn_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/burn_pottery_sherd"
+    },
+    "minecraft:cake": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cake"
+    },
+    "minecraft:camel_husk_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/camel_husk_spawn_egg"
+    },
+    "minecraft:camel_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/camel_spawn_egg"
+    },
+    "minecraft:campfire": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/campfire"
+    },
+    "minecraft:candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/candle"
+    },
+    "minecraft:carrot_on_a_stick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/carrot_on_a_stick"
+    },
+    "minecraft:carrot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/carrot"
+    },
+    "minecraft:cat_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cat_spawn_egg"
+    },
+    "minecraft:cauldron": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cauldron"
+    },
+    "minecraft:cave_spider_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cave_spider_spawn_egg"
+    },
+    "minecraft:chainmail_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chainmail_boots"
+    },
+    "minecraft:chainmail_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chainmail_chestplate"
+    },
+    "minecraft:chainmail_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chainmail_helmet"
+    },
+    "minecraft:chainmail_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chainmail_leggings"
+    },
+    "minecraft:charcoal": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/charcoal"
+    },
+    "minecraft:cherry_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cherry_boat"
+    },
+    "minecraft:cherry_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cherry_chest_boat"
+    },
+    "minecraft:cherry_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cherry_door"
+    },
+    "minecraft:cherry_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cherry_hanging_sign"
+    },
+    "minecraft:cherry_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cherry_sign"
+    },
+    "minecraft:chest_minecart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chest_minecart"
+    },
+    "minecraft:chicken_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chicken_spawn_egg"
+    },
+    "minecraft:chicken": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chicken"
+    },
+    "minecraft:chorus_fruit": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/chorus_fruit"
+    },
+    "minecraft:clay_ball": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/clay_ball"
+    },
+    "minecraft:clock": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/clock_00"
+    },
+    "minecraft:coal": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/coal"
+    },
+    "minecraft:coast_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/coast_armor_trim_smithing_template"
+    },
+    "minecraft:cocoa_beans": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cocoa_beans"
+    },
+    "minecraft:cod_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cod_bucket"
+    },
+    "minecraft:cod_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cod_spawn_egg"
+    },
+    "minecraft:cod": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cod"
+    },
+    "minecraft:command_block_minecart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/command_block_minecart"
+    },
+    "minecraft:comparator": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/comparator"
+    },
+    "minecraft:compass": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/compass_16"
+    },
+    "minecraft:cooked_beef": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_beef"
+    },
+    "minecraft:cooked_chicken": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_chicken"
+    },
+    "minecraft:cooked_cod": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_cod"
+    },
+    "minecraft:cooked_mutton": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_mutton"
+    },
+    "minecraft:cooked_porkchop": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_porkchop"
+    },
+    "minecraft:cooked_rabbit": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_rabbit"
+    },
+    "minecraft:cooked_salmon": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_salmon"
+    },
+    "minecraft:cookie": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cookie"
+    },
+    "minecraft:copper_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_axe"
+    },
+    "minecraft:copper_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_boots"
+    },
+    "minecraft:copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_chain"
+    },
+    "minecraft:copper_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_chestplate"
+    },
+    "minecraft:copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_door"
+    },
+    "minecraft:copper_golem_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_golem_spawn_egg"
+    },
+    "minecraft:copper_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_helmet"
+    },
+    "minecraft:copper_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_hoe"
+    },
+    "minecraft:copper_horse_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_horse_armor"
+    },
+    "minecraft:copper_ingot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_ingot"
+    },
+    "minecraft:copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_lantern"
+    },
+    "minecraft:copper_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_leggings"
+    },
+    "minecraft:copper_nautilus_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_nautilus_armor"
+    },
+    "minecraft:copper_nugget": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_nugget"
+    },
+    "minecraft:copper_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_pickaxe"
+    },
+    "minecraft:copper_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_shovel"
+    },
+    "minecraft:copper_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_spear"
+    },
+    "minecraft:copper_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_sword"
+    },
+    "minecraft:cow_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cow_spawn_egg"
+    },
+    "minecraft:creaking_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/creaking_spawn_egg"
+    },
+    "minecraft:creeper_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/creeper_banner_pattern"
+    },
+    "minecraft:creeper_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/creeper_spawn_egg"
+    },
+    "minecraft:crimson_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/crimson_door"
+    },
+    "minecraft:crimson_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/crimson_hanging_sign"
+    },
+    "minecraft:crimson_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/crimson_sign"
+    },
+    "minecraft:crossbow": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/crossbow_standby"
+    },
+    "minecraft:cyan_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cyan_bundle"
+    },
+    "minecraft:cyan_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cyan_candle"
+    },
+    "minecraft:cyan_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cyan_dye"
+    },
+    "minecraft:cyan_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cyan_harness"
+    },
+    "minecraft:danger_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/danger_pottery_sherd"
+    },
+    "minecraft:dark_oak_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dark_oak_boat"
+    },
+    "minecraft:dark_oak_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dark_oak_chest_boat"
+    },
+    "minecraft:dark_oak_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dark_oak_door"
+    },
+    "minecraft:dark_oak_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dark_oak_hanging_sign"
+    },
+    "minecraft:dark_oak_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dark_oak_sign"
+    },
+    "minecraft:debug_stick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stick"
+    },
+    "minecraft:diamond_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_axe"
+    },
+    "minecraft:diamond_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_boots"
+    },
+    "minecraft:diamond_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_chestplate"
+    },
+    "minecraft:diamond_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_helmet"
+    },
+    "minecraft:diamond_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_hoe"
+    },
+    "minecraft:diamond_horse_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_horse_armor"
+    },
+    "minecraft:diamond_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_leggings"
+    },
+    "minecraft:diamond_nautilus_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_nautilus_armor"
+    },
+    "minecraft:diamond_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_pickaxe"
+    },
+    "minecraft:diamond_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_shovel"
+    },
+    "minecraft:diamond_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_spear"
+    },
+    "minecraft:diamond_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond_sword"
+    },
+    "minecraft:diamond": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/diamond"
+    },
+    "minecraft:disc_fragment_5": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/disc_fragment_5"
+    },
+    "minecraft:dolphin_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dolphin_spawn_egg"
+    },
+    "minecraft:donkey_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/donkey_spawn_egg"
+    },
+    "minecraft:dragon_breath": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dragon_breath"
+    },
+    "minecraft:dried_kelp": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dried_kelp"
+    },
+    "minecraft:drowned_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/drowned_spawn_egg"
+    },
+    "minecraft:dune_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/dune_armor_trim_smithing_template"
+    },
+    "minecraft:echo_shard": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/echo_shard"
+    },
+    "minecraft:egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/egg"
+    },
+    "minecraft:elder_guardian_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/elder_guardian_spawn_egg"
+    },
+    "minecraft:elytra": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/elytra"
+    },
+    "minecraft:emerald": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/emerald"
+    },
+    "minecraft:enchanted_book": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/enchanted_book"
+    },
+    "minecraft:enchanted_golden_apple": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_apple"
+    },
+    "minecraft:end_crystal": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/end_crystal"
+    },
+    "minecraft:ender_dragon_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ender_dragon_spawn_egg"
+    },
+    "minecraft:ender_eye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ender_eye"
+    },
+    "minecraft:ender_pearl": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ender_pearl"
+    },
+    "minecraft:enderman_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/enderman_spawn_egg"
+    },
+    "minecraft:endermite_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/endermite_spawn_egg"
+    },
+    "minecraft:evoker_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/evoker_spawn_egg"
+    },
+    "minecraft:experience_bottle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/experience_bottle"
+    },
+    "minecraft:explorer_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/explorer_pottery_sherd"
+    },
+    "minecraft:exposed_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/exposed_copper_chain"
+    },
+    "minecraft:exposed_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/exposed_copper_door"
+    },
+    "minecraft:exposed_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/exposed_copper_lantern"
+    },
+    "minecraft:eye_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/eye_armor_trim_smithing_template"
+    },
+    "minecraft:feather": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/feather"
+    },
+    "minecraft:fermented_spider_eye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/fermented_spider_eye"
+    },
+    "minecraft:field_masoned_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/field_masoned_banner_pattern"
+    },
+    "minecraft:filled_map": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/filled_map"
+    },
+    "minecraft:fire_charge": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/fire_charge"
+    },
+    "minecraft:firefly_bush": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/firefly_bush"
+    },
+    "minecraft:firework_rocket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/firework_rocket"
+    },
+    "minecraft:firework_star": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/firework_star"
+    },
+    "minecraft:fishing_rod": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/fishing_rod"
+    },
+    "minecraft:flint_and_steel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flint_and_steel"
+    },
+    "minecraft:flint": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flint"
+    },
+    "minecraft:flow_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flow_armor_trim_smithing_template"
+    },
+    "minecraft:flow_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flow_banner_pattern"
+    },
+    "minecraft:flow_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flow_pottery_sherd"
+    },
+    "minecraft:flower_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flower_banner_pattern"
+    },
+    "minecraft:flower_pot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/flower_pot"
+    },
+    "minecraft:fox_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/fox_spawn_egg"
+    },
+    "minecraft:friend_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/friend_pottery_sherd"
+    },
+    "minecraft:frog_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/frog_spawn_egg"
+    },
+    "minecraft:furnace_minecart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/furnace_minecart"
+    },
+    "minecraft:ghast_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ghast_spawn_egg"
+    },
+    "minecraft:ghast_tear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ghast_tear"
+    },
+    "minecraft:glass_bottle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glass_bottle"
+    },
+    "minecraft:glistering_melon_slice": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glistering_melon_slice"
+    },
+    "minecraft:globe_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/globe_banner_pattern"
+    },
+    "minecraft:glow_berries": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glow_berries"
+    },
+    "minecraft:glow_ink_sac": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glow_ink_sac"
+    },
+    "minecraft:glow_item_frame": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glow_item_frame"
+    },
+    "minecraft:glow_squid_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glow_squid_spawn_egg"
+    },
+    "minecraft:glowstone_dust": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/glowstone_dust"
+    },
+    "minecraft:goat_horn": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/goat_horn"
+    },
+    "minecraft:goat_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/goat_spawn_egg"
+    },
+    "minecraft:gold_ingot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gold_ingot"
+    },
+    "minecraft:gold_nugget": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gold_nugget"
+    },
+    "minecraft:golden_apple": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_apple"
+    },
+    "minecraft:golden_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_axe"
+    },
+    "minecraft:golden_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_boots"
+    },
+    "minecraft:golden_carrot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_carrot"
+    },
+    "minecraft:golden_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_chestplate"
+    },
+    "minecraft:golden_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_helmet"
+    },
+    "minecraft:golden_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_hoe"
+    },
+    "minecraft:golden_horse_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_horse_armor"
+    },
+    "minecraft:golden_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_leggings"
+    },
+    "minecraft:golden_nautilus_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_nautilus_armor"
+    },
+    "minecraft:golden_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_pickaxe"
+    },
+    "minecraft:golden_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_shovel"
+    },
+    "minecraft:golden_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_spear"
+    },
+    "minecraft:golden_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_sword"
+    },
+    "minecraft:gray_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gray_bundle"
+    },
+    "minecraft:gray_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gray_candle"
+    },
+    "minecraft:gray_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gray_dye"
+    },
+    "minecraft:gray_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gray_harness"
+    },
+    "minecraft:green_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/green_bundle"
+    },
+    "minecraft:green_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/green_candle"
+    },
+    "minecraft:green_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/green_dye"
+    },
+    "minecraft:green_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/green_harness"
+    },
+    "minecraft:guardian_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/guardian_spawn_egg"
+    },
+    "minecraft:gunpowder": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/gunpowder"
+    },
+    "minecraft:guster_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/guster_banner_pattern"
+    },
+    "minecraft:guster_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/guster_pottery_sherd"
+    },
+    "minecraft:happy_ghast_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/happy_ghast_spawn_egg"
+    },
+    "minecraft:heart_of_the_sea": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/heart_of_the_sea"
+    },
+    "minecraft:heart_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/heart_pottery_sherd"
+    },
+    "minecraft:heartbreak_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/heartbreak_pottery_sherd"
+    },
+    "minecraft:hoglin_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/hoglin_spawn_egg"
+    },
+    "minecraft:honey_bottle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/honey_bottle"
+    },
+    "minecraft:honeycomb": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/honeycomb"
+    },
+    "minecraft:hopper_minecart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/hopper_minecart"
+    },
+    "minecraft:hopper": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/hopper"
+    },
+    "minecraft:horse_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/horse_spawn_egg"
+    },
+    "minecraft:host_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/host_armor_trim_smithing_template"
+    },
+    "minecraft:howl_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/howl_pottery_sherd"
+    },
+    "minecraft:husk_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/husk_spawn_egg"
+    },
+    "minecraft:ink_sac": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ink_sac"
+    },
+    "minecraft:iron_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_axe"
+    },
+    "minecraft:iron_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_boots"
+    },
+    "minecraft:iron_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_chain"
+    },
+    "minecraft:iron_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_chestplate"
+    },
+    "minecraft:iron_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_door"
+    },
+    "minecraft:iron_golem_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_golem_spawn_egg"
+    },
+    "minecraft:iron_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_helmet"
+    },
+    "minecraft:iron_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_hoe"
+    },
+    "minecraft:iron_horse_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_horse_armor"
+    },
+    "minecraft:iron_ingot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_ingot"
+    },
+    "minecraft:iron_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_leggings"
+    },
+    "minecraft:iron_nautilus_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_nautilus_armor"
+    },
+    "minecraft:iron_nugget": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_nugget"
+    },
+    "minecraft:iron_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_pickaxe"
+    },
+    "minecraft:iron_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_shovel"
+    },
+    "minecraft:iron_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_spear"
+    },
+    "minecraft:iron_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/iron_sword"
+    },
+    "minecraft:item_frame": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/item_frame"
+    },
+    "minecraft:jungle_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/jungle_boat"
+    },
+    "minecraft:jungle_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/jungle_chest_boat"
+    },
+    "minecraft:jungle_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/jungle_door"
+    },
+    "minecraft:jungle_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/jungle_hanging_sign"
+    },
+    "minecraft:jungle_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/jungle_sign"
+    },
+    "minecraft:kelp": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/kelp"
+    },
+    "minecraft:knowledge_book": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/knowledge_book"
+    },
+    "minecraft:lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lantern"
+    },
+    "minecraft:lapis_lazuli": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lapis_lazuli"
+    },
+    "minecraft:lava_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lava_bucket"
+    },
+    "minecraft:lead": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lead"
+    },
+    "minecraft:leaf_litter": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leaf_litter"
+    },
+    "minecraft:leather_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leather_boots"
+    },
+    "minecraft:leather_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leather_chestplate"
+    },
+    "minecraft:leather_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leather_helmet"
+    },
+    "minecraft:leather_horse_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leather_horse_armor"
+    },
+    "minecraft:leather_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leather_leggings"
+    },
+    "minecraft:leather": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/leather"
+    },
+    "minecraft:light_blue_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_blue_bundle"
+    },
+    "minecraft:light_blue_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_blue_candle"
+    },
+    "minecraft:light_blue_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_blue_dye"
+    },
+    "minecraft:light_blue_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_blue_harness"
+    },
+    "minecraft:light_gray_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_gray_bundle"
+    },
+    "minecraft:light_gray_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_gray_candle"
+    },
+    "minecraft:light_gray_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_gray_dye"
+    },
+    "minecraft:light_gray_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light_gray_harness"
+    },
+    "minecraft:light": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/light"
+    },
+    "minecraft:lime_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lime_bundle"
+    },
+    "minecraft:lime_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lime_candle"
+    },
+    "minecraft:lime_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lime_dye"
+    },
+    "minecraft:lime_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lime_harness"
+    },
+    "minecraft:lingering_potion": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lingering_potion"
+    },
+    "minecraft:llama_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/llama_spawn_egg"
+    },
+    "minecraft:mace": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mace"
+    },
+    "minecraft:magenta_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/magenta_bundle"
+    },
+    "minecraft:magenta_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/magenta_candle"
+    },
+    "minecraft:magenta_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/magenta_dye"
+    },
+    "minecraft:magenta_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/magenta_harness"
+    },
+    "minecraft:magma_cream": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/magma_cream"
+    },
+    "minecraft:magma_cube_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/magma_cube_spawn_egg"
+    },
+    "minecraft:mangrove_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mangrove_boat"
+    },
+    "minecraft:mangrove_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mangrove_chest_boat"
+    },
+    "minecraft:mangrove_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mangrove_door"
+    },
+    "minecraft:mangrove_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mangrove_hanging_sign"
+    },
+    "minecraft:mangrove_propagule": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mangrove_propagule"
+    },
+    "minecraft:mangrove_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mangrove_sign"
+    },
+    "minecraft:map": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/map"
+    },
+    "minecraft:melon_seeds": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/melon_seeds"
+    },
+    "minecraft:melon_slice": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/melon_slice"
+    },
+    "minecraft:milk_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/milk_bucket"
+    },
+    "minecraft:minecart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/minecart"
+    },
+    "minecraft:miner_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/miner_pottery_sherd"
+    },
+    "minecraft:mojang_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mojang_banner_pattern"
+    },
+    "minecraft:mooshroom_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mooshroom_spawn_egg"
+    },
+    "minecraft:mourner_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mourner_pottery_sherd"
+    },
+    "minecraft:mule_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mule_spawn_egg"
+    },
+    "minecraft:mushroom_stew": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mushroom_stew"
+    },
+    "minecraft:music_disc_11": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_11"
+    },
+    "minecraft:music_disc_13": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_13"
+    },
+    "minecraft:music_disc_5": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_5"
+    },
+    "minecraft:music_disc_blocks": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_blocks"
+    },
+    "minecraft:music_disc_bounce": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_bounce"
+    },
+    "minecraft:music_disc_cat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_cat"
+    },
+    "minecraft:music_disc_chirp": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_chirp"
+    },
+    "minecraft:music_disc_creator_music_box": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_creator_music_box"
+    },
+    "minecraft:music_disc_creator": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_creator"
+    },
+    "minecraft:music_disc_far": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_far"
+    },
+    "minecraft:music_disc_lava_chicken": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_lava_chicken"
+    },
+    "minecraft:music_disc_mall": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_mall"
+    },
+    "minecraft:music_disc_mellohi": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_mellohi"
+    },
+    "minecraft:music_disc_otherside": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_otherside"
+    },
+    "minecraft:music_disc_pigstep": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_pigstep"
+    },
+    "minecraft:music_disc_precipice": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_precipice"
+    },
+    "minecraft:music_disc_relic": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_relic"
+    },
+    "minecraft:music_disc_stal": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_stal"
+    },
+    "minecraft:music_disc_strad": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_strad"
+    },
+    "minecraft:music_disc_tears": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_tears"
+    },
+    "minecraft:music_disc_wait": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_wait"
+    },
+    "minecraft:music_disc_ward": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/music_disc_ward"
+    },
+    "minecraft:mutton": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/mutton"
+    },
+    "minecraft:name_tag": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/name_tag"
+    },
+    "minecraft:nautilus_shell": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/nautilus_shell"
+    },
+    "minecraft:nautilus_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/nautilus_spawn_egg"
+    },
+    "minecraft:nether_brick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/nether_brick"
+    },
+    "minecraft:nether_sprouts": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/nether_sprouts"
+    },
+    "minecraft:nether_star": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/nether_star"
+    },
+    "minecraft:nether_wart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/nether_wart"
+    },
+    "minecraft:netherite_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_axe"
+    },
+    "minecraft:netherite_boots": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_boots"
+    },
+    "minecraft:netherite_chestplate": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_chestplate"
+    },
+    "minecraft:netherite_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_helmet"
+    },
+    "minecraft:netherite_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_hoe"
+    },
+    "minecraft:netherite_horse_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_horse_armor"
+    },
+    "minecraft:netherite_ingot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_ingot"
+    },
+    "minecraft:netherite_leggings": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_leggings"
+    },
+    "minecraft:netherite_nautilus_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_nautilus_armor"
+    },
+    "minecraft:netherite_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_pickaxe"
+    },
+    "minecraft:netherite_scrap": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_scrap"
+    },
+    "minecraft:netherite_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_shovel"
+    },
+    "minecraft:netherite_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_spear"
+    },
+    "minecraft:netherite_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_sword"
+    },
+    "minecraft:netherite_upgrade_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/netherite_upgrade_smithing_template"
+    },
+    "minecraft:oak_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oak_boat"
+    },
+    "minecraft:oak_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oak_chest_boat"
+    },
+    "minecraft:oak_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oak_door"
+    },
+    "minecraft:oak_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oak_hanging_sign"
+    },
+    "minecraft:oak_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oak_sign"
+    },
+    "minecraft:ocelot_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ocelot_spawn_egg"
+    },
+    "minecraft:ominous_bottle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ominous_bottle"
+    },
+    "minecraft:ominous_trial_key": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ominous_trial_key"
+    },
+    "minecraft:orange_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/orange_bundle"
+    },
+    "minecraft:orange_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/orange_candle"
+    },
+    "minecraft:orange_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/orange_dye"
+    },
+    "minecraft:orange_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/orange_harness"
+    },
+    "minecraft:oxidized_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oxidized_copper_chain"
+    },
+    "minecraft:oxidized_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oxidized_copper_door"
+    },
+    "minecraft:oxidized_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oxidized_copper_lantern"
+    },
+    "minecraft:painting": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/painting"
+    },
+    "minecraft:pale_oak_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pale_oak_boat"
+    },
+    "minecraft:pale_oak_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pale_oak_chest_boat"
+    },
+    "minecraft:pale_oak_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pale_oak_door"
+    },
+    "minecraft:pale_oak_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pale_oak_hanging_sign"
+    },
+    "minecraft:pale_oak_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pale_oak_sign"
+    },
+    "minecraft:panda_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/panda_spawn_egg"
+    },
+    "minecraft:paper": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/paper"
+    },
+    "minecraft:parched_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/parched_spawn_egg"
+    },
+    "minecraft:parrot_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/parrot_spawn_egg"
+    },
+    "minecraft:phantom_membrane": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/phantom_membrane"
+    },
+    "minecraft:phantom_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/phantom_spawn_egg"
+    },
+    "minecraft:pig_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pig_spawn_egg"
+    },
+    "minecraft:piglin_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/piglin_banner_pattern"
+    },
+    "minecraft:piglin_brute_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/piglin_brute_spawn_egg"
+    },
+    "minecraft:piglin_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/piglin_spawn_egg"
+    },
+    "minecraft:pillager_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pillager_spawn_egg"
+    },
+    "minecraft:pink_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pink_bundle"
+    },
+    "minecraft:pink_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pink_candle"
+    },
+    "minecraft:pink_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pink_dye"
+    },
+    "minecraft:pink_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pink_harness"
+    },
+    "minecraft:pink_petals": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pink_petals"
+    },
+    "minecraft:pitcher_plant": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pitcher_plant"
+    },
+    "minecraft:pitcher_pod": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pitcher_pod"
+    },
+    "minecraft:plenty_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/plenty_pottery_sherd"
+    },
+    "minecraft:pointed_dripstone": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pointed_dripstone"
+    },
+    "minecraft:poisonous_potato": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/poisonous_potato"
+    },
+    "minecraft:polar_bear_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/polar_bear_spawn_egg"
+    },
+    "minecraft:popped_chorus_fruit": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/popped_chorus_fruit"
+    },
+    "minecraft:porkchop": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/porkchop"
+    },
+    "minecraft:potato": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/potato"
+    },
+    "minecraft:potion": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/potion"
+    },
+    "minecraft:powder_snow_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/powder_snow_bucket"
+    },
+    "minecraft:prismarine_crystals": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/prismarine_crystals"
+    },
+    "minecraft:prismarine_shard": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/prismarine_shard"
+    },
+    "minecraft:prize_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/prize_pottery_sherd"
+    },
+    "minecraft:pufferfish_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pufferfish_bucket"
+    },
+    "minecraft:pufferfish_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pufferfish_spawn_egg"
+    },
+    "minecraft:pufferfish": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pufferfish"
+    },
+    "minecraft:pumpkin_pie": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pumpkin_pie"
+    },
+    "minecraft:pumpkin_seeds": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/pumpkin_seeds"
+    },
+    "minecraft:purple_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/purple_bundle"
+    },
+    "minecraft:purple_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/purple_candle"
+    },
+    "minecraft:purple_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/purple_dye"
+    },
+    "minecraft:purple_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/purple_harness"
+    },
+    "minecraft:quartz": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/quartz"
+    },
+    "minecraft:rabbit_foot": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rabbit_foot"
+    },
+    "minecraft:rabbit_hide": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rabbit_hide"
+    },
+    "minecraft:rabbit_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rabbit_spawn_egg"
+    },
+    "minecraft:rabbit_stew": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rabbit_stew"
+    },
+    "minecraft:rabbit": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rabbit"
+    },
+    "minecraft:raiser_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/raiser_armor_trim_smithing_template"
+    },
+    "minecraft:ravager_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ravager_spawn_egg"
+    },
+    "minecraft:raw_copper": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/raw_copper"
+    },
+    "minecraft:raw_gold": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/raw_gold"
+    },
+    "minecraft:raw_iron": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/raw_iron"
+    },
+    "minecraft:recovery_compass": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/recovery_compass_16"
+    },
+    "minecraft:red_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/red_bundle"
+    },
+    "minecraft:red_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/red_candle"
+    },
+    "minecraft:red_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/red_dye"
+    },
+    "minecraft:red_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/red_harness"
+    },
+    "minecraft:redstone": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/redstone"
+    },
+    "minecraft:repeater": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/repeater"
+    },
+    "minecraft:resin_brick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/resin_brick"
+    },
+    "minecraft:resin_clump": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/resin_clump"
+    },
+    "minecraft:rib_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rib_armor_trim_smithing_template"
+    },
+    "minecraft:rotten_flesh": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/rotten_flesh"
+    },
+    "minecraft:saddle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/saddle"
+    },
+    "minecraft:salmon_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/salmon_bucket"
+    },
+    "minecraft:salmon_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/salmon_spawn_egg"
+    },
+    "minecraft:salmon": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/salmon"
+    },
+    "minecraft:scrape_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/scrape_pottery_sherd"
+    },
+    "minecraft:sea_pickle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sea_pickle"
+    },
+    "minecraft:seagrass": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/seagrass"
+    },
+    "minecraft:sentry_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sentry_armor_trim_smithing_template"
+    },
+    "minecraft:shaper_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/shaper_armor_trim_smithing_template"
+    },
+    "minecraft:sheaf_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sheaf_pottery_sherd"
+    },
+    "minecraft:shears": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/shears"
+    },
+    "minecraft:sheep_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sheep_spawn_egg"
+    },
+    "minecraft:shelter_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/shelter_pottery_sherd"
+    },
+    "minecraft:shulker_shell": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/shulker_shell"
+    },
+    "minecraft:shulker_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/shulker_spawn_egg"
+    },
+    "minecraft:silence_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/silence_armor_trim_smithing_template"
+    },
+    "minecraft:silverfish_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/silverfish_spawn_egg"
+    },
+    "minecraft:skeleton_horse_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/skeleton_horse_spawn_egg"
+    },
+    "minecraft:skeleton_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/skeleton_spawn_egg"
+    },
+    "minecraft:skull_banner_pattern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/skull_banner_pattern"
+    },
+    "minecraft:skull_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/skull_pottery_sherd"
+    },
+    "minecraft:slime_ball": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/slime_ball"
+    },
+    "minecraft:slime_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/slime_spawn_egg"
+    },
+    "minecraft:sniffer_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sniffer_egg"
+    },
+    "minecraft:sniffer_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sniffer_spawn_egg"
+    },
+    "minecraft:snort_pottery_sherd": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/snort_pottery_sherd"
+    },
+    "minecraft:snout_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/snout_armor_trim_smithing_template"
+    },
+    "minecraft:snow_golem_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/snow_golem_spawn_egg"
+    },
+    "minecraft:snowball": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/snowball"
+    },
+    "minecraft:soul_campfire": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/soul_campfire"
+    },
+    "minecraft:soul_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/soul_lantern"
+    },
+    "minecraft:spectral_arrow": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spectral_arrow"
+    },
+    "minecraft:spider_eye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spider_eye"
+    },
+    "minecraft:spider_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spider_spawn_egg"
+    },
+    "minecraft:spire_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spire_armor_trim_smithing_template"
+    },
+    "minecraft:splash_potion": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/splash_potion"
+    },
+    "minecraft:spruce_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spruce_boat"
+    },
+    "minecraft:spruce_chest_boat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spruce_chest_boat"
+    },
+    "minecraft:spruce_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spruce_door"
+    },
+    "minecraft:spruce_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spruce_hanging_sign"
+    },
+    "minecraft:spruce_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spruce_sign"
+    },
+    "minecraft:spyglass": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spyglass"
+    },
+    "minecraft:squid_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/squid_spawn_egg"
+    },
+    "minecraft:stick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stick"
+    },
+    "minecraft:stone_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_axe"
+    },
+    "minecraft:stone_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_hoe"
+    },
+    "minecraft:stone_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_pickaxe"
+    },
+    "minecraft:stone_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_shovel"
+    },
+    "minecraft:stone_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_spear"
+    },
+    "minecraft:stone_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_sword"
+    },
+    "minecraft:stray_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stray_spawn_egg"
+    },
+    "minecraft:strider_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/strider_spawn_egg"
+    },
+    "minecraft:string": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/string"
+    },
+    "minecraft:structure_void": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/structure_void"
+    },
+    "minecraft:sugar_cane": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sugar_cane"
+    },
+    "minecraft:sugar": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sugar"
+    },
+    "minecraft:sulfur_cube_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sulfur_cube_bucket"
+    },
+    "minecraft:sulfur_cube_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sulfur_cube_spawn_egg"
+    },
+    "minecraft:sulfur_spike": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sulfur_spike"
+    },
+    "minecraft:suspicious_stew": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/suspicious_stew"
+    },
+    "minecraft:sweet_berries": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/sweet_berries"
+    },
+    "minecraft:tadpole_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tadpole_bucket"
+    },
+    "minecraft:tadpole_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tadpole_spawn_egg"
+    },
+    "minecraft:tide_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tide_armor_trim_smithing_template"
+    },
+    "minecraft:tipped_arrow": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tipped_arrow_base"
+    },
+    "minecraft:tnt_minecart": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tnt_minecart"
+    },
+    "minecraft:torchflower_seeds": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/torchflower_seeds"
+    },
+    "minecraft:totem_of_undying": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/totem_of_undying"
+    },
+    "minecraft:trader_llama_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/trader_llama_spawn_egg"
+    },
+    "minecraft:trial_key": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/trial_key"
+    },
+    "minecraft:trident": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/trident"
+    },
+    "minecraft:tropical_fish_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tropical_fish_bucket"
+    },
+    "minecraft:tropical_fish_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tropical_fish_spawn_egg"
+    },
+    "minecraft:tropical_fish": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/tropical_fish"
+    },
+    "minecraft:turtle_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/turtle_egg"
+    },
+    "minecraft:turtle_helmet": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/turtle_helmet"
+    },
+    "minecraft:turtle_scute": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/turtle_scute"
+    },
+    "minecraft:turtle_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/turtle_spawn_egg"
+    },
+    "minecraft:vex_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/vex_armor_trim_smithing_template"
+    },
+    "minecraft:vex_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/vex_spawn_egg"
+    },
+    "minecraft:villager_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/villager_spawn_egg"
+    },
+    "minecraft:vindicator_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/vindicator_spawn_egg"
+    },
+    "minecraft:wandering_trader_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wandering_trader_spawn_egg"
+    },
+    "minecraft:ward_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/ward_armor_trim_smithing_template"
+    },
+    "minecraft:warden_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/warden_spawn_egg"
+    },
+    "minecraft:warped_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/warped_door"
+    },
+    "minecraft:warped_fungus_on_a_stick": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/warped_fungus_on_a_stick"
+    },
+    "minecraft:warped_hanging_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/warped_hanging_sign"
+    },
+    "minecraft:warped_sign": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/warped_sign"
+    },
+    "minecraft:water_bucket": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/water_bucket"
+    },
+    "minecraft:waxed_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_chain"
+    },
+    "minecraft:waxed_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_door"
+    },
+    "minecraft:waxed_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/copper_lantern"
+    },
+    "minecraft:waxed_exposed_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/exposed_copper_chain"
+    },
+    "minecraft:waxed_exposed_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/exposed_copper_door"
+    },
+    "minecraft:waxed_exposed_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/exposed_copper_lantern"
+    },
+    "minecraft:waxed_oxidized_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oxidized_copper_chain"
+    },
+    "minecraft:waxed_oxidized_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oxidized_copper_door"
+    },
+    "minecraft:waxed_oxidized_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/oxidized_copper_lantern"
+    },
+    "minecraft:waxed_weathered_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/weathered_copper_chain"
+    },
+    "minecraft:waxed_weathered_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/weathered_copper_door"
+    },
+    "minecraft:waxed_weathered_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/weathered_copper_lantern"
+    },
+    "minecraft:wayfinder_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wayfinder_armor_trim_smithing_template"
+    },
+    "minecraft:weathered_copper_chain": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/weathered_copper_chain"
+    },
+    "minecraft:weathered_copper_door": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/weathered_copper_door"
+    },
+    "minecraft:weathered_copper_lantern": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/weathered_copper_lantern"
+    },
+    "minecraft:wheat_seeds": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wheat_seeds"
+    },
+    "minecraft:wheat": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wheat"
+    },
+    "minecraft:white_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/white_bundle"
+    },
+    "minecraft:white_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/white_candle"
+    },
+    "minecraft:white_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/white_dye"
+    },
+    "minecraft:white_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/white_harness"
+    },
+    "minecraft:wild_armor_trim_smithing_template": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wild_armor_trim_smithing_template"
+    },
+    "minecraft:wildflowers": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wildflowers"
+    },
+    "minecraft:wind_charge": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wind_charge"
+    },
+    "minecraft:witch_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/witch_spawn_egg"
+    },
+    "minecraft:wither_skeleton_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wither_skeleton_spawn_egg"
+    },
+    "minecraft:wither_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wither_spawn_egg"
+    },
+    "minecraft:wolf_armor": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wolf_armor"
+    },
+    "minecraft:wolf_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wolf_spawn_egg"
+    },
+    "minecraft:wooden_axe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wooden_axe"
+    },
+    "minecraft:wooden_hoe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wooden_hoe"
+    },
+    "minecraft:wooden_pickaxe": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wooden_pickaxe"
+    },
+    "minecraft:wooden_shovel": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wooden_shovel"
+    },
+    "minecraft:wooden_spear": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wooden_spear"
+    },
+    "minecraft:wooden_sword": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/wooden_sword"
+    },
+    "minecraft:writable_book": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/writable_book"
+    },
+    "minecraft:written_book": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/written_book"
+    },
+    "minecraft:yellow_bundle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/yellow_bundle"
+    },
+    "minecraft:yellow_candle": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/yellow_candle"
+    },
+    "minecraft:yellow_dye": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/yellow_dye"
+    },
+    "minecraft:yellow_harness": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/yellow_harness"
+    },
+    "minecraft:zoglin_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/zoglin_spawn_egg"
+    },
+    "minecraft:zombie_horse_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/zombie_horse_spawn_egg"
+    },
+    "minecraft:zombie_nautilus_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/zombie_nautilus_spawn_egg"
+    },
+    "minecraft:zombie_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/zombie_spawn_egg"
+    },
+    "minecraft:zombie_villager_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/zombie_villager_spawn_egg"
+    },
+    "minecraft:zombified_piglin_spawn_egg": {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/zombified_piglin_spawn_egg"
+    },
+    "minecraft:shield": {
+      "atlas": "minecraft:gui",
+      "sprite": "minecraft:container/slot/shield"
+    }
+  }
+}

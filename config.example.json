@@ -1,0 +1,3691 @@
+{
+  "schemaVersion": 1,
+  "airDrops": {
+    "settingsVersion": 1,
+    "enabled": true,
+    "particles": true,
+    "sounds": true,
+    "titles": true,
+    "bossBars": true,
+    "allowChunkGeneration": true,
+    "requireGround": false,
+    "captureGlow": true,
+    "descentOutline": true,
+    "largerGroupTakeover": true,
+    "intervalMinutes": 180,
+    "jitterMinutes": 20,
+    "minimumPlayers": 10,
+    "retrySeconds": 60,
+    "maxDrops": 6,
+    "descentSeconds": 600,
+    "descentHeight": 120,
+    "kingdomMembers": 3,
+    "captureSeconds": 90,
+    "graceSeconds": 15,
+    "soloControlStrength": 3,
+    "takeoverSeconds": 15,
+    "parachute": true,
+    "scatterLoot": true,
+    "parachuteScale": 1.0,
+    "parachuteSway": 0.12,
+    "parachutePrimaryBlock": "minecraft:orange_wool",
+    "parachuteSecondaryBlock": "minecraft:white_wool",
+    "parachuteSeamBlock": "minecraft:light_gray_wool",
+    "parachuteTrimBlock": "minecraft:brown_wool",
+    "parachuteRopeBlock": "minecraft:white_wool",
+    "moneyByDay": {
+      "1": 1000,
+      "3": 10000,
+      "5": 50000,
+      "7": 100000
+    },
+    "artifactDropsHaveMoney": false,
+    "soloMultiplier": 1.5,
+    "interferenceMultiplier": 1.3,
+    "captureRadius": 15,
+    "captureVerticalRadius": 3,
+    "protectionRadius": 5,
+    "nearbyRadius": 96,
+    "pollTicks": 20,
+    "checkpointSeconds": 5,
+    "minSpawnDistance": 320,
+    "maxSpawnDistance": 5000,
+    "minDropSeparation": 500,
+    "maxDropSeparation": 3000,
+    "claimBufferBlocks": 0,
+    "minLandingY": -64,
+    "maxLandingY": 319,
+    "candidateAttempts": 512,
+    "attemptsPerTick": 1,
+    "particleIntervalTicks": 10,
+    "ringPoints": 96,
+    "dustSize": 1.5,
+    "captureExpiryMinutes": 30,
+    "historyDays": 7,
+    "menuSlot": 38,
+    "maxLootStacks": 108,
+    "dimension": "minecraft:overworld",
+    "crateBlock": "minecraft:barrel",
+    "startSound": "minecraft:block.note_block.chime",
+    "landingSound": "minecraft:entity.generic.explode",
+    "captureSound": "minecraft:ui.toast.challenge_complete",
+    "playerThresholds": {
+      "10": 1,
+      "20": 2
+    },
+    "excludedRegions": [],
+    "excludedBiomes": [],
+    "netherUnlockDay": 3,
+    "endUnlockDay": 7,
+    "lootTiers": [
+      {
+        "name": "early game",
+        "fromDay": 1,
+        "minRolls": 5,
+        "maxRolls": 12,
+        "entries": [
+          {
+            "item": "minecraft:iron_ingot",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:cooked_beef",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:arrow",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 32,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:coal",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          }
+        ],
+        "categories": [
+          {
+            "key": "survival",
+            "chance": 0.9,
+            "entries": [
+              {
+                "item": "minecraft:cooked_beef",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:string",
+                "weight": 60,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:saddle",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:name_tag",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "basic",
+            "chance": 0.85,
+            "entries": [
+              {
+                "item": "minecraft:iron_ingot",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:coal",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:copper_ingot",
+                "weight": 90,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:iron_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 60,
+                "minCount": 2,
+                "maxCount": 6,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "valuable",
+            "chance": 0.3,
+            "entries": [
+              {
+                "item": "minecraft:gold_ingot",
+                "weight": 100,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:gold_block",
+                "weight": 5,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:redstone",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:emerald_block",
+                "weight": 1,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "diamonds",
+            "chance": 0.08,
+            "entries": [
+              {
+                "item": "minecraft:diamond",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "enchantment",
+            "chance": 0.1,
+            "entries": [
+              {
+                "item": "minecraft:experience_bottle",
+                "weight": 140,
+                "minCount": 2,
+                "maxCount": 6,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:anvil",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "combat",
+            "chance": 0.25,
+            "entries": [
+              {
+                "item": "minecraft:iron_sword",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:iron_chestplate",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:iron_pickaxe",
+                "weight": 70,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:bow",
+                "weight": 90,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:crossbow",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:shield",
+                "weight": 80,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "potions",
+            "chance": 0.0,
+            "entries": [
+              {
+                "item": "minecraft:potion",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_fire_resistance",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:strong_strength",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_swiftness",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:blaze_rod",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 4,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:nether_wart",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 8,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "netherite",
+            "chance": 0.0,
+            "entries": [
+              {
+                "item": "minecraft:netherite_scrap",
+                "weight": 10,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 120,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "end",
+            "chance": 0.0,
+            "entries": [
+              {
+                "item": "minecraft:shulker_shell",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:end_stone",
+                "weight": 120,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:chorus_fruit",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:purpur_block",
+                "weight": 80,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "cosmetic",
+            "chance": 0.02,
+            "entries": [
+              {
+                "item": "minecraft:amethyst_shard",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "AirDrop victor's token",
+                "lore": [
+                  "A collectible from a contested supply drop."
+                ],
+                "glint": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "nether unlocked",
+        "fromDay": 3,
+        "minRolls": 6,
+        "maxRolls": 12,
+        "entries": [
+          {
+            "item": "minecraft:iron_ingot",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:cooked_beef",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:arrow",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 32,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:coal",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          }
+        ],
+        "categories": [
+          {
+            "key": "survival",
+            "chance": 0.8,
+            "entries": [
+              {
+                "item": "minecraft:cooked_beef",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:string",
+                "weight": 60,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:saddle",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:name_tag",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:ender_pearl",
+                "weight": 40,
+                "minCount": 2,
+                "maxCount": 5,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "basic",
+            "chance": 0.65,
+            "entries": [
+              {
+                "item": "minecraft:iron_ingot",
+                "weight": 120,
+                "minCount": 12,
+                "maxCount": 26,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:coal",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:copper_ingot",
+                "weight": 90,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:iron_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 4,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 60,
+                "minCount": 4,
+                "maxCount": 9,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "valuable",
+            "chance": 0.5,
+            "entries": [
+              {
+                "item": "minecraft:gold_ingot",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:gold_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:redstone",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 20,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:emerald_block",
+                "weight": 1,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "diamonds",
+            "chance": 0.3,
+            "entries": [
+              {
+                "item": "minecraft:diamond",
+                "weight": 100,
+                "minCount": 2,
+                "maxCount": 8,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "enchantment",
+            "chance": 0.25,
+            "entries": [
+              {
+                "item": "minecraft:experience_bottle",
+                "weight": 140,
+                "minCount": 4,
+                "maxCount": 10,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:anvil",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "combat",
+            "chance": 0.4,
+            "entries": [
+              {
+                "item": "minecraft:diamond_sword",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:diamond_chestplate",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:diamond_pickaxe",
+                "weight": 70,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:bow",
+                "weight": 90,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 2
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:crossbow",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:shield",
+                "weight": 80,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "potions",
+            "chance": 0.25,
+            "entries": [
+              {
+                "item": "minecraft:potion",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_fire_resistance",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:strong_strength",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_swiftness",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:blaze_rod",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 4,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:nether_wart",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 8,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "netherite",
+            "chance": 0.05,
+            "entries": [
+              {
+                "item": "minecraft:netherite_scrap",
+                "weight": 10,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 120,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "end",
+            "chance": 0.0,
+            "entries": [
+              {
+                "item": "minecraft:shulker_shell",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:end_stone",
+                "weight": 120,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:chorus_fruit",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:purpur_block",
+                "weight": 80,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "cosmetic",
+            "chance": 0.04,
+            "entries": [
+              {
+                "item": "minecraft:amethyst_shard",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "AirDrop victor's token",
+                "lore": [
+                  "A collectible from a contested supply drop."
+                ],
+                "glint": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "advanced",
+        "fromDay": 5,
+        "minRolls": 7,
+        "maxRolls": 12,
+        "entries": [
+          {
+            "item": "minecraft:iron_ingot",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:cooked_beef",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:arrow",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 32,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:coal",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          }
+        ],
+        "categories": [
+          {
+            "key": "survival",
+            "chance": 0.7,
+            "entries": [
+              {
+                "item": "minecraft:cooked_beef",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:string",
+                "weight": 60,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:saddle",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:name_tag",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:ender_pearl",
+                "weight": 40,
+                "minCount": 2,
+                "maxCount": 6,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "basic",
+            "chance": 0.45,
+            "entries": [
+              {
+                "item": "minecraft:iron_ingot",
+                "weight": 120,
+                "minCount": 16,
+                "maxCount": 28,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:coal",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:copper_ingot",
+                "weight": 90,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:iron_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 5,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 60,
+                "minCount": 6,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "valuable",
+            "chance": 0.65,
+            "entries": [
+              {
+                "item": "minecraft:gold_ingot",
+                "weight": 100,
+                "minCount": 12,
+                "maxCount": 20,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:gold_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:redstone",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:emerald_block",
+                "weight": 1,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "diamonds",
+            "chance": 0.45,
+            "entries": [
+              {
+                "item": "minecraft:diamond",
+                "weight": 100,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "enchantment",
+            "chance": 0.45,
+            "entries": [
+              {
+                "item": "minecraft:experience_bottle",
+                "weight": 140,
+                "minCount": 6,
+                "maxCount": 14,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:anvil",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "combat",
+            "chance": 0.55,
+            "entries": [
+              {
+                "item": "minecraft:diamond_sword",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:diamond_chestplate",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:diamond_pickaxe",
+                "weight": 70,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:bow",
+                "weight": 90,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:crossbow",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:shield",
+                "weight": 80,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "potions",
+            "chance": 0.4,
+            "entries": [
+              {
+                "item": "minecraft:potion",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_fire_resistance",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:strong_strength",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_swiftness",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:blaze_rod",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 4,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:nether_wart",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 8,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "netherite",
+            "chance": 0.15,
+            "entries": [
+              {
+                "item": "minecraft:netherite_scrap",
+                "weight": 10,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 120,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "end",
+            "chance": 0.0,
+            "entries": [
+              {
+                "item": "minecraft:shulker_shell",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:end_stone",
+                "weight": 120,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:chorus_fruit",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:purpur_block",
+                "weight": 80,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "cosmetic",
+            "chance": 0.08,
+            "entries": [
+              {
+                "item": "minecraft:amethyst_shard",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "AirDrop victor's token",
+                "lore": [
+                  "A collectible from a contested supply drop."
+                ],
+                "glint": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "endgame",
+        "fromDay": 7,
+        "minRolls": 8,
+        "maxRolls": 12,
+        "entries": [
+          {
+            "item": "minecraft:iron_ingot",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:cooked_beef",
+            "weight": 100,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:arrow",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 32,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          },
+          {
+            "item": "minecraft:coal",
+            "weight": 80,
+            "minCount": 8,
+            "maxCount": 24,
+            "minDay": 1,
+            "chance": 1.0,
+            "enchantments": {},
+            "potion": "",
+            "name": "",
+            "lore": [],
+            "glint": false
+          }
+        ],
+        "categories": [
+          {
+            "key": "survival",
+            "chance": 0.6,
+            "entries": [
+              {
+                "item": "minecraft:cooked_beef",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:string",
+                "weight": 60,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:saddle",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:name_tag",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:ender_pearl",
+                "weight": 40,
+                "minCount": 2,
+                "maxCount": 7,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "basic",
+            "chance": 0.3,
+            "entries": [
+              {
+                "item": "minecraft:iron_ingot",
+                "weight": 120,
+                "minCount": 20,
+                "maxCount": 30,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:coal",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:copper_ingot",
+                "weight": 90,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:iron_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 6,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 60,
+                "minCount": 8,
+                "maxCount": 15,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "valuable",
+            "chance": 0.7,
+            "entries": [
+              {
+                "item": "minecraft:gold_ingot",
+                "weight": 100,
+                "minCount": 16,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:gold_block",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 4,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:redstone",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 28,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:emerald_block",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "diamonds",
+            "chance": 0.55,
+            "entries": [
+              {
+                "item": "minecraft:diamond",
+                "weight": 100,
+                "minCount": 6,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "enchantment",
+            "chance": 0.6,
+            "entries": [
+              {
+                "item": "minecraft:experience_bottle",
+                "weight": 140,
+                "minCount": 8,
+                "maxCount": 18,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:lapis_lazuli",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 4
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:anvil",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 30,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:mending": 1
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 45,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:unbreaking": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "combat",
+            "chance": 0.65,
+            "entries": [
+              {
+                "item": "minecraft:diamond_sword",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:diamond_chestplate",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 4
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:diamond_pickaxe",
+                "weight": 70,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:efficiency": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:bow",
+                "weight": 90,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:power": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:crossbow",
+                "weight": 50,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:shield",
+                "weight": 80,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:arrow",
+                "weight": 100,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:netherite_sword",
+                "weight": 2,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:sharpness": 5
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:netherite_chestplate",
+                "weight": 2,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {
+                  "minecraft:protection": 4
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "potions",
+            "chance": 0.5,
+            "entries": [
+              {
+                "item": "minecraft:potion",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_fire_resistance",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:strong_strength",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:potion",
+                "weight": 60,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "minecraft:long_swiftness",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:blaze_rod",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 4,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:nether_wart",
+                "weight": 90,
+                "minCount": 2,
+                "maxCount": 8,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "netherite",
+            "chance": 0.3,
+            "entries": [
+              {
+                "item": "minecraft:netherite_scrap",
+                "weight": 10,
+                "minCount": 1,
+                "maxCount": 3,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:quartz",
+                "weight": 120,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:obsidian",
+                "weight": 120,
+                "minCount": 4,
+                "maxCount": 12,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "end",
+            "chance": 0.25,
+            "entries": [
+              {
+                "item": "minecraft:shulker_shell",
+                "weight": 20,
+                "minCount": 1,
+                "maxCount": 2,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:end_stone",
+                "weight": 120,
+                "minCount": 16,
+                "maxCount": 32,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:chorus_fruit",
+                "weight": 100,
+                "minCount": 8,
+                "maxCount": 16,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              },
+              {
+                "item": "minecraft:purpur_block",
+                "weight": 80,
+                "minCount": 8,
+                "maxCount": 24,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
+              }
+            ]
+          },
+          {
+            "key": "cosmetic",
+            "chance": 0.12,
+            "entries": [
+              {
+                "item": "minecraft:amethyst_shard",
+                "weight": 100,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1.0,
+                "enchantments": {},
+                "potion": "",
+                "name": "AirDrop victor's token",
+                "lore": [
+                  "A collectible from a contested supply drop."
+                ],
+                "glint": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "key": "standard",
+        "name": "Standard supply drop",
+        "weight": 6000,
+        "rarityMultiplier": 1.0,
+        "categoryMultipliers": {}
+      },
+      {
+        "key": "resource",
+        "name": "Resource cache",
+        "weight": 1200,
+        "rarityMultiplier": 1.0,
+        "categoryMultipliers": {
+          "diamonds": 1.5,
+          "valuable": 1.5,
+          "basic": 1.5,
+          "combat": 0.5
+        }
+      },
+      {
+        "key": "combat",
+        "name": "Combat cache",
+        "weight": 1000,
+        "rarityMultiplier": 1.0,
+        "categoryMultipliers": {
+          "potions": 1.25,
+          "basic": 0.5,
+          "combat": 1.5
+        }
+      },
+      {
+        "key": "enchantment",
+        "name": "Enchantment cache",
+        "weight": 700,
+        "rarityMultiplier": 1.0,
+        "categoryMultipliers": {
+          "basic": 0.5,
+          "combat": 0.5,
+          "enchantment": 2.0
+        }
+      },
+      {
+        "key": "armory",
+        "name": "Armory cache",
+        "weight": 500,
+        "rarityMultiplier": 1.0,
+        "categoryMultipliers": {
+          "potions": 1.25,
+          "basic": 0.5,
+          "combat": 1.5
+        }
+      },
+      {
+        "key": "elite",
+        "name": "Elite cache",
+        "weight": 400,
+        "rarityMultiplier": 1.0,
+        "categoryMultipliers": {
+          "combat": 1.25,
+          "diamonds": 1.25,
+          "enchantment": 1.25
+        }
+      },
+      {
+        "key": "legendary",
+        "name": "Legendary cache",
+        "weight": 180,
+        "rarityMultiplier": 2.0,
+        "categoryMultipliers": {
+          "combat": 1.25,
+          "diamonds": 1.25,
+          "enchantment": 1.25
+        }
+      },
+      {
+        "key": "mythic",
+        "name": "Mythic cache",
+        "weight": 20,
+        "rarityMultiplier": 3.0,
+        "categoryMultipliers": {
+          "combat": 1.25,
+          "diamonds": 1.25,
+          "enchantment": 1.25
+        }
+      }
+    ],
+    "rareRewards": [
+      {
+        "key": "golden_apple",
+        "loot": {
+          "item": "minecraft:golden_apple",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 2,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.005,
+          "3": 0.03,
+          "5": 0.08,
+          "7": 0.15
+        },
+        "variants": []
+      },
+      {
+        "key": "enchanted_golden_apple",
+        "loot": {
+          "item": "minecraft:enchanted_golden_apple",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.0005,
+          "5": 0.0025,
+          "7": 0.01
+        },
+        "variants": []
+      },
+      {
+        "key": "totem",
+        "loot": {
+          "item": "minecraft:totem_of_undying",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.001,
+          "5": 0.005,
+          "7": 0.02
+        },
+        "variants": []
+      },
+      {
+        "key": "trident",
+        "loot": {
+          "item": "minecraft:trident",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {
+            "minecraft:loyalty": 3
+          },
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.001,
+          "5": 0.005,
+          "7": 0.02
+        },
+        "variants": []
+      },
+      {
+        "key": "upgrade_template",
+        "loot": {
+          "item": "minecraft:netherite_upgrade_smithing_template",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.002,
+          "5": 0.01,
+          "7": 0.03
+        },
+        "variants": []
+      },
+      {
+        "key": "netherite_ingot",
+        "loot": {
+          "item": "minecraft:netherite_ingot",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.001,
+          "5": 0.005,
+          "7": 0.02
+        },
+        "variants": []
+      },
+      {
+        "key": "elytra",
+        "loot": {
+          "item": "minecraft:elytra",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.005
+        },
+        "variants": []
+      },
+      {
+        "key": "beacon",
+        "loot": {
+          "item": "minecraft:beacon",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.001,
+          "7": 0.005
+        },
+        "variants": []
+      },
+      {
+        "key": "nether_star",
+        "loot": {
+          "item": "minecraft:nether_star",
+          "weight": 100,
+          "minCount": 1,
+          "maxCount": 1,
+          "minDay": 1,
+          "chance": 1.0,
+          "enchantments": {},
+          "potion": "",
+          "name": "",
+          "lore": [],
+          "glint": false
+        },
+        "chanceByDay": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0025
+        },
+        "variants": []
+      }
+    ],
+    "itemUnlockDays": {},
+    "specialPool": "",
+    "specialPoolChance": 0.05,
+    "specialPools": {},
+    "messages": {}
+  },
+  "artifacts": {
+    "enabled": true,
+    "announcements": true,
+    "rebindOnTrade": true,
+    "abilityBalanceVersion": 2,
+    "fixerCount": 2,
+    "repairLevels": 5,
+    "upgradeIngots": 3,
+    "fixerChance": 0.5,
+    "repairFraction": 0.25,
+    "chanceByDay": {
+      "1": 0.001,
+      "3": 0.0015,
+      "5": 0.002,
+      "7": 0.003
+    },
+    "fixerItem": "minecraft:echo_shard",
+    "types": {
+      "thunder_axe": {
+        "name": "Thunder Axe",
+        "baseItem": "minecraft:diamond_axe",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 512,
+        "upgradedMaxUses": 768,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "thorns_shield": {
+        "name": "Thorns Shield",
+        "baseItem": "minecraft:shield",
+        "rarity": "mythic",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 10,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 1.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 1.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "mythic"
+          }
+        ]
+      },
+      "frostbite_sword": {
+        "name": "Frostbite Sword",
+        "baseItem": "minecraft:diamond_sword",
+        "rarity": "arcane",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 80,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 1.5,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 1.0,
+            "amplifier": 0,
+            "rarity": "arcane"
+          }
+        ]
+      },
+      "multi_pickaxe": {
+        "name": "Multi Pickaxe",
+        "baseItem": "minecraft:diamond_pickaxe",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "vampire_sword": {
+        "name": "Vampire Sword",
+        "baseItem": "minecraft:diamond_sword",
+        "rarity": "relic",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 120,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.5,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.25,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "relic"
+          }
+        ]
+      },
+      "void_scythe": {
+        "name": "Void Scythe",
+        "baseItem": "minecraft:diamond_hoe",
+        "rarity": "mythic",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 10,
+        "minDay": 1,
+        "maxUses": 10,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 2.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 2.0,
+            "amplifier": 0,
+            "rarity": "mythic"
+          }
+        ]
+      },
+      "guardian_angel": {
+        "name": "Guardian Angel",
+        "baseItem": "minecraft:heart_of_the_sea",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": false,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 100,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 3.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 3.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "wind_burst_spear": {
+        "name": "Wind Burst Spear",
+        "baseItem": "minecraft:diamond_spear",
+        "rarity": "relic",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "weight": 120,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 2,
+            "rarity": "relic"
+          }
+        ]
+      }
+    }
+  },
+  "creationFee": 100000,
+  "expansionFee": 25000,
+  "outpostFee": 150000,
+  "upkeepPerMember": 1000,
+  "upkeepBase": 0,
+  "protectionFee": 1000000,
+  "maxMembers": 20,
+  "maxClaims": 64,
+  "initialClaims": 1,
+  "kingdomCreationBufferChunks": 16,
+  "spawnClaimProtectionChunks": 16,
+  "outpostClaimWeight": 6,
+  "maxOutposts": 4,
+  "upkeepIntervalMinutes": 1440,
+  "gracePeriodMinutes": 4320,
+  "warMinutes": 15,
+  "warCooldownMinutes": 120,
+  "protectionMinutes": 1440,
+  "newKingdomProtectionMinutes": 1440,
+  "beaconDurationMinutes": 1440,
+  "warPreparationSeconds": 180,
+  "coreReturnMinutes": 10,
+  "coreTaxPercent": 20,
+  "kingdomRejoinCooldownMinutes": 60,
+  "coreParticles": true,
+  "coreGlow": true,
+  "coreGlowOnlyDuringWar": true,
+  "coreWarOutlineThicknessMilli": 60,
+  "coreHighlightRange": 48,
+  "coreParticleIntervalTicks": 10,
+  "coreDustSizePercent": 45,
+  "coreOutlineThicknessMilli": 12,
+  "warCountdownMilestonesSeconds": [
+    180,
+    60,
+    30,
+    10,
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "adjacentExpansion": true,
+  "allowMultipleDimensions": false,
+  "allowPublicPermissions": true,
+  "allowTreasuryWithdrawals": true,
+  "logActions": true,
+  "protectWildernessFromClaimMachines": true,
+  "warningReopenTicks": 20,
+  "menuRefreshTicks": 20,
+  "territoryUpdateTicks": 20,
+  "beaconRefreshTicks": 80,
+  "beaconLevel2Multiplier": 4,
+  "maxNameLength": 24,
+  "leaderboardSize": 10,
+  "opLevel": 2,
+  "maxTrackedHazards": 250000,
+  "treasuryPresets": [
+    1000,
+    10000,
+    100000
+  ],
+  "title": "kingdoms",
+  "primaryColor": "gold",
+  "secondaryColor": "aqua",
+  "errorColor": "red",
+  "territoryEnterSound": "minecraft:block.note_block.chime",
+  "territoryLeaveSound": "minecraft:block.note_block.hat",
+  "warCountdownSound": "minecraft:block.note_block.pling",
+  "warStartSound": "minecraft:entity.wither.spawn",
+  "warEndSound": "minecraft:ui.toast.challenge_complete",
+  "kingdomCreatedSound": "minecraft:ui.toast.challenge_complete",
+  "beaconPurchaseSound": "minecraft:block.beacon.activate",
+  "beaconHostileSound": "minecraft:entity.elder_guardian.curse",
+  "territoryActionBar": true,
+  "territoryTitles": true,
+  "territorySounds": true,
+  "warTitles": true,
+  "warActionBar": true,
+  "warSounds": true,
+  "broadcastKingdomCreation": true,
+  "beaconEnabled": true,
+  "beaconFx": true,
+  "leaderboardShowPosition": true,
+  "leaderboardShowIcon": true,
+  "leaderboardShowName": true,
+  "leaderboardShowTreasury": true,
+  "leaderboardShowCenter": true,
+  "overdueWarning": "Your kingdom will be disbanded and ALL land will become unprotected if the overdue upkeep is not paid before the deadline. Deposit enough money in the treasury.",
+  "acknowledgeLabel": "I have read and understand",
+  "allowedDimensions": [
+    "minecraft:overworld",
+    "minecraft:the_nether",
+    "minecraft:the_end"
+  ],
+  "defaultFlags": [
+    "AUTOMATION"
+  ],
+  "defaultMemberPermissions": [
+    "PLACE",
+    "BREAK",
+    "INTERACT",
+    "CONTAINERS",
+    "ENTITIES",
+    "DEPOSIT"
+  ],
+  "defaultPublicPermissions": [],
+  "allowedMobTypes": [
+    "minecraft:villager"
+  ],
+  "messages": {},
+  "beaconEffectFees": {
+    "slowness": 300000,
+    "speed": 100000,
+    "resistance": 150000,
+    "regeneration": 250000,
+    "mining_fatigue": 350000,
+    "haste": 125000,
+    "blindness": 400000,
+    "jump_boost": 100000,
+    "strength": 200000
+  },
+  "menuSlots": {
+    "settings": 16,
+    "treasury": 12,
+    "beacon": 36,
+    "war": 28,
+    "protection": 30,
+    "members": 14,
+    "close": 49,
+    "claims": 10,
+    "leaderboard": 34,
+    "help": 32
+  },
+  "menuItems": {
+    "beacon": "minecraft:beacon",
+    "treasury": "minecraft:gold_ingot",
+    "war": "minecraft:iron_sword",
+    "claims": "minecraft:grass_block",
+    "leaderboard": "minecraft:emerald",
+    "settings": "minecraft:comparator",
+    "protection": "minecraft:shield",
+    "members": "minecraft:player_head",
+    "help": "minecraft:book"
+  }
+}

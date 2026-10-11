@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "kingdoms",
+  "version": "${version}",
+  "name": "Kingdoms",
+  "description": "Server-side kingdoms, protected claims, treasury and timed wars.",
+  "authors": ["Çelik"],
+  "environment": "server",
+  "entrypoints": {"main": ["com.celik.kingdoms.KingdomsMod"]},
+  "mixins": ["kingdoms.mixins.json"],
+  "depends": {"fabricloader": ">=0.19.5", "minecraft": "26.2", "java": ">=25", "fabric-api": "*", "economycraft": ">=1.10.0", "placeholder-api": ">=3.1.0-beta.1"}
+}

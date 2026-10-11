@@ -1,0 +1,1 @@
+{"schemaVersion":1,"id":"kingdoms_test","version":"1.0.0","name":"Kingdoms isolated integration tests","environment":"server","entrypoints":{"main":["com.celik.kingdoms.IntegrationProbe"]},"depends":{"kingdoms":"*"}}
