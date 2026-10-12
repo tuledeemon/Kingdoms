@@ -9,6 +9,7 @@
 - [Artifacts](Artifacts)
 - [Commands](Commands)
 - [Combat and teleports](Combat-and-Teleports)
+- [Staff mode and events](Staff-Mode-and-Events)
 
 **Server owners**
 

@@ -15,6 +15,7 @@ Start with `/kingdom` in-game, or read **[How Kingdoms Works](https://github.com
 - [Artifacts](https://github.com/tuledeemon/Kingdoms/wiki/Artifacts)
 - [Commands](https://github.com/tuledeemon/Kingdoms/wiki/Commands)
 - [Combat and teleports](https://github.com/tuledeemon/Kingdoms/wiki/Combat-and-Teleports) — optional [Kingdoms Combat addon](https://github.com/tuledeemon/KingdomsCombat).
+- [Staff mode and events](https://github.com/tuledeemon/Kingdoms/wiki/Staff-Mode-and-Events)
 
 The documentation source is also available in [wiki/](wiki/Home.md). Prices, timers and limits in the guide are defaults; server owners can change them.
 

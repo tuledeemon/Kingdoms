@@ -61,6 +61,7 @@ write('Artifact-Administration', '# Artifact Administration\n\n## Configuration'
 commands = player.split('## Command reference\n', 1)[1].split('\n## ', 1)[0]
 write('Commands', '# Player Commands\n\n' + commands)
 write('Combat-and-Teleports', read('COMBAT_GUIDE.md'))
+write('Staff-Mode-and-Events', read('STAFF_EVENTS_GUIDE.md'))
 
 reference = read('README.md')
 if (ROOT / 'PROJECT_REFERENCE.md').exists():
@@ -95,6 +96,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - **[Artifacts](Artifacts)** — the eight special items, their abilities, repairs and upgrades.
 - **[Commands](Commands)** — a quick reference when you need a specific command.
 - **[Combat and teleports](Combat-and-Teleports)** — the optional Kingdoms Combat addon's timers, logout rules and teleport restrictions.
+- **[Staff mode and events](Staff-Mode-and-Events)** — staff exemptions, event hosting and the event information/teleport dialog.
 
 ## For server owners
 
@@ -117,6 +119,7 @@ write('_Sidebar', '''**Kingdoms**
 - [Artifacts](Artifacts)
 - [Commands](Commands)
 - [Combat and teleports](Combat-and-Teleports)
+- [Staff mode and events](Staff-Mode-and-Events)
 
 **Server owners**
 
