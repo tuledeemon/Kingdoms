@@ -8,6 +8,7 @@
 - [AirDrops](AirDrops)
 - [Artifacts](Artifacts)
 - [Commands](Commands)
+- [Combat and teleports](Combat-and-Teleports)
 
 **Server owners**
 

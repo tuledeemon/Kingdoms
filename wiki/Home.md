@@ -10,6 +10,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - **[AirDrops](AirDrops)** — finding crates, capturing them and collecting rewards.
 - **[Artifacts](Artifacts)** — the eight special items, their abilities, repairs and upgrades.
 - **[Commands](Commands)** — a quick reference when you need a specific command.
+- **[Combat and teleports](Combat-and-Teleports)** — the optional Kingdoms Combat addon's timers, logout rules and teleport restrictions.
 
 ## For server owners
 

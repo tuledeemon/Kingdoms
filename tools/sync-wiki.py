@@ -19,7 +19,7 @@ def read(name):
     return (ROOT / name).read_text(encoding='utf-8')
 
 def write(name, content):
-    (WIKI / (name + '.md')).write_text(content.strip() + '\n', encoding='utf-8')
+    (WIKI / (name + '.md')).write_text(content.strip() + '\n', encoding='utf-8', newline='\n')
 
 def slug(title):
     return re.sub(r'[^\w\- ]', '', title.lower()).replace(' ', '-')
@@ -60,6 +60,7 @@ write('Artifact-Administration', '# Artifact Administration\n\n## Configuration'
 
 commands = player.split('## Command reference\n', 1)[1].split('\n## ', 1)[0]
 write('Commands', '# Player Commands\n\n' + commands)
+write('Combat-and-Teleports', read('COMBAT_GUIDE.md'))
 
 reference = read('README.md')
 if (ROOT / 'PROJECT_REFERENCE.md').exists():
@@ -93,6 +94,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - **[AirDrops](AirDrops)** — finding crates, capturing them and collecting rewards.
 - **[Artifacts](Artifacts)** — the eight special items, their abilities, repairs and upgrades.
 - **[Commands](Commands)** — a quick reference when you need a specific command.
+- **[Combat and teleports](Combat-and-Teleports)** — the optional Kingdoms Combat addon's timers, logout rules and teleport restrictions.
 
 ## For server owners
 
@@ -114,6 +116,7 @@ write('_Sidebar', '''**Kingdoms**
 - [AirDrops](AirDrops)
 - [Artifacts](Artifacts)
 - [Commands](Commands)
+- [Combat and teleports](Combat-and-Teleports)
 
 **Server owners**
 
