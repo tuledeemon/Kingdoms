@@ -6,7 +6,7 @@ These features belong to the optional **Kingdoms Combat addon**. This page cover
 
 Staff can use **`/staffmode`** to toggle their combat-log exemption. It requires **`kingdomscombat.staffmode`**, with the configured `adminLevel` (OP level 2 by default) as the fallback when no permission is assigned. An explicit LuckPerms denial overrides that fallback. Permissions are checked again while the exemption is used.
 
-Enabling it clears your existing PvP tag. Hits involving a player in staff mode do not create PvP tags, and logging out in staff mode does not cause an addon logout death. It does not provide damage immunity or change Kingdoms claim protection. War and AirDrop teleport restrictions still apply.
+Enabling it clears all your combat, war and AirDrop timers. Hits involving a player in staff mode do not create PvP tags, and logging out in staff mode does not cause an addon logout death. It does not provide damage immunity or change Kingdoms claim protection. Staff mode also bypasses war and AirDrop teleport restrictions, including their cooldown tails, HuskHomes teleports and the `/event` teleport button.
 
 Run `/staffmode` again to return to normal combat rules. The toggle resets on disconnect or server restart. A logout penalty already recorded before entering staff mode still recovers normally; use the existing admin pardon command to intentionally forgive one.
 
@@ -26,7 +26,7 @@ An event host can announce a server-wide event with a duration:
 
 The event **starts immediately and lasts ten minutes** in this example. Everyone receives a small-caps title/subtitle, chat announcement and sound, with a boss bar showing the name and remaining time. Players who join the server later receive the active boss bar too. The bar disappears when the timer ends or a host stops the event.
 
-Players use **`/event`** to open a Minecraft dialog showing the staff-written description, host, total duration and remaining time, with a **Teleport to event** button. You can read the event information while combat tagged; the button is blocked during PvP combat, active-war restrictions, and AirDrop restrictions, including their remaining cooldown tails. These checks also run when a destination finishes loading, so getting tagged while waiting cannot bypass protection. Staff mode only removes the PvP restriction; war/AirDrop restrictions still apply. This built-in check applies independently of the command blacklist. Buttons from an old or ended event cannot teleport you to a different event.
+Players use **`/event`** to open a Minecraft dialog showing the staff-written description, host, total duration and remaining time, with a **Teleport to event** button. You can read the event information while combat tagged; the button is blocked during PvP combat, active-war restrictions, and AirDrop restrictions, including their remaining cooldown tails. These checks also run when a destination finishes loading, so getting tagged while waiting cannot bypass protection. Authorized staff with staff mode enabled bypass all these teleport restrictions. This built-in check applies independently of the command blacklist. Buttons from an old or ended event cannot teleport you to a different event.
 
 Hosts set or update the description with `/eventhost description <text>`, before or during the event. The default limit is 2048 characters, configurable up to 4096. Text uses small caps in-game.
 
