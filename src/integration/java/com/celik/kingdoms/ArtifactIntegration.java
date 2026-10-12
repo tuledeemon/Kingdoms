@@ -61,6 +61,7 @@ final class ArtifactIntegration {
    Record spear=issue(a,cfg,"wind_burst_spear");ItemStack weapon=a.create(spear);player.setItemInHand(InteractionHand.MAIN_HAND,weapon);check.accept(weapon.is(Items.DIAMOND_SPEAR)&&EnchantmentHelper.getItemEnchantmentLevel(enchant.getOrThrow(Enchantments.WIND_BURST),weapon)==2,"Diamond Spear carries actual Wind Burst II");player.getInventory().setItem(9,new ItemStack(Items.NETHERITE_INGOT,3));a.upgrade(player);check.accept(player.getMainHandItem().is(Items.NETHERITE_SPEAR)&&EnchantmentHelper.getItemEnchantmentLevel(enchant.getOrThrow(Enchantments.WIND_BURST),player.getMainHandItem())==2,"spear upgrades to Netherite while keeping Wind Burst II");
    ItemStack upgradedSpear=player.getMainHandItem();GrindstoneMenu grindstone=new GrindstoneMenu(300,player.getInventory());grindstone.getSlot(0).set(upgradedSpear);check.accept(grindstone.getSlot(2).hasItem()&&Artifacts.marked(grindstone.getSlot(2).getItem())&&EnchantmentHelper.getItemEnchantmentLevel(enchant.getOrThrow(Enchantments.WIND_BURST),grindstone.getSlot(2).getItem())==2,"grindstone keeps the spear's built-in Wind Burst enchantment");
    var experience=grindstone.getSlot(2).getClass().getDeclaredMethod("getExperienceFromItem",ItemStack.class);experience.setAccessible(true);check.accept((int)experience.invoke(grindstone.getSlot(2),upgradedSpear)==0,"built-in Wind Burst cannot be farmed for grindstone XP");
+   spearTargets(a,cfg,player,other,check);
    Record lightning=issue(a,cfg,"thunder_axe");player.setItemInHand(InteractionHand.MAIN_HAND,a.create(lightning));target=new Zombie(EntityTypes.ZOMBIE,level);target.setPos(player.getX(),player.getY(),player.getZ()-2);Zombie victim=target;
    long bolts=countBolts(level);a.attack(player,target,false,()->victim.hurtServer(level,player.damageSources().playerAttack(player),2));check.accept(countBolts(level)==bolts,"non-critical Thunder hits cannot spawn lightning");target.invulnerableTime=0;
    a.attack(player,target,true,()->victim.hurtServer(level,player.damageSources().playerAttack(player),2));check.accept(countBolts(level)==bolts+1,"eligible critical hit spawns a real lightning entity");for(Entity e:level.getAllEntities())if(e instanceof LightningBolt bolt){check.accept(player.getUUID().equals(Provenance.entityOwner(bolt.getUUID())),"artifact lightning retains its player attribution");bolt.discard();}
@@ -98,6 +99,35 @@ final class ArtifactIntegration {
  }
  static Record issue(Artifacts artifacts,ArtifactConfig cfg,String key){Record r=ArtifactRules.generate(key,cfg.types.get(key),new Random(1));r.delivered=true;artifacts.data.records.put(r.id,r);return r;}
  private static long countBolts(ServerLevel level){long n=0;for(Entity e:level.getAllEntities())if(e instanceof LightningBolt&&!e.isRemoved())n++;return n;}
+ private static void spearTargets(Artifacts artifacts,ArtifactConfig cfg,ServerPlayer player,ServerPlayer other,BiConsumer<Boolean,String> check){
+  var level=player.level();ItemStack oldHand=player.getMainHandItem(),oldOff=player.getOffhandItem();var position=player.position();var movement=player.getDeltaMovement();float yaw=player.getYRot(),headYaw=player.getYHeadRot(),pitch=player.getXRot();double fall=player.fallDistance;
+  var props=List.of(EntityTypes.ARMOR_STAND,EntityTypes.MANNEQUIN,EntityTypes.MINECART,EntityTypes.CHEST_MINECART,EntityTypes.OAK_BOAT,EntityTypes.OAK_CHEST_BOAT,EntityTypes.ITEM_FRAME,EntityTypes.GLOW_ITEM_FRAME,EntityTypes.PAINTING,EntityTypes.ITEM,EntityTypes.FALLING_BLOCK,EntityTypes.END_CRYSTAL,EntityTypes.INTERACTION,EntityTypes.BLOCK_DISPLAY,EntityTypes.ARROW,EntityTypes.FIREBALL);
+  try{
+   Record spear=issue(artifacts,cfg,"wind_burst_spear");
+   for(boolean upgraded:List.of(false,true)){
+    spear.upgraded=upgraded;ItemStack weapon=artifacts.create(spear);player.setItemInHand(InteractionHand.MAIN_HAND,weapon);player.fallDistance=2;
+    for(var type:props){Entity prop=Objects.requireNonNull(type.create(level,EntitySpawnReason.COMMAND));prop.setPos(position.add(0,0,-1));int damage=weapon.getDamageValue();var propMovement=prop.getDeltaMovement();float health=prop instanceof LivingEntity living?living.getHealth():0;
+     check.accept(!net.minecraft.world.item.component.PiercingWeapon.canHitEntity(player,prop),"spear target scan skips "+type+" upgraded="+upgraded);
+     player.attack(prop);boolean jab=player.stabAttack(EquipmentSlot.MAINHAND,prop,100,true,true,true);
+     check.accept(!jab&&!prop.isRemoved()&&weapon.getDamageValue()==damage&&prop.getDeltaMovement().equals(propMovement)&&player.getDeltaMovement().equals(movement)&&(!(prop instanceof LivingEntity living)||living.getHealth()==health),"direct spear attacks cannot damage, launch or consume durability on "+type+" upgraded="+upgraded);
+     player.setItemInHand(InteractionHand.OFF_HAND,weapon);player.setItemInHand(InteractionHand.MAIN_HAND,ItemStack.EMPTY);
+     check.accept(!player.stabAttack(EquipmentSlot.OFFHAND,prop,100,true,true,true),"offhand charged spear also refuses "+type+" upgraded="+upgraded);player.setItemInHand(InteractionHand.MAIN_HAND,weapon);player.setItemInHand(InteractionHand.OFF_HAND,ItemStack.EMPTY);prop.discard();
+    }
+    Zombie zombie=new Zombie(EntityTypes.ZOMBIE,level);zombie.setPos(position.add(0,0,-2));check.accept(artifacts.allowsAttack(weapon,zombie)&&artifacts.allowsAttack(weapon,other),"spear still targets living mobs and players upgraded="+upgraded);
+    zombie.setHealth(20);player.fallDistance=0;check.accept(player.stabAttack(EquipmentSlot.MAINHAND,zombie,5,true,false,false)&&zombie.getHealth()<20,"native spear jab still damages a mob upgraded="+upgraded);zombie.discard();
+   }
+   var stand=Objects.requireNonNull(EntityTypes.ARMOR_STAND.create(level,EntitySpawnReason.COMMAND));stand.setPos(position.add(0,0,-1));player.setItemInHand(InteractionHand.MAIN_HAND,new ItemStack(Items.DIAMOND_SPEAR));check.accept(net.minecraft.world.item.component.PiercingWeapon.canHitEntity(player,stand),"ordinary spears keep vanilla nonliving target behavior");
+   var dragon=new net.minecraft.world.entity.boss.enderdragon.EnderDragon(EntityTypes.ENDER_DRAGON,level);ItemStack weapon=artifacts.create(spear);check.accept(artifacts.allowsAttack(weapon,dragon.getSubEntities()[0]),"living dragon hitboxes remain eligible targets");dragon.discard();
+   player.setItemInHand(InteractionHand.MAIN_HAND,weapon);player.fallDistance=0;player.setYRot(180);player.setYHeadRot(180);player.setXRot(0);var zombie=new Zombie(EntityTypes.ZOMBIE,level);zombie.setPos(position.add(0,0,-3));zombie.setHealth(20);
+   check.accept(level.addFreshEntity(stand)&&level.addFreshEntity(zombie),"mixed spear ray fixture adds armor stand and living target");
+   try{
+    float standHealth=stand.getHealth();weapon.get(DataComponents.PIERCING_WEAPON).attack(player,EquipmentSlot.MAINHAND);check.accept(stand.getHealth()==standHealth&&zombie.getHealth()<20,"real piercing jab skips the armor stand and still hits the mob behind it");
+    var kinetic=weapon.get(DataComponents.KINETIC_WEAPON);player.startUsingItem(InteractionHand.MAIN_HAND);kinetic.damageEntities(weapon,weapon.getUseDuration(player)-kinetic.delayTicks()-1,player,EquipmentSlot.MAINHAND);
+    check.accept(player.stabbedEntities(e->e==stand)==0&&player.stabbedEntities(e->e==zombie)>0,"actual charged contact skips armor stands before cooldown and contact bookkeeping");player.stopUsingItem();
+    zombie.setItemSlot(EquipmentSlot.MAINHAND,weapon);check.accept(!zombie.stabAttack(EquipmentSlot.MAINHAND,stand,100,true,true,true)&&stand.getHealth()==standHealth,"mob-held artifact spear also refuses armor stands");
+   }finally{player.stopUsingItem();stand.discard();zombie.discard();}
+  }finally{player.setItemInHand(InteractionHand.MAIN_HAND,oldHand);player.setItemInHand(InteractionHand.OFF_HAND,oldOff);player.setPos(position);player.setDeltaMovement(movement);player.setYRot(yaw);player.setYHeadRot(headYaw);player.setXRot(pitch);player.fallDistance=fall;}
+ }
  private static final class RecordingConnection extends net.minecraft.network.Connection {
   final List<net.minecraft.network.protocol.Packet<?>> packets=new ArrayList<>();
   RecordingConnection(){super(net.minecraft.network.protocol.PacketFlow.SERVERBOUND);}

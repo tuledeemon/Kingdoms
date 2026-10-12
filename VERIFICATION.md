@@ -2,7 +2,14 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
-**Result for 1.7.0: 439 dedicated-server checks without C2ME, 440 with C2ME 0.4.1-beta.1.0+26.2, and 102 JUnit tests passed.**
+**Result for 1.7.1: 545 dedicated-server checks without C2ME, 546 with C2ME 0.4.1-beta.1.0+26.2, and 102 JUnit tests passed.**
+
+## Wind Burst Spear target regression
+
+- Diamond and Netherite artifact spears reject armor stands, mannequins, minecarts, chest minecarts, boats, chest boats, item frames, glow item frames, paintings, dropped items, falling blocks, End Crystals, interaction entities, block displays, arrows and fireballs.
+- Real ordinary attacks and main/offhand stabs cannot damage, knock back or trigger Wind Burst on those targets, and do not consume hit durability.
+- A real piercing jab skips an armor stand and damages the living mob behind it. Charged contact excludes the armor stand before contact/cooldown bookkeeping; a mob holding the artifact also cannot stab it.
+- Player and mob targets remain eligible, native jabs still deal damage, living dragon hitboxes remain eligible, and ordinary Diamond Spears retain vanilla prop targeting.
 
 ## Chunk-loading freeze regression
 

@@ -12,7 +12,7 @@ Legitimate event chests, ordinary chest inventories, saved loot and current King
 
 ## Validation
 
-The original 1.6.3 fix passed 432 checks with the exact C2ME version in the report and 101 JUnit tests. The current 1.7.0 release retains this fix and passes 440 C2ME checks, 439 ordinary Fabric checks and 102 JUnit tests. The C2ME regression confirms the full chunk is unpublished when the queued callback runs.
+The original 1.6.3 fix passed 432 checks with the exact C2ME version in the report and 101 JUnit tests. The current 1.7.1 release retains this fix and passes 546 C2ME checks, 545 ordinary Fabric checks and 102 JUnit tests. The C2ME regression confirms the full chunk is unpublished when the queued callback runs.
 
 The server regression injects an orphan chest in the actual chunk-load event before Kingdoms runs. It checks that the callback returns, leaves terrain untouched during loading, and removes the chest after full availability. With C2ME enabled, it also verifies that the callback ran before the full chunk was published. An unpublished synthetic chunk verifies that access/protection and cleanup do not request missing chunks. Existing chest, capture, artifact, cash and protection checks run alongside the regression.
 
@@ -20,4 +20,4 @@ C2ME test dependency: official Modrinth version `hfq4dPFH`, SHA-512 `21076491de3
 
 ## Installation
 
-Stop the server, replace the previous Kingdoms JAR with `kingdoms-1.7.0-mc26.2.jar`, then start it again. Keep all world and Kingdoms data files. A real player join on the complete production modpack still needs confirmation after replacement; this workspace does not have access to that running server.
+Stop the server, replace the previous Kingdoms JAR with `kingdoms-1.7.1-mc26.2.jar`, then start it again. Keep all world and Kingdoms data files. A real player join on the complete production modpack still needs confirmation after replacement; this workspace does not have access to that running server.

@@ -13,11 +13,13 @@ Eight artifacts replace the previous catalogue. They work on a Fabric 26.2 serve
 | Vampire Sword | Relic / Diamond Sword | Heals the wielder by 25% of actual damage dealt, including absorption; overkill does not count | Heals 50% |
 | Void Scythe | Mythic / Diamond Hoe | Each successful hostile hit disables held-item actions for two seconds; 10 vanilla durability | Netherite appearance; same ability and durability |
 | Guardian Angel | Legendary / Heart of the Sea | Right-click for three seconds without cobweb slowing; 100 charges | No Netherite upgrade |
-| Wind Burst Spear | Relic / Diamond Spear | Actual Wind Burst II, with Minecraft's falling-hit activation rules | Netherite Spear with Wind Burst II |
+| Wind Burst Spear | Relic / Diamond Spear | Wind Burst II against living targets only, with Minecraft's falling-hit activation rules | Netherite Spear with the same target rules and Wind Burst II |
 
 All eligible triggers succeed by default; the former 50% activation rule is removed. Failed or protected hits do not trigger combat powers. Kingdom members, allies, pets and farm animals are excluded from hostile-hit powers. Kingdom protection still applies to lightning damage and terrain/fire changes.
 
 Void disables attacking, mining, item use and entity/block interaction, and stops an already-raised shield or charging item. Movement and inventory access remain available. Previously fired projectiles are not held-item actions.
+
+Wind Burst Spear attacks only living players and mobs. Armor stands, mannequins, boats, minecarts, item frames, paintings, crystals, dropped items, projectiles, displays and other nonliving entities are ignored. Jabs and charged attacks both follow this rule, including offhand attacks and the Netherite upgrade. Rejected targets take no damage or knockback, trigger no Wind Burst and consume no hit durability. A living mob behind an ignored prop can still be hit; normal kingdom and PvP protection applies. Ordinary spears retain Minecraft's normal targeting rules.
 
 Multi Pickaxe runs Minecraft's normal player mining separately for each extra block. It respects claims, normal loot tables, tool requirements, Silk Touch, Fortune and durability. Bedrock, blocks with negative hardness and game-master blocks are skipped. Protected blocks generate no loot and consume no durability. Squares on horizontal faces follow the player's heading.
 

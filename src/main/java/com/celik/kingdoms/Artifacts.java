@@ -104,6 +104,11 @@ public final class Artifacts {
     };}
     public boolean forbiddenEnchantments(ItemStack stack){return false;}
     public boolean fixedEnchantment(ItemStack stack){Record r=record(stack);return r!=null&&r.type.equals("wind_burst_spear");}
+    public boolean allowsAttack(ItemStack stack,Entity target){
+        if(!fixedEnchantment(stack))return true;
+        if(target instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragonPart part)target=part.parentMob;
+        return target instanceof LivingEntity&&!(target instanceof net.minecraft.world.entity.decoration.ArmorStand)&&!(target instanceof net.minecraft.world.entity.decoration.Mannequin)&&target.isAlive();
+    }
     public ItemStack enchantPreview(ItemStack input,ItemStack result){Record r=record(input);if(r==null||result.isEmpty())return ItemStack.EMPTY;refresh(result,r);return result;}
     private ItemStack fixer(Fixer f){ItemStack s=new ItemStack(item(config().fixerItem));s.set(DataComponents.MAX_STACK_SIZE,1);CustomData.update(DataComponents.CUSTOM_DATA,s,t->{t.putString("kingdoms_fixer",f.id.toString());t.putString("kingdoms_nonce",f.nonce.toString());});s.set(DataComponents.CUSTOM_NAME,Component.literal(Ui.caps("Artifact Fixer")).withStyle(ChatFormatting.AQUA));s.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true);s.set(DataComponents.LORE,new ItemLore(List.of(line("Restores "+Math.round(config().repairFraction*100)+"% of durability or Guardian Angel charges"),line("Use in an anvil • "+config().repairLevels+" experience levels"),line("Cannot repair ordinary items"))));return s;}
     /** Reserves an identity before the AirDrop outcome is saved. Orphan reservations reconcile on restart. */
@@ -150,7 +155,7 @@ public final class Artifacts {
         return true;
     }
     public void attack(ServerPlayer p,Entity target,boolean critical,Runnable original){
-        if(preventsAttack(p))return;Attack previous=attack.get();attack.set(new Attack(p,target,critical));
+        if(preventsAttack(p)||!allowsAttack(p.getMainHandItem(),target))return;Attack previous=attack.get();attack.set(new Attack(p,target,critical));
         try{original.run();}finally{if(previous==null)attack.remove();else attack.set(previous);}
     }
     public boolean hurt(LivingEntity target,ServerLevel level,DamageSource source,float amount,java.util.function.Function<Float,Boolean> original){

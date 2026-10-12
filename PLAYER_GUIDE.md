@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.7.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.7.1 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 ## ɢᴇᴛᴛɪɴɢ ꜱᴛᴀʀᴛᴇᴅ
 
@@ -304,3 +304,5 @@ Ordinary AirDrops include one shared cash reward: 1,000 on days 1–2, 10,000 on
 A rare independent artifact roll replaces the usual loot with one artifact and sometimes two fixers. Those special drops have no cash. The eight types are Thunder Axe, Thorns Shield, Frostbite Sword, Multi Pickaxe, Vampire Sword, Void Scythe, Guardian Angel and Wind Burst Spear. Tools and shields use normal Minecraft durability and compatible enchantments, including Mending and Unbreaking. Guardian Angel instead has 100 right-click charges for three seconds of cobweb immunity.
 
 Ordinary tools accept normal repairs. A genuine fixer in a vanilla anvil restores 25% of durability or Guardian Angel charges for five levels by default. Hold your artifact and open **Artifacts** in `/kingdom` or `/artifact` to upgrade once for three Netherite Ingots; Guardian Angel has no Netherite upgrade. See [the full catalogue](ARTIFACTS_GUIDE.md) for each ability and upgrade. Artifact quantities remain unlimited, and every eligible trigger succeeds by default.
+
+The Wind Burst Spear hits living players and mobs only. Armor stands, mannequins and nonliving entities such as boats, minecarts and item frames are ignored, including when using its Netherite upgrade.

@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.7.1:** Wind Burst Spear hits living players and mobs only. Armor stands, mannequins and nonliving entities are ignored. See the [changelog](CHANGELOG.md).
+
 ## Player guide
 
 Start with `/kingdom` in-game, or read **[How Kingdoms Works](https://github.com/tuledeemon/Kingdoms/wiki/How-Kingdoms-Works)**.
@@ -38,4 +40,4 @@ Kingdoms runs on **Fabric**, not Paper or Folia. Server borders, addresses and D
 - [Example configuration](config.example.json)
 - [Parachute model attribution](PARACHUTE_MODEL.md)
 
-Version **1.7.0** passed **102 unit tests**, **439 dedicated-server checks**, and **440 checks with C2ME**. Live client visuals and third-party anticheat compatibility still need testing.
+Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Live client visuals and third-party anticheat compatibility still need testing.

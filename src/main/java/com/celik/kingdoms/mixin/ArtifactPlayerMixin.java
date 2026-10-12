@@ -6,6 +6,9 @@ import net.minecraft.server.level.ServerPlayer;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import net.minecraft.world.entity.EquipmentSlot;
 @Mixin(Player.class)
 public abstract class ArtifactPlayerMixin {
  @Shadow private boolean canCriticalAttack(Entity target){throw new AssertionError();}
@@ -13,5 +16,10 @@ public abstract class ArtifactPlayerMixin {
  private void attack(Entity target,Operation<Void> original){Player self=(Player)(Object)this;
   if(KingdomsMod.service==null||!(self instanceof ServerPlayer p)){original.call(target);return;}
   KingdomsMod.service.artifacts.attack(p,target,p.getAttackStrengthScale(.5f)>=1&&canCriticalAttack(target),()->original.call(target));
+ }
+ @Inject(method="stabAttack",at=@At("HEAD"),cancellable=true)
+ private void livingSpearTarget(EquipmentSlot slot,Entity target,float damage,boolean dealsDamage,boolean knockback,boolean dismounts,CallbackInfoReturnable<Boolean> cir){
+  Player self=(Player)(Object)this;
+  if(KingdomsMod.service!=null&&!self.level().isClientSide()&&!KingdomsMod.service.artifacts.allowsAttack(self.getItemBySlot(slot),target))cir.setReturnValue(false);
  }
 }

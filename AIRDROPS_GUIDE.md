@@ -1,4 +1,4 @@
-# AirDrops — Kingdoms 1.7.0
+# AirDrops — Kingdoms 1.7.1
 
 Recurring supply crates create PvP objectives for kingdoms and solo players. This is part of the server-only Fabric mod for Minecraft 26.2. Players need no client mod or resource pack.
 

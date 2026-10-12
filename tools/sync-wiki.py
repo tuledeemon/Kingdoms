@@ -46,7 +46,7 @@ write('How-Kingdoms-Works', intro + '\n\n## Contents\n\n' + toc(player)
 
 airdrop = wiki_links(read('AIRDROPS_GUIDE.md'))
 air_players, air_admin = airdrop.split('## Admin testing commands', 1)
-write('AirDrops', air_players.replace('# AirDrops — Kingdoms 1.7.0', '# AirDrops')
+write('AirDrops', air_players.replace('# AirDrops — Kingdoms 1.7.1', '# AirDrops')
       + '\n## More information\n\n[Admin commands and configuration](AirDrop-Administration).')
 write('AirDrop-Administration', '# AirDrop Administration\n\n'
       'These commands require administrator access. Players should start with [AirDrops](AirDrops).\n\n'
@@ -54,7 +54,7 @@ write('AirDrop-Administration', '# AirDrop Administration\n\n'
 
 artifact = wiki_links(read('ARTIFACTS_GUIDE.md'))
 artifact_players, artifact_admin = artifact.split('## Configuration', 1)
-write('Artifacts', artifact_players.replace('# Artifacts — Kingdoms 1.7.0', '# Artifacts')
+write('Artifacts', artifact_players.replace('# Artifacts — Kingdoms 1.7.1', '# Artifacts')
       + '\n## More information\n\n[Configuration and admin commands](Artifact-Administration).')
 write('Artifact-Administration', '# Artifact Administration\n\n## Configuration' + artifact_admin)
 
@@ -77,8 +77,8 @@ write('Installation', '# Installation\n\n' + installation + '\n\n'
       '## Building from source\n\nSee the repository\'s `BUILDING.md`. '
       'Kingdoms is a Fabric server mod; it does not run on Paper or Folia. '
       'The world border and Discord account linking belong to the server setup, not this mod.\n\n'
-      '## Verification\n\nThe 1.7.0 release passed 102 unit tests, 439 dedicated-server '
-      'checks, and 440 checks with C2ME. A connected Minecraft client and live anticheat '
+      '## Verification\n\nThe 1.7.1 release passed 102 unit tests, 545 dedicated-server '
+      'checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat '
       'compatibility have not been tested.')
 
 write('Home', '''# Kingdoms Guide
@@ -102,7 +102,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
 
-This guide covers Kingdoms 1.7.0. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
+This guide covers Kingdoms 1.7.1. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
 ''')
 write('_Sidebar', '''**Kingdoms**
 
@@ -123,7 +123,7 @@ write('_Sidebar', '''**Kingdoms**
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
 ''')
-write('_Footer', 'Kingdoms 1.7.0 · Minecraft Java 26.2 · Default settings may differ from your server.')
+write('_Footer', 'Kingdoms 1.7.1 · Minecraft Java 26.2 · Default settings may differ from your server.')
 
 pages = {p.stem for p in WIKI.glob('*.md')}
 links = 0
