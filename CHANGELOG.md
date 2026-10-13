@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.1
+
+- Reorganized the main menu into centered management, war/powers and activity rows, with shared framed inventory layouts and bottom navigation.
+- Settings now use two rows of four flags, green/red toggles, separate identity/permission controls and an isolated disband action.
+- Member, kingdom, captured-core, AirDrop, active-power and leaderboard lists use 28 interior slots per page, page indicators and protected navigation rows. Invalidated pages clamp safely, and detail views return to their parent lists.
+- Stock menu positions migrate once; custom positions remain intact. Filler items can be disabled with `menuDecorations` or customized through `menuItems` frame/background/warning_frame keys.
+- Built for Fabric 26.2. Live Minecraft client appearance has not been verified for this release.
+
 ## 1.8.0
 
 - Added optional BlueMap integration: kingdom-colored territory fills, merged borders, holes and disconnected outposts, clickable kingdom information, and placed-core pins.

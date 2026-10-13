@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.8.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.8.1 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 
 ## Contents
@@ -42,7 +42,7 @@ After founding, **deposit money into the treasury** so your kingdom can expand a
 
 ## Menus and territory
 
-Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war status and cooldown. Left-click the menu buttons; shift-clicks and item transfers do not operate them. Text-entry options use Minecraft dialogs.
+Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war status and cooldown. The framed home menu groups everyday management, war/powers, and server activities into three centered rows. Help, the treasury leaderboard and Close sit in the bottom row. Left-click the menu buttons; shift-clicks and item transfers do not operate them. Text-entry options use Minecraft dialogs. Lists show 28 entries per page with a page indicator, Previous/Next controls and Back in the bottom row. Submenus also have a Close button; detail pages return to their parent list.
 
 | Button | What you do there |
 | --- | --- |

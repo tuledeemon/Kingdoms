@@ -5,6 +5,8 @@ import static com.celik.kingdoms.Rules.*;
 
 public final class Config {
     public int schemaVersion = 1;
+    public int menuLayoutVersion;
+    public boolean menuDecorations = true;
     public AirDropConfig airDrops = new AirDropConfig();
     public ArtifactConfig artifacts = new ArtifactConfig();
     public BlueMapConfig blueMap = new BlueMapConfig();
@@ -41,9 +43,10 @@ public final class Config {
         Map.entry("speed",100_000L),Map.entry("haste",125_000L),Map.entry("resistance",150_000L),
         Map.entry("jump_boost",100_000L),Map.entry("strength",200_000L),Map.entry("regeneration",250_000L),
         Map.entry("slowness",300_000L),Map.entry("blindness",400_000L),Map.entry("mining_fatigue",350_000L)));
-    public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"help",32,"leaderboard",34,"beacon",36,"close",49));
+    public Map<String, Integer> menuSlots = MenuLayout.home();
     public Map<String, String> menuItems = new LinkedHashMap<>(Map.of("claims","minecraft:grass_block","treasury","minecraft:gold_ingot","members","minecraft:player_head","settings","minecraft:comparator","war","minecraft:iron_sword","protection","minecraft:shield","help","minecraft:book","leaderboard","minecraft:emerald","beacon","minecraft:beacon"));
     public void validate() {
+        if(menuLayoutVersion<1){if(MenuLayout.legacy().equals(menuSlots))menuSlots=MenuLayout.home();menuLayoutVersion=1;}
         if(blueMap==null)throw new IllegalArgumentException("BlueMap configuration is missing");blueMap.validate();
         if(artifacts==null)throw new IllegalArgumentException("Artifact configuration is missing");artifacts.validate();
         if(airDrops==null)throw new IllegalArgumentException("AirDrop configuration is missing");airDrops.validate();
