@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "menuLayoutVersion": 2,
+  "menuLayoutVersion": 3,
   "blueMap": {
     "enabled": true,
     "updateIntervalSeconds": 10,
@@ -3688,7 +3688,7 @@
   "menuSlots": {
     "settings": 16,
     "treasury": 12,
-    "beacon": 36,
+    "beacon": 32,
     "war": 28,
     "protection": 30,
     "members": 14,

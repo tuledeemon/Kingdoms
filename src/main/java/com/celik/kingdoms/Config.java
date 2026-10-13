@@ -5,7 +5,7 @@ import static com.celik.kingdoms.Rules.*;
 
 public final class Config {
     public int schemaVersion = 1;
-    public int menuLayoutVersion = 2;
+    public int menuLayoutVersion;
     public AirDropConfig airDrops = new AirDropConfig();
     public ArtifactConfig artifacts = new ArtifactConfig();
     public BlueMapConfig blueMap = new BlueMapConfig();
@@ -42,7 +42,7 @@ public final class Config {
         Map.entry("speed",100_000L),Map.entry("haste",125_000L),Map.entry("resistance",150_000L),
         Map.entry("jump_boost",100_000L),Map.entry("strength",200_000L),Map.entry("regeneration",250_000L),
         Map.entry("slowness",300_000L),Map.entry("blindness",400_000L),Map.entry("mining_fatigue",350_000L)));
-    public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"help",32,"leaderboard",34,"beacon",36,"close",49));
+    public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"leaderboard",34,"beacon",32,"close",49));
     public Map<String, String> menuItems = new LinkedHashMap<>(Map.of("claims","minecraft:grass_block","treasury","minecraft:gold_ingot","members","minecraft:player_head","settings","minecraft:comparator","war","minecraft:iron_sword","protection","minecraft:shield","help","minecraft:book","leaderboard","minecraft:emerald","beacon","minecraft:beacon"));
     public void validate() {
         // Restore only the stock 1.8.1 grid; administrator-defined positions remain intact.
@@ -50,6 +50,12 @@ public final class Config {
             if(java.util.Map.of("claims",20,"treasury",22,"members",24,"settings",42,"war",29,"protection",31,"help",45,"leaderboard",51,"beacon",33,"close",49).equals(menuSlots))
                 menuSlots=new java.util.LinkedHashMap<>(java.util.Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"help",32,"leaderboard",34,"beacon",36,"close",49));
             menuLayoutVersion=2;
+        }
+        // Help has no home button; its retired position must not reserve the beacon's slot.
+        if(menuSlots!=null)menuSlots.remove("help");
+        if(menuLayoutVersion<3){
+            if(java.util.Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"leaderboard",34,"beacon",36,"close",49).equals(menuSlots))menuSlots.put("beacon",32);
+            menuLayoutVersion=3;
         }
         if(blueMap==null)throw new IllegalArgumentException("BlueMap configuration is missing");blueMap.validate();
         if(artifacts==null)throw new IllegalArgumentException("Artifact configuration is missing");artifacts.validate();

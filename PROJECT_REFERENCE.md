@@ -1,6 +1,6 @@
 # ᴋɪɴɢᴅᴏᴍѕ — Fabric 26.2
 
-Kingdoms 1.8.2 restores the original menu layout and removes AirDrops, Artifacts and Help from the home menu. These features remain available through their commands. It includes optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
+Kingdoms 1.8.3 retains the original menu layout and removes AirDrops, Artifacts and Help from the home menu. These features remain available through their commands. It includes optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
 
 A server-only kingdom and claims mod. Players join with normal Minecraft 26.2 clients; no client mod, custom registry, or resource pack is required. Menus use vanilla chest inventories, mandatory small-caps text, confirmation pages, live counters, territory action bars, transition titles and sounds.
 
@@ -231,8 +231,8 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `smallCaps` | true | Small-cap UI headings |
 | `title` | kingdoms | Main menu title |
 | `primaryColor`, `secondaryColor`, `errorColor` | gold, aqua, red | Vanilla formatting colors |
-| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. The legacy `help` position is unused |
-| `menuLayoutVersion` | 2 | Internal migration marker; the stock 1.8.1 arrangement is restored once, while custom positions are preserved |
+| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. War protection uses slot 30 and the beacon uses 32. The retired `help` position is ignored |
+| `menuLayoutVersion` | 3 | Internal migration marker; previous stock layouts restore and move the beacon to 32, while custom positions are preserved |
 | `menuItems` | Generated defaults | Main-menu item identifiers |
 | `messages` | Empty | Text overrides keyed by the original text; also applies to button labels/lore |
 | `treasuryPresets` | 1000, 10000, 100000 | Three deposit/withdraw menu amounts |

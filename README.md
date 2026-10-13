@@ -4,7 +4,7 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
-**1.8.2:** Original kingdom menu layout restored, with AirDrops, Artifacts and Help removed from the home menu. Includes BlueMap territories and the explosion-protection patch. See the [changelog](CHANGELOG.md).
+**1.8.3:** Kingdom beacon placed two slots right of War protection, with one empty slot between them. The original menu layout is retained, with AirDrops, Artifacts and Help removed from home. Includes BlueMap territories and the explosion-protection patch. See the [changelog](CHANGELOG.md).
 
 ## Player guide
 
@@ -43,4 +43,4 @@ Kingdoms runs on **Fabric**, not Paper or Folia. Server borders, addresses and D
 - [Example configuration](config.example.json)
 - [Parachute model attribution](PARACHUTE_MODEL.md)
 
-Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.8.2** compiles with the restored menu layout, the optional BlueMap integration and 1.7.2 explosion patch; the earlier test results do not verify these changes. Live client visuals and third-party mod compatibility still need testing.
+Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.8.3** compiles with the restored menu layout, the optional BlueMap integration and 1.7.2 explosion patch; the earlier test results do not verify these changes. Live client visuals and third-party mod compatibility still need testing.

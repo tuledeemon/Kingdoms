@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.8.2 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.8.3 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 ## ɢᴇᴛᴛɪɴɢ ꜱᴛᴀʀᴛᴇᴅ
 
@@ -24,7 +24,7 @@ After founding, **deposit money into the treasury** so your kingdom can expand a
 
 ## ᴍᴇɴᴜꜱ ᴀɴᴅ ᴛᴇʀʀɪᴛᴏʀʏ
 
-Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war status and cooldown. Left-click the menu buttons; shift-clicks and item transfers do not operate them. Text-entry options use Minecraft dialogs. AirDrops, Artifacts and Help are accessed through `/airdrop`, `/artifact` and `/kingdom help`; their shortcuts are not shown in the home menu.
+Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war status and cooldown. Left-click the menu buttons; shift-clicks and item transfers do not operate them. Text-entry options use Minecraft dialogs. AirDrops, Artifacts and Help are accessed through `/airdrop`, `/artifact` and `/kingdom help`; their shortcuts are not shown in the home menu. The Kingdom beacon sits two slots to the right of War protection, with one empty slot between them.
 
 | Button | What you do there |
 | --- | --- |

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.3
+
+- Moved the kingdom beacon to slot 32: War Protection at 30, an empty slot at 31, then the beacon. The original menu layout otherwise remains.
+- Updates previous stock positions automatically and removes the retired home Help slot from configuration. Custom arrangements remain configurable.
+- Built for Fabric 26.2.
+
 ## 1.8.2
 
 - Restored the original inventory menu layouts, navigation and pagination.
