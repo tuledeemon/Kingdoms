@@ -100,9 +100,8 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `smallCaps` | true | Small-cap UI headings |
 | `title` | kingdoms | Main menu title |
 | `primaryColor`, `secondaryColor`, `errorColor` | gold, aqua, red | Vanilla formatting colors |
-| `menuSlots` | Generated defaults | Main-menu button positions, 0–53; keep them unique. Stock rows: claims/treasury/members 20/22/24; war/protection/beacon 29/31/33; AirDrops/artifacts/settings 38/40/42; help/close/leaderboard 45/49/51 |
-| `menuDecorations` | true | Fill unused menu slots with a frame and background. Customize `menuItems.frame`, `menuItems.background` and `menuItems.warning_frame` with vanilla item IDs |
-| `menuLayoutVersion` | 1 after validation | Internal one-time layout migration marker; old stock positions migrate, customized positions are preserved |
+| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. The legacy `help` position is unused |
+| `menuLayoutVersion` | 2 | Internal migration marker; the stock 1.8.1 arrangement is restored once, while custom positions are preserved |
 | `menuItems` | Generated defaults | Main-menu item identifiers |
 | `messages` | Empty | Text overrides keyed by the original text; also applies to button labels/lore |
 | `treasuryPresets` | 1000, 10000, 100000 | Three deposit/withdraw menu amounts |

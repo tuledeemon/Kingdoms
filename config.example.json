@@ -1,7 +1,6 @@
 {
   "schemaVersion": 1,
-  "menuLayoutVersion": 1,
-  "menuDecorations": true,
+  "menuLayoutVersion": 2,
   "blueMap": {
     "enabled": true,
     "updateIntervalSeconds": 10,
@@ -3687,16 +3686,16 @@
     "strength": 200000
   },
   "menuSlots": {
-    "claims": 20,
-    "treasury": 22,
-    "members": 24,
-    "settings": 42,
-    "war": 29,
-    "protection": 31,
-    "help": 45,
-    "leaderboard": 51,
-    "beacon": 33,
-    "close": 49
+    "settings": 16,
+    "treasury": 12,
+    "beacon": 36,
+    "war": 28,
+    "protection": 30,
+    "members": 14,
+    "close": 49,
+    "claims": 10,
+    "leaderboard": 34,
+    "help": 32
   },
   "menuItems": {
     "beacon": "minecraft:beacon",

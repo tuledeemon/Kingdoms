@@ -82,7 +82,7 @@ Edit the **`airDrops` object** in `config/kingdoms/config.json`, then run `/king
 | dimension / crateBlock | overworld / barrel | Dimension and descending display block identifiers; the landed block is always a chest |
 | particles / sounds / titles / bossBars | true | Feedback toggles |
 | pollTicks / checkpointSeconds | 20 / 5 | Presence polling and progress saving |
-| historyDays / menuSlot / maxLootStacks | 7 / 38 / 108 | Closed history retention, home button and loot-size limit |
+| historyDays / menuSlot / maxLootStacks | 7 / 38 / 108 | Closed history retention, unused legacy home-button slot and loot-size limit |
 | netherUnlockDay / endUnlockDay | 3 / 7 | Earliest eligible Nether/End loot |
 | specialPool / specialPoolChance | empty / 0.05 | Optional named holiday/event pool |
 

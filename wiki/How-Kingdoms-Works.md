@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.8.1 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.8.2 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 
 ## Contents
@@ -42,7 +42,7 @@ After founding, **deposit money into the treasury** so your kingdom can expand a
 
 ## Menus and territory
 
-Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war status and cooldown. The framed home menu groups everyday management, war/powers, and server activities into three centered rows. Help, the treasury leaderboard and Close sit in the bottom row. Left-click the menu buttons; shift-clicks and item transfers do not operate them. Text-entry options use Minecraft dialogs. Lists show 28 entries per page with a page indicator, Previous/Next controls and Back in the bottom row. Submenus also have a Close button; detail pages return to their parent list.
+Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war status and cooldown. Left-click the menu buttons; shift-clicks and item transfers do not operate them. Text-entry options use Minecraft dialogs. AirDrops, Artifacts and Help are accessed through `/airdrop`, `/artifact` and `/kingdom help`; their shortcuts are not shown in the home menu.
 
 | Button | What you do there |
 | --- | --- |
@@ -54,7 +54,6 @@ Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war sta
 | War protection | Check protection and buy more when eligible |
 | Kingdom beacon | Buy powers and inspect active/incoming effects |
 | Treasury leaderboard | Compare kingdom balances and view center locations |
-| Help | View commands and reminders |
 
 The action bar shows whose territory you are standing in. Entering and leaving claims produces titles and sounds by default; unclaimed land appears as **Wilderness**. Rejoining inside a claim immediately identifies that territory. War participants also see their enemy and preparation/wartime timer.
 
@@ -304,7 +303,7 @@ Examples: `/kingdom grant Alex withdraw true`, `/kingdom flag fluids true`, `/ki
 
 ## AirDrops
 
-Open **AirDrops** in `/kingdom`, or use `/airdrop`. Events require 10 online players and normally occur every three hours plus a random 0–20-minute delay. Announced crates descend for ten minutes before capture begins.
+Use `/airdrop`. Events require 10 online players and normally occur every three hours plus a random 0–20-minute delay. Announced crates descend for ten minutes before capture begins.
 
 Stay within 15 blocks horizontally and within ±3 blocks of the landing height: three kingdom members capture in 90 seconds, while an unaffiliated solo player needs 135 seconds. Only one side progresses. A larger eligible group takes over after keeping its advantage for 15 continuous seconds, starting from zero; ties preserve control. Solo players count as three kingdom members, so a kingdom needs four to take over from a solo. Rival presence slows it by 1.3×, without stacking. Losing the required presence pauses capture for up to 15 seconds; failing to restore it resets progress. Nearby boss bars show arrival, progress, contested capture and grace pauses.
 

@@ -4,7 +4,7 @@ Recurring supply crates create PvP objectives for kingdoms and solo players. Thi
 
 ## Players: finding and winning a crate
 
-Open **AirDrops** in `/kingdom`, or use `/airdrop`. Each entry shows its coordinates, crate variant, loot tier and status.
+Use `/airdrop`. Each entry shows its coordinates, crate variant, loot tier and status.
 
 - Events normally begin every **3 hours plus a random 0–20 minutes**. At least **10 players** must be online: 10–19 produces one crate, 20+ produces two. If too few players are online or no safe sites are found, the server retries later without announcing a nonexistent event.
 - Coordinates are announced when the event actually starts. A glowing barrel descends over **10 minutes**. It cannot be captured or opened during descent.

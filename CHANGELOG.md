@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.8.2
+
+- Restored the original inventory menu layouts, navigation and pagination.
+- Removed AirDrops, Artifacts and Help shortcuts from the kingdom home menu for members and nonmembers. Their commands remain available.
+- Stock 1.8.1 home positions migrate back to the original positions; custom arrangements are preserved.
+- Built for Fabric 26.2; live client appearance has not been verified for this release.
+
 ## 1.8.1
 
 - Reorganized the main menu into centered management, war/powers and activity rows, with shared framed inventory layouts and bottom navigation.
