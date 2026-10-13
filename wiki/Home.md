@@ -21,4 +21,4 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
 
-This guide covers Kingdoms 1.7.1. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
+This guide covers Kingdoms 1.7.2. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.

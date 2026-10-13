@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.2
+
+- Moved explosion terrain protection from the calculated position list to each block's explosion callback. Minecraft's ray tracing and other mods' explosion position lists are left untouched.
+- Unclaimed terrain uses vanilla explosion damage except for active AirDrop protection and marked cores. Protected blocks are checked before drops, chain-priming TNT or other block effects occur.
+- Kept claim explosion flags, actor permissions, wartime rules, core protection and AirDrop chest protection. No gamerules or configuration migration are required.
+- Built for Fabric 26.2. This patch has not been verified on the affected server; no unit tests or test-server runs were performed for this release.
+
 ## 1.7.1
 
 - Wind Burst Spear attacks now require a living player or mob. Armor stands, mannequins and nonliving entities are ignored.

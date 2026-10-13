@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.7.1 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.7.2 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 
 ## Contents
@@ -116,6 +116,8 @@ Permissions decide **who** may act. Flags decide **which kinds of activity** the
 | PvP | Player-versus-player combat |
 
 **Automation starts enabled; the other flags start disabled.** Pistons have their own flag. Machines, redstone and flowing materials do not grant permission to affect neighboring protected claims across a border.
+
+Kingdom explosion flags apply to claimed land. TNT and other explosions use normal Minecraft block damage in wilderness, subject to vanilla gamerules and other server mods. Marked cores and active AirDrop protection still protect their specific blocks or areas, including in wilderness. A blast crossing a claim border is checked for each affected block.
 
 Disabled flags apply even to mayors and players with building permissions. For example, being allowed to place blocks does not let you pour lava when Fluids is off. Operators can bypass ordinary physical claim permissions, but still obey the land flags. Flags cannot be changed during preparation or wartime.
 

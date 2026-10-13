@@ -96,7 +96,11 @@ public final class Protection {
         return sameLand(level,c.origin,pos); // Natural growth never crosses a kingdom boundary.
     }
     public static boolean explosion(Level level,BlockPos origin,BlockPos target,UUID actor) {
-        KingdomService s=service(level);if(s!=null&&s.airDrops!=null&&(s.airDrops.protectedAt(level,target)||s.airDrops.chests.protects(level,target)))return false;
+        KingdomService s=service(level);
+        if(s!=null){
+            if(s.cores.at(level,target)!=null)return false;
+            if(s.airDrops!=null&&(s.airDrops.protectedAt(level,target)||s.airDrops.chests.protects(level,target)))return false;
+        }
         return explosionDamage(level,origin,target,actor);
     }
     /** Terrain protection must not make combatants immune to explosions. */

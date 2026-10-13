@@ -81,7 +81,7 @@ write('Installation', '# Installation\n\n' + installation + '\n\n'
       'The world border and Discord account linking belong to the server setup, not this mod.\n\n'
       '## Verification\n\nThe 1.7.1 release passed 102 unit tests, 545 dedicated-server '
       'checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat '
-      'compatibility have not been tested.')
+      'compatibility have not been tested. The 1.7.2 explosion patch was compiled only; no new unit or test-server checks were run.')
 
 write('Home', '''# Kingdoms Guide
 
@@ -106,7 +106,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
 
-This guide covers Kingdoms 1.7.1. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
+This guide covers Kingdoms 1.7.2. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
 ''')
 write('_Sidebar', '''**Kingdoms**
 
@@ -129,7 +129,7 @@ write('_Sidebar', '''**Kingdoms**
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
 ''')
-write('_Footer', 'Kingdoms 1.7.1 · Minecraft Java 26.2 · Default settings may differ from your server.')
+write('_Footer', 'Kingdoms 1.7.2 · Minecraft Java 26.2 · Default settings may differ from your server.')
 
 pages = {p.stem for p in WIKI.glob('*.md')}
 links = 0

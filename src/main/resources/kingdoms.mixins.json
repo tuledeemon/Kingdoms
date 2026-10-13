@@ -28,6 +28,7 @@
     "BlockTickMixin",
     "FluidMixin",
     "ExplosionMixin",
+    "ExplosionScopeMixin",
     "EntityMixin",
     "PistonMixin",
     "DispenserMixin",
