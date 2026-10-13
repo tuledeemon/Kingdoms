@@ -4,7 +4,7 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
-**1.7.2:** Explosion protection checks individual blocks before damage, preserving vanilla explosion calculation in wilderness. See the [changelog](CHANGELOG.md).
+**1.8.0:** Optional BlueMap kingdom territories, clickable information and core pins. Includes the 1.7.2 explosion-protection patch. See the [changelog](CHANGELOG.md).
 
 ## Player guide
 
@@ -37,9 +37,10 @@ Kingdoms runs on **Fabric**, not Paper or Folia. Server borders, addresses and D
 - [Installation](https://github.com/tuledeemon/Kingdoms/wiki/Installation)
 - [Administration](https://github.com/tuledeemon/Kingdoms/wiki/Administration)
 - [Placeholders](https://github.com/tuledeemon/Kingdoms/wiki/Placeholders)
+- [BlueMap territories](https://github.com/tuledeemon/Kingdoms/wiki/BlueMap)
 - [Build instructions](BUILDING.md)
 - [Full technical reference](PROJECT_REFERENCE.md)
 - [Example configuration](config.example.json)
 - [Parachute model attribution](PARACHUTE_MODEL.md)
 
-Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.7.2** is a compile-checked explosion-protection patch; those earlier test results do not verify this patch. Live client visuals and third-party mod compatibility still need testing.
+Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.8.0** compiles with the optional BlueMap integration and 1.7.2 explosion patch; the earlier test results do not verify these changes. Live client visuals and third-party mod compatibility still need testing.

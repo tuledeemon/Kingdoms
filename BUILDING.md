@@ -14,6 +14,8 @@ Create `libs/` and put these separately distributed dependency JARs in it:
 
 Fabric Loader and Fabric API are fetched by Gradle. External dependency JARs are not included in this repository or bundled into Kingdoms.
 
+BlueMap API **2.7.7** is fetched from the official `repo.bluecolored.de` Maven repository as a compile-only dependency. BlueMap itself is optional at runtime; neither it nor the API is bundled.
+
 ## Compile
 
 ```text

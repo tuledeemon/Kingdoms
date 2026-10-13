@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.7.2 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.8.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 ## ɢᴇᴛᴛɪɴɢ ꜱᴛᴀʀᴛᴇᴅ
 
@@ -39,6 +39,8 @@ Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war sta
 | Help | View commands and reminders |
 
 The action bar shows whose territory you are standing in. Entering and leaving claims produces titles and sounds by default; unclaimed land appears as **Wilderness**. Rejoining inside a claim immediately identifies that territory. War participants also see their enemy and preparation/wartime timer.
+
+If your server uses BlueMap, enable the **ᴋɪɴɢᴅᴏᴍꜱ** map layer to see colored territories, outposts and core pins. Click a region for kingdom information. Map colors match the kingdom's core color; admin settings control the details and pins. See [BlueMap territories](BLUEMAP_GUIDE.md).
 
 Tab completion intentionally shows only `/kingdom` for player commands. The subcommands below still work when typed. `/k` also opens the menu, but is hidden from suggestions.
 

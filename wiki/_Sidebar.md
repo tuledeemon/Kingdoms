@@ -18,3 +18,4 @@
 - [AirDrop administration](AirDrop-Administration)
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
+- [BlueMap territories](BlueMap)

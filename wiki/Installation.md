@@ -19,4 +19,4 @@ See the repository's `BUILDING.md`. Kingdoms is a Fabric server mod; it does not
 
 ## Verification
 
-The 1.7.1 release passed 102 unit tests, 545 dedicated-server checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat compatibility have not been tested. The 1.7.2 explosion patch was compiled only; no new unit or test-server checks were run.
+The 1.7.1 release passed 102 unit tests, 545 dedicated-server checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat compatibility have not been tested. The 1.8.0 BlueMap integration and included 1.7.2 explosion patch were compile-checked only; the earlier checks do not verify them.

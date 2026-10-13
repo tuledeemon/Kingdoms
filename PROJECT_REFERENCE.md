@@ -1,6 +1,6 @@
 # ᴋɪɴɢᴅᴏᴍѕ — Fabric 26.2
 
-Kingdoms 1.7.1 restricts Wind Burst Spear attacks to living targets, excluding armor stands, mannequins and nonliving entities. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
+Kingdoms 1.8.0 adds optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
 
 A server-only kingdom and claims mod. Players join with normal Minecraft 26.2 clients; no client mod, custom registry, or resource pack is required. Menus use vanilla chest inventories, mandatory small-caps text, confirmation pages, live counters, territory action bars, transition titles and sounds.
 
@@ -266,6 +266,12 @@ Examples:
 /kingdomadmin cap "Red Kingdom" claims 256
 /kingdomadmin clearcooldown Red Kingdom
 ```
+
+### BlueMap territories
+
+Install BlueMap's Fabric version for Minecraft 26.2 to enable the automatic `kingdoms:territories` layer. The optional API integration does not bundle BlueMap or load Minecraft chunks. Connected claims merge, unclaimed holes stay clear, and outposts remain separate. Markers refresh every ten seconds and are rebuilt after BlueMap reloads.
+
+Settings live in the `blueMap` configuration object. Use `/kingdomadmin bluemap set <key> <value>` for scalar settings or edit `mapIds` and reload. Controls include the layer title, visibility, core pins, mayor/member/treasury/war details, border width, opacity, overlay height, viewing distance and update interval. See the [complete settings and installation guide](BLUEMAP_GUIDE.md).
 
 ## Protection implementation and limits
 

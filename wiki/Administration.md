@@ -135,3 +135,9 @@ Examples:
 /kingdomadmin cap "Red Kingdom" claims 256
 /kingdomadmin clearcooldown Red Kingdom
 ```
+
+### BlueMap territories
+
+Install BlueMap's Fabric version for Minecraft 26.2 to enable the automatic `kingdoms:territories` layer. The optional API integration does not bundle BlueMap or load Minecraft chunks. Connected claims merge, unclaimed holes stay clear, and outposts remain separate. Markers refresh every ten seconds and are rebuilt after BlueMap reloads.
+
+Settings live in the `blueMap` configuration object. Use `/kingdomadmin bluemap set <key> <value>` for scalar settings or edit `mapIds` and reload. Controls include the layer title, visibility, core pins, mayor/member/treasury/war details, border width, opacity, overlay height, viewing distance and update interval. See the [complete settings and installation guide](BlueMap).

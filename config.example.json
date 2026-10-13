@@ -1,5 +1,24 @@
 {
   "schemaVersion": 1,
+  "blueMap": {
+    "enabled": true,
+    "updateIntervalSeconds": 10,
+    "layerLabel": "kingdoms",
+    "defaultHidden": false,
+    "showCoreMarkers": true,
+    "showMayors": true,
+    "showMemberCount": true,
+    "showMemberNames": false,
+    "showTreasury": true,
+    "showWarStatus": true,
+    "depthTest": false,
+    "lineWidth": 3,
+    "borderOpacityPercent": 90,
+    "fillOpacityPercent": 18,
+    "markerHeight": 64,
+    "maxDistance": 100000000,
+    "mapIds": []
+  },
   "airDrops": {
     "settingsVersion": 1,
     "enabled": true,

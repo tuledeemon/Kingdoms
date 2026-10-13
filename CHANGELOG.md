@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.0
+
+- Added optional BlueMap integration: kingdom-colored territory fills, merged borders, holes and disconnected outposts, clickable kingdom information, and placed-core pins.
+- Automatically refreshes saved kingdom data and restores markers after BlueMap reloads. Generates geometry off the server thread without loading world chunks.
+- Added validated `blueMap` settings and `/kingdomadmin bluemap set <key> <value>`, with controls for appearance, map selection and public popup details.
+- BlueMap remains optional and is not bundled. Includes the 1.7.2 explosion-protection patch.
+- Compiled against BlueMap API 2.7.7; live BlueMap/server behavior has not been verified for this release.
+
 ## 1.7.2
 
 - Moved explosion terrain protection from the calculated position list to each block's explosion callback. Minecraft's ray tracing and other mods' explosion position lists are left untouched.

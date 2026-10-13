@@ -18,6 +18,7 @@ public final class KingdomService {
     public final KingdomCores cores;
     public final AirDrops airDrops;
     public final Artifacts artifacts;
+    public final KingdomMaps maps;
     public Config config;
     public State state;
     private final Map<String, Kingdom> claims = new HashMap<>();
@@ -57,6 +58,7 @@ public final class KingdomService {
         artifacts=new Artifacts(this);
         airDrops=new AirDrops(this);artifacts.reconcile();
         Provenance.load(store);
+        maps=KingdomMaps.start(this);
     }
     public EconomyCraftApi api() { return EconomyCraftApi.get(server); }
     public long now() { return System.currentTimeMillis(); }

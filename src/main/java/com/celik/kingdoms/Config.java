@@ -7,6 +7,7 @@ public final class Config {
     public int schemaVersion = 1;
     public AirDropConfig airDrops = new AirDropConfig();
     public ArtifactConfig artifacts = new ArtifactConfig();
+    public BlueMapConfig blueMap = new BlueMapConfig();
     public long creationFee = 100_000, expansionFee = 25_000, outpostFee = 150_000, upkeepPerMember = 1_000, upkeepBase = 0, protectionFee = 1_000_000;
     public int maxMembers = 20, maxClaims = 64, initialClaims = 1, kingdomCreationBufferChunks = 16, spawnClaimProtectionChunks = 16, outpostClaimWeight = 6, maxOutposts = 4;
     public long upkeepIntervalMinutes = 1440, gracePeriodMinutes = 4320, warMinutes = 15, warCooldownMinutes = 120, protectionMinutes = 1440, newKingdomProtectionMinutes = 1440, beaconDurationMinutes = 1440;
@@ -43,6 +44,7 @@ public final class Config {
     public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"help",32,"leaderboard",34,"beacon",36,"close",49));
     public Map<String, String> menuItems = new LinkedHashMap<>(Map.of("claims","minecraft:grass_block","treasury","minecraft:gold_ingot","members","minecraft:player_head","settings","minecraft:comparator","war","minecraft:iron_sword","protection","minecraft:shield","help","minecraft:book","leaderboard","minecraft:emerald","beacon","minecraft:beacon"));
     public void validate() {
+        if(blueMap==null)throw new IllegalArgumentException("BlueMap configuration is missing");blueMap.validate();
         if(artifacts==null)throw new IllegalArgumentException("Artifact configuration is missing");artifacts.validate();
         if(airDrops==null)throw new IllegalArgumentException("AirDrop configuration is missing");airDrops.validate();
         if(coreWarOutlineThicknessMilli<2||coreWarOutlineThicknessMilli>100)throw new IllegalArgumentException("Invalid wartime core outline thickness");
