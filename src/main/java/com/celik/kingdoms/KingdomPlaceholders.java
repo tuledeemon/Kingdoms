@@ -33,6 +33,12 @@ public final class KingdomPlaceholders {
         value("war_preparation_remaining", (c,a)->preparation(c));
         value("wartime_remaining", (c,a)->wartime(c));
         value("enemy_kingdom", (c,a)->enemy(c));
+        value("allied_kingdoms", (c,a)->own(c)==null||own(c).allies.isEmpty()?Ui.caps("none"):Ui.caps(service().diplomacy.names(own(c).allies)));
+        value("alliance_count", (c,a)->own(c)==null?"0":Integer.toString(own(c).allies.size()));
+        value("war_allies", (c,a)->{Kingdom k=own(c);War w=conflict(c);if(k==null||w==null)return Ui.caps("none");Set<UUID> side=w.side(w.side(true).contains(k.id));side.remove(k.id);return side.isEmpty()?Ui.caps("none"):Ui.caps(service().diplomacy.names(side));});
+        value("enemy_kingdoms", (c,a)->enemy(c));
+        value("war_side", (c,a)->{Kingdom k=own(c);War w=conflict(c);return Ui.caps(k==null||w==null?"none":w.side(true).contains(k.id)?"attacking":"defending");});
+        value("inside_allied_territory", (c,a)->bool(own(c)!=null&&territory(c)!=null&&Rules.allied(service().state,own(c).id,territory(c).id)));
         value("territory_kingdom", (c,a)->territory(c)==null?"":territory(c).display());
         result("territory_icon", (c,a)->territory(c)==null?PlaceholderResult.value(""):PlaceholderResult.value(KingdomIcons.component(territory(c))));
         value("inside_own_kingdom", (c,a)->bool(own(c)!=null&&territory(c)!=null&&own(c).id.equals(territory(c).id)));
@@ -59,7 +65,7 @@ public final class KingdomPlaceholders {
     private static War conflict(ServerPlaceholderContext c){Kingdom k=own(c);return k==null?null:Rules.conflict(service().state,k.id,service().now());}
     private static String preparation(ServerPlaceholderContext c){War w=conflict(c);return w!=null&&w.preparing(service().now())?Ui.clock(w.startedAt-service().now()):"0:00";}
     private static String wartime(ServerPlaceholderContext c){War w=conflict(c);return w!=null&&w.active(service().now())?Ui.clock(w.endsAt-service().now()):"0:00";}
-    private static String enemy(ServerPlaceholderContext c){Kingdom k=own(c);War w=conflict(c);if(k==null||w==null)return "";Kingdom enemy=service().state.kingdoms.get(w.opponent(k.id));return enemy==null?"":enemy.display();}
+    private static String enemy(ServerPlaceholderContext c){Kingdom k=own(c);War w=conflict(c);return k==null||w==null?"":Ui.caps(service().diplomacy.names(w.opponents(k.id)));}
     private static int position(String argument){try{return Math.max(1,Integer.parseInt(argument==null||argument.isBlank()?"1":argument.trim()));}catch(Exception e){return 1;}}
     private static Kingdom leaderboard(String argument){int index=position(argument)-1;List<Kingdom> all=service()==null?List.of():service().leaderboard();return index>=0&&index<all.size()?all.get(index):null;}
     private KingdomPlaceholders() {}

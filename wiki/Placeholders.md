@@ -13,7 +13,10 @@ These use Text Placeholder API syntax, for example `%kingdoms:kingdom_styled%`. 
 | `kingdom_rank`, `kingdom_member_count`, `kingdom_claim_count` | Small-caps role, member count, and actual claimed chunk count |
 | `kingdom_claim_slots`, `kingdom_outpost_count` | Weighted claim-slot use and outpost count |
 | `kingdom_at_war` | Whether claims are currently vulnerable |
-| `war_preparation_remaining`, `wartime_remaining`, `enemy_kingdom` | Current conflict state |
+| `war_preparation_remaining`, `wartime_remaining`, `enemy_kingdom`, `enemy_kingdoms` | Current conflict state; enemy placeholders list every opposing kingdom |
+| `allied_kingdoms`, `alliance_count` | Direct ally names (small caps, `ɴᴏɴᴇ` when absent) and count |
+| `war_allies`, `war_side` | Other kingdoms on your war side and attacking/defending/none status, in small caps |
+| `inside_allied_territory` | Whether you stand in a direct ally's claims |
 | `territory_kingdom`, `territory_icon` | Claim at the player's position |
 | `inside_own_kingdom`, `inside_enemy_territory`, `in_wilderness` | Position booleans |
 | `leaderboard_position/<rank>` | Requested one-based position |

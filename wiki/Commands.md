@@ -22,6 +22,14 @@ Replace the example arguments with your own values; do not type the `< >` bracke
 | `/kingdom deposit <amount>` | Deposit your money |
 | `/kingdom withdraw <amount>` | Withdraw with permission |
 | `/kingdom war <kingdom-name>` | Mayor: declare war |
+| `/kingdom alliance` | Open alliances and requests |
+| `/kingdom alliance request <kingdom>` | Mayor: request an alliance |
+| `/kingdom alliance accept <kingdom>` | Mayor: review accepting an alliance |
+| `/kingdom alliance decline <kingdom>` | Mayor: decline a request |
+| `/kingdom alliance cancel <kingdom>` | Mayor: withdraw an outgoing request |
+| `/kingdom alliance remove <kingdom>` | Mayor: review ending an alliance |
+| `/kingdom warinvite <kingdom>` | Mayor: invite an ally during preparation |
+| `/kingdom warjoin` | Review incoming joint-war invitations |
 | `/kingdom protect` | Mayor: buy war protection |
 | `/kingdom beacon` | Open powers and active effects |
 | `/kingdom core` | Open home/captured core management |

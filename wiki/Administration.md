@@ -29,6 +29,14 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 | `/kingdom deposit <amount>` | Deposit into your kingdom; accepts money aliases such as `1k`, `1.5m`, and `2 billion` |
 | `/kingdom withdraw <amount>` | Confirm withdrawal; accepts the same money aliases |
 | `/kingdom war <kingdom-name>` | Review and confirm declaration |
+| `/kingdom alliance` | Open alliances and requests |
+| `/kingdom alliance request <kingdom>` | Mayor: request an alliance |
+| `/kingdom alliance accept <kingdom>` | Mayor: review accepting an alliance |
+| `/kingdom alliance decline <kingdom>` | Mayor: decline a request |
+| `/kingdom alliance cancel <kingdom>` | Mayor: withdraw an outgoing request |
+| `/kingdom alliance remove <kingdom>` | Mayor: review ending an alliance |
+| `/kingdom warinvite <kingdom>` | Mayor: invite an ally during preparation |
+| `/kingdom warjoin` | Review incoming joint-war invitations |
 | `/kingdom protect` | Confirm purchase of protection |
 | `/kingdom acknowledge` | Acknowledge the current debt warning |
 | `/kingdom disband` | Confirm disbanding and forfeiting the bank |
@@ -37,7 +45,7 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 | `/kingdomadmin set <key> <value>` | Set a scalar config field and save it |
 | `/kingdomadmin cap "Kingdom Name" claims <number>` | Override this kingdom's claim cap; 0 restores global default |
 | `/kingdomadmin cap "Kingdom Name" members <number>` | Override member cap; 0 restores global default |
-| `/kingdomadmin endwar <kingdom-name>` | End war early; both kingdoms enter cooldown |
+| `/kingdomadmin endwar <kingdom-name>` | End the entire shared war early; every participant and their members enter cooldown |
 | `/kingdomadmin clearcooldown <kingdom-name>` | Clear this kingdom's war cooldown, active war protection (including starter protection), and its current members' saved war cooldowns; end preparation/wartime first |
 
 Permissions: `PLACE`, `BREAK`, `INTERACT`, `CONTAINERS`, `ENTITIES`, `PVP`, `DEPOSIT`, `WITHDRAW`.
@@ -82,6 +90,13 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `outpostClaimWeight`, `maxOutposts` | 6, 4 | Claim slots consumed per outpost and maximum outpost anchors per kingdom |
 | `kingdomCreationBufferChunks` | 16 | Minimum blocked radius around every existing claim |
 | `spawnClaimProtectionChunks` | 16 | No-claim square radius around overworld world spawn; 0 disables it |
+| `alliancesEnabled` | true | Allow new alliance requests and acceptance |
+| `maxAllies` | 5 | Direct allies per kingdom; 0..1000 |
+| `allianceRequestMinutes` | 60 | New request lifetime; 1..10080 real-time minutes |
+| `alliedFriendlyFire` | false | Allow ordinary PvP rules between allies and different kingdoms on the same war side |
+| `jointWarsEnabled` | true | Allow war invitations and joining; existing participants remain |
+| `maxKingdomsPerWarSide` | 4 | Includes the original kingdom; 1..1000 |
+| `jointWarRequiresOnlineMajority` | true | Require a strict online majority when joining a war; mayor approval is always required |
 | `warPreparationSeconds` | 180 | Protected countdown before vulnerability |
 | `warCountdownMilestonesSeconds` | 180, 60, 30, 10, 5..1 | Persisted countdown announcements |
 | `warMinutes` | 15 | Vulnerable wartime duration |
@@ -100,7 +115,7 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `smallCaps` | true | Small-cap UI headings |
 | `title` | kingdoms | Main menu title |
 | `primaryColor`, `secondaryColor`, `errorColor` | gold, aqua, red | Vanilla formatting colors |
-| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. War protection uses slot 30 and the beacon uses 32. The retired `help` position is ignored |
+| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. War protection uses slot 30 and the beacon uses 32. Alliances uses 40 (an unused slot is chosen for custom layouts). The retired `help` position is ignored |
 | `menuLayoutVersion` | 3 | Internal migration marker; previous stock layouts restore and move the beacon to 32, while custom positions are preserved |
 | `menuItems` | Generated defaults | Main-menu item identifiers |
 | `messages` | Empty | Text overrides keyed by the original text; also applies to button labels/lore |

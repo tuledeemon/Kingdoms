@@ -5,6 +5,7 @@
 **Players**
 
 - [How Kingdoms Works](How-Kingdoms-Works)
+- [Alliances and joint wars](Alliances)
 - [AirDrops](AirDrops)
 - [Artifacts](Artifacts)
 - [Commands](Commands)

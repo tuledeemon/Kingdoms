@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.9.0
+
+- Added saved, mutually approved alliances with requests, expiry, removal and a home menu button. Default limit: five allies; allied friendly fire is disabled without granting automatic claim access.
+- Added opt-in joint wars: both sides recruit their direct allies during preparation, with explicit mayor approval. Default limit: four kingdoms per side. Protection, cooldown, online majority, opposing alliances and other wars are checked again on approval.
+- Coalition membership drives opposing claim access, core capture, feedback, map details, combat-addon war lookup, freezes and cooldowns. Same-side physical permissions remain required. Hostile beacons offer per-enemy selection.
+- Added alliance and war-side placeholders, player commands and configurable limits/toggles. Admin endwar ends the whole coalition war and updates every participant's/member's cooldown.
+- Preserved old pair-war records and custom menu positions; the default Alliances button uses slot 40. Added the alliance guide and updated the wiki.
+- Built for Fabric 26.2; local rule tests and integration-source compilation passed. Live client/server visuals and third-party compatibility were not tested for this release.
+
 ## 1.8.3
 
 - Moved the kingdom beacon to slot 32: War Protection at 30, an empty slot at 31, then the beacon. The original menu layout otherwise remains.

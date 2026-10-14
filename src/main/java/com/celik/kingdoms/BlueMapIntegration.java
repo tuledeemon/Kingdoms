@@ -130,7 +130,7 @@ final class BlueMapIntegration implements KingdomMaps {
         if(config.showTreasury)html.append(row("treasury",service.money(kingdom.treasury)));
         if(config.showWarStatus){
             War war=Rules.conflict(service.state,kingdom.id,now);String status="peace";
-            if(war!=null){Kingdom enemy=service.state.kingdoms.get(war.opponent(kingdom.id));status=(war.preparing(now)?"preparing • "+Ui.clock(war.startedAt-now):"war • "+Ui.clock(war.endsAt-now))+" • "+(enemy==null?"unknown":enemy.display());}
+            if(war!=null){String enemies=service.diplomacy.names(war.opponents(kingdom.id));status=(war.preparing(now)?"preparing • "+Ui.clock(war.startedAt-now):"war • "+Ui.clock(war.endsAt-now))+" • "+enemies;}
             html.append(row("status",status));
         }
         return html.append("</div>").toString();

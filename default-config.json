@@ -3583,6 +3583,13 @@
   "newKingdomProtectionMinutes": 1440,
   "beaconDurationMinutes": 1440,
   "warPreparationSeconds": 180,
+  "alliancesEnabled": true,
+  "alliedFriendlyFire": false,
+  "jointWarsEnabled": true,
+  "jointWarRequiresOnlineMajority": true,
+  "maxAllies": 5,
+  "maxKingdomsPerWarSide": 4,
+  "allianceRequestMinutes": 60,
   "coreReturnMinutes": 10,
   "coreTaxPercent": 20,
   "kingdomRejoinCooldownMinutes": 60,
@@ -3695,7 +3702,7 @@
     "close": 49,
     "claims": 10,
     "leaderboard": 34,
-    "help": 32
+    "alliances": 40
   },
   "menuItems": {
     "beacon": "minecraft:beacon",
@@ -3706,6 +3713,7 @@
     "settings": "minecraft:comparator",
     "protection": "minecraft:shield",
     "members": "minecraft:player_head",
-    "help": "minecraft:book"
+    "help": "minecraft:book",
+    "alliances": "minecraft:iron_chain"
   }
 }

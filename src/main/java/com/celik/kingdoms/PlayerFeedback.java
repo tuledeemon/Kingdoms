@@ -23,6 +23,12 @@ public final class PlayerFeedback {
     public void join(ServerPlayer player) {
         lastTerritory.remove(player.getUUID());
         update(player, true);
+        Kingdom own=service.own(player.getUUID());
+        if(own!=null&&own.mayor(player.getUUID())){
+            long requests=service.state.allianceRequests.stream().filter(r->r.to.equals(own.id)&&r.expiresAt>service.now()).count();
+            long invites=service.state.warInvites.stream().filter(i->i.to.equals(own.id)&&service.state.wars.stream().anyMatch(w->w.id.equals(i.war)&&w.preparing(service.now()))).count();
+            if(requests>0||invites>0)Ui.tell(player,"[Alliance] Pending alliance requests: "+requests+" • War invitations: "+invites+". Review in /kingdom → Alliances.",false);
+        }
     }
 
     public void leave(UUID player) { lastTerritory.remove(player); }
@@ -67,12 +73,12 @@ public final class PlayerFeedback {
         Kingdom own = service.own(player.getUUID());
         War conflict = own == null ? null : Rules.conflict(service.state, own.id, service.now());
         if (service.config.warActionBar && conflict != null) {
-            Kingdom enemy = service.state.kingdoms.get(conflict.opponent(own.id));
+            String enemy = service.diplomacy.names(conflict.opponents(own.id));
             long remaining = (conflict.preparing(service.now()) ? conflict.startedAt : conflict.endsAt) - service.now();
             String state = conflict.preparing(service.now()) ? Ui.caps("preparing") : Ui.caps("vulnerable");
             if (!line.getSiblings().isEmpty()) line.append(literal("  •  ").withStyle(ChatFormatting.DARK_GRAY));
             line.append(literal(Ui.caps("war") + " › ").withStyle(ChatFormatting.DARK_RED))
-                .append(literal(enemy.display() + " • " + state + " " + Ui.clock(remaining)).withStyle(conflict.preparing(service.now()) ? ChatFormatting.GOLD : ChatFormatting.RED));
+                .append(literal(enemy + " • " + state + " " + Ui.clock(remaining)).withStyle(conflict.preparing(service.now()) ? ChatFormatting.GOLD : ChatFormatting.RED));
         }
         player.connection.send(new ClientboundSetActionBarTextPacket(line));
     }
@@ -103,25 +109,24 @@ public final class PlayerFeedback {
     }
 
     public void warDeclared(War war) {
-        Kingdom first = service.state.kingdoms.get(war.first), second = service.state.kingdoms.get(war.second);
+        String first = service.diplomacy.names(war.side(true)), second = service.diplomacy.names(war.side(false));
         service.announce(literal("[" + Ui.caps("war") + "] ").withStyle(ChatFormatting.DARK_RED)
-            .append(literal(first.display()).withStyle(ChatFormatting.RED))
+            .append(literal(first).withStyle(ChatFormatting.RED))
             .append(literal(" declared war on ").withStyle(ChatFormatting.WHITE))
-            .append(literal(second.display()).withStyle(ChatFormatting.RED))
+            .append(literal(second).withStyle(ChatFormatting.RED))
             .append(literal(". Claims remain protected for " + Ui.clock(war.startedAt - service.now()) + ".").withStyle(ChatFormatting.GOLD)));
         forMembers(war, p -> {
-            if(service.config.warTitles)title(p, literal(Ui.caps("war declared")).withStyle(ChatFormatting.DARK_RED), literal(first.display() + "  ⚔  " + second.display()).withStyle(ChatFormatting.RED), 10, 60, 15);
+            if(service.config.warTitles)title(p, literal(Ui.caps("war declared")).withStyle(ChatFormatting.DARK_RED), literal(first + "  ⚔  " + second).withStyle(ChatFormatting.RED), 10, 60, 15);
             if(service.config.warSounds)sound(p, service.config.warCountdownSound, 1.0f, 0.8f);
         });
     }
 
     public void warCountdown(War war, int seconds) {
-        Kingdom enemyA = service.state.kingdoms.get(war.second), enemyB = service.state.kingdoms.get(war.first);
         forMembers(war, p -> {
-            Kingdom own = service.own(p.getUUID()); Kingdom enemy = own != null && own.id.equals(war.first) ? enemyA : enemyB;
+            Kingdom own = service.own(p.getUUID()); String enemy = service.diplomacy.names(war.opponents(own.id));
             String remaining = Ui.clock(seconds * 1000L);
             p.sendSystemMessage(literal("[" + Ui.caps("war") + "] ").withStyle(ChatFormatting.DARK_RED)
-                .append(literal("Claims become vulnerable in " + remaining + " against " + enemy.display() + ".").withStyle(ChatFormatting.GOLD)));
+                .append(literal("Claims become vulnerable in " + remaining + " against " + enemy + ".").withStyle(ChatFormatting.GOLD)));
             if (service.config.warTitles && (seconds <= 10 || seconds == 30 || seconds == 60 || seconds >= 180))
                 title(p, literal(remaining).withStyle(seconds <= 5 ? ChatFormatting.RED : ChatFormatting.GOLD), literal("Until claims become vulnerable").withStyle(ChatFormatting.GRAY), 2, seconds <= 5 ? 14 : 30, 4);
             if(service.config.warSounds)sound(p, service.config.warCountdownSound, 0.9f, seconds <= 5 ? 1.5f : 1.1f);
@@ -129,9 +134,9 @@ public final class PlayerFeedback {
     }
 
     public void warStarted(War war) {
-        Kingdom first = service.state.kingdoms.get(war.first), second = service.state.kingdoms.get(war.second);
+        String first = service.diplomacy.names(war.side(true)), second = service.diplomacy.names(war.side(false));
         service.announce(literal("[" + Ui.caps("war") + "] ").withStyle(ChatFormatting.DARK_RED)
-            .append(literal(first.display() + " and " + second.display() + " are now at war. Claims are vulnerable for " + Ui.clock(war.endsAt - service.now()) + ".").withStyle(ChatFormatting.RED)));
+            .append(literal(first + " against " + second + " are now at war. Claims are vulnerable for " + Ui.clock(war.endsAt - service.now()) + ".").withStyle(ChatFormatting.RED)));
         forMembers(war, p -> {
             if(service.config.warTitles)title(p, literal(Ui.caps("claims vulnerable")).withStyle(ChatFormatting.RED), literal("Wartime has begun").withStyle(ChatFormatting.DARK_RED), 5, 70, 15);
             if(service.config.warSounds)sound(p, service.config.warStartSound, 1.0f, 1.0f);
@@ -140,14 +145,21 @@ public final class PlayerFeedback {
 
     public void warEnded(War war, Kingdom first, Kingdom second) {
         service.announce(literal("[" + Ui.caps("war") + "] ").withStyle(ChatFormatting.DARK_GREEN)
-            .append(literal("War ended: " + first.display() + " and " + second.display() + ". Claims are protected again.").withStyle(ChatFormatting.GREEN)));
+            .append(literal("War ended: " + service.diplomacy.names(war.side(true)) + " against " + service.diplomacy.names(war.side(false)) + ". Claims are protected again.").withStyle(ChatFormatting.GREEN)));
         for (ServerPlayer player : service.server.getPlayerList().getPlayers()) {
             Kingdom own = service.own(player.getUUID());
-            if (own != null && (own.id.equals(war.first) || own.id.equals(war.second))) {
+            if (own != null && war.involves(own.id)) {
                 if(service.config.warTitles)title(player, literal(Ui.caps("war ended")).withStyle(ChatFormatting.GREEN), literal("Claims are protected again").withStyle(ChatFormatting.DARK_GREEN), 8, 55, 15);
                 if(service.config.warSounds)sound(player, service.config.warEndSound, 0.9f, 1.1f);
             }
         }
+    }
+
+    public void warJoined(War war,UUID kingdom) {
+        forMembers(war,p->{Kingdom own=service.own(p.getUUID());if(own.id.equals(kingdom)){
+            if(service.config.warTitles)title(p,literal("war joined").withStyle(ChatFormatting.DARK_RED),literal("Claims vulnerable in "+Ui.clock(war.startedAt-service.now())).withStyle(ChatFormatting.GOLD),5,60,10);
+            if(service.config.warSounds)sound(p,service.config.warCountdownSound,1.0f,0.8f);
+        }});
     }
 
     private void forMembers(War war, java.util.function.Consumer<ServerPlayer> action) {
@@ -165,6 +177,7 @@ public final class PlayerFeedback {
         Kingdom own = service.own(player.getUUID());
         if (own != null && own.id.equals(land.id)) return ChatFormatting.GREEN;
         if (Rules.enemy(service.state, land, player.getUUID(), service.now())) return ChatFormatting.RED;
+        if(own!=null&&Rules.allied(service.state,own.id,land.id))return ChatFormatting.AQUA;
         return ChatFormatting.GOLD;
     }
 

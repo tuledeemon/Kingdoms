@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 import static com.celik.kingdoms.Rules.*;
 
 public final class KingdomService {
+    public final KingdomDiplomacy diplomacy = new KingdomDiplomacy(this);
     public final MinecraftServer server;
     public final Store store;
     public final PlayerFeedback feedback;
@@ -189,7 +190,7 @@ public final class KingdomService {
         tick(); Kingdom a=requireOwn(p.getUUID()),b=state.kingdoms.get(target);require(b!=null,"That kingdom no longer exists.");
         Set<UUID> online=new HashSet<>();server.getPlayerList().getPlayers().forEach(q->online.add(q.getUUID()));String failure=Rules.declarationFailure(state,a,b,p.getUUID(),online,now());require(failure==null,failure);
         State n=store.copy(state);War w=new War();w.first=a.id;w.second=b.id;w.declaredAt=now();w.startedAt=w.declaredAt+config.second(config.warPreparationSeconds);w.endsAt=w.startedAt+config.minute(config.warMinutes);w.cooldownMillis=config.minute(config.warCooldownMinutes);if(config.warPreparationSeconds>0)w.announcedMilestones.add(config.warPreparationSeconds);n.wars.add(w);
-        n.kingdoms.get(a.id).cooldownUntil=w.endsAt+w.cooldownMillis;n.kingdoms.get(b.id).cooldownUntil=w.endsAt+w.cooldownMillis;for(UUID member:a.members.keySet())n.playerCooldowns.put(member,w.endsAt+w.cooldownMillis);for(UUID member:b.members.keySet())n.playerCooldowns.put(member,w.endsAt+w.cooldownMillis);commit(n);
+        KingdomDiplomacy.enroll(n,w,a.id);KingdomDiplomacy.enroll(n,w,b.id);n.allianceRequests.removeIf(r->w.involves(r.from)||w.involves(r.to));commit(n);
         feedback.warDeclared(state.wars.stream().filter(q->q.id.equals(w.id)).findFirst().orElse(w));audit(p.getUUID(),"declared war against "+b.name);
     }
     public record Nearby(Kingdom kingdom,int distance) {}
@@ -202,9 +203,12 @@ public final class KingdomService {
     public long beaconCost(BeaconPower power,int level){return KingdomBeacon.cost(config,power,level);}
     public List<BeaconEffect> beaconEffects(UUID kingdom){long now=now();return state.beaconEffects.stream().filter(e->e.active(now)&&(e.sourceKingdom.equals(kingdom)||e.targetKingdom.equals(kingdom))).toList();}
     public void buyBeaconEffect(ServerPlayer buyer,BeaconPower power,int level){
+        buyBeaconEffect(buyer,power,level,null);
+    }
+    public void buyBeaconEffect(ServerPlayer buyer,BeaconPower power,int level,UUID chosenEnemy){
         require(config.beaconEnabled,"The kingdom beacon is disabled.");Kingdom source=requireOwn(buyer.getUUID());mayor(source,buyer.getUUID());
         require(level==1||(power.beneficial()&&level==2),"Only member powers support Level II.");long now=now();Kingdom target=source;
-        if(!power.beneficial()){War war=Rules.war(state,source.id,now);require(war!=null,"Opponent powers can only be purchased during active wartime.");target=state.kingdoms.get(war.opponent(source.id));require(target!=null,"The enemy kingdom no longer exists.");}
+        if(!power.beneficial()){War war=Rules.war(state,source.id,now);require(war!=null,"Opponent powers can only be purchased during active wartime.");UUID enemy=chosenEnemy==null?war.opponent(source.id):chosenEnemy;require(war.opposes(source.id,enemy),"Choose a kingdom on the opposing war side.");target=state.kingdoms.get(enemy);require(target!=null,"The enemy kingdom no longer exists.");}
         long cost=beaconCost(power,level);require(source.treasury>=cost,"The treasury cannot afford this beacon power.");UUID targetId=target.id;
         BeaconEffect existing=state.beaconEffects.stream().filter(e->e.active(now)&&e.sourceKingdom.equals(source.id)&&e.targetKingdom.equals(targetId)&&e.power==power).findFirst().orElse(null);
         require(existing==null||level>existing.level,"That beacon power is already active at this level or higher.");
@@ -249,11 +253,11 @@ public final class KingdomService {
     }
     public void acknowledge(ServerPlayer p) {Kingdom k=requireOwn(p.getUUID());mayor(k,p.getUUID());if(k.overdueSince>0)edit(k.id,n->n.warningAcknowledged=n.overdueSince);}
     public boolean needsWarning(ServerPlayer p) {Kingdom k=own(p.getUUID());return k!=null&&k.mayor(p.getUUID())&&k.overdueSince>0&&k.warningAcknowledged!=k.overdueSince;}
-    public void disband(ServerPlayer p) {Kingdom k=requireOwn(p.getUUID());mayor(k,p.getUUID());peaceful(k);State n=store.copy(state);n.kingdoms.remove(k.id);cores.releaseHeldBy(n,k.id);n.invitations.values().removeIf(k.id::equals);n.beaconEffects.removeIf(e->e.sourceKingdom.equals(k.id)||e.targetKingdom.equals(k.id));commit(n);announce(k.name+" was disbanded. Its former claims are unprotected.");audit(p.getUUID(),"disbanded "+k.name+"; treasury forfeited "+k.treasury);}
+    public void disband(ServerPlayer p) {Kingdom k=requireOwn(p.getUUID());mayor(k,p.getUUID());peaceful(k);State n=store.copy(state);n.kingdoms.remove(k.id);KingdomDiplomacy.removeKingdom(n,k.id);cores.releaseHeldBy(n,k.id);n.invitations.values().removeIf(k.id::equals);n.beaconEffects.removeIf(e->e.sourceKingdom.equals(k.id)||e.targetKingdom.equals(k.id));commit(n);announce(k.name+" was disbanded. Its former claims are unprotected.");audit(p.getUUID(),"disbanded "+k.name+"; treasury forfeited "+k.treasury);}
     public void tick() {
         if(!healthy)return;long now=now();State n=null;List<War> countdowns=new ArrayList<>(),starts=new ArrayList<>(),ends=new ArrayList<>();List<Kingdom[]> endedKingdoms=new ArrayList<>();List<String> notices=new ArrayList<>();
         for(War w:state.wars) {
-            if(w.endsAt<=now){if(n==null)n=store.copy(state);n.wars.removeIf(q->q.id.equals(w.id));ends.add(w);endedKingdoms.add(new Kingdom[]{state.kingdoms.get(w.first),state.kingdoms.get(w.second)});continue;}
+            if(w.endsAt<=now){if(n==null)n=store.copy(state);n.wars.removeIf(q->q.id.equals(w.id));n.warInvites.removeIf(i->i.war.equals(w.id));ends.add(w);endedKingdoms.add(new Kingdom[]{state.kingdoms.get(w.first),state.kingdoms.get(w.second)});continue;}
             if(w.preparing(now)) {
                 int remaining=(int)Math.max(1,(w.startedAt-now+999)/1000);List<Integer> passed=config.warCountdownMilestonesSeconds.stream().filter(m->m<=config.warPreparationSeconds&&remaining<=m&&!w.announcedMilestones.contains(m)).sorted().toList();
                 if(!passed.isEmpty()){if(n==null)n=store.copy(state);War changed=n.wars.stream().filter(q->q.id.equals(w.id)).findFirst().orElseThrow();changed.announcedMilestones.addAll(passed);countdowns.add(copyForMilestone(w,passed.get(0)));}
@@ -264,7 +268,10 @@ public final class KingdomService {
             if(!due&&!pay&&!expire)continue;if(n==null)n=store.copy(state);Kingdom a=n.kingdoms.get(k.id);if(a==null)continue;
             if(due){long interval=config.minute(config.upkeepIntervalMinutes),periods=(now-a.nextUpkeep)/interval+1,rate=Math.addExact(config.upkeepBase,Math.multiplyExact(config.upkeepPerMember,a.members.size()));a.debt=Math.addExact(a.debt,Math.multiplyExact(rate,periods));if(a.debt>0&&a.overdueSince==0){a.overdueSince=a.nextUpkeep;a.warningAcknowledged=0;}a.nextUpkeep=Math.addExact(a.nextUpkeep,Math.multiplyExact(interval,periods));}
             if(a.treasury>=a.debt){a.treasury-=a.debt;a.debt=0;a.overdueSince=0;a.warningAcknowledged=0;}
-            if(a.overdueSince>0&&now>=a.overdueSince+config.minute(config.gracePeriodMinutes)&&Rules.conflict(n,a.id,now)==null){n.kingdoms.remove(a.id);cores.releaseHeldBy(n,a.id);n.invitations.values().removeIf(a.id::equals);n.beaconEffects.removeIf(e->e.sourceKingdom.equals(a.id)||e.targetKingdom.equals(a.id));notices.add(a.display()+" was disbanded for unpaid upkeep. Its claims are now unprotected.");}
+            if(a.overdueSince>0&&now>=a.overdueSince+config.minute(config.gracePeriodMinutes)&&Rules.conflict(n,a.id,now)==null){n.kingdoms.remove(a.id);KingdomDiplomacy.removeKingdom(n,a.id);cores.releaseHeldBy(n,a.id);n.invitations.values().removeIf(a.id::equals);n.beaconEffects.removeIf(e->e.sourceKingdom.equals(a.id)||e.targetKingdom.equals(a.id));notices.add(a.display()+" was disbanded for unpaid upkeep. Its claims are now unprotected.");}
+        }
+        if(state.allianceRequests.stream().anyMatch(r->r.expiresAt<=now)||state.warInvites.stream().anyMatch(i->state.wars.stream().noneMatch(w->w.id.equals(i.war)&&w.preparing(now)))){
+            if(n==null)n=store.copy(state);n.allianceRequests.removeIf(r->r.expiresAt<=now);State changed=n;n.warInvites.removeIf(i->changed.wars.stream().noneMatch(w->w.id.equals(i.war)&&w.preparing(now)));
         }
         if(n!=null)commit(n);
         for(War w:countdowns)feedback.warCountdown(w,(int)w.declaredAt);
@@ -272,7 +279,7 @@ public final class KingdomService {
         for(int i=0;i<ends.size();i++){Kingdom[] pair=endedKingdoms.get(i);if(pair[0]!=null&&pair[1]!=null)feedback.warEnded(ends.get(i),pair[0],pair[1]);}
         notices.forEach(this::announce);
     }
-    private War copyForMilestone(War source,int seconds){War copy=new War();copy.id=source.id;copy.first=source.first;copy.second=source.second;copy.declaredAt=seconds;copy.startedAt=source.startedAt;copy.endsAt=source.endsAt;copy.cooldownMillis=source.cooldownMillis;return copy;}
+    private War copyForMilestone(War source,int seconds){War copy=new War();copy.id=source.id;copy.first=source.first;copy.second=source.second;copy.firstAllies=new LinkedHashSet<>(source.firstAllies);copy.secondAllies=new LinkedHashSet<>(source.secondAllies);copy.declaredAt=seconds;copy.startedAt=source.startedAt;copy.endsAt=source.endsAt;copy.cooldownMillis=source.cooldownMillis;return copy;}
     public void announce(net.minecraft.network.chat.Component message) {server.getPlayerList().getPlayers().forEach(p->p.sendSystemMessage(message));}
     public void announce(String message) {announce(net.minecraft.network.chat.Component.literal(Ui.caps(message)).withStyle(net.minecraft.ChatFormatting.AQUA));}
     public void audit(UUID actor,String message) {if(config.logActions)KingdomsMod.LOG.info("[audit] {} {}",actor,message);}

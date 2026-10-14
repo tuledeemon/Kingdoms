@@ -4,13 +4,14 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
-**1.8.3:** Kingdom beacon placed two slots right of War protection, with one empty slot between them. The original menu layout is retained, with AirDrops, Artifacts and Help removed from home. Includes BlueMap territories and the explosion-protection patch. See the [changelog](CHANGELOG.md).
+**1.9.0:** Alliances and joint wars. Mayors approve alliances and war participation; attackers and defenders recruit during preparation. Coalition claims, feedback, cores, cooldowns, placeholders and enemy beacon selection follow the full opposing sides. The original menu layout and beacon placement remain. See the [changelog](CHANGELOG.md).
 
 ## Player guide
 
 Start with `/kingdom` in-game, or read **[How Kingdoms Works](https://github.com/tuledeemon/Kingdoms/wiki/How-Kingdoms-Works)**.
 
 - [Guide home](https://github.com/tuledeemon/Kingdoms/wiki)
+- [Alliances and joint wars](https://github.com/tuledeemon/Kingdoms/wiki/Alliances)
 - [AirDrops](https://github.com/tuledeemon/Kingdoms/wiki/AirDrops)
 - [Artifacts](https://github.com/tuledeemon/Kingdoms/wiki/Artifacts)
 - [Commands](https://github.com/tuledeemon/Kingdoms/wiki/Commands)
@@ -43,4 +44,4 @@ Kingdoms runs on **Fabric**, not Paper or Folia. Server borders, addresses and D
 - [Example configuration](config.example.json)
 - [Parachute model attribution](PARACHUTE_MODEL.md)
 
-Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.8.3** compiles with the restored menu layout, the optional BlueMap integration and 1.7.2 explosion patch; the earlier test results do not verify these changes. Live client visuals and third-party mod compatibility still need testing.
+Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.9.0** builds and passes the local rule tests, including coalition access, save migration and joining eligibility. Integration sources compile; the dedicated-server scenarios were not rerun for this release. Earlier server checks do not verify alliances, the optional BlueMap integration or the 1.7.2 explosion patch. Live client visuals and third-party mod compatibility still need testing.

@@ -13,6 +13,8 @@ public final class Config {
     public int maxMembers = 20, maxClaims = 64, initialClaims = 1, kingdomCreationBufferChunks = 16, spawnClaimProtectionChunks = 16, outpostClaimWeight = 6, maxOutposts = 4;
     public long upkeepIntervalMinutes = 1440, gracePeriodMinutes = 4320, warMinutes = 15, warCooldownMinutes = 120, protectionMinutes = 1440, newKingdomProtectionMinutes = 1440, beaconDurationMinutes = 1440;
     public int warPreparationSeconds = 180;
+    public boolean alliancesEnabled = true, alliedFriendlyFire = false, jointWarsEnabled = true, jointWarRequiresOnlineMajority = true;
+    public int maxAllies = 5, maxKingdomsPerWarSide = 4, allianceRequestMinutes = 60;
     public int coreReturnMinutes = 10, coreTaxPercent = 20, kingdomRejoinCooldownMinutes = 60;
     public boolean coreParticles = true;
     public boolean coreGlow = true;
@@ -57,6 +59,13 @@ public final class Config {
             if(java.util.Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"leaderboard",34,"beacon",36,"close",49).equals(menuSlots))menuSlots.put("beacon",32);
             menuLayoutVersion=3;
         }
+        if(maxAllies<0||maxAllies>1000||maxKingdomsPerWarSide<1||maxKingdomsPerWarSide>1000||allianceRequestMinutes<1||allianceRequestMinutes>10080)throw new IllegalArgumentException("Invalid alliance or joint-war limits");
+        if(menuSlots==null)throw new IllegalArgumentException("Menu slots are missing");
+        if(!menuSlots.containsKey("alliances")){
+            for(int candidate:new int[]{40,38,42,36,44,22})if(!menuSlots.containsValue(candidate)){menuSlots.put("alliances",candidate);break;}
+            for(int candidate=0;candidate<54&&!menuSlots.containsKey("alliances");candidate++)if(candidate!=4&&candidate!=49&&!menuSlots.containsValue(candidate))menuSlots.put("alliances",candidate);
+            if(!menuSlots.containsKey("alliances"))throw new IllegalArgumentException("Reserve a free menu slot for alliances");
+        }
         if(blueMap==null)throw new IllegalArgumentException("BlueMap configuration is missing");blueMap.validate();
         if(artifacts==null)throw new IllegalArgumentException("Artifact configuration is missing");artifacts.validate();
         if(airDrops==null)throw new IllegalArgumentException("AirDrop configuration is missing");airDrops.validate();
@@ -75,6 +84,7 @@ public final class Config {
         Set<Integer> used = new HashSet<>();
         for(int slot : menuSlots.values()) if(slot < 0 || slot > 53 || !used.add(slot)) throw new IllegalArgumentException("Menu slots must be distinct, 0..53");
         if(allowedDimensions == null || defaultFlags == null || defaultMemberPermissions == null || defaultPublicPermissions == null || allowedMobTypes == null || messages == null || menuItems == null || warCountdownMilestonesSeconds == null || territoryEnterSound == null || territoryLeaveSound == null || warCountdownSound == null || warStartSound == null || warEndSound == null || kingdomCreatedSound == null || beaconPurchaseSound == null || beaconHostileSound == null || overdueWarning == null || acknowledgeLabel == null) throw new IllegalArgumentException("Config collections/text cannot be null");
+        menuItems.putIfAbsent("alliances","minecraft:iron_chain");
     }
     public String message(String key, String fallback) { return messages.getOrDefault(key, fallback); }
     public long minute(long count) { return Math.multiplyExact(count, 60_000L); }

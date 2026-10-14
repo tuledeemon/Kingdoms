@@ -1,6 +1,6 @@
 # ᴋɪɴɢᴅᴏᴍѕ — Fabric 26.2
 
-Kingdoms 1.8.3 retains the original menu layout and removes AirDrops, Artifacts and Help from the home menu. These features remain available through their commands. It includes optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
+Kingdoms 1.9.0 adds mutually approved alliances and opt-in joint wars, with recruitment on both sides during preparation, saved coalition state, alliance placeholders and per-enemy beacon selection. It retains the original menu layout and removes AirDrops, Artifacts and Help from the home menu. These features remain available through their commands. It includes optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
 
 A server-only kingdom and claims mod. Players join with normal Minecraft 26.2 clients; no client mod, custom registry, or resource pack is required. Menus use vanilla chest inventories, mandatory small-caps text, confirmation pages, live counters, territory action bars, transition titles and sounds.
 
@@ -40,7 +40,8 @@ Do not install the integration-test mod or use the test server's properties on a
 A declaration starts a **3-minute preparation countdown** by default. Claims stay fully protected until that countdown ends; the default vulnerable wartime is **15 minutes**. Both kingdoms receive chat, action-bar, title and sound milestones at 3 minutes, 1 minute, 30 seconds, 10 seconds and the final 5 seconds. Only a mayor can declare war. At declaration the defender needs **strictly more than half** its members online, including **at least one mayor**. For example: 6 of 10, 3 of 5, or the only player in a one-member kingdom.
 
 - Each kingdom can participate in one preparation/war at a time. Membership, claims, mayors, flags and protection purchases freeze as soon as preparation begins.
-- Once preparation ends, members of either kingdom have unrestricted physical access to both kingdoms' land. Ordinary visitors gain no war access.
+- Once preparation ends, members of each participating kingdom have unrestricted physical access to every opposing kingdom's land. Ordinary visitors gain no war access. Allies on the same side still need physical claim permissions.
+- Allies cannot declare war on one another. A mayor may recruit direct allies during preparation; every ally needs explicit mayor approval and is checked for protection, cooldown, online majority, other wars, side cap and alliances with opposing participants. All participants share the original timers, freezes and cooldown.
 - All land flags, including explosions, fire, fluids, mobs and PvP, are overridden for the war. Administrative rules about TNT/lava casting remain manually enforced.
 - Treasury permissions remain enforced. War never grants withdrawal privileges.
 - The war lasts its full duration even if players/mayors disconnect.
@@ -49,6 +50,10 @@ A declaration starts a **3-minute preparation countdown** by default. Claims sta
 - Both kingdoms receive a **two-hour cooldown after the scheduled end**. They cannot declare or receive another declaration during that cooldown. Participants retain their cooldown if they recreate a kingdom or join another kingdom.
 - Wars, protection and cooldowns use real timestamps and survive restarts. Time continues while the server is offline. Destruction during war is permanent; this mod does not roll back the terrain afterward.
 - Automatic disbanding for debt is deferred until an active war ends.
+
+### Alliances
+
+The **Alliances** home button handles requests, approval, withdrawal, removal and preparation-time war recruitment. Defaults: five allies, four kingdoms per war side, sixty-minute alliance requests, and no friendly fire between allies/different kingdoms on the same war side. Alliances confer no automatic claim, treasury or AirDrop access. Old saves and pair wars retain their timestamps and memberships. See [Alliances and Joint Wars](ALLIANCES_GUIDE.md).
 
 ## Town centers, cores and tribute
 
@@ -92,7 +97,7 @@ The main Kingdom menu includes a vanilla **Beacon** button. It opens a server-si
 
 Member powers are **Speed, Haste, Resistance, Jump Boost, Strength, and Regeneration**. Each is available at Level I or Level II. Level II costs four times the configured Level I price by default. A kingdom can run several different powers simultaneously. The same active power cannot be repurchased at the same or a lower level; Level I can be upgraded to Level II.
 
-Opponent powers are **Slowness, Blindness, and Mining Fatigue I**. They can only be purchased against the kingdom's active enemy after war preparation ends and claims become vulnerable. A hostile power targets all members of that enemy kingdom and continues for its purchased duration even if wartime ends. All positive and hostile powers function only while the affected player is inside any claimed chunk; they stop in wilderness and return upon entering claimed land. Purchases default to 24 real-time hours, persist through restarts, apply immediately to eligible online members, and are applied when affected members join. Disbanding either involved kingdom removes its related powers.
+Opponent powers are **Slowness, Blindness, and Mining Fatigue I**. They can only be purchased against the kingdom's active enemy after war preparation ends and claims become vulnerable. In a joint war, the purchase menu selects one opposing kingdom. A hostile power targets all members of that enemy kingdom and continues for its purchased duration even if wartime ends. All positive and hostile powers function only while the affected player is inside any claimed chunk; they stop in wilderness and return upon entering claimed land. Purchases default to 24 real-time hours, persist through restarts, apply immediately to eligible online members, and are applied when affected members join. Disbanding either involved kingdom removes its related powers.
 
 The UI shows the treasury balance, exact cost, target, duration, active powers, incoming hostile powers, and remaining time. Purchases produce chat notices, titles, sounds, and particles when `beaconFx` is enabled.
 
@@ -128,6 +133,14 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 | `/kingdom deposit <amount>` | Deposit into your kingdom; accepts money aliases such as `1k`, `1.5m`, and `2 billion` |
 | `/kingdom withdraw <amount>` | Confirm withdrawal; accepts the same money aliases |
 | `/kingdom war <kingdom-name>` | Review and confirm declaration |
+| `/kingdom alliance` | Open alliances and requests |
+| `/kingdom alliance request <kingdom>` | Mayor: request an alliance |
+| `/kingdom alliance accept <kingdom>` | Mayor: review accepting an alliance |
+| `/kingdom alliance decline <kingdom>` | Mayor: decline a request |
+| `/kingdom alliance cancel <kingdom>` | Mayor: withdraw an outgoing request |
+| `/kingdom alliance remove <kingdom>` | Mayor: review ending an alliance |
+| `/kingdom warinvite <kingdom>` | Mayor: invite an ally during preparation |
+| `/kingdom warjoin` | Review incoming joint-war invitations |
 | `/kingdom protect` | Confirm purchase of protection |
 | `/kingdom acknowledge` | Acknowledge the current debt warning |
 | `/kingdom disband` | Confirm disbanding and forfeiting the bank |
@@ -136,7 +149,7 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 | `/kingdomadmin set <key> <value>` | Set a scalar config field and save it |
 | `/kingdomadmin cap "Kingdom Name" claims <number>` | Override this kingdom's claim cap; 0 restores global default |
 | `/kingdomadmin cap "Kingdom Name" members <number>` | Override member cap; 0 restores global default |
-| `/kingdomadmin endwar <kingdom-name>` | End war early; both kingdoms enter cooldown |
+| `/kingdomadmin endwar <kingdom-name>` | End the entire shared war early; every participant and their members enter cooldown |
 | `/kingdomadmin clearcooldown <kingdom-name>` | Clear this kingdom's war cooldown, active war protection (including starter protection), and its current members' saved war cooldowns; end preparation/wartime first |
 
 Permissions: `PLACE`, `BREAK`, `INTERACT`, `CONTAINERS`, `ENTITIES`, `PVP`, `DEPOSIT`, `WITHDRAW`.
@@ -159,7 +172,10 @@ These use Text Placeholder API syntax, for example `%kingdoms:kingdom_styled%`. 
 | `kingdom_rank`, `kingdom_member_count`, `kingdom_claim_count` | Small-caps role, member count, and actual claimed chunk count |
 | `kingdom_claim_slots`, `kingdom_outpost_count` | Weighted claim-slot use and outpost count |
 | `kingdom_at_war` | Whether claims are currently vulnerable |
-| `war_preparation_remaining`, `wartime_remaining`, `enemy_kingdom` | Current conflict state |
+| `war_preparation_remaining`, `wartime_remaining`, `enemy_kingdom`, `enemy_kingdoms` | Current conflict state; enemy placeholders list every opposing kingdom |
+| `allied_kingdoms`, `alliance_count` | Direct ally names (small caps, `ɴᴏɴᴇ` when absent) and count |
+| `war_allies`, `war_side` | Other kingdoms on your war side and attacking/defending/none status, in small caps |
+| `inside_allied_territory` | Whether you stand in a direct ally's claims |
 | `territory_kingdom`, `territory_icon` | Claim at the player's position |
 | `inside_own_kingdom`, `inside_enemy_territory`, `in_wilderness` | Position booleans |
 | `leaderboard_position/<rank>` | Requested one-based position |
@@ -213,6 +229,13 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `outpostClaimWeight`, `maxOutposts` | 6, 4 | Claim slots consumed per outpost and maximum outpost anchors per kingdom |
 | `kingdomCreationBufferChunks` | 16 | Minimum blocked radius around every existing claim |
 | `spawnClaimProtectionChunks` | 16 | No-claim square radius around overworld world spawn; 0 disables it |
+| `alliancesEnabled` | true | Allow new alliance requests and acceptance |
+| `maxAllies` | 5 | Direct allies per kingdom; 0..1000 |
+| `allianceRequestMinutes` | 60 | New request lifetime; 1..10080 real-time minutes |
+| `alliedFriendlyFire` | false | Allow ordinary PvP rules between allies and different kingdoms on the same war side |
+| `jointWarsEnabled` | true | Allow war invitations and joining; existing participants remain |
+| `maxKingdomsPerWarSide` | 4 | Includes the original kingdom; 1..1000 |
+| `jointWarRequiresOnlineMajority` | true | Require a strict online majority when joining a war; mayor approval is always required |
 | `warPreparationSeconds` | 180 | Protected countdown before vulnerability |
 | `warCountdownMilestonesSeconds` | 180, 60, 30, 10, 5..1 | Persisted countdown announcements |
 | `warMinutes` | 15 | Vulnerable wartime duration |
@@ -231,7 +254,7 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `smallCaps` | true | Small-cap UI headings |
 | `title` | kingdoms | Main menu title |
 | `primaryColor`, `secondaryColor`, `errorColor` | gold, aqua, red | Vanilla formatting colors |
-| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. War protection uses slot 30 and the beacon uses 32. The retired `help` position is ignored |
+| `menuSlots` | Generated defaults | Original main-menu button positions, 0–53; keep them unique. War protection uses slot 30 and the beacon uses 32. Alliances uses 40 (an unused slot is chosen for custom layouts). The retired `help` position is ignored |
 | `menuLayoutVersion` | 3 | Internal migration marker; previous stock layouts restore and move the beacon to 32, while custom positions are preserved |
 | `menuItems` | Generated defaults | Main-menu item identifiers |
 | `messages` | Empty | Text overrides keyed by the original text; also applies to button labels/lore |

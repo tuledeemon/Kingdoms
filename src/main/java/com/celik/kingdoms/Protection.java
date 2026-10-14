@@ -61,7 +61,7 @@ public final class Protection {
         if(b!=null&&!s.flag(b,flag))return false;
         if(b!=null&&ctx!=null&&ctx.actor!=null)return permitted(level,to,ctx.actor,Permission.PLACE);
         if(a==b)return a==null||s.flag(a,flag);
-        if(a!=null&&b!=null){War w=Rules.war(s.state,a.id,s.now());return w!=null&&w.opponent(a.id).equals(b.id);}
+        if(a!=null&&b!=null){War w=Rules.war(s.state,a.id,s.now());return w!=null&&w.opposes(a.id,b.id);}
         if(a!=null&&b==null&&Rules.war(s.state,a.id,s.now())!=null)return true;
         return b==null&&(!s.config.protectWildernessFromClaimMachines||a==null);
     }
@@ -116,6 +116,7 @@ public final class Protection {
         KingdomService s=service(target.level());if(s==null)return true;Kingdom k=s.land(target.level(),target.blockPosition());
         UUID actor=owner(source.getEntity()); if(actor==null)actor=owner(source.getDirectEntity());
         Context artifact=current();if(actor==null&&source.is(net.minecraft.world.damagesource.DamageTypes.LIGHTNING_BOLT)&&artifact!=null)actor=artifact.actor;
+        if(actor!=null&&target instanceof Player&&!s.config.alliedFriendlyFire){Kingdom a=s.own(actor),b=s.own(target.getUUID());if(a!=null&&b!=null){War war=Rules.war(s.state,a.id,s.now());if(Rules.allied(s.state,a.id,b.id)||war!=null&&!a.id.equals(b.id)&&war.sameSide(a.id,b.id))return false;}}
         if(source.is(DamageTypeTags.IS_EXPLOSION)) {
             Entity direct=source.getDirectEntity();Context c=current();BlockPos origin=direct!=null?direct.blockPosition():c!=null?c.origin:target.blockPosition();
             if(!explosionDamage(target.level(),origin,target.blockPosition(),actor))return false;

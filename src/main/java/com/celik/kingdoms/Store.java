@@ -28,6 +28,8 @@ public final class Store {
     }
     public State copy(State state) { return JSON.fromJson(JSON.toJson(state),State.class); }
     public void validate(State s) {
+        if(s.allianceRequests==null)s.allianceRequests=new ArrayList<>();
+        if(s.warInvites==null)s.warInvites=new ArrayList<>();
         if(s.airDropMoneyReceipts==null)s.airDropMoneyReceipts=new HashSet<>();
         if(s.rejoinCooldowns==null)s.rejoinCooldowns=new HashMap<>();
         if(s.rejoinCooldowns.values().stream().anyMatch(m->m==null||m.values().stream().anyMatch(t->t==null||t<0)))throw new IllegalStateException("Invalid rejoin cooldown");
@@ -36,6 +38,7 @@ public final class Store {
         Set<UUID> members=new HashSet<>(); Set<String> claims=new HashSet<>(); Set<String> names=new HashSet<>(); Set<UUID> atWar=new HashSet<>();
         for(var entry:s.kingdoms.entrySet()) {
             Kingdom k=entry.getValue();
+            if(k!=null&&k.allies==null)k.allies=new LinkedHashSet<>();
             if(k!=null){if(k.displayName==null||k.displayName.isBlank())k.displayName=k.name;if(k.iconItem==null||k.iconItem.isBlank())k.iconItem="minecraft:paper";if(k.outposts==null)k.outposts=new HashSet<>();}
             if(k==null || !entry.getKey().equals(k.id) || k.name==null || !names.add(k.name.toLowerCase(Locale.ROOT)) || k.mayors.isEmpty() || !k.members.keySet().containsAll(k.mayors) || k.treasury<0 || k.debt<0 || k.claims.isEmpty()) throw new IllegalStateException("Invalid kingdom record");
             if(k.highlightColor==-1)k.highlightColor=Rules.highlightColor(k.id);
@@ -44,10 +47,19 @@ public final class Store {
             for(UUID p:k.members.keySet()) if(!members.add(p)) throw new IllegalStateException("Duplicate kingdom membership");
             for(String c:k.claims) if(!claims.add(c) || !c.matches("[^|]+\\|-?\\d+\\|-?\\d+")) throw new IllegalStateException("Invalid / overlapping claim");
         }
+        Set<UUID> warIds=new HashSet<>();
         for(War w:s.wars) {
             if(w.id==null)w.id=UUID.randomUUID();if(w.declaredAt==0)w.declaredAt=w.startedAt;if(w.announcedMilestones==null)w.announcedMilestones=new HashSet<>();
-            if(!s.kingdoms.containsKey(w.first) || !s.kingdoms.containsKey(w.second) || !atWar.add(w.first) || !atWar.add(w.second) || w.endsAt<=w.startedAt || w.declaredAt>w.startedAt) throw new IllegalStateException("Invalid war record");
+            if(!warIds.add(w.id))throw new IllegalStateException("Duplicate war identifier");
+            if(w.firstAllies==null)w.firstAllies=new LinkedHashSet<>();if(w.secondAllies==null)w.secondAllies=new LinkedHashSet<>();
+            if(!Collections.disjoint(w.side(true),w.side(false))||w.firstAllies.contains(w.first)||w.secondAllies.contains(w.second)||w.endsAt<=w.startedAt||w.declaredAt>w.startedAt)throw new IllegalStateException("Invalid war sides");
+            for(UUID id:w.participants())if(!s.kingdoms.containsKey(id)||!atWar.add(id))throw new IllegalStateException("Invalid or overlapping war participant");
+            for(UUID a:w.side(true))for(UUID b:w.side(false))if(Rules.allied(s,a,b))throw new IllegalStateException("Allies on opposing war sides");
         }
+        for(Kingdom k:s.kingdoms.values())for(UUID ally:k.allies)if(k.id.equals(ally)||!Rules.allied(s,k.id,ally))throw new IllegalStateException("Invalid or asymmetric alliance");
+        Set<String> requests=new HashSet<>(),invites=new HashSet<>();
+        for(AllianceRequest r:s.allianceRequests)if(r==null||!s.kingdoms.containsKey(r.from)||!s.kingdoms.containsKey(r.to)||r.from.equals(r.to)||r.expiresAt<=0||!requests.add(r.from+"|"+r.to))throw new IllegalStateException("Invalid alliance request");
+        for(WarInvite i:s.warInvites){War w=i==null?null:s.wars.stream().filter(q->q.id.equals(i.war)).findFirst().orElse(null);if(w==null||!w.side(i.attacking).contains(i.from)||!Rules.allied(s,i.from,i.to)||w.involves(i.to)||!invites.add(i.war+"|"+i.to))throw new IllegalStateException("Invalid war invitation");}
         Set<String> beaconKeys=new HashSet<>();
         Set<String> corePositions=new HashSet<>();
         for(Kingdom k:s.kingdoms.values())if(k.core!=null){

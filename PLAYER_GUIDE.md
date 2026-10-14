@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.8.3 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.9.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 ## ɢᴇᴛᴛɪɴɢ ꜱᴛᴀʀᴛᴇᴅ
 
@@ -32,7 +32,8 @@ Open `/kingdom` to see your kingdom's members, treasury, claim-slot use, war sta
 | Treasury | Deposit, withdraw, check upkeep and debt |
 | Members | Invite players, manage permissions and appoint mayors |
 | Settings | Set land flags, member/public permissions, icon and town center |
-| War | Browse kingdoms and review a declaration |
+| War | Declare war, view both sides and recruit allies during preparation |
+| Alliances | Request/accept alliances and review joint-war invitations |
 | War protection | Check protection and buy more when eligible |
 | Kingdom beacon | Buy powers and inspect active/incoming effects |
 | Treasury leaderboard | Compare kingdom balances and view center locations |
@@ -132,6 +133,7 @@ Only a mayor can declare war. Use **War → Select kingdom → Confirm**, or `/k
 A declaration is allowed only when:
 
 - Neither kingdom is already preparing for or fighting a war.
+- The kingdoms are not allied with each other.
 - Neither kingdom has active war protection or a war cooldown.
 - **Strictly more than half of the defending kingdom's members are online**, including at least one defending mayor. A kingdom with ten members needs six online; one with five needs three.
 
@@ -139,11 +141,11 @@ A declaration is allowed only when:
 
 Claims **remain protected** throughout preparation. Both sides receive announcements, titles, sounds and countdown milestones at 3 minutes, 1 minute, 30 seconds, 10 seconds and the final five seconds.
 
-Membership, invitations, claims, mayors, permissions, flags, icons and core relocation are locked. Protection cannot be purchased. Treasury deposits and permitted withdrawals remain available.
+Membership, membership invitations, claims, mayors, permissions, flags, icons and core relocation are locked. Protection cannot be purchased. Treasury deposits and permitted withdrawals remain available.
 
 ### Active war: 15 minutes
 
-Once the countdown ends, **members of the two opposing kingdoms can build, break, interact and fight throughout both kingdoms' claims**. Both sides can attack and defend. Ordinary visitors receive no war access.
+Once the countdown ends, **members of all participating kingdoms can build, break, interact and fight throughout every opposing kingdom's claims**. Both sides can attack and defend. Ordinary visitors receive no war access.
 
 Land flags are overridden for wartime, including fire, fluids, explosions, mobs and PvP. Server rules still apply: staff may prohibit TNT, lava casting or other griefing methods. Marked cores retain their special capture rules; explosions do not substitute for breaking and taking a core.
 
@@ -151,7 +153,15 @@ War does **not** grant access to the enemy treasury or bypass withdrawal permiss
 
 ### End of war
 
-Announcements make it clear when ordinary claim protection returns. Both kingdoms enter a **two-hour war cooldown**, preventing declarations in either direction. Members retain their saved war cooldown when they recreate a kingdom or join another one. War and cooldown timers continue through server downtime.
+Announcements make it clear when ordinary claim protection returns. Every participating kingdom enters a **two-hour war cooldown**, preventing declarations in either direction. Members retain their saved war cooldown when they recreate a kingdom or join another one. War and cooldown timers continue through server downtime.
+
+### Alliances and joint wars
+
+Open **Alliances** to request a relationship with another kingdom. A mayor on each side must agree. Defaults allow **five allies**, with requests expiring after **60 minutes**. Allies keep their own land and treasury. They gain no automatic claim access, and PvP between allies is disabled by default.
+
+When declaring war, **Declare and invite allies** starts preparation and sends invitations to your eligible allies. Their mayors must explicitly approve in **Alliances → War invitations**. Defenders can recruit allies during preparation too. Each side can contain **four kingdoms** by default. Invited kingdoms cannot have protection, a cooldown, another war or an alliance with an opposing participant; more than half their members must be online by default.
+
+All participants share the original start/end times, and every participant freezes membership and claim changes. Approval is final; a kingdom cannot withdraw or switch sides. Claims become vulnerable only between opposing sides. Allies on your side still need physical claim permissions. Everyone receives the same war countdown, ending notifications and cooldown. AirDrop capture groups stay separate. [Read the full alliance and joint-war guide](ALLIANCES_GUIDE.md).
 
 ### Buying protection
 
@@ -165,7 +175,7 @@ Open **Kingdom beacon** or `/kingdom beacon`. This is a menu-based kingdom power
 
 **Member powers:** Speed, Haste, Resistance, Jump Boost, Strength and Regeneration. Each supports Level I or II. **Level II costs four times Level I** by default.
 
-**Opponent powers:** Slowness, Blindness and Mining Fatigue, all Level I. These can be bought only during active wartime and target the current enemy kingdom's members.
+**Opponent powers:** Slowness, Blindness and Mining Fatigue, all Level I. These can be bought only during active wartime. In joint wars, choose one kingdom on the opposing side; each purchase targets that kingdom's members at the normal price.
 
 | Power | Default Level I price |
 | --- | ---: |
@@ -268,6 +278,14 @@ Replace the example arguments with your own values; do not type the `< >` bracke
 | `/kingdom deposit <amount>` | Deposit your money |
 | `/kingdom withdraw <amount>` | Withdraw with permission |
 | `/kingdom war <kingdom-name>` | Mayor: declare war |
+| `/kingdom alliance` | Open alliances and requests |
+| `/kingdom alliance request <kingdom>` | Mayor: request an alliance |
+| `/kingdom alliance accept <kingdom>` | Mayor: review accepting an alliance |
+| `/kingdom alliance decline <kingdom>` | Mayor: decline a request |
+| `/kingdom alliance cancel <kingdom>` | Mayor: withdraw an outgoing request |
+| `/kingdom alliance remove <kingdom>` | Mayor: review ending an alliance |
+| `/kingdom warinvite <kingdom>` | Mayor: invite an ally during preparation |
+| `/kingdom warjoin` | Review incoming joint-war invitations |
 | `/kingdom protect` | Mayor: buy war protection |
 | `/kingdom beacon` | Open powers and active effects |
 | `/kingdom core` | Open home/captured core management |
