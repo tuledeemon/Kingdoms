@@ -16,6 +16,7 @@
 
 - [Installation](Installation)
 - [Kingdom administration](Administration)
+- [War restrictions](War-Restrictions)
 - [AirDrop administration](AirDrop-Administration)
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)

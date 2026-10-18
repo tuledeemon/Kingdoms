@@ -93,6 +93,7 @@ public final class KingdomCommands {
         artifacts.then(literal("inspect").executes(c->admin(c,()->c.getSource().sendSuccess(()->AirDrops.text(s().artifacts.inspect(adminPlayer(c))),false))));
         artifacts.then(literal("recover").executes(c->admin(c,()->s().artifacts.recoverStorage(),"Artifact storage recovered.")));
         admin.then(artifacts);
+        admin.then(WarAdmin.node());
         d.register(admin);
     }
     private static ServerPlayer adminPlayer(CommandContext<CommandSourceStack> c){try{return c.getSource().getPlayerOrException();}catch(com.mojang.brigadier.exceptions.CommandSyntaxException e){throw new IllegalArgumentException("Use spawnat from the console, or run spawn as a player.");}}

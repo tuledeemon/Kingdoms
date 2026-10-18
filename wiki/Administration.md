@@ -40,6 +40,10 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 | `/kingdom protect` | Confirm purchase of protection |
 | `/kingdom acknowledge` | Acknowledge the current debt warning |
 | `/kingdom disband` | Confirm disbanding and forfeiting the bank |
+| `/kingdomadmin war` | View server war restrictions |
+| `/kingdomadmin war set <key> <value>` | Set enabled, scope, blockPearlTeleport or preventLavaCasting |
+| `/kingdomadmin war <block/placement/entity/explosion/blockdamage> <add/remove> <id>` | Edit a restriction list; registry IDs have tab completion |
+| `/kingdomadmin war <list> <list/clear>` | Show or empty a restriction list |
 | `/kingdomadmin reload` | Validate and load config changes |
 | `/kingdomadmin beaconprice <effect> <amount>` | Set a Level I beacon price; accepts money aliases |
 | `/kingdomadmin set <key> <value>` | Set a scalar config field and save it |
@@ -151,6 +155,24 @@ Examples:
 /kingdomadmin cap "Red Kingdom" claims 256
 /kingdomadmin clearcooldown Red Kingdom
 ```
+
+### War restrictions
+
+Settings live in `warRestrictions`. All are editable without restarting using `/kingdomadmin war`.
+
+| Setting | Default | Effect |
+| --- | --- | --- |
+| `enabled` | true | Enable the policy system |
+| `scope` | war_claims | `war_claims`, `war` (also active participants), or `global` |
+| `blockPearlTeleport` | false | Block pearl throws/teleports in the restricted scope, including entry/exit |
+| `preventLavaCasting` | false | Prevent vanilla water/lava cobblestone, stone and obsidian formation |
+| `instantBreakBlocks` | empty | Selected blocks become instant to mine during active war; permissions and vanilla drops remain |
+| `blockedPlacementBlocks` | empty | Prevent introducing these block types into restricted locations |
+| `blockedEntities` | empty | Reject spawn and discard existing matching entities when ticked in restricted situations; players excluded |
+| `blockedExplosions` | empty | Cancel detonations by source entity or special `minecraft:bed`, `minecraft:respawn_anchor`, `minecraft:other`; `*` matches all |
+| `blockedExplosionBlockDamage` | empty | Allow explosions but prevent terrain damage/chain priming/fire by source; also supports `*` |
+
+Policies are saved immediately and can change during a war. Empty defaults preserve existing gameplay. Administrator restrictions override mayor flags and operator physical-permission bypass. [War restriction command guide](War-Restrictions).
 
 ### BlueMap territories
 

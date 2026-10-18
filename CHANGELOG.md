@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.10.0
+
+- Added `/kingdomadmin war` with persistent add/remove/list/clear commands for instant-war blocks, disallowed placements/entities, cancelled explosions and explosion block damage. Registry IDs have admin tab completion; mayor menus cannot change these rules.
+- Added dedicated pearl teleport and lava-casting toggles. Pearl source/impact positions are checked. Water/lava cannot generate cobblestone, stone or obsidian when casting is banned; normal manual block placement is unaffected.
+- Default policy is empty and scoped to active-war claims. Admins may extend the scope to active participants anywhere or explicitly apply restrictions globally. Instant mining still additionally requires active war and preserves break permissions, core capture and vanilla tool/drop rules.
+- Added source-specific TNT, TNT-minecart, other entity, bed/respawn-anchor and wildcard explosion controls. Terrain-only bans preserve entity damage; cross-border blast targets are checked separately. Operators respect admin policies.
+- Added the War Restrictions guide and updated example configurations and wiki.
+- Built for Fabric 26.2, with local and dedicated-server verification. Live client visuals and third-party compatibility remain unverified.
+
 ## 1.9.0
 
 - Added saved, mutually approved alliances with requests, expiry, removal and a home menu button. Default limit: five allies; allied friendly fire is disabled without granting automatic claim access.

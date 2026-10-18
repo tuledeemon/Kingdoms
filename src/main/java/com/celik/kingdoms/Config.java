@@ -5,6 +5,7 @@ import static com.celik.kingdoms.Rules.*;
 
 public final class Config {
     public int schemaVersion = 1;
+    public WarConfig warRestrictions = new WarConfig();
     public int menuLayoutVersion;
     public AirDropConfig airDrops = new AirDropConfig();
     public ArtifactConfig artifacts = new ArtifactConfig();
@@ -47,6 +48,7 @@ public final class Config {
     public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"leaderboard",34,"beacon",32,"close",49));
     public Map<String, String> menuItems = new LinkedHashMap<>(Map.of("claims","minecraft:grass_block","treasury","minecraft:gold_ingot","members","minecraft:player_head","settings","minecraft:comparator","war","minecraft:iron_sword","protection","minecraft:shield","help","minecraft:book","leaderboard","minecraft:emerald","beacon","minecraft:beacon"));
     public void validate() {
+        if(warRestrictions==null)throw new IllegalArgumentException("War restriction configuration is missing");warRestrictions.validate();
         // Restore only the stock 1.8.1 grid; administrator-defined positions remain intact.
         if(menuLayoutVersion==1){
             if(java.util.Map.of("claims",20,"treasury",22,"members",24,"settings",42,"war",29,"protection",31,"help",45,"leaderboard",51,"beacon",33,"close",49).equals(menuSlots))

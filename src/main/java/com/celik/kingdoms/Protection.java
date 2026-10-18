@@ -70,6 +70,7 @@ public final class Protection {
         if(old.equals(next))return true;
         if(s.airDrops!=null){if(s.airDrops.chests.internal(level,pos,next))return true;if(s.airDrops.protectedAt(level,pos)||s.airDrops.chests.protects(level,pos))return false;}
         if(!s.cores.allowsMutation(level,pos,next))return false;
+        if(!WarRestrictions.placement(level,pos,old,next)||WarRestrictions.preventFormation(level,pos,old,next))return false;
         if(k!=null) {
             if(next.is(BlockTags.FIRE)&&!s.flag(k,Flag.FIRE))return false;
             if(!next.getFluidState().isEmpty()&&!s.flag(k,Flag.FLUIDS))return false;
@@ -96,6 +97,7 @@ public final class Protection {
         return sameLand(level,c.origin,pos); // Natural growth never crosses a kingdom boundary.
     }
     public static boolean explosion(Level level,BlockPos origin,BlockPos target,UUID actor) {
+        if(WarRestrictions.preventBlast(level,origin,target,true))return false;
         KingdomService s=service(level);
         if(s!=null){
             if(s.cores.at(level,target)!=null)return false;
@@ -119,6 +121,7 @@ public final class Protection {
         if(actor!=null&&target instanceof Player&&!s.config.alliedFriendlyFire){Kingdom a=s.own(actor),b=s.own(target.getUUID());if(a!=null&&b!=null){War war=Rules.war(s.state,a.id,s.now());if(Rules.allied(s.state,a.id,b.id)||war!=null&&!a.id.equals(b.id)&&war.sameSide(a.id,b.id))return false;}}
         if(source.is(DamageTypeTags.IS_EXPLOSION)) {
             Entity direct=source.getDirectEntity();Context c=current();BlockPos origin=direct!=null?direct.blockPosition():c!=null?c.origin:target.blockPosition();
+            if(WarRestrictions.preventBlast(target.level(),origin,target.blockPosition(),false))return false;
             if(!explosionDamage(target.level(),origin,target.blockPosition(),actor))return false;
         }
         if(k!=null&&source.is(DamageTypeTags.IS_FIRE)&&!s.flag(k,Flag.FIRE))return false;
@@ -137,6 +140,7 @@ public final class Protection {
         return k==null||s==null||s.flag(k,Flag.MOBS)||k.allowedMobs.contains(mob.getUUID())||mob instanceof Animal||mob instanceof OwnableEntity o&&o.getOwner()!=null||s.config.allowedMobTypes.contains(BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).toString());
     }
     public static boolean admitSpawn(Entity entity) {
+        if(!WarRestrictions.entityAllowed(entity))return false;
         KingdomService s=service(entity.level());if(s==null)return true;Kingdom k=s.land(entity.level(),entity.blockPosition());Context context=current();
         if(s.airDrops!=null&&s.airDrops.protectedAt(entity.level(),entity.blockPosition())){
             if(entity instanceof PrimedTnt||entity instanceof net.minecraft.world.entity.item.FallingBlockEntity)return false;
@@ -149,12 +153,13 @@ public final class Protection {
         return allowedMob(mob,k);
     }
     public static void inspectMob(Entity entity) {
+        WarRestrictions.inspect(entity);if(entity.isRemoved())return;
         if(!(entity instanceof Mob mob))return;KingdomService s=service(mob.level());if(s==null)return;Kingdom k=s.land(mob.level(),mob.blockPosition());
         if(allowedMob(mob,k))return;
         
         mob.discard();
     }
 
-    public static void reset(){CURRENT.remove();}
+    public static void reset(){CURRENT.remove();WarRestrictions.reset();}
     private Protection(){}
 }

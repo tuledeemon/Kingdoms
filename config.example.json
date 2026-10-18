@@ -1,5 +1,16 @@
 {
   "schemaVersion": 1,
+  "warRestrictions": {
+    "enabled": true,
+    "scope": "war_claims",
+    "blockPearlTeleport": false,
+    "preventLavaCasting": false,
+    "instantBreakBlocks": [],
+    "blockedPlacementBlocks": [],
+    "blockedEntities": [],
+    "blockedExplosions": [],
+    "blockedExplosionBlockDamage": []
+  },
   "menuLayoutVersion": 3,
   "blueMap": {
     "enabled": true,

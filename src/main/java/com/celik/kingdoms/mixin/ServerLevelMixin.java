@@ -25,4 +25,6 @@ public abstract class ServerLevelMixin {
  }
  @Inject(method="addFreshEntity",at=@At("HEAD"),cancellable=true)
  private void spawn(Entity e,CallbackInfoReturnable<Boolean> cir){if(!Protection.admitSpawn(e))cir.setReturnValue(false);}
+ @Inject(method="addEntity",at=@At("HEAD"),cancellable=true)
+ private void restrictedEntity(Entity e,CallbackInfoReturnable<Boolean> cir){if(!WarRestrictions.entityAllowed(e))cir.setReturnValue(false);}
 }

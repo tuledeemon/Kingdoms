@@ -4,7 +4,7 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
-**1.9.0:** Alliances and joint wars. Mayors approve alliances and war participation; attackers and defenders recruit during preparation. Coalition claims, feedback, cores, cooldowns, placeholders and enemy beacon selection follow the full opposing sides. The original menu layout and beacon placement remain. See the [changelog](CHANGELOG.md).
+**1.10.0:** Administrator war rules: selected blocks become instant to mine, with separate block-placement/entity bans, pearl teleport restrictions, explosion detonation/block-damage lists and lava-casting prevention. Configure everything through `/kingdomadmin war`. Includes alliances and joint wars. See the [changelog](CHANGELOG.md).
 
 ## Player guide
 
@@ -37,6 +37,7 @@ Kingdoms runs on **Fabric**, not Paper or Folia. Server borders, addresses and D
 
 - [Installation](https://github.com/tuledeemon/Kingdoms/wiki/Installation)
 - [Administration](https://github.com/tuledeemon/Kingdoms/wiki/Administration)
+- [War restrictions](https://github.com/tuledeemon/Kingdoms/wiki/War-Restrictions)
 - [Placeholders](https://github.com/tuledeemon/Kingdoms/wiki/Placeholders)
 - [BlueMap territories](https://github.com/tuledeemon/Kingdoms/wiki/BlueMap)
 - [Build instructions](BUILDING.md)
@@ -44,4 +45,4 @@ Kingdoms runs on **Fabric**, not Paper or Folia. Server borders, addresses and D
 - [Example configuration](config.example.json)
 - [Parachute model attribution](PARACHUTE_MODEL.md)
 
-Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.9.0** builds and passes the local rule tests, including coalition access, save migration and joining eligibility. Integration sources compile; the dedicated-server scenarios were not rerun for this release. Earlier server checks do not verify alliances, the optional BlueMap integration or the 1.7.2 explosion patch. Live client visuals and third-party mod compatibility still need testing.
+Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, and **546 checks with C2ME**. Version **1.10.0** builds and passes local rule tests and dedicated-server checks, including actual instant-mining, entity rejection, pearl impact, explosions, wilderness behavior and lava/water formation. Live client visuals and compatibility with third-party server mods remain unverified.

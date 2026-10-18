@@ -3,6 +3,11 @@
   "package": "com.celik.kingdoms.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "WarMiningMixin",
+    "WarPearlMixin",
+    "WarLiquidMixin",
+    "WarLavaMixin",
+    "WarDetonationMixin",
     "ArtifactPlayerMixin",
     "ArtifactSpearMixin",
     "ArtifactLightningMixin",

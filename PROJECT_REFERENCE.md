@@ -1,6 +1,6 @@
 # ᴋɪɴɢᴅᴏᴍѕ — Fabric 26.2
 
-Kingdoms 1.9.0 adds mutually approved alliances and opt-in joint wars, with recruitment on both sides during preparation, saved coalition state, alliance placeholders and per-enemy beacon selection. It retains the original menu layout and removes AirDrops, Artifacts and Help from the home menu. These features remain available through their commands. It includes optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
+Kingdoms 1.10.0 adds administrator-controlled instant-war mining, placement/entity bans, pearl restrictions, separate detonation/terrain policies and lava-casting prevention through `/kingdomadmin war`. It includes the 1.9.0 additions: mutually approved alliances and opt-in joint wars, with recruitment on both sides during preparation, saved coalition state, alliance placeholders and per-enemy beacon selection. It retains the original menu layout and removes AirDrops, Artifacts and Help from the home menu. These features remain available through their commands. It includes optional BlueMap territories with merged claim borders, clickable kingdom details and core pins. It includes the 1.7.2 explosion-protection patch and the Wind Burst Spear living-target restriction. The eight-artifact catalogue and joining-world freeze fix remain: AirDrop cleanup runs only after chunks become fully available. See [the fix notes](CHUNK_LOAD_FIX.md).
 
 A server-only kingdom and claims mod. Players join with normal Minecraft 26.2 clients; no client mod, custom registry, or resource pack is required. Menus use vanilla chest inventories, mandatory small-caps text, confirmation pages, live counters, territory action bars, transition titles and sounds.
 
@@ -42,7 +42,7 @@ A declaration starts a **3-minute preparation countdown** by default. Claims sta
 - Each kingdom can participate in one preparation/war at a time. Membership, claims, mayors, flags and protection purchases freeze as soon as preparation begins.
 - Once preparation ends, members of each participating kingdom have unrestricted physical access to every opposing kingdom's land. Ordinary visitors gain no war access. Allies on the same side still need physical claim permissions.
 - Allies cannot declare war on one another. A mayor may recruit direct allies during preparation; every ally needs explicit mayor approval and is checked for protection, cooldown, online majority, other wars, side cap and alliances with opposing participants. All participants share the original timers, freezes and cooldown.
-- All land flags, including explosions, fire, fluids, mobs and PvP, are overridden for the war. Administrative rules about TNT/lava casting remain manually enforced.
+- Mayor-controlled land flags, including explosions, fire, fluids, mobs and PvP, are overridden for the war. Administrator war restrictions still apply. Administrative rules about TNT/lava casting remain manually enforced.
 - Treasury permissions remain enforced. War never grants withdrawal privileges.
 - The war lasts its full duration even if players/mayors disconnect.
 - Membership, mayor appointments, permission/flag edits and claim changes are locked during war. Treasury deposits and authorized withdrawals remain available.
@@ -54,6 +54,10 @@ A declaration starts a **3-minute preparation countdown** by default. Claims sta
 ### Alliances
 
 The **Alliances** home button handles requests, approval, withdrawal, removal and preparation-time war recruitment. Defaults: five allies, four kingdoms per war side, sixty-minute alliance requests, and no friendly fire between allies/different kingdoms on the same war side. Alliances confer no automatic claim, treasury or AirDrop access. Old saves and pair wars retain their timestamps and memberships. See [Alliances and Joint Wars](ALLIANCES_GUIDE.md).
+
+### Admin war restrictions
+
+`/kingdomadmin war` manages server-wide policy separately from mayor flags. Five lists control instant-mined blocks, forbidden placements, entity types, cancelled detonations and explosion terrain damage. Pearls and lava/water casting have separate toggles. Lists start empty. Default scope is active-war claims; optional scopes include active participants anywhere or the whole server. Instant mining always additionally needs active war, preserves normal break permissions, core rules and vanilla tool/drop/durability behavior, and never weakens unbreakable blocks. Policies apply to operators too. Explosion block damage is checked per affected block without making players explosion-immune. See [all commands and defaults](WAR_RESTRICTIONS_GUIDE.md).
 
 ## Town centers, cores and tribute
 
@@ -144,6 +148,10 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 | `/kingdom protect` | Confirm purchase of protection |
 | `/kingdom acknowledge` | Acknowledge the current debt warning |
 | `/kingdom disband` | Confirm disbanding and forfeiting the bank |
+| `/kingdomadmin war` | View server war restrictions |
+| `/kingdomadmin war set <key> <value>` | Set enabled, scope, blockPearlTeleport or preventLavaCasting |
+| `/kingdomadmin war <block/placement/entity/explosion/blockdamage> <add/remove> <id>` | Edit a restriction list; registry IDs have tab completion |
+| `/kingdomadmin war <list> <list/clear>` | Show or empty a restriction list |
 | `/kingdomadmin reload` | Validate and load config changes |
 | `/kingdomadmin beaconprice <effect> <amount>` | Set a Level I beacon price; accepts money aliases |
 | `/kingdomadmin set <key> <value>` | Set a scalar config field and save it |
@@ -290,6 +298,24 @@ Examples:
 /kingdomadmin cap "Red Kingdom" claims 256
 /kingdomadmin clearcooldown Red Kingdom
 ```
+
+### War restrictions
+
+Settings live in `warRestrictions`. All are editable without restarting using `/kingdomadmin war`.
+
+| Setting | Default | Effect |
+| --- | --- | --- |
+| `enabled` | true | Enable the policy system |
+| `scope` | war_claims | `war_claims`, `war` (also active participants), or `global` |
+| `blockPearlTeleport` | false | Block pearl throws/teleports in the restricted scope, including entry/exit |
+| `preventLavaCasting` | false | Prevent vanilla water/lava cobblestone, stone and obsidian formation |
+| `instantBreakBlocks` | empty | Selected blocks become instant to mine during active war; permissions and vanilla drops remain |
+| `blockedPlacementBlocks` | empty | Prevent introducing these block types into restricted locations |
+| `blockedEntities` | empty | Reject spawn and discard existing matching entities when ticked in restricted situations; players excluded |
+| `blockedExplosions` | empty | Cancel detonations by source entity or special `minecraft:bed`, `minecraft:respawn_anchor`, `minecraft:other`; `*` matches all |
+| `blockedExplosionBlockDamage` | empty | Allow explosions but prevent terrain damage/chain priming/fire by source; also supports `*` |
+
+Policies are saved immediately and can change during a war. Empty defaults preserve existing gameplay. Administrator restrictions override mayor flags and operator physical-permission bypass. [War restriction command guide](WAR_RESTRICTIONS_GUIDE.md).
 
 ### BlueMap territories
 

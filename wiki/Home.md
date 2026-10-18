@@ -18,9 +18,10 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 
 - [Installation](Installation)
 - [Kingdom administration](Administration)
+- [War restrictions](War-Restrictions)
 - [AirDrop administration](AirDrop-Administration)
 - [Artifact administration](Artifact-Administration)
 - [Placeholders](Placeholders)
 - [BlueMap territories](BlueMap)
 
-This guide covers Kingdoms 1.9.0. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
+This guide covers Kingdoms 1.10.0. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.

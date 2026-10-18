@@ -1,6 +1,7 @@
 package com.celik.kingdoms.mixin;
 
 import com.celik.kingdoms.Protection;
+import com.celik.kingdoms.WarRestrictions;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.core.BlockPos;
@@ -20,9 +21,10 @@ public abstract class ExplosionScopeMixin {
 
     @WrapMethod(method="explode")
     private int kingdoms$explosionScope(Operation<Integer> original){
+        if(WarRestrictions.preventDetonation(level,BlockPos.containing(center),source))return 0;
         var existing=Protection.current();UUID actor=Protection.owner(source);
         if(actor==null&&existing!=null&&existing.level()==level)actor=existing.actor();
-        try(var scope=Protection.scope(level,BlockPos.containing(center),actor,source,Protection.Cause.EXPLOSION)){
+        try(var blast=WarRestrictions.blast(source);var scope=Protection.scope(level,BlockPos.containing(center),actor,source,Protection.Cause.EXPLOSION)){
             return original.call();
         }
     }

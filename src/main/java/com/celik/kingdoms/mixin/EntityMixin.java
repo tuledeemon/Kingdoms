@@ -25,6 +25,7 @@ public abstract class EntityMixin implements AirDropGlowEntity {
  @Inject(method="ignoreExplosion",at=@At("HEAD"),cancellable=true)
  private void explosion(Explosion explosion,CallbackInfoReturnable<Boolean> cir){
   Entity self=(Entity)(Object)this;
+  if(WarRestrictions.preventBlast(self.level(),net.minecraft.core.BlockPos.containing(explosion.center()),self.blockPosition(),false)){cir.setReturnValue(true);return;}
   if(!Protection.explosionDamage(self.level(),net.minecraft.core.BlockPos.containing(explosion.center()),self.blockPosition(),Protection.owner(explosion.getIndirectSourceEntity())))cir.setReturnValue(true);
  }
 }

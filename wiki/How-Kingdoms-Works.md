@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.9.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.10.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 
 ## Contents
@@ -168,6 +168,12 @@ Once the countdown ends, **members of all participating kingdoms can build, brea
 Land flags are overridden for wartime, including fire, fluids, explosions, mobs and PvP. Server rules still apply: staff may prohibit TNT, lava casting or other griefing methods. Marked cores retain their special capture rules; explosions do not substitute for breaking and taking a core.
 
 War does **not** grant access to the enemy treasury or bypass withdrawal permissions. Logging out does not stop the war, even if mayors disconnect. Destruction is permanent; there is no automatic terrain restoration afterward.
+
+### Server-controlled war rules
+
+Staff can make selected blocks, such as obsidian, instant to mine during active war. You still need permission to break there, tools and drops follow vanilla rules, and core capture rules still apply. Staff may separately ban placing blocks, particular entities, pearl teleporting, explosions, explosion block damage or lava/water formation. Mayors cannot override these policies.
+
+By default these lists are empty and restrictions are scoped to active-war claims. Your server may configure a wider scope. Check with staff for its rules. [Admin command guide](War-Restrictions).
 
 ### End of war
 
