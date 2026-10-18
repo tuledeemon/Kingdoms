@@ -4,7 +4,7 @@ Build a kingdom, protect your land, manage a shared treasury, buy powers, and fi
 
 **Start with `/kingdom`.** Everything important is available through its menus. No client-side mod or resource pack is needed.
 
-This guide covers Kingdoms 1.10.0 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
+This guide covers Kingdoms 1.10.1 for Minecraft 26.2. Prices, timers, limits, permissions and effects below describe the **default settings**. Your server's admins can change them; check the menu for current costs and status.
 
 ## ɢᴇᴛᴛɪɴɢ ꜱᴛᴀʀᴛᴇᴅ
 
@@ -181,7 +181,9 @@ Open **Kingdom beacon** or `/kingdom beacon`. This is a menu-based kingdom power
 
 **Member powers:** Speed, Haste, Resistance, Jump Boost, Strength and Regeneration. Each supports Level I or II. **Level II costs four times Level I** by default.
 
-**Opponent powers:** Slowness, Blindness and Mining Fatigue, all Level I. These can be bought only during active wartime. In joint wars, choose one kingdom on the opposing side; each purchase targets that kingdom's members at the normal price.
+**Glowing** reveals affected enemy members through blocks while they stand in claimed land, including underground. Vanilla entity tracking limits apply, and the outline is visible to everyone who can track the player. It can run alongside Mining Fatigue. The usual hostile-power duration is 24 hours; buying it requires active war, and it persists for its purchased duration even after the war ends. It stops in wilderness.
+
+**Opponent powers:** Slowness, Blindness, Mining Fatigue and Glowing, all Level I. These can be bought only during active wartime. In joint wars, choose one kingdom on the opposing side; each purchase targets that kingdom's members at the normal price.
 
 | Power | Default Level I price |
 | --- | ---: |
@@ -194,6 +196,7 @@ Open **Kingdom beacon** or `/kingdom beacon`. This is a menu-based kingdom power
 | Slowness | 300,000 |
 | Blindness | 400,000 |
 | Mining Fatigue | 350,000 |
+| Glowing | 300,000 |
 
 Each purchase lasts **24 real-time hours**. Several different powers may run together. You cannot rebuy an active power at the same or a lower level; upgrading Level I to II buys a new duration at the displayed Level II price.
 

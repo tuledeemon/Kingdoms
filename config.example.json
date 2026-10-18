@@ -12,6 +12,7 @@
     "blockedExplosionBlockDamage": []
   },
   "menuLayoutVersion": 3,
+  "beaconEffectVersion": 1,
   "blueMap": {
     "enabled": true,
     "updateIntervalSeconds": 10,
@@ -3698,6 +3699,7 @@
     "resistance": 150000,
     "regeneration": 250000,
     "mining_fatigue": 350000,
+    "glowing": 300000,
     "haste": 125000,
     "blindness": 400000,
     "jump_boost": 100000,

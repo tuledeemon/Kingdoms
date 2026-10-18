@@ -8,7 +8,7 @@ public final class Rules {
     public enum Flag { EXPLOSIONS, FIRE, FLUIDS, MOBS, MOB_GRIEFING, PISTONS, AUTOMATION, PVP }
     public enum BeaconPower {
         SPEED(true), HASTE(true), RESISTANCE(true), JUMP_BOOST(true), STRENGTH(true), REGENERATION(true),
-        SLOWNESS(false), BLINDNESS(false), MINING_FATIGUE(false);
+        SLOWNESS(false), BLINDNESS(false), MINING_FATIGUE(false), GLOWING(false);
         private final boolean beneficial;
         BeaconPower(boolean beneficial){this.beneficial=beneficial;}
         public boolean beneficial(){return beneficial;}

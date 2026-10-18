@@ -87,7 +87,7 @@ write('Installation', '# Installation\n\n' + installation + '\n\n'
       'The world border and Discord account linking belong to the server setup, not this mod.\n\n'
       '## Verification\n\nThe 1.7.1 release passed 102 unit tests, 545 dedicated-server '
       'checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat '
-      'compatibility have not been tested. Version 1.10.0 builds and passes local rule tests and dedicated-server checks, including instant mining, banned entities, pearls, real explosions, wilderness behavior and lava/water formation. Live client visuals and third-party server-mod compatibility remain unverified.')
+      'compatibility have not been tested. Version 1.10.1 builds and passes local rule tests and dedicated-server checks, including instant mining, banned entities, pearls, real explosions, wilderness behavior and lava/water formation. Live client visuals and third-party server-mod compatibility remain unverified.')
 
 write('Home', '''# Kingdoms Guide
 
@@ -115,7 +115,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - [Placeholders](Placeholders)
 - [BlueMap territories](BlueMap)
 
-This guide covers Kingdoms 1.10.0. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
+This guide covers Kingdoms 1.10.1. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
 ''')
 write('_Sidebar', '''**Kingdoms**
 
@@ -141,7 +141,7 @@ write('_Sidebar', '''**Kingdoms**
 - [Placeholders](Placeholders)
 - [BlueMap territories](BlueMap)
 ''')
-write('_Footer', 'Kingdoms 1.10.0 · Minecraft Java 26.2 · Default settings may differ from your server.')
+write('_Footer', 'Kingdoms 1.10.1 · Minecraft Java 26.2 · Default settings may differ from your server.')
 
 pages = {p.stem for p in WIKI.glob('*.md')}
 links = 0

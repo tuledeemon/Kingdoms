@@ -20,6 +20,7 @@ public final class KingdomBeacon {
             case SLOWNESS -> MobEffects.SLOWNESS;
             case BLINDNESS -> MobEffects.BLINDNESS;
             case MINING_FATIGUE -> MobEffects.MINING_FATIGUE;
+            case GLOWING -> MobEffects.GLOWING;
         };
     }
     public static Item icon(BeaconPower power) {
@@ -33,6 +34,7 @@ public final class KingdomBeacon {
             case SLOWNESS -> Items.COBWEB;
             case BLINDNESS -> Items.INK_SAC;
             case MINING_FATIGUE -> Items.DIAMOND_PICKAXE;
+            case GLOWING -> Items.GLOW_INK_SAC;
         };
     }
     public static String label(BeaconPower power) {
@@ -46,6 +48,7 @@ public final class KingdomBeacon {
             case SLOWNESS -> "Slowness";
             case BLINDNESS -> "Blindness";
             case MINING_FATIGUE -> "Mining fatigue";
+            case GLOWING -> "Glowing";
         };
     }
     public static String description(BeaconPower power) {
@@ -59,6 +62,7 @@ public final class KingdomBeacon {
             case SLOWNESS -> "Enemy members move more slowly.";
             case BLINDNESS -> "Enemy members lose long-range vision.";
             case MINING_FATIGUE -> "Enemy members mine and attack more slowly.";
+            case GLOWING -> "Reveals enemy members through blocks while in claimed land.";
         };
     }
     public static long cost(Config config,BeaconPower power,int level) {

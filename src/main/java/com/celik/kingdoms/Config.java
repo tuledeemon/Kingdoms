@@ -7,6 +7,7 @@ public final class Config {
     public int schemaVersion = 1;
     public WarConfig warRestrictions = new WarConfig();
     public int menuLayoutVersion;
+    public int beaconEffectVersion;
     public AirDropConfig airDrops = new AirDropConfig();
     public ArtifactConfig artifacts = new ArtifactConfig();
     public BlueMapConfig blueMap = new BlueMapConfig();
@@ -44,10 +45,11 @@ public final class Config {
     public Map<String, Long> beaconEffectFees = new LinkedHashMap<>(Map.ofEntries(
         Map.entry("speed",100_000L),Map.entry("haste",125_000L),Map.entry("resistance",150_000L),
         Map.entry("jump_boost",100_000L),Map.entry("strength",200_000L),Map.entry("regeneration",250_000L),
-        Map.entry("slowness",300_000L),Map.entry("blindness",400_000L),Map.entry("mining_fatigue",350_000L)));
+        Map.entry("slowness",300_000L),Map.entry("blindness",400_000L),Map.entry("mining_fatigue",350_000L),Map.entry("glowing",300_000L)));
     public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"leaderboard",34,"beacon",32,"close",49));
     public Map<String, String> menuItems = new LinkedHashMap<>(Map.of("claims","minecraft:grass_block","treasury","minecraft:gold_ingot","members","minecraft:player_head","settings","minecraft:comparator","war","minecraft:iron_sword","protection","minecraft:shield","help","minecraft:book","leaderboard","minecraft:emerald","beacon","minecraft:beacon"));
     public void validate() {
+        if(beaconEffectVersion<1&&beaconEffectFees!=null){beaconEffectFees.putIfAbsent("glowing",300_000L);beaconEffectVersion=1;}
         if(warRestrictions==null)throw new IllegalArgumentException("War restriction configuration is missing");warRestrictions.validate();
         // Restore only the stock 1.8.1 grid; administrator-defined positions remain intact.
         if(menuLayoutVersion==1){

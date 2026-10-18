@@ -19,4 +19,4 @@ See the repository's `BUILDING.md`. Kingdoms is a Fabric server mod; it does not
 
 ## Verification
 
-The 1.7.1 release passed 102 unit tests, 545 dedicated-server checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat compatibility have not been tested. Version 1.10.0 builds and passes local rule tests and dedicated-server checks, including instant mining, banned entities, pearls, real explosions, wilderness behavior and lava/water formation. Live client visuals and third-party server-mod compatibility remain unverified.
+The 1.7.1 release passed 102 unit tests, 545 dedicated-server checks, and 546 checks with C2ME. A connected Minecraft client and live anticheat compatibility have not been tested. Version 1.10.1 builds and passes local rule tests and dedicated-server checks, including instant mining, banned entities, pearls, real explosions, wilderness behavior and lava/water formation. Live client visuals and third-party server-mod compatibility remain unverified.

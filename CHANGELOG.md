@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.10.1
+
+- Added Glowing I to opponent beacon powers, with a default 300,000 treasury fee, normal 24-hour duration, active-war purchase eligibility and claimed-land-only application. It combines with other powers, including Mining Fatigue.
+- Expanded the opponent menu to four effect buttons. Existing price maps receive Glowing through a one-time migration; customized prices remain, and later removal of its entry stays disabled.
+- Vanilla tracking limits and team colors apply; outlines are visible to all viewers tracking the player. No underground/surface building restrictions were introduced.
+- Updated code, configurations and guides for Fabric 26.2.
+
 ## 1.10.0
 
 - Added `/kingdomadmin war` with persistent add/remove/list/clear commands for instant-war blocks, disallowed placements/entities, cancelled explosions and explosion block damage. Registry IDs have admin tab completion; mayor menus cannot change these rules.
