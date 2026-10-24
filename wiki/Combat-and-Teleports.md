@@ -2,7 +2,7 @@
 
 This is an optional **Kingdoms Combat** addon. These rules apply only when the server has installed it. Values below describe its default settings; staff can change them.
 
-For staff mode and hosted events, see **[Staff Mode and Events](https://github.com/tuledeemon/Kingdoms/wiki/Staff-Mode-and-Events)**.
+For staff-mode permissions, moderation tools and hosted events, see **[Staff Mode and Events](https://github.com/tuledeemon/Kingdoms/wiki/Staff-Mode-and-Events)**.
 
 ## Checking your status
 

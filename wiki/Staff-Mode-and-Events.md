@@ -1,16 +1,75 @@
 # Staff Mode and Events
 
-These features belong to the optional **Kingdoms Combat addon**. This page covers staff exemptions, event hosting, the `/event` dialog, permissions and settings. For PvP timers and teleport restrictions, see [Combat and Teleports](https://github.com/tuledeemon/Kingdoms/wiki/Combat-and-Teleports).
+These features belong to the optional **Kingdoms Combat addon**. This page covers staff permissions, moderation tools, event hosting, the `/event` dialog, permissions and settings. For PvP timers and teleport restrictions, see [Combat and Teleports](https://github.com/tuledeemon/Kingdoms/wiki/Combat-and-Teleports).
 
 ## Staff mode
 
-Staff can use **`/staffmode`** to toggle their combat-log exemption. It requires **`kingdomscombat.staffmode`**, with the configured `adminLevel` (OP level 2 by default) as the fallback when no permission is assigned. An explicit LuckPerms denial overrides that fallback. Permissions are checked again while the exemption is used.
+Staff use **`/staffmode`** to enable their staff permissions, moderation tools and combat-log exemption. It requires **`kingdomscombat.staffmode`**, with the configured `adminLevel` (OP level 2 by default) as the fallback when no permission is assigned. An explicit LuckPerms denial overrides that fallback. Permissions are checked again while the exemption is used.
 
 Enabling it clears all your combat, war and AirDrop timers. Hits involving a player in staff mode do not create PvP tags, and logging out in staff mode does not cause an addon logout death. It does not provide damage immunity or change Kingdoms claim protection. Staff mode also bypasses war and AirDrop teleport restrictions, including their cooldown tails, HuskHomes teleports and the `/event` teleport button.
 
-Run `/staffmode` again to return to normal combat rules. The toggle resets on disconnect or server restart. A logout penalty already recorded before entering staff mode still recovers normally; use the existing admin pardon command to intentionally forgive one.
+Run `/staffmode` again to return to normal combat rules and default-group permissions. Turning it off closes the moderation menu, removes creative/spectator mode and disables creative flight. Enabling staff mode itself does not change your game mode. The toggle resets on disconnect or server restart. A logout penalty already recorded before entering staff mode still recovers normally; use the existing admin pardon command to intentionally forgive one.
 
 The **`%kingdomscombat:staffmode%`** placeholder returns `true` while authorized staff mode is enabled, otherwise `false`.
+
+## Permissions while staff mode is off
+
+By default, staff accounts use **only the LuckPerms `default` group's effective permissions** while staff mode is off. Personal grants, staff groups, donor permissions attached to that staff account, wildcards and OP command levels do not carry over. `/staffmode` checks the real staff permission separately, so authorized staff can still turn it on.
+
+Turning staff mode on restores the account's original effective permissions. Assigned groups, permission nodes, prefixes and role-sync data are never deleted or rewritten. Default-group inheritance, denials and context rules continue to apply. Ordinary players keep their normal rank permissions.
+
+An account counts as staff if it is OP or has `kingdomscombat.staffmode`, `kingdomscombat.admin` or `kingdomscombat.staff.tools`. Event-host access alone does not make an account staff. Once recognized, an account stays subject to the off-mode limit for that online session, including after permission revocation.
+
+**Requires LuckPerms Fabric 5.5.85+ for Minecraft 26.2, installed separately.** This release uses its permission-cache integration; it does not bundle LuckPerms. Mods that authorize actions through unrelated custom rank systems are outside LuckPerms permission checks.
+
+## Moderation tools
+
+1. Enable **`/staffmode`**.
+2. Open **`/staff`** and choose an online player.
+3. Choose an action. Warnings, punishments and notes use Minecraft input dialogs for their reason and duration.
+
+All player-operated tools recheck active staff mode and the individual permission at execution. An old menu or dialog cannot act after staff mode is disabled. The addon adds no vanish, teleport, bring, inventory-inspection or ender-chest-inspection tools.
+
+| Command | Purpose |
+| --- | --- |
+| `/staff` | Open the online-player moderation menu |
+| `/staff freeze <player>` | Freeze a player for review |
+| `/staff unfreeze <player>` | End the review; also works offline |
+| `/staff warn <player> <reason>` | Send and record a warning |
+| `/staff mute <player> <duration> <reason>` | Temporary or permanent chat mute |
+| `/staff unmute <player>` | Remove a mute |
+| `/staff kick <player> <reason>` | Disconnect a player with a reason |
+| `/staff ban <player> <duration> <reason>` | Add a native Minecraft ban |
+| `/staff unban <player>` | Remove the native ban |
+| `/staff notes <player>` | Read action history and notes |
+| `/staff note <player> <reason>` | Add a staff-only note |
+| `/staff chat <message>` or `/sc <message>` | Message staff who currently have staff mode enabled |
+
+Punishment durations accept `30m`, `1h30m`, `7d`, decimal amounts such as `1.5h`, or `permanent`. Names and UUIDs are accepted. Offline names must have been seen by the addon; a UUID is also accepted. New offline punishments require cached target permissions so immunity can be checked; otherwise apply them while the player is online or use the server console. Reversals and notes remain available offline. Console moderation does not require an in-game mode and can override target immunity.
+
+### Freeze and chat rules
+
+A frozen player cannot move, fight, take damage, use items, change inventory contents, break/use blocks or teleport. They can still chat unless muted. Freezing clears their combat tag so review logout cannot cause a combat-log death. The frozen location and review survive reconnects and restarts. Logging out is recorded and announced to active staff; it does not automatically ban the player. Staff can end an offline review with `unfreeze`.
+
+Mutes block normal chat plus the configured `mutedCommands` list, including namespaces and Brigadier redirect aliases. Add any custom messaging commands provided by other mods to this list. A mute prevents chat delivery without breaking signed-message processing. Mute and ban deadlines use real time and continue through downtime.
+
+Kicks and bans do not pardon existing combat penalties: a target currently in normal PvP combat follows the existing logout-death setting. Freeze first when conducting a protected review.
+
+### Tool permissions and immunity
+
+Every tool requires active staff mode. Tools are allowed to an authorized active staff member by default; explicitly set a node to `false` to disable that tool for a role. Grant `kingdomscombat.staffmode` only to trusted staff. The `staff.tools` classification node alone does not authorize entering staff mode.
+
+Tool nodes use the `kingdomscombat.staff.` prefix and these suffixes: `menu`, `freeze`, `warn`, `mute`, `kick`, `ban`, `notes`, `chat`. `freeze` covers unfreeze, `mute` covers unmute and `ban` covers unban. `notes` covers both reading and adding notes.
+
+An explicit `kingdomscombat.staff.immune=true` protects a player from new punishments. Active staff are protected too; staff cannot punish themselves. Reversing a punishment and adding a note do not require the target to lose immunity.
+
+```text
+/lp group moderator permission set kingdomscombat.staffmode true
+/lp group moderator permission set kingdomscombat.staff.ban false
+/lp group administrator permission set kingdomscombat.staff.immune true
+```
+
+Review state, mutes, known names and bounded per-player history live in `<world>/kingdoms-combat/moderation.json`. A separate append-only audit file, `staff-audit.jsonl`, records the actor, target UUID, action, reason and timestamp. Vanilla bans also persist in the server's normal ban file. Back up these files with the world.
 
 ## Hosted events
 
@@ -43,7 +102,7 @@ Events and their selected locations persist in `<world>/kingdoms-combat/event.js
 
 ### LuckPerms permissions
 
-Install the matching Fabric LuckPerms build and its permission API. Permissions use the official [Fabric Permissions API](https://github.com/lucko/fabric-permissions-api/blob/master/USAGE.md); the addon does not bundle a permission manager.
+Install LuckPerms Fabric **5.5.85+** for 26.2; it includes the matching Fabric Permissions API. Permissions use the official [Fabric Permissions API](https://github.com/lucko/fabric-permissions-api/blob/master/USAGE.md); the addon does not bundle a permission manager.
 
 | Node | Access |
 | --- | --- |
@@ -59,7 +118,7 @@ For example:
 /lp group eventhost permission set kingdomscombat.eventhost true
 ```
 
-Event hosts do not need OP, staff-mode access or combat-admin access when their own node is granted. Without a permission provider, staff/event/admin commands fall back to `adminLevel`. Explicit `false` assignments override OP fallback. Permission node names are configurable.
+Event hosts do not need OP, staff-mode access or combat-admin access when their own node is granted. Protected commands use `adminLevel` as the OP fallback when their node is unassigned; this release requires LuckPerms. Explicit `false` assignments override OP fallback. Staff accounts must enable staff mode before using their restored event/admin grants. Permission node names are configurable.
 
 ## Placeholders
 
@@ -68,6 +127,8 @@ Use Text Placeholder API with the `kingdomscombat` namespace.
 | Placeholder | Returns |
 | --- | --- |
 | `%kingdomscombat:staffmode%` | Whether authorized staff mode is enabled |
+| `%kingdomscombat:frozen%` | Whether the player is frozen for a review |
+| `%kingdomscombat:muted%` | Whether a current mute is active |
 | `%kingdomscombat:event_active%` | Whether a hosted event is running |
 | `%kingdomscombat:event_name%` | Small-caps hosted event name; empty when inactive |
 | `%kingdomscombat:event_remaining%` | Event seconds remaining, rounded up |
@@ -83,6 +144,21 @@ Settings are shared with the combat addon in `config/kingdoms-combat/config.json
 | `staffModePermission` | `kingdomscombat.staffmode` |
 | `eventHostPermission` | `kingdomscombat.eventhost` |
 | `adminLevel` | `2`; OP fallback when a protected command node is unassigned |
+
+### Moderation settings
+
+| Setting | Default / meaning |
+| --- | --- |
+| `staffDefaultPermissionsWhenOff` | `true`; limit recognized staff to the default group when off |
+| `staffDefaultGroup` | `default`; source group for off-mode permissions |
+| `staffToolPermissionPrefix` | `kingdomscombat.staff.`; tool and immunity node prefix |
+| `staffActionBar` | `true`; show active staff-mode status once per second |
+| `staffReasonMaxLength` | `512`; reason/note limit, 1–2048 characters |
+| `staffNotesLimit` | `100`; retained history entries per player, 1–1000; audit file remains complete |
+| `staffTeleportTimeoutSeconds` | `15`; asynchronous frozen-position recovery timeout, 1–120 seconds; adds no teleport tool |
+| `mutedCommands` | `me`, `say`, `tell`, `msg`, `w`, `teammsg`, `tm`, `whisper`, `message`, `reply`, `r`; edit the JSON list for custom chat commands |
+
+Moderation and permission restrictions operate independently of the combat `enabled` toggle. A config reload applies to permission checks immediately.
 
 ### Hosted event settings
 
