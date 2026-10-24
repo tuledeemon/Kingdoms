@@ -57,11 +57,13 @@ rtp back hub lobby server
 
 Arguments do not bypass a root rule: blocking `home` also blocks `/home base`. Namespaced versions and Brigadier redirect aliases are checked. Administrators can add command paths such as `myplugin travel` and wildcard rules such as `example:*`.
 
-Commands such as `/sethome`, `/homelist`, `/tpdecline` and `/combat` remain available unless staff add them to the list. This addon does not disable vanilla movement, portals or the listed movement items.
+Commands such as `/sethome`, `/homelist`, `/tpdecline` and `/combat` remain available unless staff add them to the list. Ordinary movement and the listed movement items remain available. Portals and other teleports respect the incoming AirDrop destination guard below.
 
 With HuskHomes installed, its teleport/warmup/back/random callbacks also check the **player being teleported**. This catches requests accepted by another player, menu clicks, and a teleport started before the combat or area restriction appeared.
 
 `huskHomesTeleportGuard` controls that extra execution guard independently. To deliberately allow a HuskHomes teleport command while tagged, staff must both remove its command rule and disable the broader HuskHomes guard.
+
+Incoming/unclaimed AirDrops also reject **destinations** within the configured radius when the player starts outside that drop's area. By default this covers 100 horizontal blocks around the landing point. Native server teleports, direct connection teleports and dimension changes are checked, so starting a home/warp elsewhere cannot bypass it. Relative coordinates are resolved before checking. Ordinary movement into the area remains possible. Once any side wins, this destination restriction ends immediately; an existing player's source-side countdown still finishes normally. Staff mode keeps its bypass. Set `/combatadmin set airDropBlockIncomingTeleports false` to disable only destination checking; the combat `enabled` and `airDropRestrictions` settings also govern it. This guard belongs to **Kingdoms Combat**, independently of HuskHomes' extra warmup callback setting.
 
 ## Placeholders
 
@@ -134,6 +136,7 @@ Edit `config/kingdoms-combat/config.json`, then `/combatadmin reload`.
 | `airDropLockSeconds` | `20` | AirDrop timer and its tail |
 | `warRestrictions` | `true` | Refresh during active war |
 | `airDropRestrictions` | `true` | Refresh near active incoming/capturable drops |
+| `airDropBlockIncomingTeleports` | `true` | Also reject teleport arrivals from outside an incoming/capturable drop area; uses the same radius and dimension settings |
 | `restrictWarTerritoryVisitors` | `false` | Also restrict visitors inside wartime claims |
 | `airDropRadius` | `100` | Distance from the landing site's center |
 | `horizontalAirDropRadius` | `true` | Use horizontal distance; `false` selects a sphere |
