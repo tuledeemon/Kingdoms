@@ -192,3 +192,11 @@ The message fields `blockedMessage`, `taggedMessage`, `safeMessage`, `warMessage
 Tags use real timestamps, so their timers keep counting through downtime. Normal shutdown preserves current tags and skips logout deaths by default. A logout penalty is journaled before the death, and its receipt is saved with the player's Minecraft data. On a later join, a saved receipt prevents repeating the same penalty; an interrupted penalty is recovered even during login immunity.
 
 Back up `<world>/kingdoms-combat/` with the world and player data. Do not delete pending penalties to repair ordinary configuration errors; staff can use `/combatadmin pardon` when intentionally forgiving one.
+
+### If combat storage fails
+
+Version 1.1.1 serializes writes and uses a unique temporary file for each save. An ordinary runtime combat-save failure logs an error instead of stopping the server. Unsaved changes remain in memory while the server is running, and retries use `saveIntervalSeconds` (5 seconds by default). Repeated errors are limited to one full log entry per 30 seconds.
+
+Ordinary restricted teleports remain blocked during the outage. A logout death whose penalty cannot be saved is deferred; the pending penalty stays in memory for retry. A player with that pending penalty cannot finish recovery/login until the journal can be saved. Once storage works, the changes are saved and normal penalty recovery resumes. Existing bypass settings still apply to teleport access.
+
+Correct disk-space, path or filesystem-permission problems shown in the server log. Do not delete `state.json` or its pending penalties. Unsaved in-memory changes cannot survive a forced shutdown during a continuing storage outage. Startup refuses an unreadable or unwritable state file rather than silently replacing it. Legacy `state.json.tmp` files are left untouched for manual recovery; new saves do not reuse them.
