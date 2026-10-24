@@ -14,6 +14,7 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -51,6 +52,7 @@ public final class KingdomCores {
         service.require(suitable(level,pos),"Choose an existing breakable block. Air, fire, fluid and unbreakable blocks cannot be cores.");
         core.dimension=KingdomService.dimension(level);core.x=pos.getX();core.y=pos.getY();core.z=pos.getZ();
         core.block=BuiltInRegistries.BLOCK.getKey(level.getBlockState(pos).getBlock()).toString();
+        core.coveredSince=0;core.skyMoveBlocked=false;
     }
     private boolean suitable(ServerLevel level,BlockPos pos){var block=level.getBlockState(pos);return !block.isAir()&&!block.is(BlockTags.FIRE)&&!(block.getBlock() instanceof LiquidBlock)&&block.getDestroySpeed(level,pos)>=0;}
     public void beginSelection(ServerPlayer player){
@@ -98,7 +100,7 @@ public final class KingdomCores {
         Kingdom carrier=service.requireOwn(player.getUUID());
         boolean broken;changing=true;try{broken=vanillaBreak.getAsBoolean();}finally{changing=false;}
         if(!broken)return false;
-        service.edit(owner.id,k->{k.core.carried=true;k.core.carriedByKingdom=carrier.id;k.core.takenAt=service.now();k.core.nonce=UUID.randomUUID();});
+        service.edit(owner.id,k->{k.core.carried=true;k.core.carriedByKingdom=carrier.id;k.core.takenAt=service.now();k.core.nonce=UUID.randomUUID();k.core.coveredSince=0;k.core.skyMoveBlocked=false;});
         ItemStack token=token(service.state.kingdoms.get(owner.id));if(!player.getInventory().add(token))player.drop(token,false);
         service.announce(carrier.display()+" took "+owner.display()+"'s core. Right-click a block in your own claim to secure it before it returns.");
         return true;
@@ -140,6 +142,56 @@ public final class KingdomCores {
                 service.edit(kingdom.id,k->k.core=created);continue;
             }
             if(core.carried&&now>=core.takenAt+service.config.minute(service.config.coreReturnMinutes)){returnCore(kingdom);continue;}
+            checkSky(kingdom,now);
+        }
+    }
+    /** Heightmap checks use loaded chunks only; this must never wait for chunk generation. */
+    void checkSky(Kingdom kingdom,long now){
+        Core core=kingdom.core;if(core==null||core.carried)return;
+        if(!service.config.coreSkyAccessRequired){clearCoverage(kingdom);return;}
+        ServerLevel level=level(core.dimension);if(level==null)return;
+        var chunk=level.getChunkSource().getChunkNow(core.x>>4,core.z>>4);if(chunk==null)return;
+        int top=chunk.getHeight(Heightmap.Types.WORLD_SURFACE,core.x&15,core.z&15);
+        if(top<=core.y){clearCoverage(kingdom);return;}
+        if(core.coveredSince==0){
+            service.edit(kingdom.id,k->{k.core.coveredSince=now;k.core.skyMoveBlocked=false;});
+            notifyMayors(kingdom,kingdom.display()+"'s core is covered at "+core.x+", "+core.y+", "+core.z+". Uncover it within "+service.config.coreCoveredTimeoutSeconds+" seconds or it will move to the top of this column.",true);return;
+        }
+        if(now-core.coveredSince<service.config.coreCoveredTimeoutSeconds*1000L)return;
+        BlockPos target=new BlockPos(core.x,top,core.z);
+        if(!suitable(level,target)||reserved(level,target,kingdom.id)){
+            target=target.above();
+            if(level.isOutsideBuildHeight(target)||reserved(level,target,kingdom.id)||!level.getBlockState(target).isAir()){
+                blockedSkyMove(kingdom);return;
+            }
+            Kingdom holder=service.state.kingdoms.get(core.tributeTo==null?kingdom.id:core.tributeTo);if(holder==null)return;
+            try(var scope=Protection.scope(level,target,holder.mayors.iterator().next(),null,Protection.Cause.PLAYER)){
+                changing=true;try{if(!level.setBlockAndUpdate(target,Blocks.STONE.defaultBlockState())){blockedSkyMove(kingdom);return;}}finally{changing=false;}
+            }
+        }
+        BlockPos destination=target;
+        service.edit(kingdom.id,k->{setLocation(k.core,level,destination);k.core.nonce=UUID.randomUUID();});
+        notifyMayors(kingdom,kingdom.display()+"'s covered core moved to "+destination.getX()+", "+destination.getY()+", "+destination.getZ()+" to restore sky access.",true);
+        service.audit(null,"moved covered core for "+kingdom.name+" to "+destination.toShortString());
+    }
+    private void clearCoverage(Kingdom kingdom){
+        if(kingdom.core.coveredSince!=0||kingdom.core.skyMoveBlocked)service.edit(kingdom.id,k->{k.core.coveredSince=0;k.core.skyMoveBlocked=false;});
+    }
+    private void blockedSkyMove(Kingdom kingdom){
+        if(kingdom.core.skyMoveBlocked)return;
+        service.edit(kingdom.id,k->k.core.skyMoveBlocked=true);
+        notifyMayors(kingdom,kingdom.display()+"'s covered core cannot move above this column. Clear the roof or free space below build height. It will retry automatically.",true);
+    }
+    private void notifyMayors(Kingdom owner,String message,boolean error){
+        Set<UUID> mayors=new HashSet<>(owner.mayors);
+        Kingdom holder=service.state.kingdoms.get(owner.core.tributeTo);if(holder!=null)mayors.addAll(holder.mayors);
+        for(UUID id:mayors){ServerPlayer player=service.server.getPlayerList().getPlayer(id);if(player!=null)tell(player,message,error);}
+    }
+    public void join(ServerPlayer player){
+        for(Kingdom owner:service.state.kingdoms.values()){
+            Core core=owner.core;if(core==null||core.carried||core.coveredSince==0)continue;
+            Kingdom holder=service.state.kingdoms.get(core.tributeTo);
+            if(owner.mayor(player.getUUID())||holder!=null&&holder.mayor(player.getUUID()))tell(player,owner.display()+"'s core is covered at "+core.x+", "+core.y+", "+core.z+". Uncover it to prevent automatic relocation.",true);
         }
     }
     private ServerLevel level(String dimension){return java.util.stream.StreamSupport.stream(service.server.getAllLevels().spliterator(),false).filter(l->KingdomService.dimension(l).equals(dimension)).findFirst().orElse(null);}

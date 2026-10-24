@@ -34,6 +34,18 @@ final class ArtifactBalanceMigration implements TypeAdapterFactory {
                         }
                         obj.addProperty("abilityBalanceVersion",2);
                     }
+                    if(!obj.has("durabilityBalanceVersion")){
+                        if(config){
+                            JsonObject types=obj.has("types")?obj.getAsJsonObject("types"):null;
+                            JsonObject scythe=types!=null&&types.has("void_scythe")?types.getAsJsonObject("void_scythe"):null;
+                            if(scythe!=null&&scythe.has("maxUses")&&scythe.get("maxUses").getAsInt()==10)scythe.addProperty("maxUses",1000);
+                        }else if(obj.has("type")&&obj.get("type").getAsString().equals("void_scythe")&&obj.has("maxUses")&&obj.get("maxUses").getAsInt()==10){
+                            int uses=obj.has("uses")?obj.get("uses").getAsInt():10;
+                            obj.addProperty("maxUses",1000);obj.addProperty("uses",uses*100);
+                            obj.addProperty("revision",obj.has("revision")?Math.incrementExact(obj.get("revision").getAsInt()):1);
+                        }
+                        obj.addProperty("durabilityBalanceVersion",1);
+                    }
                 }
                 return delegate.fromJsonTree(tree);
             }

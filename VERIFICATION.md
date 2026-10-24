@@ -4,6 +4,16 @@ The final source was compiled with Java 25 and tested on an isolated Minecraft 2
 
 **Result for 1.7.1: 545 dedicated-server checks without C2ME, 546 with C2ME 0.4.1-beta.1.0+26.2, and 102 JUnit tests passed.**
 
+## Covered cores, artifact combining and durability — 1.10.2
+
+**122 unit tests and 634 dedicated-server checks passed**, with C2ME 0.4.1-beta.1.0+26.2, Fabric Loader 0.19.5, Fabric API 0.160.0+26.2 and EconomyCraft 1.10.0. No graphical client or production server was used.
+
+- Actual crafting-table, anvil and grindstone output clicks preserve the artifact's authenticated record and consume the expected ingredients, with either input order. Repaired Vampire Swords still heal through real damage events.
+- Two-artifact repair combinations return no result and consume neither input; ordinary-item repairs remain ordinary. Existing compatible enchantment, fixer, smithing restrictions and built-in Wind Burst/grindstone XP checks pass.
+- Void Scythe survives 999 native durability damage and breaks at 1,000. Old 10-durability item stacks preserve their damage fraction when refreshed. Configuration/record migrations preserve IDs, nonces, drop odds, retired status and later customizations.
+- Real terrain checks cover transparent roofs, five-minute timing, timer persistence, resetting when uncovered, same-column relocation without terrain duplication, stone above water/bedrock, build-height failure and retry, carried-core exemption, disabling enforcement, and captured-core tribute preservation. The test fixture first used the wrong height ceiling; correcting it to the version's inclusive maximum verified the actual build-height boundary. Coverage uses loaded chunk heightmaps and never requests chunk generation.
+- Full claim, war, alliance, beacon, core, AirDrop and artifact regression checks completed and the server stopped normally.
+
 ## Wind Burst Spear target regression
 
 - Diamond and Netherite artifact spears reject armor stands, mannequins, minecarts, chest minecarts, boats, chest boats, item frames, glow item frames, paintings, dropped items, falling blocks, End Crystals, interaction entities, block displays, arrows and fireballs.

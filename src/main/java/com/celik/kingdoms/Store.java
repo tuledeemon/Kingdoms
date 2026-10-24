@@ -64,6 +64,7 @@ public final class Store {
         Set<String> corePositions=new HashSet<>();
         for(Kingdom k:s.kingdoms.values())if(k.core!=null){
             Core core=k.core;
+            if(core.coveredSince<0)throw new IllegalStateException("Invalid core sky coverage timer");
             if(core.taxRemainders==null||core.taxRemainders.values().stream().anyMatch(v->v==null||v<0||v>=100))throw new IllegalStateException("Invalid core tax remainder");
             UUID host=core.tributeTo==null?k.id:core.tributeTo;
             if(core.nonce==null||core.dimension==null||core.block==null||core.tributeTo!=null&&(!s.kingdoms.containsKey(core.tributeTo)||core.tributeTo.equals(k.id))||core.carried&&(core.carriedByKingdom==null||core.takenAt<=0))throw new IllegalStateException("Invalid kingdom core");

@@ -51,7 +51,8 @@ public final class Rules {
         public String dimension, block = "minecraft:stone";
         public int x, y, z;
         public boolean carried;
-        public long takenAt;
+        public long takenAt, coveredSince;
+        public boolean skyMoveBlocked;
         public Map<UUID, Integer> taxRemainders = new HashMap<>();
         public Core() {}
         public String claimKey(){return dimension+"|"+(x>>4)+"|"+(z>>4);}

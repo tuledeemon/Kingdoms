@@ -63,7 +63,13 @@ public final class Artifacts {
     public static boolean marked(ItemStack stack){return tag(stack,"kingdoms_artifact")!=null;}
     public static boolean fixerMarked(ItemStack stack){return tag(stack,"kingdoms_fixer")!=null;}
     private static UUID tag(ItemStack stack,String key){try{return UUID.fromString(stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getStringOr(key,""));}catch(Exception e){return null;}}
-    Record record(ItemStack stack){UUID id=tag(stack,"kingdoms_artifact");Record r=data.records.get(id);if(r==null||r.retired||stack.getCount()!=1||!r.nonce.equals(tag(stack,"kingdoms_nonce")))return null;return r;}
+    Record record(ItemStack stack){UUID id=tag(stack,"kingdoms_artifact");Record r=data.records.get(id);if(r==null||r.retired||stack.getCount()!=1||!r.nonce.equals(tag(stack,"kingdoms_nonce")))return null;migrateScytheDurability(stack,r);return r;}
+    private void migrateScytheDurability(ItemStack stack,Record r){
+        int maximum=r.upgraded&&r.upgradedMaxUses>0?r.upgradedMaxUses:r.maxUses;
+        if(r.type.equals("void_scythe")&&maximum==1000&&stack.getMaxDamage()==10&&marked(stack)){
+            int damage=stack.getDamageValue();stack.set(DataComponents.MAX_DAMAGE,1000);stack.setDamageValue(Math.min(999,damage*100));
+        }
+    }
     private boolean lease(ItemStack stack,Record r){ItemStack old=leases.get(r.id);if(old==null||old==stack||old.isEmpty()||!physical(old)){leases.put(r.id,stack);return true;}return false;}
     private boolean physical(ItemStack stack){Set<ServerPlayer> players=new HashSet<>(service.server.getPlayerList().getPlayers());players.addAll(observedPlayers.values());for(ServerPlayer p:players){for(int i=0;i<p.getInventory().getContainerSize();i++)if(p.getInventory().getItem(i)==stack)return true;for(var slot:p.containerMenu.slots)if(slot.getItem()==stack)return true;if(p.containerMenu.getCarried()==stack)return true;}for(ServerLevel l:service.server.getAllLevels())for(Entity e:l.getAllEntities())if(e instanceof ItemEntity item&&!item.isRemoved()&&item.getItem()==stack)return true;return false;}
     public Record usable(ItemStack stack){Record r=record(stack);return healthy&&config().enabled&&r!=null&&config().types.containsKey(r.type)&&config().types.get(r.type).enabled&&lease(stack,r)&&ArtifactRules.active(r,service.now())?r:null;}
@@ -73,6 +79,7 @@ public final class Artifacts {
     private static ChatFormatting color(String rarity){return switch(rarity){case "mythic"->ChatFormatting.LIGHT_PURPLE;case "legendary"->ChatFormatting.GOLD;case "arcane"->ChatFormatting.AQUA;default->ChatFormatting.GRAY;};}
     private Component line(String text){return Component.literal(Ui.caps(text)).withStyle(ChatFormatting.GRAY);}
     public void refresh(ItemStack stack,Record r){
+        migrateScytheDurability(stack,r);
         int catalog=stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getIntOr("kingdoms_catalog",0);
         stack.set(DataComponents.MAX_STACK_SIZE,1);stack.remove(DataComponents.UNBREAKABLE);
         int max=r.upgraded&&r.upgradedMaxUses>0?r.upgradedMaxUses:r.maxUses;
@@ -109,7 +116,20 @@ public final class Artifacts {
         if(target instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragonPart part)target=part.parentMob;
         return target instanceof LivingEntity&&!(target instanceof net.minecraft.world.entity.decoration.ArmorStand)&&!(target instanceof net.minecraft.world.entity.decoration.Mannequin)&&target.isAlive();
     }
-    public ItemStack enchantPreview(ItemStack input,ItemStack result){Record r=record(input);if(r==null||result.isEmpty())return ItemStack.EMPTY;refresh(result,r);return result;}
+    public ItemStack enchantPreview(ItemStack input,ItemStack result){
+        Record r=record(input);if(r==null||result.isEmpty())return ItemStack.EMPTY;
+        int oldMaximum=result.getMaxDamage(),remaining=oldMaximum-result.getDamageValue();refresh(result,r);
+        if(result.isDamageableItem()&&oldMaximum!=result.getMaxDamage())result.setDamageValue(Math.max(0,result.getMaxDamage()-remaining));
+        return result;
+    }
+    /** Preserve exactly one identity. Combining two artifacts must never discard a power. */
+    public void prepareCombination(ItemStack... inputs){for(ItemStack input:inputs)if(marked(input))record(input);}
+    public ItemStack combinationPreview(ItemStack left,ItemStack right,ItemStack result){
+        if(marked(left)&&marked(right)||fixerMarked(left)||fixerMarked(right))return ItemStack.EMPTY;
+        if(marked(left))return enchantPreview(left,result);
+        if(marked(right))return enchantPreview(right,result);
+        return result;
+    }
     private ItemStack fixer(Fixer f){ItemStack s=new ItemStack(item(config().fixerItem));s.set(DataComponents.MAX_STACK_SIZE,1);CustomData.update(DataComponents.CUSTOM_DATA,s,t->{t.putString("kingdoms_fixer",f.id.toString());t.putString("kingdoms_nonce",f.nonce.toString());});s.set(DataComponents.CUSTOM_NAME,Component.literal(Ui.caps("Artifact Fixer")).withStyle(ChatFormatting.AQUA));s.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true);s.set(DataComponents.LORE,new ItemLore(List.of(line("Restores "+Math.round(config().repairFraction*100)+"% of durability or Guardian Angel charges"),line("Use in an anvil • "+config().repairLevels+" experience levels"),line("Cannot repair ordinary items"))));return s;}
     /** Reserves an identity before the AirDrop outcome is saved. Orphan reservations reconcile on restart. */
     List<AirDropRules.Reward> roll(UUID drop,long day,Random random){

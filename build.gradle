@@ -1,5 +1,5 @@
 plugins { id 'net.fabricmc.fabric-loom' version '1.16.3' }
-version = '1.10.1'
+version = '1.10.2'
 group = 'com.celik.kingdoms'
 base { archivesName = 'kingdoms' }
 repositories {

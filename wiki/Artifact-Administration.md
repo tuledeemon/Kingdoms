@@ -50,3 +50,11 @@ Type IDs: `thunder_axe`, `thorns_shield`, `frostbite_sword`, `multi_pickaxe`, `v
 ## Existing-server migration
 
 The old catalogue is replaced once when loading its configuration. Overall AirDrop artifact odds and fixer settings remain intact. Removed identities are retired and lose their abilities when encountered. Shared old types adopt the new mechanics, preserving their IDs, owners and upgrades; old remaining-use percentages become native durability on their item stacks. Current-version administrator changes survive reloads. Migration also covers records inside pending transactions. Kingdom/world/AirDrop files are not deleted.
+
+## Artifact repair and Void Scythe update (1.10.2)
+
+The default Void Scythe maximum is 1,000 native durability. Older 10-durability defaults and saved identities migrate once; existing authentic stacks keep their remaining durability percentage when encountered. Other custom values survive. The migration marker is `durabilityBalanceVersion`; leave it in place so later customizations are not reset.
+
+One artifact can be repaired with an ordinary matching item in crafting, anvils or grindstones, regardless of input order. Its identity and ability remain. Two-artifact combinations produce no output, and consume neither input. Smithing artifacts remains blocked; use the dedicated Netherite upgrade menu. Vanilla crafting/grindstone enchantment removal still applies, except the spear's built-in Wind Burst is preserved.
+
+Items that already lost their identity before the update cannot safely be matched back to a unique artifact record; an administrator must issue a replacement if needed.

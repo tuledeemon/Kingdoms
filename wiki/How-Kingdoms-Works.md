@@ -228,6 +228,12 @@ Your kingdom's core marks an existing block. Initially it is at the topmost suit
 
 Dust outlines the core nearby. During **active war**, its glow becomes thicker and uses the maximum display viewing range. Minecraft's terrain rendering still limits how far you can actually see it. Preparation does not activate the glow, and there is no core-direction action-bar compass.
 
+### Keep your core open to the sky
+
+If any block covers your core for **five continuous minutes**, its marker moves to the top of the **same X/Z column**. Glass, leaves and liquids count as cover. Mayors of the owning and holding kingdoms receive a warning when coverage starts and another message when it moves. Removing the roof before the deadline resets the timer.
+
+If the highest block is fluid, fire, unbreakable or reserved for another core, a plain stone block is created above it for the core. At build height, mayors are warned and relocation retries until there is room. The old block stays in place. This also applies to captured cores and does not change tribute. Carried core items are exempt. Timers survive restarts; unloaded columns are checked when loaded again. Administrators can change the timeout or disable this rule.
+
 ### Move your own core
 
 Go to **Settings → Town center → Change block**, then right-click an existing breakable block in your own claims within two minutes.

@@ -18,6 +18,7 @@
     "ArtifactLivingMixin",
     "ArtifactInventoryMixin",
     "ArtifactAnvilMixin",
+    "ArtifactRepairRecipeMixin",
     "ArtifactSmithingMixin",
     "AirDropChestMixin",
     "AirDropReceiptsMixin",

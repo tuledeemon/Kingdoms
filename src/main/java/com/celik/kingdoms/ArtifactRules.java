@@ -7,6 +7,7 @@ public final class ArtifactRules {
         public UUID id=UUID.randomUUID(),nonce=UUID.randomUUID(),drop,owner;
         public String type,name,baseItem,rarity;
         public int abilityBalanceVersion=2;
+        public int durabilityBalanceVersion=1;
         public int uses,maxUses,cooldownSeconds,revision;
         public double chance,value,durationSeconds,upgradedValue,upgradedDurationSeconds;
         public double legacyRemainingFraction=1;

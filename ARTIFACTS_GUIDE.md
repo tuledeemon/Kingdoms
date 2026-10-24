@@ -11,7 +11,7 @@ Eight artifacts replace the previous catalogue. They work on a Fabric 26.2 serve
 | Frostbite Sword | Arcane / Diamond Sword | Each successful hostile hit adds one second of real freezing | Adds 1.5 seconds per hit |
 | Multi Pickaxe | Legendary / Diamond Pickaxe | Mines a 2×2 square viewed from the mined face; the original block is top-left | Mines a centered 3×3 square |
 | Vampire Sword | Relic / Diamond Sword | Heals the wielder by 25% of actual damage dealt, including absorption; overkill does not count | Heals 50% |
-| Void Scythe | Mythic / Diamond Hoe | Each successful hostile hit disables held-item actions for two seconds; 10 vanilla durability | Netherite appearance; same ability and durability |
+| Void Scythe | Mythic / Diamond Hoe | Each successful hostile hit disables held-item actions for two seconds; 1,000 vanilla durability | Netherite appearance; same ability and durability |
 | Guardian Angel | Legendary / Heart of the Sea | Right-click for three seconds without cobweb slowing; 100 charges | No Netherite upgrade |
 | Wind Burst Spear | Relic / Diamond Spear | Wind Burst II against living targets only, with Minecraft's falling-hit activation rules | Netherite Spear with the same target rules and Wind Burst II |
 
@@ -28,6 +28,10 @@ Guardian Angel uses the same approach as CustomGear's Webmaster Boots: nearby re
 ## Durability, repair and enchantments
 
 Tools, weapons and shields use **Minecraft durability**, including the visible durability bar and normal breaking. Vanilla actions can cost more than one durability point. Mending, Unbreaking, enchanting tables, compatible anvil books, ordinary repair materials and grindstones work normally. Wind Burst II is the spear's built-in effect: grinding removes its other non-curse enchantments but preserves Wind Burst without granting repeatable XP for it.
+
+Combining an artifact with an ordinary matching item preserves its ability and identity in a crafting grid, anvil or grindstone, in either input order. Ordinary repair costs and enchantment-removal rules still apply; the spear always retains its built-in Wind Burst. Combining **two artifacts** is blocked in all three places so neither artifact is consumed or loses its power.
+
+Void Scythe now defaults to **1,000 durability**, including its Netherite upgrade. On the first update from older versions, the old default of 10 is changed to 1,000 in configuration and saved artifact identities. Existing item stacks retain their wear percentage: an old scythe with 3 of 10 durability remaining becomes 300 of 1,000. Other custom durability values are preserved; later administrator changes remain configurable.
 
 Guardian Angel uses custom charges instead. Its final charge still grants the full effect. Holding right-click while the effect is active does not spend additional charges.
 

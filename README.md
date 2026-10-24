@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.10.2:** Covered cores move to the top of their column after five minutes, with mayor warnings and a stone fallback above fluids/unbreakable blocks. Artifact repairs keep their abilities in crafting, anvils and grindstones, in either input order. Void Scythe now has 1,000 durability, with existing default scythes migrated while preserving wear.
+
 **1.10.1:** Added Glowing as a purchasable enemy beacon effect for spotting opponents through blocks, including underground. Includes the administrator war rules: selected blocks become instant to mine, with separate block-placement/entity bans, pearl teleport restrictions, explosion detonation/block-damage lists and lava-casting prevention. Configure everything through `/kingdomadmin war`. Includes alliances and joint wars. See the [changelog](CHANGELOG.md).
 
 ## Player guide

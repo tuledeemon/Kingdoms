@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.10.2
+
+- Require placed cores, including captured cores, to have sky access. After five continuously covered minutes, move the marker to the highest suitable block in the same column. Glass, leaves and liquids count as cover. Create stone above an unsuitable or reserved top block; warn and retry if build height prevents this.
+- Notify owner/holder mayors when covered, moved or blocked, and remind online mayors on joining. Save coverage timers across restarts, reset them when uncovered/moved/carried, expose configurable enforcement and timeout, and show coverage in the core menu. Check only already-loaded chunks.
+- Preserve authenticated artifact identities and abilities in crafting-grid repairs, anvils and grindstones, including artifacts in the right/second input. Keep ordinary enchantment-removal rules and the spear's built-in Wind Burst.
+- Block merging two artifacts so neither identity or ability is discarded. Keep normal materials, compatible books and Artifact Fixers working.
+- Raise Void Scythe's default native durability from 10 to 1,000. Migrate old default configuration and saved identities once, including pending transactions; preserve other custom values and native item wear percentages.
+- Exercise native recipe assembly and actual crafting-table, anvil and grindstone output clicks in both orders, with real Vampire ability activation after repair.
+
 ## 1.10.1
 
 - Added Glowing I to opponent beacon powers, with a default 300,000 treasury fee, normal 24-hour duration, active-war purchase eligibility and claimed-land-only application. It combines with other powers, including Mining Fatigue.

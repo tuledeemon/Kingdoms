@@ -41,7 +41,8 @@ final class ArtifactIntegration {
    service.server.setWeatherParameters(0,1000,true,true);level.setRainLevel(1);level.setThunderLevel(1);int damage=axe.getDamageValue();axe.hurtAndBreak(100,level,player,x->{});check.accept(axe.getDamageValue()==damage,"upgraded Thunder Axe spends no durability in thunderstorms");
    thunder.readyAt=service.now()+60000;check.accept(a.freeDurability(axe,level),"weather durability protection remains active during configured ability cooldowns");thunder.readyAt=0;
    service.server.setWeatherParameters(1000,0,false,false);level.setRainLevel(0);level.setThunderLevel(0);check.accept(!a.freeDurability(axe,level),"Thunder Axe resumes normal durability outside thunderstorms");
-   Record scythe=issue(a,cfg,"void_scythe");ItemStack fragile=a.create(scythe);player.setItemInHand(InteractionHand.MAIN_HAND,fragile);fragile.hurtAndBreak(10,level,player,x->{});check.accept(fragile.isEmpty()&&a.data.records.get(scythe.id).retired,"Void Scythe breaks normally after its ten durability is exhausted");
+   Record scythe=issue(a,cfg,"void_scythe");ItemStack fragile=a.create(scythe);player.setItemInHand(InteractionHand.MAIN_HAND,fragile);fragile.hurtAndBreak(999,level,player,x->{});check.accept(!fragile.isEmpty()&&fragile.getMaxDamage()==1000&&fragile.getDamageValue()==999,"Void Scythe survives 999 native durability damage");fragile.hurtAndBreak(1,level,player,x->{});check.accept(fragile.isEmpty()&&a.data.records.get(scythe.id).retired,"Void Scythe breaks normally after 1000 durability is exhausted");
+   combinationRepairs(service,player,cfg,check);
    Zombie target=new Zombie(EntityTypes.ZOMBIE,level);target.setPos(player.getX(),player.getY(),player.getZ()-2);target.setHealth(20);
    Record vampire=issue(a,cfg,"vampire_sword");ItemStack sword=a.create(vampire);player.setItemInHand(InteractionHand.MAIN_HAND,sword);player.setHealth(8);
    target.invulnerableTime=0;float before=target.getHealth();target.hurtServer(level,player.damageSources().playerAttack(player),8);float dealt=before-target.getHealth();check.accept(dealt>0&&Math.abs(player.getHealth()-(8+dealt*.25))<.001,"Vampire heals exactly one quarter of actual post-armor damage");
@@ -98,6 +99,49 @@ final class ArtifactIntegration {
   finally{a.guardian.clear(player);a.leave(player);a.leave(other);player.closeContainer();player.stopUsingItem();service.config.artifacts=original;a.data=saved;service.store.write("artifacts.json",saved);for(int i=0;i<inventory.length;i++)player.getInventory().setItem(i,inventory[i]);player.setPos(oldPosition);other.setPos(oldOther);player.setHealth(oldHealth);player.setOnGround(oldGround);player.fallDistance=oldFall;service.server.setWeatherParameters(1000,0,false,false);level.setRainLevel(0);level.setThunderLevel(0);}
  }
  static Record issue(Artifacts artifacts,ArtifactConfig cfg,String key){Record r=ArtifactRules.generate(key,cfg.types.get(key),new Random(1));r.delivered=true;artifacts.data.records.put(r.id,r);return r;}
+ private static void combinationRepairs(KingdomService service,ServerPlayer player,ArtifactConfig cfg,BiConsumer<Boolean,String> check){
+  Artifacts a=service.artifacts;var level=player.level();
+  for(boolean reverse:List.of(false,true)){
+   player.closeContainer();player.getInventory().clearContent();
+   Record r=issue(a,cfg,"vampire_sword");ItemStack artifact=a.create(r);artifact.setDamageValue(1200);
+   ItemStack normal=new ItemStack(Items.DIAMOND_SWORD);normal.setDamageValue(1300);
+   var grid=net.minecraft.world.item.crafting.CraftingInput.of(2,2,reverse?List.of(normal,artifact,ItemStack.EMPTY,ItemStack.EMPTY):List.of(artifact,normal,ItemStack.EMPTY,ItemStack.EMPTY));
+   var recipe=net.minecraft.world.item.crafting.RepairItemRecipe.INSTANCE;
+   check.accept(recipe.matches(grid,level),"crafting repair accepts one artifact in either input order: "+reverse);
+   ItemStack crafted=recipe.assemble(grid);check.accept(a.record(crafted)==r&&crafted.getDamageValue()<1200,"crafting repair retains authenticated identity and repairs durability: "+reverse);
+   player.setItemInHand(InteractionHand.MAIN_HAND,crafted);a.observe(player,crafted);player.setHealth(8);
+   var zombie=new Zombie(EntityTypes.ZOMBIE,level);zombie.setPos(player.getX(),player.getY(),player.getZ()-2);float before=zombie.getHealth();zombie.hurtServer(level,player.damageSources().playerAttack(player),4);
+   check.accept(player.getHealth()>8&&zombie.getHealth()<before,"crafted artifact still activates its real Vampire ability: "+reverse);
+   player.getInventory().clearContent();a.leave(player);
+   Record menuRecord=issue(a,cfg,"vampire_sword");ItemStack menuArtifact=a.create(menuRecord);menuArtifact.setDamageValue(1200);ItemStack menuNormal=new ItemStack(Items.DIAMOND_SWORD);menuNormal.setDamageValue(1300);
+   CraftingMenu craft=new CraftingMenu(414,player.getInventory(),ContainerLevelAccess.create(level,player.blockPosition()));player.containerMenu=craft;craft.getSlot(1).set(reverse?menuNormal:menuArtifact);craft.getSlot(2).set(reverse?menuArtifact:menuNormal);
+   check.accept(craft.getSlot(0).hasItem()&&a.record(craft.getSlot(0).getItem())==menuRecord,"actual crafting-table output carries artifact identity: "+reverse);
+   craft.clicked(0,0,ContainerInput.PICKUP,player);check.accept(a.usable(craft.getCarried())==menuRecord&&craft.getSlot(1).getItem().isEmpty()&&craft.getSlot(2).getItem().isEmpty(),"actual crafting-table take consumes inputs and leaves a usable artifact: "+reverse);
+   player.closeContainer();player.getInventory().clearContent();a.leave(player);
+   artifact=a.create(issue(a,cfg,"vampire_sword"));artifact.setDamageValue(1200);normal=new ItemStack(Items.DIAMOND_SWORD);normal.setDamageValue(1300);
+   AnvilMenu anvil=new AnvilMenu(410,player.getInventory());player.containerMenu=anvil;player.experienceLevel=100;
+   anvil.getSlot(0).set(reverse?normal:artifact);anvil.getSlot(1).set(reverse?artifact:normal);
+   Record expected=a.record(artifact);check.accept(anvil.getSlot(2).hasItem()&&a.record(anvil.getSlot(2).getItem())==expected,"anvil keeps the artifact identity from either input: "+reverse);
+   anvil.clicked(2,0,ContainerInput.PICKUP,player);ItemStack taken=anvil.getCarried();
+   check.accept(a.record(taken)==expected&&anvil.getSlot(0).getItem().isEmpty()&&anvil.getSlot(1).getItem().isEmpty(),"real anvil take consumes ingredients without stripping the artifact: "+reverse);
+   player.closeContainer();player.getInventory().clearContent();a.leave(player);
+   artifact=a.create(issue(a,cfg,"vampire_sword"));artifact.setDamageValue(1200);normal=new ItemStack(Items.DIAMOND_SWORD);normal.setDamageValue(1300);
+   GrindstoneMenu grind=new GrindstoneMenu(411,player.getInventory());player.containerMenu=grind;grind.getSlot(0).set(reverse?normal:artifact);grind.getSlot(1).set(reverse?artifact:normal);
+   expected=a.record(artifact);check.accept(grind.getSlot(2).hasItem()&&a.record(grind.getSlot(2).getItem())==expected,"grindstone preserves artifact identity in either order: "+reverse);
+   grind.clicked(2,0,ContainerInput.PICKUP,player);check.accept(a.record(grind.getCarried())==expected&&grind.getSlot(0).getItem().isEmpty()&&grind.getSlot(1).getItem().isEmpty(),"real grindstone output remains authenticated after inputs are consumed: "+reverse);
+  }
+  player.closeContainer();player.getInventory().clearContent();a.leave(player);
+  ItemStack first=a.create(issue(a,cfg,"vampire_sword")),second=a.create(issue(a,cfg,"frostbite_sword"));first.setDamageValue(500);second.setDamageValue(500);
+  var grid=net.minecraft.world.item.crafting.CraftingInput.of(2,2,List.of(first,second,ItemStack.EMPTY,ItemStack.EMPTY));
+  check.accept(!net.minecraft.world.item.crafting.RepairItemRecipe.INSTANCE.matches(grid,level)&&net.minecraft.world.item.crafting.RepairItemRecipe.INSTANCE.assemble(grid).isEmpty(),"crafting cannot consume two artifact identities into one item");
+  AnvilMenu anvil=new AnvilMenu(412,player.getInventory());anvil.getSlot(0).set(first);anvil.getSlot(1).set(second);check.accept(!anvil.getSlot(2).hasItem(),"anvil blocks merging two artifacts without consuming them");
+  GrindstoneMenu grind=new GrindstoneMenu(413,player.getInventory());grind.getSlot(0).set(first);grind.getSlot(1).set(second);check.accept(!grind.getSlot(2).hasItem(),"grindstone blocks merging two artifacts without consuming them");
+  Record legacy=issue(a,cfg,"void_scythe");ItemStack old=a.create(legacy);old.set(DataComponents.MAX_DAMAGE,10);old.setDamageValue(7);a.observe(player,old);
+  check.accept(old.getMaxDamage()==1000&&old.getDamageValue()==700&&a.record(old)==legacy,"existing ten-durability scythes migrate to 1000 while retaining their wear fraction and identity");
+  ItemStack plainFirst=new ItemStack(Items.DIAMOND_SWORD),plainSecond=plainFirst.copy();plainFirst.setDamageValue(500);plainSecond.setDamageValue(500);
+  grid=net.minecraft.world.item.crafting.CraftingInput.of(2,2,List.of(plainFirst,plainSecond,ItemStack.EMPTY,ItemStack.EMPTY));
+  check.accept(!Artifacts.marked(net.minecraft.world.item.crafting.RepairItemRecipe.INSTANCE.assemble(grid)),"ordinary crafting repairs remain ordinary items");
+ }
  private static long countBolts(ServerLevel level){long n=0;for(Entity e:level.getAllEntities())if(e instanceof LightningBolt&&!e.isRemoved())n++;return n;}
  private static void spearTargets(Artifacts artifacts,ArtifactConfig cfg,ServerPlayer player,ServerPlayer other,BiConsumer<Boolean,String> check){
   var level=player.level();ItemStack oldHand=player.getMainHandItem(),oldOff=player.getOffhandItem();var position=player.position();var movement=player.getDeltaMovement();float yaw=player.getYRot(),headYaw=player.getYHeadRot(),pitch=player.getXRot();double fall=player.fallDistance;

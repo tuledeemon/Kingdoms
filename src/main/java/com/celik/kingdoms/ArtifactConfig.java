@@ -4,6 +4,7 @@ import java.util.*;
 public final class ArtifactConfig {
     public boolean enabled=true,announcements=true,rebindOnTrade=true;
     public int abilityBalanceVersion=2;
+    public int durabilityBalanceVersion=1;
     public int fixerCount=2,repairLevels=5,upgradeIngots=3;
     public double fixerChance=.5,repairFraction=.25;
     public Map<Integer,Double> chanceByDay=new TreeMap<>(Map.of(1,.001,3,.0015,5,.002,7,.003));
@@ -38,7 +39,7 @@ public final class ArtifactConfig {
         m.put("frostbite_sword",new Type("Frostbite Sword","diamond_sword","arcane",80,0,0,1));m.get("frostbite_sword").upgradedDurationSeconds=1.5;
         m.put("multi_pickaxe",new Type("Multi Pickaxe","diamond_pickaxe","legendary",35,0,0,0));
         m.put("vampire_sword",new Type("Vampire Sword","diamond_sword","relic",120,0,.25,0));m.get("vampire_sword").upgradedValue=.5;
-        m.put("void_scythe",new Type("Void Scythe","diamond_hoe","mythic",10,10,0,2));
+        m.put("void_scythe",new Type("Void Scythe","diamond_hoe","mythic",10,1000,0,2));
         m.put("guardian_angel",new Type("Guardian Angel","heart_of_the_sea","legendary",35,100,0,3));m.get("guardian_angel").netheriteUpgradeable=false;
         m.put("wind_burst_spear",new Type("Wind Burst Spear","diamond_spear","relic",120,0,0,0));m.get("wind_burst_spear").variants.getFirst().amplifier=2;
         return m;

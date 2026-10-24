@@ -11,7 +11,7 @@ public abstract class ArtifactGrindstoneMixin {
  @Shadow @Final private Container repairSlots;
  @Shadow @Final private Container resultSlots;
  @Inject(method="createResult",at=@At("HEAD"),cancellable=true)
- private void block(CallbackInfo ci){for(int i=0;i<2;i++)if(Artifacts.fixerMarked(repairSlots.getItem(i))){resultSlots.setItem(0,ItemStack.EMPTY);ci.cancel();return;}}
+ private void block(CallbackInfo ci){if(KingdomsMod.service!=null)KingdomsMod.service.artifacts.prepareCombination(repairSlots.getItem(0),repairSlots.getItem(1));if(Artifacts.marked(repairSlots.getItem(0))&&Artifacts.marked(repairSlots.getItem(1))){resultSlots.setItem(0,ItemStack.EMPTY);ci.cancel();return;}for(int i=0;i<2;i++)if(Artifacts.fixerMarked(repairSlots.getItem(i))){resultSlots.setItem(0,ItemStack.EMPTY);ci.cancel();return;}}
  @Inject(method="createResult",at=@At("RETURN"))
- private void result(CallbackInfo ci){if(KingdomsMod.service!=null)for(int i=0;i<2;i++)if(Artifacts.marked(repairSlots.getItem(i))){resultSlots.setItem(0,KingdomsMod.service.artifacts.enchantPreview(repairSlots.getItem(i),resultSlots.getItem(0)));return;}}
+ private void result(CallbackInfo ci){if(KingdomsMod.service!=null)resultSlots.setItem(0,KingdomsMod.service.artifacts.combinationPreview(repairSlots.getItem(0),repairSlots.getItem(1),resultSlots.getItem(0)));}
 }

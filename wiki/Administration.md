@@ -76,6 +76,8 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `beaconRefreshTicks` | 80 | How frequently active powers are reapplied |
 | `coreTaxPercent` | 20 | Tribute percentage charged on incoming credits |
 | `coreReturnMinutes` | 10 | Real-time timeout for unplaced core items |
+| `coreSkyAccessRequired` | true | Relocate continuously covered placed cores within the same column, including captured cores; notify owner/holder mayors |
+| `coreCoveredTimeoutSeconds` | 300 | Continuous coverage before relocation; 1..604800 seconds; removing the cover resets the timer |
 | `coreParticles` | true | Dust along all twelve core-block edges |
 | `coreGlow` | true | Glowing frame using vanilla display packets |
 | `coreGlowOnlyDuringWar` | true | Restrict glow to active war, excluding preparation |
@@ -84,6 +86,8 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `coreParticleIntervalTicks` | 10 | Dust refresh interval; 5..100 ticks |
 | `coreDustSizePercent` | 45 | Dust size as a percentage of normal; 5..200 |
 | `coreOutlineThicknessMilli` | 12 | Frame thickness in thousandths of a block; 2..100 |
+
+Set these with `/kingdomadmin set coreSkyAccessRequired true` and `/kingdomadmin set coreCoveredTimeoutSeconds 300`. Sky enforcement uses the highest non-air block, so transparent blocks, leaves and fluids count as roofs. The core marker moves without removing its original block or changing tribute. If the highest block is unsuitable or reserved, stone is created above it; build-height failures warn once and retry automatically. Timers are saved and checked once per second in already-loaded chunks only. Offline mayors receive a reminder on joining if the core is still covered.
 | `kingdomRejoinCooldownMinutes` | 60 | Wait after leaving/kicking before rejoining the same kingdom; 0 disables |
 | `beaconEnabled`, `beaconFx` | true | Master power application and purchase-FX toggles |
 | `beaconPurchaseSound`, `beaconHostileSound` | Vanilla beacon/guardian sounds | Purchase notification sounds |

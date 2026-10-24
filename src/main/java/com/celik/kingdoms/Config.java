@@ -18,6 +18,8 @@ public final class Config {
     public boolean alliancesEnabled = true, alliedFriendlyFire = false, jointWarsEnabled = true, jointWarRequiresOnlineMajority = true;
     public int maxAllies = 5, maxKingdomsPerWarSide = 4, allianceRequestMinutes = 60;
     public int coreReturnMinutes = 10, coreTaxPercent = 20, kingdomRejoinCooldownMinutes = 60;
+    public boolean coreSkyAccessRequired = true;
+    public int coreCoveredTimeoutSeconds = 300;
     public boolean coreParticles = true;
     public boolean coreGlow = true;
     public boolean coreGlowOnlyDuringWar = true;
@@ -49,6 +51,7 @@ public final class Config {
     public Map<String, Integer> menuSlots = new LinkedHashMap<>(Map.of("claims",10,"treasury",12,"members",14,"settings",16,"war",28,"protection",30,"leaderboard",34,"beacon",32,"close",49));
     public Map<String, String> menuItems = new LinkedHashMap<>(Map.of("claims","minecraft:grass_block","treasury","minecraft:gold_ingot","members","minecraft:player_head","settings","minecraft:comparator","war","minecraft:iron_sword","protection","minecraft:shield","help","minecraft:book","leaderboard","minecraft:emerald","beacon","minecraft:beacon"));
     public void validate() {
+        if(coreCoveredTimeoutSeconds<1||coreCoveredTimeoutSeconds>604800)throw new IllegalArgumentException("Core covered timeout must be 1..604800 seconds");
         if(beaconEffectVersion<1&&beaconEffectFees!=null){beaconEffectFees.putIfAbsent("glowing",300_000L);beaconEffectVersion=1;}
         if(warRestrictions==null)throw new IllegalArgumentException("War restriction configuration is missing");warRestrictions.validate();
         // Restore only the stock 1.8.1 grid; administrator-defined positions remain intact.
