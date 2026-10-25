@@ -36,7 +36,7 @@ public final class PistonMoves {
         // Retraction can also finish an extending piston two blocks in front.
         BlockPos two=pos.relative(direction,2);
         if(event!=0&&level.getBlockState(two).is(Blocks.MOVING_PISTON))positions.add(two);
-        for(BlockPos target:positions)if(!Protection.piston(level,pos,target))return null;
+        for(BlockPos target:positions)if(!Protection.piston(level,pos,target,event==0))return null;
         return positions;
     }
     private PistonMoves(){}

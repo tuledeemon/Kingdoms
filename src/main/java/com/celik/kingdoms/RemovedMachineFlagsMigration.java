@@ -17,7 +17,7 @@ final class RemovedMachineFlagsMigration implements TypeAdapterFactory {
                 JsonElement tree=JsonParser.parseReader(in);
                 if(tree.isJsonObject()&&tree.getAsJsonObject().get(field) instanceof JsonArray flags){
                     JsonArray kept=new JsonArray();
-                    for(JsonElement flag:flags)if(!flag.isJsonPrimitive()||!flag.getAsJsonPrimitive().isString()||!java.util.Set.of("PISTONS","AUTOMATION").contains(flag.getAsString()))kept.add(flag);
+                    for(JsonElement flag:flags)if(!flag.isJsonPrimitive()||!flag.getAsJsonPrimitive().isString()||!java.util.Set.of("PISTONS","AUTOMATION","FLUIDS").contains(flag.getAsString()))kept.add(flag);
                     tree.getAsJsonObject().add(field,kept);
                 }
                 return delegate.fromJsonTree(tree);

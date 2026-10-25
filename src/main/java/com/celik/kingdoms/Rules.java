@@ -5,7 +5,7 @@ import java.util.*;
 /** Minecraft-independent authorization rules; exercised by the unit suite. */
 public final class Rules {
     public enum Permission { PLACE, BREAK, INTERACT, CONTAINERS, ENTITIES, PVP, DEPOSIT, WITHDRAW }
-    public enum Flag { EXPLOSIONS, FIRE, FLUIDS, MOBS, MOB_GRIEFING, PVP }
+    public enum Flag { EXPLOSIONS, FIRE, MOBS, MOB_GRIEFING, PVP }
     public enum BeaconPower {
         SPEED(true), HASTE(true), RESISTANCE(true), JUMP_BOOST(true), STRENGTH(true), REGENERATION(true),
         SLOWNESS(false), BLINDNESS(false), MINING_FATIGUE(false), GLOWING(false);

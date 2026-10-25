@@ -36,7 +36,7 @@ public final class Protection {
     }
     public static boolean bypass(Level level,UUID actor) {KingdomService s=service(level);return s!=null&&actor!=null&&s.operatorBypass(actor);}
     public static boolean permitted(Level level,BlockPos pos,UUID p,Permission perm) {KingdomService s=service(level);if(s!=null&&s.airDrops!=null){if(s.airDrops.chests.protects(level,pos)&&(perm==Permission.PLACE||perm==Permission.BREAK||perm==Permission.CONTAINERS||perm==Permission.INTERACT))return false;if(s.airDrops.protectedAt(level,pos)&&(perm==Permission.PLACE||perm==Permission.BREAK))return false;}return s==null||bypass(level,p)||s.permission(s.land(level,pos),p,perm);}
-    private static boolean eventTerrainFlag(Flag flag){return flag==Flag.FIRE||flag==Flag.FLUIDS||flag==Flag.EXPLOSIONS||flag==Flag.MOB_GRIEFING;}
+    private static boolean eventTerrainFlag(Flag flag){return flag==Flag.FIRE||flag==Flag.EXPLOSIONS||flag==Flag.MOB_GRIEFING;}
     public static boolean flag(Level level,BlockPos pos,Flag flag) {KingdomService s=service(level);if(s!=null&&s.airDrops!=null&&eventTerrainFlag(flag)&&(s.airDrops.protectedAt(level,pos)||s.airDrops.chests.protects(level,pos)))return false;return s==null||s.flag(s.land(level,pos),flag);}
     public static boolean sameLand(Level level,BlockPos from,BlockPos to) {
         KingdomService s=service(level);if(s==null)return true;Kingdom a=s.land(level,from),b=s.land(level,to);return a==b;
@@ -55,28 +55,41 @@ public final class Protection {
     }
     /** Machines work normally within one owner's land, without a mayor toggle. */
     public static boolean machine(Level level,BlockPos from,BlockPos to){
+        return machine(level,from,to,true);
+    }
+    private static boolean machine(Level level,BlockPos from,BlockPos to,boolean allowWilderness){
         KingdomService s=service(level);if(s==null)return true;
         if(s.airDrops!=null&&(s.airDrops.protectedAt(level,from)||s.airDrops.protectedAt(level,to)||s.airDrops.chests.protects(level,from)||s.airDrops.chests.protects(level,to)))return false;
         Kingdom a=s.land(level,from),b=s.land(level,to);
         if(a==b)return true;
         if(a!=null&&b!=null){War war=Rules.war(s.state,a.id,s.now());return war!=null&&war.opposes(a.id,b.id);}
-        return b==null&&(!s.config.protectWildernessFromClaimMachines||a==null||Rules.war(s.state,a.id,s.now())!=null);
+        return b==null&&(allowWilderness||a==null);
     }
     public static boolean piston(Level level,BlockPos from,BlockPos to){
+        return piston(level,from,to,false);
+    }
+    public static boolean piston(Level level,BlockPos from,BlockPos to,boolean allowWilderness){
         KingdomService s=service(level);
-        return machine(level,from,to)&&(s==null||s.cores.at(level,from)==null&&s.cores.at(level,to)==null);
+        return machine(level,from,to,allowWilderness)&&(s==null||s.cores.at(level,from)==null&&s.cores.at(level,to)==null);
+    }
+    /** Towny-style flow boundaries; unlike a player action, flow never borrows its placer's grants. */
+    public static boolean fluid(Level level,BlockPos from,BlockPos to){
+        KingdomService s=service(level);if(s==null)return true;
+        if(s.cores.at(level,to)!=null)return false;
+        if(s.airDrops!=null&&(s.airDrops.protectedAt(level,from)||s.airDrops.protectedAt(level,to)||s.airDrops.chests.protects(level,from)||s.airDrops.chests.protects(level,to)))return false;
+        return !s.config.preventFluidGriefing||machine(level,from,to,true);
     }
     public static boolean environmental(Level level,BlockPos from,BlockPos to,Flag flag) {
         KingdomService s=service(level);if(s==null)return true;Kingdom a=s.land(level,from),b=s.land(level,to);
         if(s.airDrops!=null&&eventTerrainFlag(flag)&&(s.airDrops.protectedAt(level,from)||s.airDrops.protectedAt(level,to)||s.airDrops.chests.protects(level,from)||s.airDrops.chests.protects(level,to)))return false;
-        if((flag==Flag.FIRE||flag==Flag.FLUIDS)&&s.cores.at(level,to)!=null)return false;
+        if(flag==Flag.FIRE&&s.cores.at(level,to)!=null)return false;
         Context ctx=current();
         if(b!=null&&!s.flag(b,flag))return false;
         if(b!=null&&ctx!=null&&ctx.actor!=null)return permitted(level,to,ctx.actor,Permission.PLACE);
         if(a==b)return a==null||s.flag(a,flag);
         if(a!=null&&b!=null){War w=Rules.war(s.state,a.id,s.now());return w!=null&&w.opposes(a.id,b.id);}
         if(a!=null&&b==null&&Rules.war(s.state,a.id,s.now())!=null)return true;
-        return b==null&&(!s.config.protectWildernessFromClaimMachines||a==null);
+        return b==null;
     }
     public static boolean mutation(Level level,BlockPos pos,BlockState next) {
         KingdomService s=service(level);if(s==null)return true;Kingdom k=s.land(level,pos);Context c=current();BlockState old=level.getBlockState(pos);
@@ -87,7 +100,6 @@ public final class Protection {
         if(!WarRestrictions.placement(level,pos,old,next)||WarRestrictions.preventFormation(level,pos,old,next))return false;
         if(k!=null) {
             if(next.is(BlockTags.FIRE)&&!s.flag(k,Flag.FIRE))return false;
-            if(!next.getFluidState().isEmpty()&&!s.flag(k,Flag.FLUIDS))return false;
         }
         if(c==null) {
             // Unattributed destructive changes fail closed. Block ticks, players and entities have scopes below.
@@ -99,10 +111,10 @@ public final class Protection {
             Permission permission=next.isAir()?Permission.BREAK:old.getBlock()==next.getBlock()?Permission.INTERACT:Permission.PLACE;
             return permitted(level,pos,c.actor,permission);
         }
-        if(c.cause==Cause.FLUID)return environmental(level,c.origin,pos,Flag.FLUIDS);
+        if(c.cause==Cause.FLUID)return fluid(level,c.origin,pos);
         if(c.cause==Cause.FIRE)return environmental(level,c.origin,pos,Flag.FIRE);
         if(c.cause==Cause.PISTON)return piston(level,c.origin,pos);
-        if(c.cause==Cause.AUTOMATION)return machine(level,c.origin,pos);
+        if(c.cause==Cause.AUTOMATION)return !old.getFluidState().isEmpty()||!next.getFluidState().isEmpty()?fluid(level,c.origin,pos):machine(level,c.origin,pos);
         if(c.cause==Cause.ENTITY) {
             if(k==null)return true;
             if(c.actor!=null)return permitted(level,pos,c.actor,next.isAir()?Permission.BREAK:Permission.PLACE);

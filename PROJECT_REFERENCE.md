@@ -164,9 +164,9 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 
 Permissions: `PLACE`, `BREAK`, `INTERACT`, `CONTAINERS`, `ENTITIES`, `PVP`, `DEPOSIT`, `WITHDRAW`.
 
-Flags: `EXPLOSIONS`, `FIRE`, `FLUIDS`, `MOBS`, `MOB_GRIEFING`, `PVP`. At peace, disabled flags apply even to mayors and players with building permissions. New kingdoms start with these flags off. Pistons, observers, redstone, hoppers, droppers and dispensers have no machine toggle: they work normally within a kingdom, including across its chunk borders. Redstone signals can cross claim borders. Ownership checks still prevent protected cross-border block movement and inventory transfers; cores and AirDrop protection remain enforced. A forbidden piston event is rejected before its first state change, and accepted moving blocks finish their animations normally. The removed `PISTONS` and `AUTOMATION` entries are ignored when loading existing configs, kingdom saves and transaction snapshots.
+Flags: `EXPLOSIONS`, `FIRE`, `MOBS`, `MOB_GRIEFING`, `PVP`. At peace, disabled flags apply even to mayors and players with building permissions. New kingdoms start with these flags off. Liquids and machines have no separate toggle: they work normally within a kingdom, including across its chunk borders. Redstone signals can cross claim borders. Flow, dispenser buckets and inventory exports may leave a claim into wilderness. Incoming wilderness flow and transfers into another kingdom remain blocked at peace. Piston extension may enter wilderness; retraction retains ownership checks. Pouring uses Place permission and collecting uses Break permission. The global `preventFluidGriefing` setting controls liquid boundary checks, while cores and AirDrop protection remain enforced. A forbidden piston event is rejected before its first state change, and accepted moving blocks finish their animations normally. The removed `PISTONS`, `AUTOMATION` and `FLUIDS` entries are ignored when loading existing configs, kingdom saves and transaction snapshots.
 
-Operators at the configured `opLevel` bypass ordinary claim permissions for placing, breaking, interacting, containers, entities and PvP. They still obey kingdom flags, including explosions, fire, fluids, mobs, mob griefing and PvP. Operator status does not grant treasury access.
+Operators at the configured `opLevel` bypass ordinary claim permissions for placing, breaking, interacting, containers, entities and PvP. They still obey kingdom flags, including explosions, fire, mobs, mob griefing and PvP. Operator status does not grant treasury access.
 
 ## Placeholders
 
@@ -280,7 +280,7 @@ All amounts resolve to whole EconomyCraft currency units. Money inputs accept ca
 | `maxNameLength` | 24 | Maximum kingdom-name length |
 | `opLevel` | 2 | Required operator level for admin commands |
 | `logActions` | true | Log treasury/claim/war actions |
-| `protectWildernessFromClaimMachines` | true | Also prevent peaceful claim machinery from affecting wilderness across a border |
+| `preventFluidGriefing` | true | Apply ownership boundaries to liquid flow and dispenser buckets; outward flow into wilderness is allowed. Core, AirDrop and direct-player permissions remain enforced when disabled. |
 | `maxTrackedHazards` | 250000 | Ownership-map capacity; unknown effects are handled conservatively |
 
 Changing global default permissions/flags affects newly created kingdoms; existing kingdoms keep their mayor-selected settings. Changing war/protection durations affects new wars/purchases, not existing expiry timestamps. Lowering a cap blocks growth; it does not evict members or unclaim land.

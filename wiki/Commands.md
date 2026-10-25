@@ -38,10 +38,10 @@ Replace the example arguments with your own values; do not type the `< >` bracke
 | `/kingdom acknowledge` | Mayor: acknowledge the current debt warning |
 | `/kingdom disband` | Mayor: disband and forfeit the treasury |
 
-Flag command names: `explosions`, `fire`, `fluids`, `mobs`, `mob_griefing`, `pvp`.
+Flag command names: `explosions`, `fire`, `mobs`, `mob_griefing`, `pvp`.
 
-Pistons, observers, redstone, hoppers, droppers and dispensers have no kingdom toggle. They work normally within your kingdom, including across claimed chunk borders. Redstone signals also cross ownership borders; protected block movement, inventory transfers, cores and AirDrop chests still obey their protection rules.
+Pistons, observers, redstone, hoppers, droppers and dispensers have no kingdom toggle. They work normally within the same kingdom and across its chunk borders. Redstone signals cross ownership borders. Pistons may extend into wilderness; retraction checks ownership before changing blocks and cannot pull across a protected border. Liquid flow may leave a kingdom for wilderness, but incoming wilderness flow and flow between different kingdoms are blocked at peace. Pouring a bucket requires Place permission; collecting liquid requires Break permission. Cores, AirDrop protection and administrator war restrictions still apply.
 
-Examples: `/kingdom grant Alex withdraw true`, `/kingdom flag fluids true`, `/kingdom deposit 1.5m`.
+Examples: `/kingdom grant Alex withdraw true`, `/kingdom flag fire true`, `/kingdom deposit 1.5m`.
 
 **Keep the treasury funded, check the war timer, approve mobs before crossing claims, and secure stolen cores before their return timer expires.**

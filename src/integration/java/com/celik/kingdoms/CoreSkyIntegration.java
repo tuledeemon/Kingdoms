@@ -33,7 +33,7 @@ final class CoreSkyIntegration {
             check.accept(level.getBlockState(base).is(Blocks.STONE)&&level.getBlockState(roof).is(Blocks.GLASS),"relocation changes designation without moving or duplicating original terrain");
             s.commit(s.store.copy(original));put(s,level,owner,roof,Blocks.BEDROCK.defaultBlockState());checkSky(s,owner,now);checkSky(s,owner,now+300000);
             check.accept(KingdomCores.position(core(s,owner)).equals(roof.above())&&level.getBlockState(roof.above()).is(Blocks.STONE),"unbreakable roof creates a breakable stone core above it");
-            s.commit(s.store.copy(original));s.edit(owner,k->k.flags.add(Flag.FLUIDS));put(s,level,owner,roof.above(),Blocks.AIR.defaultBlockState());put(s,level,owner,roof,Blocks.WATER.defaultBlockState());checkSky(s,owner,now);checkSky(s,owner,now+300000);
+            s.commit(s.store.copy(original));put(s,level,owner,roof.above(),Blocks.AIR.defaultBlockState());put(s,level,owner,roof,Blocks.WATER.defaultBlockState());checkSky(s,owner,now);checkSky(s,owner,now+300000);
             check.accept(KingdomCores.position(core(s,owner)).equals(roof.above())&&level.getBlockState(roof.above()).is(Blocks.STONE),"fluid roof cannot evade relocation and receives stone above it");
             s.commit(s.store.copy(original));put(s,level,owner,roof.above(),Blocks.AIR.defaultBlockState());put(s,level,owner,roof,Blocks.AIR.defaultBlockState());
             BlockPos ceiling=new BlockPos(base.getX(),level.getMaxY(),base.getZ());put(s,level,owner,ceiling,Blocks.BEDROCK.defaultBlockState());

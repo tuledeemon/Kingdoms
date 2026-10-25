@@ -19,11 +19,11 @@ public abstract class BucketMixin {
   if(content!=Fluids.EMPTY)return;
   Vec3 start=player.getEyePosition(),end=start.add(player.getViewVector(1).scale(player.blockInteractionRange()));
   BlockHitResult hit=level.clip(new ClipContext(start,end,ClipContext.Block.OUTLINE,ClipContext.Fluid.SOURCE_ONLY,player));
-  if(hit.getType()==HitResult.Type.BLOCK&&(!Protection.permitted(level,hit.getBlockPos(),player.getUUID(),Rules.Permission.BREAK)||!Protection.flag(level,hit.getBlockPos(),Rules.Flag.FLUIDS)))cir.setReturnValue(InteractionResult.FAIL);
+  if(hit.getType()==HitResult.Type.BLOCK&&!Protection.permitted(level,hit.getBlockPos(),player.getUUID(),Rules.Permission.BREAK))cir.setReturnValue(InteractionResult.FAIL);
  }
  @Inject(method="emptyContents",at=@At("HEAD"),cancellable=true)
  private void empty(LivingEntity user,Level level,BlockPos pos,BlockHitResult hit,CallbackInfoReturnable<Boolean> cir){
   var context=Protection.current();var actor=Protection.owner(user);if(actor==null&&context!=null)actor=context.actor();
-  if(!Protection.flag(level,pos,Rules.Flag.FLUIDS)||(actor!=null&&!Protection.permitted(level,pos,actor,Rules.Permission.PLACE))||(actor==null&&context!=null&&!Protection.environmental(level,context.origin(),pos,Rules.Flag.FLUIDS)))cir.setReturnValue(false);
+  if((actor!=null&&!Protection.permitted(level,pos,actor,Rules.Permission.PLACE))||(actor==null&&(context!=null?!Protection.fluid(level,context.origin(),pos):!Protection.permitted(level,pos,null,Rules.Permission.PLACE))))cir.setReturnValue(false);
  }
 }

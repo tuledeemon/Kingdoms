@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class DispenserMixin {
  @WrapMethod(method="dispenseFrom")
  private void dispense(ServerLevel level,BlockState state,BlockPos pos,Operation<Void> original){
-  if(!Protection.automation(level,pos,pos.relative(state.getValue(DispenserBlock.FACING))))return;
+  if((Object)this instanceof DropperBlock&&!Protection.automation(level,pos,pos.relative(state.getValue(DispenserBlock.FACING))))return;
   try(var scope=Protection.scope(level,pos,null,null,Protection.Cause.AUTOMATION)){original.call(level,state,pos);}
  }
 }

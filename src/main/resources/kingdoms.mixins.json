@@ -42,6 +42,7 @@
     "PistonMixin",
     "MovingPistonMixin",
     "DispenserMixin",
+    "DispenserBehaviorMixin",
     "HopperMixin",
     "MobMixin",
     "LivingEntityMixin",

@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.*;
 public abstract class FluidMixin {
  @Inject(method="spreadTo",at=@At("HEAD"),cancellable=true)
  private void spread(LevelAccessor access,BlockPos pos,BlockState state,Direction direction,FluidState target,CallbackInfo ci){
-  if(access instanceof Level level&&!Protection.environmental(level,pos.relative(direction.getOpposite()),pos,Rules.Flag.FLUIDS))ci.cancel();
+  if(access instanceof Level level&&!Protection.fluid(level,pos.relative(direction.getOpposite()),pos))ci.cancel();
  }
 }

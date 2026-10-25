@@ -92,18 +92,15 @@ Permissions decide **who** may act. Flags decide **which kinds of activity** the
 | --- | --- |
 | Explosions | Explosion damage |
 | Fire | Ignition, fire spread and fire damage |
-| Fluids | Water/lava placement and flow |
 | Mobs | Whether unapproved mobs may remain in claims |
 | Mob griefing | Mob-caused damage and environmental changes |
-| Pistons | Piston movement within the kingdom |
-| Automation | Hoppers, droppers, dispensers and similar inventory machines |
 | PvP | Player-versus-player combat |
 
-**Automation starts enabled; the other flags start disabled.** Pistons have their own flag. Machines, redstone and flowing materials do not grant permission to affect neighboring protected claims across a border.
+**Land flags start disabled.** Liquid and machine behavior follows ownership rules instead of separate flags. Pistons, observers, redstone, hoppers, droppers and dispensers have no kingdom toggle. They work normally within the same kingdom and across its chunk borders. Redstone signals cross ownership borders. Pistons may extend into wilderness; retraction checks ownership before changing blocks and cannot pull across a protected border. Liquid flow may leave a kingdom for wilderness, but incoming wilderness flow and flow between different kingdoms are blocked at peace. Pouring a bucket requires Place permission; collecting liquid requires Break permission. Cores, AirDrop protection and administrator war restrictions still apply.
 
 Kingdom explosion flags apply to claimed land. TNT and other explosions use normal Minecraft block damage in wilderness, subject to vanilla gamerules and other server mods. Marked cores and active AirDrop protection still protect their specific blocks or areas, including in wilderness. A blast crossing a claim border is checked for each affected block.
 
-Disabled flags apply even to mayors and players with building permissions. For example, being allowed to place blocks does not let you pour lava when Fluids is off. Operators can bypass ordinary physical claim permissions, but still obey the land flags. Flags cannot be changed during preparation or wartime.
+Disabled flags apply even to mayors and players with building permissions. For example, being allowed to place blocks does not let you ignite fire when Fire is off. Operators can bypass ordinary physical claim permissions, but still obey the land flags. Flags cannot be changed during preparation or wartime.
 
 ## ᴛʀᴇᴀꜱᴜʀʏ ᴀɴᴅ ᴜᴘᴋᴇᴇᴘ
 
@@ -147,7 +144,7 @@ Membership, membership invitations, claims, mayors, permissions, flags, icons an
 
 Once the countdown ends, **members of all participating kingdoms can build, break, interact and fight throughout every opposing kingdom's claims**. Both sides can attack and defend. Ordinary visitors receive no war access.
 
-Land flags are overridden for wartime, including fire, fluids, explosions, mobs and PvP. Server rules still apply: staff may prohibit TNT, lava casting or other griefing methods. Marked cores retain their special capture rules; explosions do not substitute for breaking and taking a core.
+Land flags are overridden for wartime, including fire, explosions, mobs and PvP. Server rules still apply: staff may prohibit TNT, lava casting or other griefing methods. Marked cores retain their special capture rules; explosions do not substitute for breaking and taking a core.
 
 War does **not** grant access to the enemy treasury or bypass withdrawal permissions. Logging out does not stop the war, even if mayors disconnect. Destruction is permanent; there is no automatic terrain restoration afterward.
 
@@ -309,11 +306,11 @@ Replace the example arguments with your own values; do not type the `< >` bracke
 | `/kingdom acknowledge` | Mayor: acknowledge the current debt warning |
 | `/kingdom disband` | Mayor: disband and forfeit the treasury |
 
-Flag command names: `explosions`, `fire`, `fluids`, `mobs`, `mob_griefing`, `pvp`.
+Flag command names: `explosions`, `fire`, `mobs`, `mob_griefing`, `pvp`.
 
-Pistons, observers, redstone, hoppers, droppers and dispensers have no kingdom toggle. They work normally within your kingdom, including across claimed chunk borders. Redstone signals also cross ownership borders; protected block movement, inventory transfers, cores and AirDrop chests still obey their protection rules.
+Pistons, observers, redstone, hoppers, droppers and dispensers have no kingdom toggle. They work normally within the same kingdom and across its chunk borders. Redstone signals cross ownership borders. Pistons may extend into wilderness; retraction checks ownership before changing blocks and cannot pull across a protected border. Liquid flow may leave a kingdom for wilderness, but incoming wilderness flow and flow between different kingdoms are blocked at peace. Pouring a bucket requires Place permission; collecting liquid requires Break permission. Cores, AirDrop protection and administrator war restrictions still apply.
 
-Examples: `/kingdom grant Alex withdraw true`, `/kingdom flag fluids true`, `/kingdom deposit 1.5m`.
+Examples: `/kingdom grant Alex withdraw true`, `/kingdom flag fire true`, `/kingdom deposit 1.5m`.
 
 **Keep the treasury funded, check the war timer, approve mobs before crossing claims, and secure stolen cores before their return timer expires.**
 

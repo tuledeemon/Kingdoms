@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.11.2
+
+- Remove the `FLUIDS` kingdom flag and migrate its legacy settings without changing other kingdom flags. Pouring buckets requires Place permission; collecting liquid requires Break permission. Cauldron bucket interactions use the corresponding permission.
+- Use Towny-style ownership rules for liquid flow: allow same-owner and wilderness flow, including claim-to-wilderness flow; block wilderness-to-claim and different-owner flow at peace. Flow does not borrow the original placer's permissions. Existing active-war behavior and special core/AirDrop restrictions remain.
+- Add global `preventFluidGriefing` (default true) for flow and dispenser-bucket boundaries. Retire `protectWildernessFromClaimMachines`; normal machine exports into wilderness are allowed.
+- Permit outward piston extension into wilderness while retaining ownership checks on retraction. Keep complete-event validation and accepted animation completion from 1.11.1.
+- Check the selected dispenser item before consumption: forbidden buckets stay in the dispenser, while ordinary projectile dispensing is not blocked by a blanket border rule. Dropper/hopper inventory protection remains.
+- Update guides, examples, migration checks and native fluid/bucket/dispenser/piston regression coverage.
+
 ## 1.11.1
 
 - Remove `PISTONS` and `AUTOMATION` from kingdom flags, settings, command values and new-kingdom defaults. Load legacy flags safely in configuration, kingdom saves and transaction snapshots without resetting other settings.

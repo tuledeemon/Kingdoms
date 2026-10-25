@@ -3796,7 +3796,7 @@
   "allowPublicPermissions": true,
   "allowTreasuryWithdrawals": true,
   "logActions": true,
-  "protectWildernessFromClaimMachines": true,
+  "preventFluidGriefing": true,
   "warningReopenTicks": 20,
   "menuRefreshTicks": 20,
   "territoryUpdateTicks": 20,

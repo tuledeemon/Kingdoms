@@ -50,21 +50,15 @@ public final class KingdomsMod implements ModInitializer {
             if(service.airDrops.chests.use(p,hit.getBlockPos()))return InteractionResult.SUCCESS;
             if(service.cores.use(p,hand,hit.getBlockPos()))return InteractionResult.SUCCESS;
             var state=level.getBlockState(hit.getBlockPos());Item held=player.getItemInHand(hand).getItem();
+            if(held instanceof BucketItem&&state.getBlock() instanceof net.minecraft.world.level.block.AbstractCauldronBlock)return Protection.permitted(level,hit.getBlockPos(),p.getUUID(),held==Items.BUCKET?Permission.BREAK:Permission.PLACE)?InteractionResult.PASS:denied(p);
             if(net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath().endsWith("shelf"))for(int slot=0;slot<9;slot++)if(KingdomCores.isToken(p.getInventory().getItem(slot)))return denied(p);
             boolean container=level.getBlockEntity(hit.getBlockPos()) instanceof net.minecraft.world.Container;
             Permission access=container?Permission.CONTAINERS:Permission.INTERACT;
             if(container&&(!(held instanceof BlockItem)||!player.isShiftKeyDown())&&!Protection.container(level,hit.getBlockPos(),p.getUUID()))return denied(p);
             if(!(held instanceof BlockItem)||(container&&!player.isShiftKeyDown()))if(!Protection.permitted(level,hit.getBlockPos(),p.getUUID(),access))return denied(p);
             BlockPos destination=state.canBeReplaced()?hit.getBlockPos():hit.getBlockPos().relative(hit.getDirection());
-            if(held instanceof BlockItem||held instanceof BucketItem||held instanceof SpawnEggItem||held instanceof ArmorStandItem||held instanceof HangingEntityItem)if(!Protection.permitted(level,destination,p.getUUID(),Permission.PLACE))return denied(p);
-            if((held instanceof BucketItem)&&(!Protection.flag(level,hit.getBlockPos(),Flag.FLUIDS)||!Protection.flag(level,destination,Flag.FLUIDS)))return denied(p);
+            if(held instanceof BlockItem||held instanceof SpawnEggItem||held instanceof ArmorStandItem||held instanceof HangingEntityItem)if(!Protection.permitted(level,destination,p.getUUID(),Permission.PLACE))return denied(p);
             if((held instanceof FlintAndSteelItem||held instanceof FireChargeItem)&&!Protection.flag(level,destination,Flag.FIRE))return denied(p);
-            return InteractionResult.PASS;
-        });
-        UseItemCallback.EVENT.register((player,level,hand)->{
-            if(!(player instanceof ServerPlayer p)||!(p.getItemInHand(hand).getItem() instanceof BucketItem))return InteractionResult.PASS;
-            HitResult trace=p.pick(p.blockInteractionRange(),1,false);
-            if(trace instanceof BlockHitResult hit){BlockPos pos=hit.getBlockPos();if(!Protection.permitted(level,pos,p.getUUID(),Permission.INTERACT)||!Protection.permitted(level,pos.relative(hit.getDirection()),p.getUUID(),Permission.PLACE)||!Protection.flag(level,pos,Flag.FLUIDS))return denied(p);}
             return InteractionResult.PASS;
         });
         UseEntityCallback.EVENT.register((player,level,hand,entity,hit)->{

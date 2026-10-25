@@ -20,12 +20,21 @@ final class PistonIntegration {
             service.commit(original);
             // The observer is now claimed, while the piston and all moving blocks are wilderness.
             cycles(level,mayor,piston,check,"claimed observer powering wilderness piston");
-            // The reverse ownership boundary rejects a complete move, without changing its base.
-            BlockPos border=piston.west();clear(level,mayor,border);
+            // Incoming extension is forbidden; outward extension follows Towny's wilderness allowance.
+            BlockPos border=piston;clear(level,mayor,border);
+            put(level,mayor,border,Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING,Direction.WEST));
+            put(level,mayor,border.east(),Blocks.REDSTONE_BLOCK.defaultBlockState());
+            boolean moved=level.getBlockState(border).triggerEvent(level,border,0,Direction.WEST.get3DDataValue());
+            check.accept(!moved&&!level.getBlockState(border).getValue(PistonBaseBlock.EXTENDED)&&level.getBlockState(border.west()).isAir()&&level.getBlockEntity(border)==null,"forbidden incoming extension cancels before changing piston state");
+            clear(level,mayor,border);
+            border=piston.west();
             put(level,mayor,border,Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING,Direction.EAST));
             put(level,mayor,border.west(),Blocks.REDSTONE_BLOCK.defaultBlockState());
-            boolean moved=level.getBlockState(border).triggerEvent(level,border,0,Direction.EAST.get3DDataValue());
-            check.accept(!moved&&!level.getBlockState(border).getValue(PistonBaseBlock.EXTENDED)&&level.getBlockState(border.east()).isAir()&&level.getBlockEntity(border)==null,"forbidden border extension cancels before changing piston state");
+            moved=level.getBlockState(border).triggerEvent(level,border,0,Direction.EAST.get3DDataValue());finish(level,border);
+            check.accept(moved&&level.getBlockState(border).getValue(PistonBaseBlock.EXTENDED)&&level.getBlockState(border.east()).is(Blocks.PISTON_HEAD),"claimed piston may extend outward into wilderness");
+            put(level,mayor,border.west(),Blocks.AIR.defaultBlockState());
+            moved=level.getBlockState(border).triggerEvent(level,border,1,Direction.EAST.get3DDataValue());
+            check.accept(!moved&&level.getBlockState(border).is(Blocks.STICKY_PISTON)&&level.getBlockEntity(border)==null,"cross-owner retraction is rejected before creating a moving base");
             clear(level,mayor,border);
         }finally{service.commit(original);}
     }

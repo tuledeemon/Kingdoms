@@ -2,6 +2,16 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
+## Towny-style liquid and machine boundaries — 1.11.2
+
+**126 unit tests and 745 dedicated-server checks passed**, using Minecraft 26.2, Java 25, Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
+
+- Native fluid spread permits claim-to-wilderness, same-kingdom cross-chunk and wilderness flow; rejects incoming wilderness/different-kingdom flow; and does not borrow the placer's grants. The global setting enables ordinary cross-owner flow when disabled.
+- Native bucket placement requires Place permission and collection requires Break permission. A player with only Place cannot collect, while a player with only Break can collect. The actual source fluid and transformed use result are checked.
+- Native dispenser activation preserves a forbidden bucket without consuming/ejecting it, allows ordinary arrows across borders, respects the global fluid setting and pours outward into wilderness. An actual dropper exports an item to a wilderness chest.
+- Piston coverage retains repeated observer-powered extension/retraction cycles and adds outward extension into wilderness plus rejection of cross-owner retraction before creating a moving base. No invalid-piston warnings were emitted.
+- Legacy flag migration, core sky access, AirDrop locks, wars, artifacts and the rest of the regression suite pass. The server stops normally. This matches the discussed ownership-based liquid/machine behavior; Kingdoms-specific war, core, AirDrop, permissions and other flag rules remain.
+
 ## Piston stability and removed machine flags — 1.11.1
 
 **126 unit tests and 726 dedicated-server checks passed**, with Minecraft 26.2, Java 25, Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.

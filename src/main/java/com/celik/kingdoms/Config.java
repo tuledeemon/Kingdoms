@@ -27,7 +27,7 @@ public final class Config {
     public int coreHighlightRange = 48, coreParticleIntervalTicks = 10, coreDustSizePercent = 45, coreOutlineThicknessMilli = 12;
     public Set<Integer> warCountdownMilestonesSeconds = new LinkedHashSet<>(List.of(180, 60, 30, 10, 5, 4, 3, 2, 1));
     public boolean adjacentExpansion = true, allowMultipleDimensions = false, allowPublicPermissions = true, allowTreasuryWithdrawals = true;
-    public boolean logActions = true, protectWildernessFromClaimMachines = true;
+    public boolean logActions = true, preventFluidGriefing = true;
     public int warningReopenTicks = 20, menuRefreshTicks = 20, territoryUpdateTicks = 20, beaconRefreshTicks = 80, beaconLevel2Multiplier = 4;
     public int maxNameLength = 24, leaderboardSize = 10, opLevel = 2;
     public int maxTrackedHazards = 250000;
