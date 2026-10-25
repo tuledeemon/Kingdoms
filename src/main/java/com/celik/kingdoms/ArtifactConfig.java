@@ -5,6 +5,9 @@ public final class ArtifactConfig {
     public boolean enabled=true,announcements=true,rebindOnTrade=true;
     public int abilityBalanceVersion=2;
     public int durabilityBalanceVersion=1;
+    public int expandedCatalogVersion=1;
+    public int advancedTreeMaxBlocks=256,advancedOreMaxBlocks=64,advancedChainRadius=16;
+    public boolean advancedTreeRequireLeaves=true,advancedProtectPlacedBlocks=true;
     public int fixerCount=2,repairLevels=5,upgradeIngots=3;
     public double fixerChance=.5,repairFraction=.25;
     public Map<Integer,Double> chanceByDay=new TreeMap<>(Map.of(1,.001,3,.0015,5,.002,7,.003));
@@ -19,7 +22,7 @@ public final class ArtifactConfig {
     }
     public static final class Type {
         public String name,baseItem,rarity;
-        public boolean enabled=true,netheriteUpgradeable=true;
+        public boolean enabled=true,netheriteUpgradeable=true,airDropEligible=true;
         // Zero selects normal item durability. Guardian Angel uses charges instead.
         public int weight,minDay=1,maxUses,upgradedMaxUses,cooldownSeconds;
         public double upgradedValue,upgradedDurationSeconds;
@@ -30,7 +33,8 @@ public final class ArtifactConfig {
             upgradedValue=value;upgradedDurationSeconds=duration;variants.add(new Variant(value,duration,rarity));
         }
     }
-    public static final Set<String> KEYS=Set.of("thunder_axe","thorns_shield","frostbite_sword","multi_pickaxe","vampire_sword","void_scythe","guardian_angel","wind_burst_spear");
+    public static final Set<String> ADDITIONAL_KEYS=Set.of("runners_boots","kings_chestplate","archers_bow","advanced_axe","advanced_pickaxe","golden_crown");
+    public static final Set<String> KEYS=Set.of("thunder_axe","thorns_shield","frostbite_sword","multi_pickaxe","vampire_sword","void_scythe","guardian_angel","wind_burst_spear","runners_boots","kings_chestplate","archers_bow","advanced_axe","advanced_pickaxe","golden_crown");
     static final Set<String> LEGACY_KEYS=Set.of("smelter_pickaxe","healing_hoe","unbreakable_pickaxe","unbreakable_sword","berserker_axe","phantom_bow","treasure_digger","guardian_shield","miners_fortune","soulbound_pickaxe","chrono_tool");
     static Map<String,Type> defaults(){
         Map<String,Type> m=new LinkedHashMap<>();
@@ -42,16 +46,24 @@ public final class ArtifactConfig {
         m.put("void_scythe",new Type("Void Scythe","diamond_hoe","mythic",10,1000,0,2));
         m.put("guardian_angel",new Type("Guardian Angel","heart_of_the_sea","legendary",35,100,0,3));m.get("guardian_angel").netheriteUpgradeable=false;
         m.put("wind_burst_spear",new Type("Wind Burst Spear","diamond_spear","relic",120,0,0,0));m.get("wind_burst_spear").variants.getFirst().amplifier=2;
+        m.put("runners_boots",new Type("Runner's Boots","diamond_boots","legendary",35,0,0,0));
+        m.put("kings_chestplate",new Type("King's Chestplate","diamond_chestplate","legendary",35,0,0,0));
+        m.put("archers_bow",new Type("Archer's Bow","bow","legendary",35,0,0,0));m.get("archers_bow").netheriteUpgradeable=false;
+        m.put("advanced_axe",new Type("Advanced Axe","diamond_axe","legendary",35,0,0,0));
+        m.put("advanced_pickaxe",new Type("Advanced Pickaxe","diamond_pickaxe","legendary",35,0,0,0));
+        m.put("golden_crown",new Type("Golden Crown","diamond_helmet","mythic",10,0,0,0));m.get("golden_crown").airDropEligible=false;
         return m;
     }
     public double chance(long day){return chanceByDay.entrySet().stream().filter(e->e.getKey()<=day).max(Map.Entry.comparingByKey()).map(Map.Entry::getValue).orElse(0d);}
     public void validate(){
+        if(expandedCatalogVersion!=1||advancedTreeMaxBlocks<1||advancedTreeMaxBlocks>4096||advancedOreMaxBlocks<1||advancedOreMaxBlocks>4096||advancedChainRadius<1||advancedChainRadius>64)throw new IllegalArgumentException("Invalid advanced artifact chain settings");
         if(abilityBalanceVersion!=2||fixerCount<1||fixerCount>64||repairLevels<1||repairLevels>39||upgradeIngots<1||upgradeIngots>64||!prob(fixerChance)||!prob(repairFraction)||repairFraction==0||fixerItem==null||chanceByDay==null||types==null||!types.keySet().equals(KEYS))throw new IllegalArgumentException("Invalid artifact settings");
         if(chanceByDay.entrySet().stream().anyMatch(e->e.getKey()<1||!prob(e.getValue())))throw new IllegalArgumentException("Invalid artifact drop chance table");
         for(var e:types.entrySet()){
             Type t=e.getValue();if(t==null||t.name==null||t.baseItem==null||!rarity(t.rarity)||t.weight<1||t.weight>1000000||t.minDay<1||t.maxUses<0||t.maxUses>10000000||t.upgradedMaxUses<0||t.upgradedMaxUses>10000000||t.cooldownSeconds<0||t.cooldownSeconds>604800||!value(t.upgradedValue)||!duration(t.upgradedDurationSeconds)||t.variants==null||t.variants.isEmpty()||e.getKey().equals("guardian_angel")&&t.maxUses<1)throw new IllegalArgumentException("Invalid artifact type: "+e.getKey());
             for(Variant v:t.variants)if(v==null||!Double.isFinite(v.weight)||v.weight<=0||!prob(v.chance)||!value(v.value)||!duration(v.durationSeconds)||v.amplifier<0||v.amplifier>3||!rarity(v.rarity))throw new IllegalArgumentException("Invalid artifact variant: "+e.getKey());
         }
+        if(types.get("golden_crown").airDropEligible)throw new IllegalArgumentException("Golden Crown is staff-command-only and cannot be enabled for AirDrops");
     }
     private static boolean rarity(String r){return r!=null&&Set.of("relic","arcane","legendary","mythic").contains(r);}
     private static boolean value(double n){return Double.isFinite(n)&&n>=0&&n<=1;}

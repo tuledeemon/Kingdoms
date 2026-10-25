@@ -16,6 +16,6 @@ public abstract class ArtifactSpearMixin {
     private static void livingTarget(Entity attacker,Entity target,CallbackInfoReturnable<Boolean> cir){
         if(KingdomsMod.service==null||!(attacker instanceof LivingEntity living)||attacker.level().isClientSide())return;
         var stack=living.isUsingItem()?living.getUseItem():living.getWeaponItem();
-        if(!KingdomsMod.service.artifacts.allowsAttack(stack,target))cir.setReturnValue(false);
+        if(!KingdomsMod.service.artifacts.allowsAttack(stack,target)||living instanceof net.minecraft.server.level.ServerPlayer player&&KingdomsMod.service.artifacts.preventsAttack(player))cir.setReturnValue(false);
     }
 }

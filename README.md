@@ -1,8 +1,10 @@
 # Kingdoms
 
-A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, manage a shared treasury and fight timed wars. AirDrops and eight special artifacts add recurring objectives for kingdoms and solo players.
+A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, manage a shared treasury and fight timed wars. AirDrops and fourteen special artifacts add recurring objectives for kingdoms and solo players.
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
+
+**1.11.0:** Added Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe, Advanced Pickaxe and the staff-only Golden Crown. Armor effects respect stronger potions, connected harvesting respects protection and native loot, and the crown keeps gold visuals with Diamond/Netherite stats.
 
 **1.10.2:** Covered cores move to the top of their column after five minutes, with mayor warnings and a stone fallback above fluids/unbreakable blocks. Artifact repairs keep their abilities in crafting, anvils and grindstones, in either input order. Void Scythe now has 1,000 durability, with existing default scythes migrated while preserving wear.
 

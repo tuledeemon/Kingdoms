@@ -2,6 +2,16 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
+## Expanded artifacts and Void Scythe — 1.11.0
+
+**124 unit tests and 688 dedicated-server checks passed**, with C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
+
+- Actual worn effects coexist, heal at Regeneration I cadence, preserve Speed II/Regeneration II and longer/hidden legitimate potion effects, and clean up only owned armor effects. Crown components match native Diamond armor stats/durability and built-in gold assets; compatible helmet books work. A real three-ingot upgrade produces Netherite stats while retaining enchantments, wear percentage and gold appearance.
+- Native bow releases create two arrows using one ammo, preserve Flame and Infinity, make the bonus projectile uncollectable and charge normal wear per arrow; ordinary bows still shoot once. The crown is excluded even as the only enabled automatic type, but staff issuance works.
+- Native connected harvesting covers logs, equivalent deepslate ores, Silk Touch drops, exact wear, loaded-terrain limits, cap boundaries and stopping on break. Actual BlockItem placement is tracked while growth-style changes are not. Protected neighboring claims remain intact without extra drops/wear.
+- A real shield-blocked PvP hit reproduced the prior Void failure before the fix. The final build covers shield interruption, ordinary damage hits, native melee/stab/start-use/item-use denial, visible cooldown packets, newly held items, longer preexisting cooldowns, the real two-second expiry and successful attacks afterward.
+- Catalogue migration retains customized odds/settings and old identities. Full claims, wars, cores, AirDrops, existing artifacts and repair regression checks pass; the test server stops normally. A stale Java 21 Gradle daemon initially failed to start compiler workers; the successful build used Java 25 and an isolated ASCII Gradle distribution/build path, retaining the authoritative Unicode project path.
+
 **Result for 1.7.1: 545 dedicated-server checks without C2ME, 546 with C2ME 0.4.1-beta.1.0+26.2, and 102 JUnit tests passed.**
 
 ## Covered cores, artifact combining and durability — 1.10.2

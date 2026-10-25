@@ -13,6 +13,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class WarMiningMixin {
     @Inject(method="getDestroyProgress",at=@At("RETURN"),cancellable=true)
     private void instant(Player player,BlockGetter view,BlockPos pos,CallbackInfoReturnable<Float> cir){
-        if(player instanceof ServerPlayer serverPlayer&&WarRestrictions.instantBreak(serverPlayer,serverPlayer.level(),pos,(BlockState)(Object)this))cir.setReturnValue(1.0f);
+        if(player instanceof ServerPlayer serverPlayer&&(WarRestrictions.instantBreak(serverPlayer,serverPlayer.level(),pos,(BlockState)(Object)this)||com.celik.kingdoms.KingdomsMod.service!=null&&com.celik.kingdoms.KingdomsMod.service.artifacts.instantMine(serverPlayer,pos,(BlockState)(Object)this)))cir.setReturnValue(1.0f);
     }
 }

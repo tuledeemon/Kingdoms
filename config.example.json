@@ -3403,7 +3403,8 @@
             "amplifier": 0,
             "rarity": "legendary"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "thorns_shield": {
         "name": "Thorns Shield",
@@ -3427,7 +3428,8 @@
             "amplifier": 0,
             "rarity": "mythic"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "frostbite_sword": {
         "name": "Frostbite Sword",
@@ -3451,7 +3453,8 @@
             "amplifier": 0,
             "rarity": "arcane"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "multi_pickaxe": {
         "name": "Multi Pickaxe",
@@ -3475,7 +3478,8 @@
             "amplifier": 0,
             "rarity": "legendary"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "vampire_sword": {
         "name": "Vampire Sword",
@@ -3499,7 +3503,8 @@
             "amplifier": 0,
             "rarity": "relic"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "void_scythe": {
         "name": "Void Scythe",
@@ -3523,7 +3528,8 @@
             "amplifier": 0,
             "rarity": "mythic"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "guardian_angel": {
         "name": "Guardian Angel",
@@ -3547,7 +3553,8 @@
             "amplifier": 0,
             "rarity": "legendary"
           }
-        ]
+        ],
+        "airDropEligible": true
       },
       "wind_burst_spear": {
         "name": "Wind Burst Spear",
@@ -3571,9 +3578,166 @@
             "amplifier": 2,
             "rarity": "relic"
           }
+        ],
+        "airDropEligible": true
+      },
+      "runners_boots": {
+        "name": "Runner's Boots",
+        "baseItem": "minecraft:diamond_boots",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "airDropEligible": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "kings_chestplate": {
+        "name": "King's Chestplate",
+        "baseItem": "minecraft:diamond_chestplate",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "airDropEligible": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "archers_bow": {
+        "name": "Archer's Bow",
+        "baseItem": "minecraft:bow",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": false,
+        "airDropEligible": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "advanced_axe": {
+        "name": "Advanced Axe",
+        "baseItem": "minecraft:diamond_axe",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "airDropEligible": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "advanced_pickaxe": {
+        "name": "Advanced Pickaxe",
+        "baseItem": "minecraft:diamond_pickaxe",
+        "rarity": "legendary",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "airDropEligible": true,
+        "weight": 35,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "legendary"
+          }
+        ]
+      },
+      "golden_crown": {
+        "name": "Golden Crown",
+        "baseItem": "minecraft:diamond_helmet",
+        "rarity": "mythic",
+        "enabled": true,
+        "netheriteUpgradeable": true,
+        "airDropEligible": false,
+        "weight": 10,
+        "minDay": 1,
+        "maxUses": 0,
+        "upgradedMaxUses": 0,
+        "cooldownSeconds": 0,
+        "upgradedValue": 0.0,
+        "upgradedDurationSeconds": 0.0,
+        "variants": [
+          {
+            "weight": 1.0,
+            "chance": 1.0,
+            "value": 0.0,
+            "durationSeconds": 0.0,
+            "amplifier": 0,
+            "rarity": "mythic"
+          }
         ]
       }
-    }
+    },
+    "expandedCatalogVersion": 1,
+    "advancedTreeMaxBlocks": 256,
+    "advancedOreMaxBlocks": 64,
+    "advancedChainRadius": 16,
+    "advancedTreeRequireLeaves": true,
+    "advancedProtectPlacedBlocks": true
   },
   "creationFee": 100000,
   "expansionFee": 25000,

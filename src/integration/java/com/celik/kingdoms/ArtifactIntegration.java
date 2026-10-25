@@ -29,6 +29,8 @@ final class ArtifactIntegration {
    Record unique=issue(a,cfg,"vampire_sword");ItemStack authentic=a.create(unique);player.setItemInHand(InteractionHand.MAIN_HAND,authentic);a.observe(player,authentic);ItemStack duplicate=authentic.copy();other.setItemInHand(InteractionHand.MAIN_HAND,duplicate);a.observe(other,duplicate);check.accept(!Artifacts.marked(duplicate)&&a.record(authentic)==unique,"a physically duplicated identity cannot retain artifact abilities");other.setItemInHand(InteractionHand.MAIN_HAND,ItemStack.EMPTY);
    cfg.fixerChance=0;check.accept(a.roll(UUID.randomUUID(),7,new Random(14)).size()==1,"artifact drops remain free of cash and ordinary loot");
    for(String key:ArtifactConfig.KEYS){Record r=issue(a,cfg,key);ItemStack s=a.create(r);check.accept(a.record(s)==r&&s.getMaxStackSize()==1,"authentic new artifact: "+key);check.accept(!s.has(DataComponents.UNBREAKABLE)&&s.getOrDefault(DataComponents.LORE,net.minecraft.world.item.component.ItemLore.EMPTY).lines().size()<=3,"short lore and native durability: "+key);}
+   ExpandedArtifactsIntegration.run(service,player,cfg,check);
+   VoidScytheIntegration.run(service,player,cfg,check);
    Record thunder=issue(a,cfg,"thunder_axe");ItemStack axe=a.create(thunder);player.setItemInHand(InteractionHand.MAIN_HAND,axe);
    check.accept(axe.getMaxDamage()==512,"Thunder Axe starts with 512 vanilla durability");axe.hurtAndBreak(1,level,player,x->{});a.refresh(axe,thunder);check.accept(axe.getDamageValue()==1,"refresh preserves vanilla damage");
    var enchant=service.server.registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT);
@@ -172,7 +174,7 @@ final class ArtifactIntegration {
    }finally{player.stopUsingItem();stand.discard();zombie.discard();}
   }finally{player.setItemInHand(InteractionHand.MAIN_HAND,oldHand);player.setItemInHand(InteractionHand.OFF_HAND,oldOff);player.setPos(position);player.setDeltaMovement(movement);player.setYRot(yaw);player.setYHeadRot(headYaw);player.setXRot(pitch);player.fallDistance=fall;}
  }
- private static final class RecordingConnection extends net.minecraft.network.Connection {
+ static final class RecordingConnection extends net.minecraft.network.Connection {
   final List<net.minecraft.network.protocol.Packet<?>> packets=new ArrayList<>();
   RecordingConnection(){super(net.minecraft.network.protocol.PacketFlow.SERVERBOUND);}
   @Override public void send(net.minecraft.network.protocol.Packet<?> packet,io.netty.channel.ChannelFutureListener listener,boolean flush){packets.add(packet);}

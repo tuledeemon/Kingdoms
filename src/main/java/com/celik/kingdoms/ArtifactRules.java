@@ -24,7 +24,7 @@ public final class ArtifactRules {
         public Set<String> placedBlocks=new HashSet<>();
     }
     public static List<String> eligible(ArtifactConfig config,Data data,long day){
-        return config.types.entrySet().stream().filter(e->e.getValue().enabled&&e.getValue().minDay<=day).map(Map.Entry::getKey).toList();
+        return config.types.entrySet().stream().filter(e->!e.getKey().equals("golden_crown")&&e.getValue().enabled&&e.getValue().airDropEligible&&e.getValue().minDay<=day).map(Map.Entry::getKey).toList();
     }
     public static Record generate(String key,ArtifactConfig.Type type,Random random){
         double roll=random.nextDouble()*type.variants.stream().mapToDouble(v->v.weight).sum();ArtifactConfig.Variant v=type.variants.getLast();for(var choice:type.variants){roll-=choice.weight;if(roll<0){v=choice;break;}}

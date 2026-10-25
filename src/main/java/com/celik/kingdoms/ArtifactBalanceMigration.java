@@ -34,6 +34,11 @@ final class ArtifactBalanceMigration implements TypeAdapterFactory {
                         }
                         obj.addProperty("abilityBalanceVersion",2);
                     }
+                    if(config&&(!obj.has("expandedCatalogVersion")||obj.get("expandedCatalogVersion").getAsInt()<1)){
+                        JsonObject types=obj.getAsJsonObject("types");
+                        if(types!=null)for(String key:ArtifactConfig.ADDITIONAL_KEYS)if(!types.has(key))types.add(key,gson.toJsonTree(ArtifactConfig.defaults().get(key)));
+                        obj.addProperty("expandedCatalogVersion",1);
+                    }
                     if(!obj.has("durabilityBalanceVersion")){
                         if(config){
                             JsonObject types=obj.has("types")?obj.getAsJsonObject("types"):null;

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.11.0
+
+- Add Legendary Runner's Boots (Speed I), King's Chestplate (Regeneration I), Archer's Bow (two arrows), Advanced Axe (connected trees) and Advanced Pickaxe (connected ores) to the uncapped artifact AirDrop pool. Preserve overall artifact/fixer chances and existing type settings during the one-time catalogue expansion.
+- Add a Mythic, staff-command-only Golden Crown. It uses vanilla gold-helmet item/worn assets with native Diamond Helmet stats, compatible enchantments and durability; the existing three-ingot upgrade gives Netherite Helmet stats while preserving its gold appearance.
+- Worn effects preserve stronger/longer potions, clean up owned hidden effects, and use native regeneration cadence. Archer's Bow retains native ammo/enchantment rules, makes its bonus projectile uncollectable and uses native per-projectile wear.
+- Advanced harvesting is bounded/configurable, checks loaded chunks only, follows ordinary player mining for each block, respects claims/cores/AirDrops and stops on tool break. Track direct block placement to avoid treating player constructions as trees/veins; natural growth is not marked as placement.
+- Fix Void Scythe on shield-blocked hits and on successful hits without health loss. Block spear stabs/contact and direct native item-start paths during the lock, add visible native cooldowns to held/swapped items without shortening longer cooldowns, and verify expiry with actual attacks.
+- Expand runtime and migration tests and update player/admin guides and example configuration. No resource pack or client mod is required.
+
 ## 1.10.2
 
 - Require placed cores, including captured cores, to have sky access. After five continuously covered minutes, move the marker to the highest suitable block in the same column. Glass, leaves and liquids count as cover. Create stone above an unsuitable or reserved top block; warn and retry if build height prevents this.

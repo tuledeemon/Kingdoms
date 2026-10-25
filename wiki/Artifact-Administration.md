@@ -12,6 +12,11 @@ Edit `artifacts` in `config/kingdoms/config.json`, then `/kingdomadmin reload`. 
 | `fixerItem` | `minecraft:echo_shard`; fixer appearance |
 | `repairFraction`, `repairLevels` | `0.25`, `5`; fixer repair amount and XP price |
 | `upgradeIngots` | `3`; Netherite upgrade price |
+| `advancedTreeMaxBlocks`, `advancedOreMaxBlocks` | `256`, `64`; maximum blocks per harvest, including the original; 1..4096 |
+| `advancedChainRadius` | `16`; maximum axis distance from the first block; 1..64 |
+| `advancedTreeRequireLeaves` | `true`; require nearby leaves before felling connected logs |
+| `advancedProtectPlacedBlocks` | `true`; exclude tracked player-placed logs/ores from instant mining and chaining |
+| `types.<type>.airDropEligible` | `true` for ordinary artifacts; `false` and locked out for Golden Crown |
 | `rebindOnTrade` | `true`; update the tracked holder on legitimate trades |
 | `types.<type>.enabled`, `weight`, `minDay` | Enable a type, relative selection weight and unlock day |
 | `name`, `baseItem`, `rarity` | Identity presentation; use a damageable base for tools and Heart of the Sea for Guardian Angel |
@@ -26,13 +31,17 @@ Edit `artifacts` in `config/kingdoms/config.json`, then `/kingdomadmin reload`. 
 | `variants[].amplifier` | Built-in Wind Burst level, default `2` for the spear |
 | `variants[].rarity` | Generated rarity |
 
-Type IDs: `thunder_axe`, `thorns_shield`, `frostbite_sword`, `multi_pickaxe`, `vampire_sword`, `void_scythe`, `guardian_angel`, `wind_burst_spear`.
+Type IDs: `thunder_axe`, `thorns_shield`, `frostbite_sword`, `multi_pickaxe`, `vampire_sword`, `void_scythe`, `guardian_angel`, `wind_burst_spear`, `runners_boots`, `kings_chestplate`, `archers_bow`, `advanced_axe`, `advanced_pickaxe`, `golden_crown`.
 
 ## Admin commands
 
 ```text
 /kingdomadmin artifact give thunder_axe
 /kingdomadmin artifact give guardian_angel
+/kingdomadmin artifact give golden_crown
+/kingdomadmin artifact give runners_boots
+/kingdomadmin artifact give advanced_pickaxe
+/kingdomadmin artifact set advancedOreMaxBlocks 64
 /kingdomadmin artifact fixer
 /kingdomadmin artifact inspect
 /kingdomadmin artifact status
@@ -58,3 +67,9 @@ The default Void Scythe maximum is 1,000 native durability. Older 10-durability 
 One artifact can be repaired with an ordinary matching item in crafting, anvils or grindstones, regardless of input order. Its identity and ability remain. Two-artifact combinations produce no output, and consume neither input. Smithing artifacts remains blocked; use the dedicated Netherite upgrade menu. Vanilla crafting/grindstone enchantment removal still applies, except the spear's built-in Wind Burst is preserved.
 
 Items that already lost their identity before the update cannot safely be matched back to a unique artifact record; an administrator must issue a replacement if needed.
+
+## Expanded catalogue (1.11.0)
+
+Six types are added without replacing the previous eight or changing overall artifact/fixer chances. `expandedCatalogVersion` records the one-time addition; keep it at `1`. Existing type customizations and identities remain intact. The Golden Crown is excluded from automatic artifact rolls even if it is the only enabled type; its `airDropEligible` setting must stay false. Staff command issuance remains available. Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe and Advanced Pickaxe are enabled for AirDrops by default, each with Legendary rarity and weight 35. The crown has Mythic rarity. Archer's Bow has no Netherite upgrade; native diamond armor/tools and the crown can use the existing three-ingot upgrade menu.
+
+Void Scythe (1.11.0) now handles fully blocked shield hits and all ordinary/native spear item-action paths. Existing valid Scythes receive the behavior change without reissuing. If an old item already lost its authenticated identity before the repair fix, staff must issue a replacement with `/kingdomadmin artifact give void_scythe`; names/lore alone are not proof of identity.

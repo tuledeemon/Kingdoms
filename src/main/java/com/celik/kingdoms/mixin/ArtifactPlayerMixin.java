@@ -20,6 +20,6 @@ public abstract class ArtifactPlayerMixin {
  @Inject(method="stabAttack",at=@At("HEAD"),cancellable=true)
  private void livingSpearTarget(EquipmentSlot slot,Entity target,float damage,boolean dealsDamage,boolean knockback,boolean dismounts,CallbackInfoReturnable<Boolean> cir){
   Player self=(Player)(Object)this;
-  if(KingdomsMod.service!=null&&!self.level().isClientSide()&&!KingdomsMod.service.artifacts.allowsAttack(self.getItemBySlot(slot),target))cir.setReturnValue(false);
+  if(KingdomsMod.service!=null&&!self.level().isClientSide()&&(!KingdomsMod.service.artifacts.allowsAttack(self.getItemBySlot(slot),target)||self instanceof ServerPlayer p&&KingdomsMod.service.artifacts.preventsAttack(p)))cir.setReturnValue(false);
  }
 }

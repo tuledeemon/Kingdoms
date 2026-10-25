@@ -22,7 +22,7 @@ BlueMap API **2.7.7** is fetched from the official `repo.bluecolored.de` Maven r
 ./gradlew build
 ```
 
-On Windows, use `gradlew.bat`. The built mod and source JAR appear in `build/libs/`.
+On Windows, use `gradlew.bat`. Run Gradle itself with Java 25 (`JAVA_HOME`), in addition to its Java toolchain. If an older daemon is reused, use `--no-daemon` with the correct Java environment. The built mod and source JAR appear in `build/libs/`.
 
 For Windows Java socket failures, create `C:\Temp` and set `JAVA_TOOL_OPTIONS=-Djdk.net.unixdomain.tmpdir=C:\Temp` before running Gradle. Preserve Unicode paths and quote them; do not rename Windows accounts.
 
