@@ -36,7 +36,7 @@ public final class Protection {
     }
     public static boolean bypass(Level level,UUID actor) {KingdomService s=service(level);return s!=null&&actor!=null&&s.operatorBypass(actor);}
     public static boolean permitted(Level level,BlockPos pos,UUID p,Permission perm) {KingdomService s=service(level);if(s!=null&&s.airDrops!=null){if(s.airDrops.chests.protects(level,pos)&&(perm==Permission.PLACE||perm==Permission.BREAK||perm==Permission.CONTAINERS||perm==Permission.INTERACT))return false;if(s.airDrops.protectedAt(level,pos)&&(perm==Permission.PLACE||perm==Permission.BREAK))return false;}return s==null||bypass(level,p)||s.permission(s.land(level,pos),p,perm);}
-    private static boolean eventTerrainFlag(Flag flag){return flag==Flag.FIRE||flag==Flag.FLUIDS||flag==Flag.EXPLOSIONS||flag==Flag.PISTONS||flag==Flag.AUTOMATION||flag==Flag.MOB_GRIEFING;}
+    private static boolean eventTerrainFlag(Flag flag){return flag==Flag.FIRE||flag==Flag.FLUIDS||flag==Flag.EXPLOSIONS||flag==Flag.MOB_GRIEFING;}
     public static boolean flag(Level level,BlockPos pos,Flag flag) {KingdomService s=service(level);if(s!=null&&s.airDrops!=null&&eventTerrainFlag(flag)&&(s.airDrops.protectedAt(level,pos)||s.airDrops.chests.protects(level,pos)))return false;return s==null||s.flag(s.land(level,pos),flag);}
     public static boolean sameLand(Level level,BlockPos from,BlockPos to) {
         KingdomService s=service(level);if(s==null)return true;Kingdom a=s.land(level,from),b=s.land(level,to);return a==b;
@@ -48,15 +48,28 @@ public final class Protection {
         return true;
     }
     public static boolean automation(Level level,BlockPos from,BlockPos to) {
-        if(!environmental(level,from,to,Flag.AUTOMATION))return false;
+        if(!machine(level,from,to))return false;
         if(level.getBlockState(to).getBlock() instanceof net.minecraft.world.level.block.ChestBlock)
-            for(var direction:net.minecraft.core.Direction.Plane.HORIZONTAL) {BlockPos other=to.relative(direction);if(level.getBlockState(other).getBlock() instanceof net.minecraft.world.level.block.ChestBlock&&!environmental(level,from,other,Flag.AUTOMATION))return false;}
+            for(var direction:net.minecraft.core.Direction.Plane.HORIZONTAL) {BlockPos other=to.relative(direction);if(level.getBlockState(other).getBlock() instanceof net.minecraft.world.level.block.ChestBlock&&!machine(level,from,other))return false;}
         return true;
+    }
+    /** Machines work normally within one owner's land, without a mayor toggle. */
+    public static boolean machine(Level level,BlockPos from,BlockPos to){
+        KingdomService s=service(level);if(s==null)return true;
+        if(s.airDrops!=null&&(s.airDrops.protectedAt(level,from)||s.airDrops.protectedAt(level,to)||s.airDrops.chests.protects(level,from)||s.airDrops.chests.protects(level,to)))return false;
+        Kingdom a=s.land(level,from),b=s.land(level,to);
+        if(a==b)return true;
+        if(a!=null&&b!=null){War war=Rules.war(s.state,a.id,s.now());return war!=null&&war.opposes(a.id,b.id);}
+        return b==null&&(!s.config.protectWildernessFromClaimMachines||a==null||Rules.war(s.state,a.id,s.now())!=null);
+    }
+    public static boolean piston(Level level,BlockPos from,BlockPos to){
+        KingdomService s=service(level);
+        return machine(level,from,to)&&(s==null||s.cores.at(level,from)==null&&s.cores.at(level,to)==null);
     }
     public static boolean environmental(Level level,BlockPos from,BlockPos to,Flag flag) {
         KingdomService s=service(level);if(s==null)return true;Kingdom a=s.land(level,from),b=s.land(level,to);
         if(s.airDrops!=null&&eventTerrainFlag(flag)&&(s.airDrops.protectedAt(level,from)||s.airDrops.protectedAt(level,to)||s.airDrops.chests.protects(level,from)||s.airDrops.chests.protects(level,to)))return false;
-        if((flag==Flag.PISTONS||flag==Flag.FIRE||flag==Flag.FLUIDS)&&s.cores.at(level,to)!=null)return false;
+        if((flag==Flag.FIRE||flag==Flag.FLUIDS)&&s.cores.at(level,to)!=null)return false;
         Context ctx=current();
         if(b!=null&&!s.flag(b,flag))return false;
         if(b!=null&&ctx!=null&&ctx.actor!=null)return permitted(level,to,ctx.actor,Permission.PLACE);
@@ -68,6 +81,7 @@ public final class Protection {
     public static boolean mutation(Level level,BlockPos pos,BlockState next) {
         KingdomService s=service(level);if(s==null)return true;Kingdom k=s.land(level,pos);Context c=current();BlockState old=level.getBlockState(pos);
         if(old.equals(next))return true;
+        if(PistonMoves.approved(level,pos))return true;
         if(s.airDrops!=null){if(s.airDrops.chests.internal(level,pos,next))return true;if(s.airDrops.protectedAt(level,pos)||s.airDrops.chests.protects(level,pos))return false;}
         if(!s.cores.allowsMutation(level,pos,next))return false;
         if(!WarRestrictions.placement(level,pos,old,next)||WarRestrictions.preventFormation(level,pos,old,next))return false;
@@ -87,8 +101,8 @@ public final class Protection {
         }
         if(c.cause==Cause.FLUID)return environmental(level,c.origin,pos,Flag.FLUIDS);
         if(c.cause==Cause.FIRE)return environmental(level,c.origin,pos,Flag.FIRE);
-        if(c.cause==Cause.PISTON)return environmental(level,c.origin,pos,Flag.PISTONS);
-        if(c.cause==Cause.AUTOMATION)return environmental(level,c.origin,pos,Flag.AUTOMATION);
+        if(c.cause==Cause.PISTON)return piston(level,c.origin,pos);
+        if(c.cause==Cause.AUTOMATION)return machine(level,c.origin,pos);
         if(c.cause==Cause.ENTITY) {
             if(k==null)return true;
             if(c.actor!=null)return permitted(level,pos,c.actor,next.isAir()?Permission.BREAK:Permission.PLACE);

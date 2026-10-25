@@ -38,7 +38,9 @@ Replace the example arguments with your own values; do not type the `< >` bracke
 | `/kingdom acknowledge` | Mayor: acknowledge the current debt warning |
 | `/kingdom disband` | Mayor: disband and forfeit the treasury |
 
-Flag command names: `explosions`, `fire`, `fluids`, `mobs`, `mob_griefing`, `pistons`, `automation`, `pvp`.
+Flag command names: `explosions`, `fire`, `fluids`, `mobs`, `mob_griefing`, `pvp`.
+
+Pistons, observers, redstone, hoppers, droppers and dispensers have no kingdom toggle. They work normally within your kingdom, including across claimed chunk borders. Redstone signals also cross ownership borders; protected block movement, inventory transfers, cores and AirDrop chests still obey their protection rules.
 
 Examples: `/kingdom grant Alex withdraw true`, `/kingdom flag fluids true`, `/kingdom deposit 1.5m`.
 

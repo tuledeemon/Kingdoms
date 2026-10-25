@@ -39,7 +39,7 @@ public final class Config {
     public String overdueWarning = "Your kingdom will be disbanded and ALL land will become unprotected if the overdue upkeep is not paid before the deadline. Deposit enough money in the treasury.";
     public String acknowledgeLabel = "I have read and understand";
     public Set<String> allowedDimensions = new HashSet<>(Set.of("minecraft:overworld", "minecraft:the_nether", "minecraft:the_end"));
-    public Set<Flag> defaultFlags = EnumSet.of(Flag.AUTOMATION);
+    public Set<Flag> defaultFlags = EnumSet.noneOf(Flag.class);
     public Set<Permission> defaultMemberPermissions = EnumSet.of(Permission.PLACE, Permission.BREAK, Permission.INTERACT, Permission.CONTAINERS, Permission.ENTITIES, Permission.DEPOSIT);
     public Set<Permission> defaultPublicPermissions = EnumSet.noneOf(Permission.class);
     public Set<String> allowedMobTypes = new HashSet<>(Set.of("minecraft:villager"));

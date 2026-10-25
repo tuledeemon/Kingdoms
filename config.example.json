@@ -3844,9 +3844,7 @@
     "minecraft:the_nether",
     "minecraft:the_end"
   ],
-  "defaultFlags": [
-    "AUTOMATION"
-  ],
+  "defaultFlags": [],
   "defaultMemberPermissions": [
     "PLACE",
     "BREAK",

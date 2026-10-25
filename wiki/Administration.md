@@ -54,9 +54,9 @@ Tab completion exposes only `/kingdom` for player commands. Subcommands and thei
 
 Permissions: `PLACE`, `BREAK`, `INTERACT`, `CONTAINERS`, `ENTITIES`, `PVP`, `DEPOSIT`, `WITHDRAW`.
 
-Flags: `EXPLOSIONS`, `FIRE`, `FLUIDS`, `MOBS`, `MOB_GRIEFING`, `PISTONS`, `AUTOMATION`, `PVP`. At peace, disabled flags apply even to mayors and players with building permissions. `AUTOMATION` is enabled by default for new kingdoms; the other flags default to off. Automation covers hoppers, droppers, dispensers and similar inventory machines. Pistons remain controlled by `PISTONS`, and redstone signals cannot bypass claim boundaries.
+Flags: `EXPLOSIONS`, `FIRE`, `FLUIDS`, `MOBS`, `MOB_GRIEFING`, `PVP`. At peace, disabled flags apply even to mayors and players with building permissions. New kingdoms start with these flags off. Pistons, observers, redstone, hoppers, droppers and dispensers have no machine toggle: they work normally within a kingdom, including across its chunk borders. Redstone signals can cross claim borders. Ownership checks still prevent protected cross-border block movement and inventory transfers; cores and AirDrop protection remain enforced. A forbidden piston event is rejected before its first state change, and accepted moving blocks finish their animations normally. The removed `PISTONS` and `AUTOMATION` entries are ignored when loading existing configs, kingdom saves and transaction snapshots.
 
-Operators at the configured `opLevel` bypass ordinary claim permissions for placing, breaking, interacting, containers, entities and PvP. They still obey kingdom flags, including explosions, fire, fluids, mobs, mob griefing, pistons, Automation and PvP. Operator status does not grant treasury access.
+Operators at the configured `opLevel` bypass ordinary claim permissions for placing, breaking, interacting, containers, entities and PvP. They still obey kingdom flags, including explosions, fire, fluids, mobs, mob griefing and PvP. Operator status does not grant treasury access.
 
 
 ## Configuration
@@ -114,7 +114,7 @@ Set these with `/kingdomadmin set coreSkyAccessRequired true` and `/kingdomadmin
 | `adjacentExpansion` | true | Require connected claims per dimension |
 | `allowMultipleDimensions` | false | Allow another dimension's first claim without adjacency |
 | `allowedDimensions` | All three vanilla dimensions | Dimensions where players may create/expand claims |
-| `defaultFlags` | AUTOMATION | Flags enabled for newly created kingdoms |
+| `defaultFlags` | Empty | Flags enabled for newly created kingdoms |
 | `defaultMemberPermissions` | Building, breaking, interacting, containers, entities, deposit | Initial member defaults |
 | `defaultPublicPermissions` | Empty | Initial visitor permissions |
 | `allowPublicPermissions` | true | Allow mayors to edit public permissions |

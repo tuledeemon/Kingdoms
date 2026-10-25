@@ -10,7 +10,7 @@ import java.util.*;
 import static com.celik.kingdoms.Rules.*;
 
 public final class Store {
-    public static final Gson JSON = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(new ArtifactBalanceMigration()).create();
+    public static final Gson JSON = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(new ArtifactBalanceMigration()).registerTypeAdapterFactory(new RemovedMachineFlagsMigration()).create();
     public final Path dir;
     public Store(Path dir) { this.dir = dir; }
     public <T> T read(String name, Class<T> type, T fallback) {

@@ -2,6 +2,15 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
+## Piston stability and removed machine flags — 1.11.1
+
+**126 unit tests and 726 dedicated-server checks passed**, with Minecraft 26.2, Java 25, Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
+
+- Eight actual sticky-piston extension/retraction cycles use a powered observer in the neighboring chunk: both chunks owned by the same kingdom, then a claimed observer powering a wilderness piston. Each cycle checks native signal output, matching moving-block state/entity, final animation state and the pulled block. No invalid block-entity warnings were emitted.
+- A forbidden ownership-boundary extension leaves the base unextended, without a moving entity or partial head. Existing actual core-piston protection and captured AirDrop hopper/piston/fluid locks still pass.
+- Old configuration and nested kingdom snapshots discard only the removed piston/automation flags, preserve remaining flags and customized values, and serialize without the removed values.
+- Full claims, wars, cores, economy, AirDrop and artifact checks pass; the dedicated server stops normally. These fixtures exercise native event and moving-entity entry points rather than relying only on policy predicates.
+
 ## Expanded artifacts and Void Scythe — 1.11.0
 
 **124 unit tests and 688 dedicated-server checks passed**, with C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.

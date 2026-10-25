@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.11.1:** Removed piston/automation flags and claim-border redstone filtering. Pistons now validate the whole move before changing blocks, and accepted retraction/animation changes finish normally in claimed land. Existing saves migrate automatically.
+
 **1.11.0:** Added Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe, Advanced Pickaxe and the staff-only Golden Crown. Armor effects respect stronger potions, connected harvesting respects protection and native loot, and the crown keeps gold visuals with Diamond/Netherite stats.
 
 **1.10.2:** Covered cores move to the top of their column after five minutes, with mayor warnings and a stone fallback above fluids/unbreakable blocks. Artifact repairs keep their abilities in crafting, anvils and grindstones, in either input order. Void Scythe now has 1,000 durability, with existing default scythes migrated while preserving wear.

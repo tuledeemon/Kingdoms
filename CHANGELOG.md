@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.1
+
+- Remove `PISTONS` and `AUTOMATION` from kingdom flags, settings, command values and new-kingdom defaults. Load legacy flags safely in configuration, kingdom saves and transaction snapshots without resetting other settings.
+- Remove the claim-border redstone signal filter. Observers and other power sources work across chunk/ownership borders.
+- Preflight complete piston events before their first state change, retaining ownership, core, AirDrop and war-placement protection. Scope accepted positions through base retraction, block movement and native animation completion so claim mutation checks cannot leave invalid moving-piston data on an ordinary piston.
+- Keep same-kingdom machines enabled without toggles and retain hopper/dispenser ownership checks and locked reward-chest protection.
+- Add real observer/sticky-piston cycles across chunk borders and claim/wilderness borders, plus legacy-save migration checks. Update the guides and example configuration.
+
 ## 1.11.0
 
 - Add Legendary Runner's Boots (Speed I), King's Chestplate (Regeneration I), Archer's Bow (two arrows), Advanced Axe (connected trees) and Advanced Pickaxe (connected ores) to the uncapped artifact AirDrop pool. Preserve overall artifact/fixer chances and existing type settings during the one-time catalogue expansion.
