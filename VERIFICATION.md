@@ -2,6 +2,16 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
+## Golden Crown private locator — 1.11.3
+
+**126 unit tests and 762 dedicated-server checks passed**, on Minecraft 26.2 / Java 25 with Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used; PacketEvents was not required by the test runtime.
+
+- Real native waypoint packets are encoded and decoded through Minecraft's registry-aware codec, then applied to a tracked-waypoint client model. A crown wearer receives private markers with the global rule off, while a non-wearer receives none and the rule remains unchanged.
+- Checks cover native distant azimuth markers, sneaking/invisibility, reappearance, icon-color changes, unequip, ordinary helmets, artifact disable, target logout, spectator mode, global-on handoff and shutdown. Protocol reconfiguration produces no play waypoint packets and returning to play recreates tracks.
+- Crown Strength is absent, refreshed lore describes the locator bar, and legitimate Strength II remains unchanged after unequipping. Existing armor, upgrade, appearance, enchantment, AirDrop-exclusion and artifact-identity checks continue passing.
+- Minecraft 26.2's native HUD code was inspected: contextual-bar selection checks the client waypoint manager, so private packets can activate the locator display without enabling the world rule. Actual graphical appearance still needs a live client check. Marker IDs are separate from vanilla player waypoint IDs, and no player waypoint attributes are modified.
+- Full liquid, piston, claim, war, core, AirDrop and artifact regression coverage passes; the server stops normally.
+
 ## Towny-style liquid and machine boundaries — 1.11.2
 
 **126 unit tests and 745 dedicated-server checks passed**, using Minecraft 26.2, Java 25, Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.

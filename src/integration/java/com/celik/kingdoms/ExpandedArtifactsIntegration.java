@@ -26,7 +26,7 @@ final class ExpandedArtifactsIntegration {
         var position=p.position();float health=p.getHealth();var mode=p.gameMode.getGameModeForPlayer();var effects=p.getActiveEffects().stream().map(MobEffectInstance::new).toList();
         try{
             p.closeContainer();s.artifacts.leave(p);p.getInventory().clearContent();p.removeAllEffects();p.gameMode.changeGameModeForPlayer(GameType.SURVIVAL);
-            armor(s,p,cfg,check);p.removeAllEffects();s.artifacts.armor.leave(p);p.getInventory().clearContent();
+            armor(s,p,cfg,check);CrownLocatorIntegration.run(s,p,cfg,check);p.removeAllEffects();s.artifacts.armor.leave(p);p.getInventory().clearContent();
             bow(s,p,cfg,check);p.getInventory().clearContent();mining(s,p,cfg,check);
             var flags=new HashMap<String,Boolean>();cfg.types.forEach((key,value)->{flags.put(key,value.enabled);value.enabled=false;});
             try{cfg.types.get("golden_crown").enabled=true;check.accept(s.artifacts.roll(UUID.randomUUID(),999,new Random(4))==null,"Golden Crown cannot be rolled even as the only enabled type");p.getInventory().clearContent();s.artifacts.give(p,"golden_crown");check.accept(java.util.stream.IntStream.range(0,p.getInventory().getContainerSize()).anyMatch(i->{Record r=s.artifacts.record(p.getInventory().getItem(i));return r!=null&&r.type.equals("golden_crown");}),"staff give can issue an event-only Golden Crown");}
@@ -37,7 +37,7 @@ final class ExpandedArtifactsIntegration {
     private static void armor(KingdomService s,ServerPlayer p,ArtifactConfig cfg,BiConsumer<Boolean,String> check){
         ItemStack boots=issue(s,cfg,"runners_boots"),chest=issue(s,cfg,"kings_chestplate"),crown=issue(s,cfg,"golden_crown");
         p.setItemSlot(EquipmentSlot.FEET,boots);p.setItemSlot(EquipmentSlot.CHEST,chest);p.setItemSlot(EquipmentSlot.HEAD,crown);s.artifacts.armor.tick(p);
-        check.accept(p.hasEffect(MobEffects.SPEED)&&p.getEffect(MobEffects.SPEED).getAmplifier()==0&&p.hasEffect(MobEffects.REGENERATION)&&p.getEffect(MobEffects.REGENERATION).getAmplifier()==0&&p.hasEffect(MobEffects.STRENGTH),"boots, chestplate and crown grant their actual level-one worn effects together");
+        check.accept(p.hasEffect(MobEffects.SPEED)&&p.getEffect(MobEffects.SPEED).getAmplifier()==0&&p.hasEffect(MobEffects.REGENERATION)&&p.getEffect(MobEffects.REGENERATION).getAmplifier()==0&&!p.hasEffect(MobEffects.STRENGTH),"boots and chestplate grant their worn effects while the crown no longer grants Strength");
         p.setHealth(10);for(int tick=0;tick<100;tick++){if(tick%10==0)s.artifacts.armor.tick(p);p.getEffect(MobEffects.REGENERATION).tickServer(p.level(),p,()->{});}
         check.accept(p.getHealth()==12,"King's Chestplate heals at vanilla Regeneration I cadence rather than healing every refresh");
         p.addEffect(new MobEffectInstance(MobEffects.SPEED,900,1));p.addEffect(new MobEffectInstance(MobEffects.REGENERATION,900,1));s.artifacts.armor.tick(p);

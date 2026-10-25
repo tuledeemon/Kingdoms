@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.11.3:** Golden Crown grants a private locator bar instead of Strength. It works while the world locator rule is off, affects only the wearer, clears its markers on removal and uses native packets without requiring PacketEvents.
+
 **1.11.2:** Towny-style liquid and machine boundaries: no Fluids flag, normal outward flow/exports into wilderness, bucket placement/collection tied to Place/Break permission, and protected piston retraction. Adds the global `preventFluidGriefing` setting and selective dispenser checks.
 
 **1.11.1:** Removed piston/automation flags and claim-border redstone filtering. Pistons now validate the whole move before changing blocks, and accepted retraction/animation changes finish normally in claimed land. Existing saves migrate automatically.

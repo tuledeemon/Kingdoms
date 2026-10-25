@@ -42,6 +42,7 @@ public final class Artifacts {
     private final Map<UUID,Freeze> frozen=new HashMap<>();
     final GuardianAngel guardian;
     final ArtifactArmor armor=new ArtifactArmor(this);
+    final CrownLocator locator;
     private final ThreadLocal<Boolean> reflected=ThreadLocal.withInitial(()->false);
     private final ThreadLocal<Attack> attack=new ThreadLocal<>();
     private final Map<UUID,Face> faces=new HashMap<>();
@@ -51,7 +52,7 @@ public final class Artifacts {
     private final ThreadLocal<Mining> mining=new ThreadLocal<>();
     public record Mining(ServerPlayer player,BlockPos pos,BlockState state,ItemStack stack,boolean placed){}
     public static final class Journal {public UUID player,receipt;public Record next;public UUID fixer;}
-    Artifacts(KingdomService service){this.service=service;guardian=new GuardianAngel(service);data=service.store.read("artifacts.json",Data.class,new Data());ArtifactRules.validate(data);validateConfiguration(config());healthy=service.store.read("artifact-transaction.json",Journal.class,null)==null;if(healthy)save();}
+    Artifacts(KingdomService service){this.service=service;guardian=new GuardianAngel(service);locator=new CrownLocator(this,service);data=service.store.read("artifacts.json",Data.class,new Data());ArtifactRules.validate(data);validateConfiguration(config());healthy=service.store.read("artifact-transaction.json",Journal.class,null)==null;if(healthy)save();}
     ArtifactConfig config(){return service.config.artifacts;}
     public void validateConfiguration(ArtifactConfig cfg){cfg.validate();for(var e:cfg.types.entrySet()){
         ItemStack base=new ItemStack(item(e.getValue().baseItem));
@@ -115,7 +116,7 @@ public final class Artifacts {
         case "wind_burst_spear"->"Wind Burst "+r.amplifier;
         case "runners_boots"->"Speed I while worn • Stronger potions take priority";
         case "kings_chestplate"->"Regeneration I while worn • Stronger potions take priority";
-        case "golden_crown"->"Strength I while worn • Staff event reward";
+        case "golden_crown"->"Locator bar while worn • Staff event reward";
         case "archers_bow"->"Fires two arrows per shot";
         case "advanced_axe"->"Fells connected tree logs";
         case "advanced_pickaxe"->"Mines connected ore veins";
@@ -246,8 +247,8 @@ public final class Artifacts {
     ItemStack find(ServerPlayer p,UUID id){for(int i=0;i<p.getInventory().getContainerSize();i++){ItemStack s=p.getInventory().getItem(i);if(id.equals(tag(s,"kingdoms_artifact")))return s;}return ItemStack.EMPTY;}
     public void observe(ServerPlayer p,ItemStack stack){observedPlayers.put(p.getUUID(),p);Record r=record(stack);if(r==null){if(marked(stack))invalidate(stack);return;}if(!lease(stack,r)){invalidate(stack);return;}boolean changed=false;if(!r.delivered){r.delivered=true;changed=true;}if(r.owner==null||config().rebindOnTrade&&!p.getUUID().equals(r.owner)){r.owner=p.getUUID();changed=true;}if(changed)save();refresh(stack,r);}
     private void invalidate(ItemStack stack){Record saved=data.records.get(tag(stack,"kingdoms_artifact"));boolean retired=saved!=null&&saved.retired;CustomData.update(DataComponents.CUSTOM_DATA,stack,t->{t.remove("kingdoms_artifact");t.remove("kingdoms_fixer");t.remove("kingdoms_nonce");});stack.remove(DataComponents.UNBREAKABLE);stack.set(DataComponents.CUSTOM_NAME,Component.literal(Ui.caps(retired?"Retired artifact":"Invalid artifact replica")).withStyle(ChatFormatting.DARK_GRAY));stack.set(DataComponents.LORE,new ItemLore(List.of(line("This item has no artifact abilities"))));}
-    public void leave(ServerPlayer p){armor.leave(p);observedPlayers.remove(p.getUUID());faces.remove(p.getUUID());disabled.remove(p.getUUID());guardian.clear(p);for(int i=0;i<p.getInventory().getContainerSize();i++){Record r=record(p.getInventory().getItem(i));if(r!=null&&leases.get(r.id)==p.getInventory().getItem(i))leases.remove(r.id);}}
-    public void tick(){guardian.tick();frozen.entrySet().removeIf(e->{Freeze f=e.getValue();if(!f.entity.isAlive()||f.entity.isRemoved()||service.now()>=f.until){if(!f.entity.isInPowderSnow)f.entity.setTicksFrozen(0);return true;}f.entity.setTicksFrozen(f.entity.getTicksRequiredToFreeze()+2);return false;});disabled.entrySet().removeIf(e->service.now()>=e.getValue());if(!healthy)return;ticks++;try{
+    public void leave(ServerPlayer p){locator.leave(p);armor.leave(p);observedPlayers.remove(p.getUUID());faces.remove(p.getUUID());disabled.remove(p.getUUID());guardian.clear(p);for(int i=0;i<p.getInventory().getContainerSize();i++){Record r=record(p.getInventory().getItem(i));if(r!=null&&leases.get(r.id)==p.getInventory().getItem(i))leases.remove(r.id);}}
+    public void tick(){guardian.tick();locator.tick();frozen.entrySet().removeIf(e->{Freeze f=e.getValue();if(!f.entity.isAlive()||f.entity.isRemoved()||service.now()>=f.until){if(!f.entity.isInPowderSnow)f.entity.setTicksFrozen(0);return true;}f.entity.setTicksFrozen(f.entity.getTicksRequiredToFreeze()+2);return false;});disabled.entrySet().removeIf(e->service.now()>=e.getValue());if(!healthy)return;ticks++;try{
         for(ServerPlayer player:service.server.getPlayerList().getPlayers())if(itemDisabled(player))voidCooldowns(player);
         if(ticks%10==0)for(ServerPlayer p:service.server.getPlayerList().getPlayers())armor.tick(p);
         if(ticks%20==0){for(ServerPlayer p:service.server.getPlayerList().getPlayers()){releaseAbsent(p);for(int i=0;i<p.getInventory().getContainerSize();i++)if(marked(p.getInventory().getItem(i)))observe(p,p.getInventory().getItem(i));}reconcile();if(dirty)save();}
@@ -255,7 +256,7 @@ public final class Artifacts {
     private void releaseAbsent(ServerPlayer p){leases.entrySet().removeIf(e->{Record r=data.records.get(e.getKey());if(r==null||!p.getUUID().equals(r.owner))return false;for(int i=0;i<p.getInventory().getContainerSize();i++)if(p.getInventory().getItem(i)==e.getValue())return false;for(var slot:p.containerMenu.slots)if(slot.getItem()==e.getValue())return false;return p.containerMenu.getCarried()!=e.getValue();});}
     public void destroyed(ItemStack stack){Record r=record(stack);if(r!=null&&lease(stack,r)){r.retired=true;leases.remove(r.id);save();}UUID id=tag(stack,"kingdoms_fixer");Fixer f=data.fixers.get(id);if(f!=null&&!f.consumed){f.consumed=true;save();}}
     public List<ItemStack> keepOnDeath(ServerPlayer p){return List.of();}
-    public void respawn(ServerPlayer oldPlayer,ServerPlayer player){armor.leave(oldPlayer);guardian.clear(oldPlayer);disabled.remove(player.getUUID());frozen.remove(player.getUUID());}
+    public void respawn(ServerPlayer oldPlayer,ServerPlayer player){locator.leave(oldPlayer);armor.leave(oldPlayer);guardian.clear(oldPlayer);disabled.remove(player.getUUID());frozen.remove(player.getUUID());}
     public void returnAfterDeath(ServerPlayer p,List<ItemStack> kept){}
     private Fixer validFixer(ItemStack stack){Fixer f=data.fixers.get(tag(stack,"kingdoms_fixer"));return f!=null&&!f.consumed&&stack.getCount()==1&&f.nonce.equals(tag(stack,"kingdoms_nonce"))?f:null;}
     public ItemStack repairPreview(ItemStack artifact,ItemStack fixer){Record r=record(artifact);if(!healthy||r==null||validFixer(fixer)==null)return ItemStack.EMPTY;
@@ -281,5 +282,5 @@ public final class Artifacts {
     public void giveFixer(ServerPlayer p){check();if(p.getInventory().getFreeSlot()<0)throw new IllegalArgumentException("Keep an empty inventory slot");Fixer f=new Fixer();data.fixers.put(f.id,f);save();p.getInventory().add(fixer(f));((AirDropPlayerSaveInvoker)service.server.getPlayerList()).kingdoms$saveAirDropPlayer(p);}
     public void recoverStorage(){Data loaded=service.store.read("artifacts.json",Data.class,new Data());ArtifactRules.validate(loaded);data=loaded;healthy=service.store.read("artifact-transaction.json",Journal.class,null)==null;leases.clear();if(!healthy)throw new IllegalArgumentException("A pending artifact transaction needs its player to reconnect for recovery");save();}
     public long count(){return data.records.values().stream().filter(r->!r.retired).count();}
-    public void stop(){for(ServerPlayer player:service.server.getPlayerList().getPlayers())armor.leave(player);guardian.stop();if(healthy&&dirty)save();}
+    public void stop(){locator.stop();for(ServerPlayer player:service.server.getPlayerList().getPlayers())armor.leave(player);guardian.stop();if(healthy&&dirty)save();}
 }

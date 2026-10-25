@@ -13,7 +13,7 @@ final class ArtifactArmor {
     ArtifactArmor(Artifacts artifacts){this.artifacts=artifacts;}
     void tick(ServerPlayer player){
         Map<Holder<MobEffect>,MobEffectInstance> previous=issued.computeIfAbsent(player.getUUID(),id->new HashMap<>());
-        Map<Holder<MobEffect>,Boolean> active=Map.of(MobEffects.SPEED,worn(player,EquipmentSlot.FEET,"runners_boots"),MobEffects.REGENERATION,worn(player,EquipmentSlot.CHEST,"kings_chestplate"),MobEffects.STRENGTH,worn(player,EquipmentSlot.HEAD,"golden_crown"));
+        Map<Holder<MobEffect>,Boolean> active=Map.of(MobEffects.SPEED,worn(player,EquipmentSlot.FEET,"runners_boots"),MobEffects.REGENERATION,worn(player,EquipmentSlot.CHEST,"kings_chestplate"));
         active.forEach((effect,on)->{
             MobEffectInstance current=player.getEffect(effect),owned=previous.get(effect);
             boolean ours=current!=null&&current==owned&&current.getAmplifier()==0&&current.getDuration()>0&&current.getDuration()<=100;

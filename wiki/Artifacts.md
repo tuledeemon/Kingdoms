@@ -19,7 +19,7 @@ Fourteen artifacts are available: thirteen can appear in AirDrops, and the Golde
 | Archer's Bow | Legendary / Bow | Fires two arrows per shot using one ammo; bonus arrow cannot be collected | No Netherite upgrade |
 | Advanced Axe | Legendary / Diamond Axe | Instantly fells connected tree logs, with normal drops/tool wear | Netherite Axe, same ability |
 | Advanced Pickaxe | Legendary / Diamond Pickaxe | Instantly mines connected matching ore veins, including deepslate equivalents | Netherite Pickaxe, same ability |
-| Golden Crown | Mythic / Diamond Helmet with gold appearance | Strength I while worn; staff-command-only event reward | Netherite Helmet stats for three ingots; keeps gold appearance |
+| Golden Crown | Mythic / Diamond Helmet with gold appearance | Private locator bar while worn; staff-command-only event reward | Netherite Helmet stats for three ingots; keeps gold appearance |
 
 All eligible triggers succeed by default; the former 50% activation rule is removed. Failed or protected hits do not trigger combat powers. Kingdom members, allies, pets and farm animals are excluded from hostile-hit powers. Kingdom protection still applies to lightning damage and terrain/fire changes.
 
@@ -33,7 +33,9 @@ Guardian Angel uses the same approach as CustomGear's Webmaster Boots: nearby re
 
 ## Worn armor, bow and advanced tools
 
-Runner's Boots and King's Chestplate grant the actual Level I effects only in their armor slots. Golden Crown grants Strength I in the helmet slot. Stronger potions take priority without being shortened, and removing armor does not remove legitimate potion effects. The chestplate heals at Minecraft's normal Regeneration I cadence.
+Runner's Boots and King's Chestplate grant the actual Level I effects only in their armor slots. Golden Crown grants a private locator bar in the helmet slot. Stronger potions take priority without being shortened, and removing armor does not remove legitimate potion effects. The chestplate heals at Minecraft's normal Regeneration I cadence.
+
+Golden Crown enables a private locator bar for its wearer while the normal server locator bar is off. It shows visible, living players in the same dimension, respects sneaking, invisibility and waypoint transmission hiding, and uses direction-only markers for distant players. Removing the crown, dying, entering spectator mode or disabling the artifact clears its markers; logout and dimension changes also clean up. It does not grant Strength or remove legitimate Strength potions. The global locator gamerule and other players' HUDs stay unchanged; if the normal bar is already enabled globally, its normal behavior remains. This uses vanilla waypoint packets and requires no client mod or PacketEvents dependency. Vanilla experience and riding displays can temporarily take priority over the locator bar.
 
 Golden Crown uses Minecraft's existing gold-helmet item model and worn texture, with Diamond Helmet stats, durability and compatible helmet enchantments. Its Netherite upgrade keeps the gold appearance, enchantments and wear percentage, and gains native Netherite Helmet stats. No resource pack or client mod is needed. It never appears in AirDrops: staff issue it in-game with `/kingdomadmin artifact give golden_crown` and award it for their events. Staff using the Combat addon must enable staff mode to regain their admin permissions.
 

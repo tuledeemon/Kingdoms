@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.3
+
+- Replace Golden Crown's worn Strength effect with a wearer-only locator bar. Keep Diamond/Netherite stats, golden appearance, compatible enchantments, upgrades and staff-only event issuance.
+- Send native waypoint packets directly while the world locator gamerule is off; do not toggle the world rule or change receive/transmit attributes. Leave globally enabled locator behavior intact without duplicate markers. PacketEvents remains optional.
+- Use separate marker IDs so cleanup cannot remove ordinary vanilla waypoints. Respect dimension, death, spectator, sneaking, invisibility and transmission range; send direction-only markers for distant targets and replay tracks for marker-type/icon changes.
+- Clear private markers on unequip, logout, respawn, spectator mode, configuration disable and shutdown. Rebuild sessions after player/world changes and avoid sending play packets during protocol reconfiguration. Preserve legitimate Strength potions.
+- Refresh existing crown lore automatically and document the new effect. Add native packet encode/decode and recipient/cleanup checks.
+
 ## 1.11.2
 
 - Remove the `FLUIDS` kingdom flag and migrate its legacy settings without changing other kingdom flags. Pouring buckets requires Place permission; collecting liquid requires Break permission. Cauldron bucket interactions use the corresponding permission.
