@@ -3733,6 +3733,8 @@
       }
     },
     "expandedCatalogVersion": 1,
+    "crownHealthPerUniqueKill": 4,
+    "crownMaxBonusHealth": 20,
     "advancedTreeMaxBlocks": 256,
     "advancedOreMaxBlocks": 64,
     "advancedChainRadius": 16,

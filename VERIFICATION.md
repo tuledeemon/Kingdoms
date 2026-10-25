@@ -2,6 +2,16 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
+## Golden Crown kill progression and binding — 1.12.0
+
+**130 unit tests and 770 dedicated-server checks passed**, on Minecraft 26.2 / Java 25 with Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
+
+- Native player deaths attributed to the crown wearer increase maximum/current health by four HP each, reach exactly 40 HP after five distinct victims and give nothing for repeat/self kills or kills beyond the cap. Saved unique victims belong to the player UUID.
+- Native armor-menu pickup, shift/drop/hotbar actions, direct inventory/equipment removal, right-click helmet swaps and creative slot packets cannot remove the crown while alive. A native wearer death clears saved progress and the dedicated max-health modifier while allowing the head slot to empty through vanilla drops.
+- Native player NBT save/load retains 40 maximum/current HP and binding on reconnect. Death reset is verified in the artifact file. A new wearer starts without the previous player's kills. Missing legacy crown-state collections load safely.
+- The native Unbreakable component and durability hook preserve the crown after 100,000 damage attempts. Golden Crown upgrades retain Unbreakable, compatible enchantments and gold appearance. Glowing is reapplied when removed; crown Strength is absent.
+- Existing artifacts, liquid/piston boundaries, claims, wars, cores and AirDrop regression checks pass. The former crown locator implementation is absent from the production JAR, and the server stops normally.
+
 ## Golden Crown private locator — 1.11.3
 
 **126 unit tests and 762 dedicated-server checks passed**, on Minecraft 26.2 / Java 25 with Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used; PacketEvents was not required by the test runtime.

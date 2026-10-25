@@ -6,6 +6,7 @@ public final class ArtifactConfig {
     public int abilityBalanceVersion=2;
     public int durabilityBalanceVersion=1;
     public int expandedCatalogVersion=1;
+    public int crownHealthPerUniqueKill=4,crownMaxBonusHealth=20;
     public int advancedTreeMaxBlocks=256,advancedOreMaxBlocks=64,advancedChainRadius=16;
     public boolean advancedTreeRequireLeaves=true,advancedProtectPlacedBlocks=true;
     public int fixerCount=2,repairLevels=5,upgradeIngots=3;
@@ -56,6 +57,7 @@ public final class ArtifactConfig {
     }
     public double chance(long day){return chanceByDay.entrySet().stream().filter(e->e.getKey()<=day).max(Map.Entry.comparingByKey()).map(Map.Entry::getValue).orElse(0d);}
     public void validate(){
+        if(crownHealthPerUniqueKill<1||crownHealthPerUniqueKill>1000||crownMaxBonusHealth<1||crownMaxBonusHealth>1000)throw new IllegalArgumentException("Invalid crown health settings");
         if(expandedCatalogVersion!=1||advancedTreeMaxBlocks<1||advancedTreeMaxBlocks>4096||advancedOreMaxBlocks<1||advancedOreMaxBlocks>4096||advancedChainRadius<1||advancedChainRadius>64)throw new IllegalArgumentException("Invalid advanced artifact chain settings");
         if(abilityBalanceVersion!=2||fixerCount<1||fixerCount>64||repairLevels<1||repairLevels>39||upgradeIngots<1||upgradeIngots>64||!prob(fixerChance)||!prob(repairFraction)||repairFraction==0||fixerItem==null||chanceByDay==null||types==null||!types.keySet().equals(KEYS))throw new IllegalArgumentException("Invalid artifact settings");
         if(chanceByDay.entrySet().stream().anyMatch(e->e.getKey()<1||!prob(e.getValue())))throw new IllegalArgumentException("Invalid artifact drop chance table");

@@ -13,6 +13,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 @Mixin(LivingEntity.class)
 public abstract class ArtifactLivingMixin {
+ @Inject(method="setItemSlot",at=@At("HEAD"),cancellable=true)
+ private void crownSlot(EquipmentSlot slot,net.minecraft.world.item.ItemStack stack,CallbackInfo ci){if(slot==EquipmentSlot.HEAD&&(Object)this instanceof net.minecraft.server.level.ServerPlayer player&&KingdomsMod.service!=null&&!KingdomsMod.service.artifacts.crown.mayReplace(player,stack))ci.cancel();}
  @Inject(method="startUsingItem",at=@At("HEAD"),cancellable=true)
  private void voidUse(net.minecraft.world.InteractionHand hand,CallbackInfo ci){if((Object)this instanceof net.minecraft.server.level.ServerPlayer player&&KingdomsMod.service!=null&&KingdomsMod.service.artifacts.itemDisabled(player))ci.cancel();}
  @Inject(method="stabAttack",at=@At("HEAD"),cancellable=true)

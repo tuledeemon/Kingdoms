@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.12.0
+
+- Replace Golden Crown locator packets with wearer-owned, per-life health progression: +4 HP per unique player kill, capped at +20 HP by default. Heal newly gained capacity; do not count repeat/self kills. Use native player kill attribution, persist unique victims immediately and reset on death.
+- Keep the crown bound in the helmet slot while alive, including creative inventory packets, armor clicks, shift/drop/hotbar swaps, right-click replacement and direct native equipment/inventory removal. Native death drops remain allowed.
+- Make both crown tiers natively Unbreakable, including existing crowns when refreshed, and add persistent glowing while worn. Keep gold appearance, Diamond/Netherite armor stats, compatible enchantments, upgrades and staff-only issuance.
+- Save a dedicated native max-health modifier so reconnecting preserves both maximum and current health. Clear that modifier and saved progress on death. Keep progress on the wearer rather than transferring it with the item.
+- Remove the locator implementation and packet tests; keep legitimate Strength potions unchanged. Add configurable `artifacts.crownHealthPerUniqueKill` and `artifacts.crownMaxBonusHealth`, with legacy-save defaults.
+- Add unique-kill, repeat/cap, survival/creative inventory lock, infinite durability, native save reload and death-reset coverage; update the guide.
+
 ## 1.11.3
 
 - Replace Golden Crown's worn Strength effect with a wearer-only locator bar. Keep Diamond/Netherite stats, golden appearance, compatible enchantments, upgrades and staff-only event issuance.

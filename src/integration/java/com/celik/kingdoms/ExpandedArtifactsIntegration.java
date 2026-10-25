@@ -26,7 +26,7 @@ final class ExpandedArtifactsIntegration {
         var position=p.position();float health=p.getHealth();var mode=p.gameMode.getGameModeForPlayer();var effects=p.getActiveEffects().stream().map(MobEffectInstance::new).toList();
         try{
             p.closeContainer();s.artifacts.leave(p);p.getInventory().clearContent();p.removeAllEffects();p.gameMode.changeGameModeForPlayer(GameType.SURVIVAL);
-            armor(s,p,cfg,check);CrownLocatorIntegration.run(s,p,cfg,check);p.removeAllEffects();s.artifacts.armor.leave(p);p.getInventory().clearContent();
+            armor(s,p,cfg,check);CrownPowerIntegration.run(s,p,cfg,check);p.removeAllEffects();s.artifacts.armor.leave(p);p.getInventory().clearContent();
             bow(s,p,cfg,check);p.getInventory().clearContent();mining(s,p,cfg,check);
             var flags=new HashMap<String,Boolean>();cfg.types.forEach((key,value)->{flags.put(key,value.enabled);value.enabled=false;});
             try{cfg.types.get("golden_crown").enabled=true;check.accept(s.artifacts.roll(UUID.randomUUID(),999,new Random(4))==null,"Golden Crown cannot be rolled even as the only enabled type");p.getInventory().clearContent();s.artifacts.give(p,"golden_crown");check.accept(java.util.stream.IntStream.range(0,p.getInventory().getContainerSize()).anyMatch(i->{Record r=s.artifacts.record(p.getInventory().getItem(i));return r!=null&&r.type.equals("golden_crown");}),"staff give can issue an event-only Golden Crown");}
@@ -36,7 +36,7 @@ final class ExpandedArtifactsIntegration {
     private static ItemStack issue(KingdomService s,ArtifactConfig cfg,String type){return s.artifacts.create(ArtifactIntegration.issue(s.artifacts,cfg,type));}
     private static void armor(KingdomService s,ServerPlayer p,ArtifactConfig cfg,BiConsumer<Boolean,String> check){
         ItemStack boots=issue(s,cfg,"runners_boots"),chest=issue(s,cfg,"kings_chestplate"),crown=issue(s,cfg,"golden_crown");
-        p.setItemSlot(EquipmentSlot.FEET,boots);p.setItemSlot(EquipmentSlot.CHEST,chest);p.setItemSlot(EquipmentSlot.HEAD,crown);s.artifacts.armor.tick(p);
+        p.setItemSlot(EquipmentSlot.FEET,boots);p.setItemSlot(EquipmentSlot.CHEST,chest);s.artifacts.armor.tick(p);
         check.accept(p.hasEffect(MobEffects.SPEED)&&p.getEffect(MobEffects.SPEED).getAmplifier()==0&&p.hasEffect(MobEffects.REGENERATION)&&p.getEffect(MobEffects.REGENERATION).getAmplifier()==0&&!p.hasEffect(MobEffects.STRENGTH),"boots and chestplate grant their worn effects while the crown no longer grants Strength");
         p.setHealth(10);for(int tick=0;tick<100;tick++){if(tick%10==0)s.artifacts.armor.tick(p);p.getEffect(MobEffects.REGENERATION).tickServer(p.level(),p,()->{});}
         check.accept(p.getHealth()==12,"King's Chestplate heals at vanilla Regeneration I cadence rather than healing every refresh");
@@ -54,7 +54,7 @@ final class ExpandedArtifactsIntegration {
         var anvil=new AnvilMenu(601,p.getInventory());anvil.getSlot(0).set(crown);anvil.getSlot(1).set(AirDropLoot.template(s.server,book));check.accept(anvil.getSlot(2).hasItem()&&s.artifacts.record(anvil.getSlot(2).getItem())!=null,"native helmet enchantment books remain compatible with the crown");
         EnchantmentHelper.updateEnchantments(crown,m->m.set(ench.getOrThrow(Enchantments.MENDING),1));crown.setDamageValue(100);p.setItemInHand(InteractionHand.MAIN_HAND,crown);p.getInventory().setItem(9,new ItemStack(Items.NETHERITE_INGOT,3));s.artifacts.upgrade(p);ItemStack upgraded=p.getMainHandItem();
         check.accept(upgraded.is(Items.NETHERITE_HELMET)&&p.getInventory().getItem(9).isEmpty()&&Objects.equals(upgraded.get(DataComponents.ATTRIBUTE_MODIFIERS),new ItemStack(Items.NETHERITE_HELMET).get(DataComponents.ATTRIBUTE_MODIFIERS)),"crown upgrade consumes exactly three ingots and gains native Netherite armor stats");
-        check.accept(upgraded.getDamageValue()==Math.round(100d/363*407)&&EnchantmentHelper.getItemEnchantmentLevel(ench.getOrThrow(Enchantments.MENDING),upgraded)==1&&upgraded.get(DataComponents.EQUIPPABLE).assetId().orElseThrow().equals(net.minecraft.world.item.equipment.EquipmentAssets.GOLD),"crown upgrade preserves wear percentage, enchantments and golden appearance");
+        check.accept(upgraded.has(DataComponents.UNBREAKABLE)&&upgraded.getDamageValue()==0&&EnchantmentHelper.getItemEnchantmentLevel(ench.getOrThrow(Enchantments.MENDING),upgraded)==1&&upgraded.get(DataComponents.EQUIPPABLE).assetId().orElseThrow().equals(net.minecraft.world.item.equipment.EquipmentAssets.GOLD),"crown upgrade preserves infinite durability, enchantments and golden appearance");
     }
     private static void bow(KingdomService s,ServerPlayer p,ArtifactConfig cfg,BiConsumer<Boolean,String> check){
         ItemStack bow=issue(s,cfg,"archers_bow");p.setItemInHand(InteractionHand.MAIN_HAND,bow);p.getInventory().setItem(9,new ItemStack(Items.ARROW,5));

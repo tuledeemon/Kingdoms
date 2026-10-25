@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerChunkEvents;
 import net.fabricmc.fabric.api.event.player.*;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityLevelChangeEvents;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
@@ -40,6 +41,7 @@ public final class KingdomsMod implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher,access,environment)->KingdomCommands.register(dispatcher));
         ServerPlayConnectionEvents.JOIN.register((handler,sender,server)->{if(service!=null)server.execute(()->{Ui.run(handler.player,()->service.airDrops.recover(handler.player));Ui.run(handler.player,()->service.artifacts.recover(handler.player));service.feedback.join(handler.player);service.cores.join(handler.player);service.applyBeaconEffects(handler.player);});});
         ServerPlayConnectionEvents.DISCONNECT.register((handler,server)->{if(service!=null){service.artifacts.leave(handler.player);service.airDrops.leave(handler.player.getUUID());service.cores.leave(handler.player.getUUID());service.leaveBeaconTerritory(handler.player);service.feedback.leave(handler.player.getUUID());}});
+        ServerLivingEntityEvents.AFTER_DEATH.register((entity,source)->{if(service!=null&&entity instanceof ServerPlayer player)try{service.artifacts.crown.death(player,source);}catch(RuntimeException failure){LOG.error("Crown death state could not be saved",failure);}});
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer,newPlayer,alive)->{if(service!=null){service.artifacts.respawn(oldPlayer,newPlayer);service.airDrops.leave(newPlayer.getUUID());service.cores.highlights.reset(newPlayer);}});
         ServerEntityLevelChangeEvents.AFTER_PLAYER_CHANGE_LEVEL.register((player,origin,destination)->{if(service!=null){service.airDrops.leave(player.getUUID());service.cores.highlights.reset(player);}});
         PlayerBlockBreakEvents.BEFORE.register((level,player,pos,state,entity)->Protection.permitted(level,pos,player.getUUID(),Permission.BREAK));

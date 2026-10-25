@@ -17,12 +17,15 @@ public final class ArtifactRules {
         public boolean upgraded,retired,delivered;
     }
     public static final class Fixer {public UUID id=UUID.randomUUID(),nonce=UUID.randomUUID(),drop;public boolean consumed;}
+    public static final class CrownLife {public UUID crown;public Set<UUID> victims=new HashSet<>();}
     public static final class Data {
         public int schemaVersion=1;
         public Map<UUID,Record> records=new LinkedHashMap<>();
         public Map<UUID,Fixer> fixers=new LinkedHashMap<>();
         public Set<String> placedBlocks=new HashSet<>();
+        public Map<UUID,CrownLife> crownLives=new HashMap<>();
     }
+    public static int crownBonus(CrownLife life,ArtifactConfig config){return life==null?0:(int)Math.min(config.crownMaxBonusHealth,(long)life.victims.size()*config.crownHealthPerUniqueKill);}
     public static List<String> eligible(ArtifactConfig config,Data data,long day){
         return config.types.entrySet().stream().filter(e->!e.getKey().equals("golden_crown")&&e.getValue().enabled&&e.getValue().airDropEligible&&e.getValue().minDay<=day).map(Map.Entry::getKey).toList();
     }
@@ -33,7 +36,7 @@ public final class ArtifactRules {
     public static boolean active(Record r,long now){return r!=null&&!r.retired&&(!r.type.equals("guardian_angel")||r.uses>0)&&now>=r.readyAt;}
     public static boolean consume(Record r,long now){if(r==null||!r.type.equals("guardian_angel")||!active(r,now))return false;r.uses--;r.readyAt=now+r.cooldownSeconds*1000L;r.revision++;return true;}
     public static int repairedUses(Record r,double fraction){return Math.min(r.maxUses,r.uses+Math.max(1,(int)Math.ceil(r.maxUses*fraction)));}
-    public static void validate(Data data){if(data.schemaVersion!=1||data.records==null||data.fixers==null||data.placedBlocks==null)throw new IllegalStateException("Invalid artifact save");for(var e:data.records.entrySet()){Record r=e.getValue();if(r==null||!e.getKey().equals(r.id)||r.nonce==null||r.type==null||!(ArtifactConfig.KEYS.contains(r.type)||r.retired&&ArtifactConfig.LEGACY_KEYS.contains(r.type))||r.uses<0||r.uses>r.maxUses||r.maxUses<0||r.baseItem==null||r.name==null||r.rarity==null||r.revision<0||r.abilityBalanceVersion!=2||!Double.isFinite(r.chance)||r.chance<0||r.chance>1||r.nextHealingRollAt<0)throw new IllegalStateException("Invalid artifact identity");}for(var e:data.fixers.entrySet())if(e.getValue()==null||!e.getKey().equals(e.getValue().id)||e.getValue().nonce==null)throw new IllegalStateException("Invalid artifact fixer");}
+    public static void validate(Data data){if(data.crownLives==null)data.crownLives=new HashMap<>();for(var e:data.crownLives.entrySet())if(e.getKey()==null||e.getValue()==null||e.getValue().crown==null||e.getValue().victims==null||e.getValue().victims.contains(null)||e.getValue().victims.size()>10000)throw new IllegalStateException("Invalid crown life");if(data.schemaVersion!=1||data.records==null||data.fixers==null||data.placedBlocks==null)throw new IllegalStateException("Invalid artifact save");for(var e:data.records.entrySet()){Record r=e.getValue();if(r==null||!e.getKey().equals(r.id)||r.nonce==null||r.type==null||!(ArtifactConfig.KEYS.contains(r.type)||r.retired&&ArtifactConfig.LEGACY_KEYS.contains(r.type))||r.uses<0||r.uses>r.maxUses||r.maxUses<0||r.baseItem==null||r.name==null||r.rarity==null||r.revision<0||r.abilityBalanceVersion!=2||!Double.isFinite(r.chance)||r.chance<0||r.chance>1||r.nextHealingRollAt<0)throw new IllegalStateException("Invalid artifact identity");}for(var e:data.fixers.entrySet())if(e.getValue()==null||!e.getKey().equals(e.getValue().id)||e.getValue().nonce==null)throw new IllegalStateException("Invalid artifact fixer");}
     private ArtifactRules(){}
 }
 

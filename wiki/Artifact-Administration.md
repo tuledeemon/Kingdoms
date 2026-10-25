@@ -16,6 +16,8 @@ Edit `artifacts` in `config/kingdoms/config.json`, then `/kingdomadmin reload`. 
 | `advancedChainRadius` | `16`; maximum axis distance from the first block; 1..64 |
 | `advancedTreeRequireLeaves` | `true`; require nearby leaves before felling connected logs |
 | `advancedProtectPlacedBlocks` | `true`; exclude tracked player-placed logs/ores from instant mining and chaining |
+| `crownHealthPerUniqueKill` | `4` HP (2 hearts) per unique player kill |
+| `crownMaxBonusHealth` | `20` extra HP, giving a normal player 40 total HP after five kills |
 | `types.<type>.airDropEligible` | `true` for ordinary artifacts; `false` and locked out for Golden Crown |
 | `rebindOnTrade` | `true`; update the tracked holder on legitimate trades |
 | `types.<type>.enabled`, `weight`, `minDay` | Enable a type, relative selection weight and unlock day |
