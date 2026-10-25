@@ -14,7 +14,7 @@ The action bar normally shows a small-caps line such as **ᴄᴏᴍʙᴀᴛ › 
 
 A successful player hit tags both the attacker and victim for **20 real-time seconds**. Player-owned projectile hits count too. Fully blocked shield hits also count by default. Self-damage, mob attacks and claim-protected/failed hits do not start a PvP combat tag.
 
-**Logging out while combat tagged kills you.** Disconnects, timeouts and kicks also count. The death follows Minecraft's inventory/experience rules, including the server's `keepInventory` setting. Normal server shutdowns do not punish players by default.
+**Logging out while combat tagged kills you immediately at the logout location, before your player data is saved and removed.** Your items drop there without waiting for you to reconnect; rejoining does not create another set. Disconnects, timeouts and kicks also count. The death follows Minecraft's inventory/experience rules, including the server's `keepInventory` setting. Normal server shutdowns do not punish players by default.
 
 Each opponent has a separate timer. If you kill the only opponent keeping you tagged, combat ends. Killing one opponent while another fight remains clears only the dead opponent's timer. Staff can change this to clear the killer's whole combat tag on any opponent kill.
 
