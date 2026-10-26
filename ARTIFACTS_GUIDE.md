@@ -1,6 +1,6 @@
 # Artifacts — Kingdoms 1.11.0
 
-Fourteen artifacts are available: thirteen can appear in AirDrops, and the Golden Crown is staff-command-only. They work on a Fabric 26.2 server with ordinary clients. In-game names and short lore use small caps.
+Thirteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server with ordinary clients. In-game names and short lore use small caps.
 
 ## Catalogue
 
@@ -19,7 +19,6 @@ Fourteen artifacts are available: thirteen can appear in AirDrops, and the Golde
 | Archer's Bow | Legendary / Bow | Fires two arrows per shot using one ammo; bonus arrow cannot be collected | No Netherite upgrade |
 | Advanced Axe | Legendary / Diamond Axe | Instantly fells connected tree logs, with normal drops/tool wear | Netherite Axe, same ability |
 | Advanced Pickaxe | Legendary / Diamond Pickaxe | Instantly mines connected matching ore veins, including deepslate equivalents | Netherite Pickaxe, same ability |
-| Golden Crown | Mythic / Diamond Helmet with gold appearance | +2 hearts per unique player kill, up to 20 total hearts; infinite durability; bound and glowing until death; staff-only | Netherite Helmet stats for three ingots; keeps gold appearance |
 
 All eligible triggers succeed by default; the former 50% activation rule is removed. Failed or protected hits do not trigger combat powers. Kingdom members, allies, pets and farm animals are excluded from hostile-hit powers. Kingdom protection still applies to lightning damage and terrain/fire changes.
 
@@ -33,11 +32,7 @@ Guardian Angel uses the same approach as CustomGear's Webmaster Boots: nearby re
 
 ## Worn armor, bow and advanced tools
 
-Runner's Boots and King's Chestplate grant the actual Level I effects only in their armor slots. Golden Crown grants kill-based bonus health while bound in the helmet slot. Stronger potions take priority without being shortened, and removing armor does not remove legitimate potion effects. The chestplate heals at Minecraft's normal Regeneration I cadence.
-
-Wearing Golden Crown binds it to your helmet slot until you die and keeps you glowing. Each different player you kill during that life grants **2 extra hearts (4 HP)**, including healing the newly gained hearts. Five unique player kills give **20 bonus HP**, for **40 total HP (20 hearts)** on a normal player. Repeated kills of the same player give nothing, and additional kills cannot exceed the cap. Progress belongs to the wearer, survives reconnects/restarts and resets on death; another wearer does not inherit it. The crown has **infinite durability** in both Diamond and Netherite forms. Inventory clicks, shift-clicks, dropping, hotbar swaps, right-click helmet replacement and creative slot packets cannot remove it while you are alive. It follows normal Minecraft death-drop and keepInventory rules. The previous locator-bar and Strength abilities are removed.
-
-Golden Crown uses Minecraft's existing gold-helmet item model and worn texture, with Diamond Helmet armor stats, infinite durability and compatible helmet enchantments. Its Netherite upgrade keeps the gold appearance, enchantments and infinite durability, and gains native Netherite Helmet armor stats. No resource pack or client mod is needed. It never appears in AirDrops: staff issue it in-game with `/kingdomadmin artifact give golden_crown` and award it for their events. Staff using the Combat addon must enable staff mode to regain their admin permissions.
+Runner's Boots and King's Chestplate grant the actual Level I effects only in their armor slots. Stronger potions take priority without being shortened, and removing armor does not remove legitimate potion effects. The chestplate heals at Minecraft's normal Regeneration I cadence.
 
 Archer's Bow uses native draw strength, arrow types, enchantments and damage rules. A shot consumes one ammunition item unless Infinity/creative rules prevent consumption; the extra arrow is uncollectable. Each projectile uses native bow durability, normally two durability per shot. Ordinary bows are unchanged.
 
@@ -45,7 +40,7 @@ Advanced tools mine the original block instantly and break connected matching lo
 
 ## Durability, repair and enchantments
 
-Armor, tools, weapons and shields use **Minecraft durability**, including the visible durability bar and normal breaking. **Golden Crown is the exception: it is unbreakable.** Vanilla actions can cost more than one durability point. Mending, Unbreaking, enchanting tables, compatible anvil books, ordinary repair materials and grindstones work normally. Wind Burst II is the spear's built-in effect: grinding removes its other non-curse enchantments but preserves Wind Burst without granting repeatable XP for it.
+Armor, tools, weapons and shields use **Minecraft durability**, including the visible durability bar and normal breaking. Vanilla actions can cost more than one durability point. Mending, Unbreaking, enchanting tables, compatible anvil books, ordinary repair materials and grindstones work normally. Wind Burst II is the spear's built-in effect: grinding removes its other non-curse enchantments but preserves Wind Burst without granting repeatable XP for it.
 
 Combining an artifact with an ordinary matching item preserves its ability and identity in a crafting grid, anvil or grindstone, in either input order. Ordinary repair costs and enchantment-removal rules still apply; the spear always retains its built-in Wind Burst. Combining **two artifacts** is blocked in all three places so neither artifact is consumed or loses its power.
 
@@ -86,9 +81,6 @@ Edit `artifacts` in `config/kingdoms/config.json`, then `/kingdomadmin reload`. 
 | `advancedChainRadius` | `16`; maximum axis distance from the first block; 1..64 |
 | `advancedTreeRequireLeaves` | `true`; require nearby leaves before felling connected logs |
 | `advancedProtectPlacedBlocks` | `true`; exclude tracked player-placed logs/ores from instant mining and chaining |
-| `crownHealthPerUniqueKill` | `4` HP (2 hearts) per unique player kill |
-| `crownMaxBonusHealth` | `20` extra HP, giving a normal player 40 total HP after five kills |
-| `types.<type>.airDropEligible` | `true` for ordinary artifacts; `false` and locked out for Golden Crown |
 | `rebindOnTrade` | `true`; update the tracked holder on legitimate trades |
 | `types.<type>.enabled`, `weight`, `minDay` | Enable a type, relative selection weight and unlock day |
 | `name`, `baseItem`, `rarity` | Identity presentation; use a damageable base for tools and Heart of the Sea for Guardian Angel |
@@ -103,14 +95,11 @@ Edit `artifacts` in `config/kingdoms/config.json`, then `/kingdomadmin reload`. 
 | `variants[].amplifier` | Built-in Wind Burst level, default `2` for the spear |
 | `variants[].rarity` | Generated rarity |
 
-Type IDs: `thunder_axe`, `thorns_shield`, `frostbite_sword`, `multi_pickaxe`, `vampire_sword`, `void_scythe`, `guardian_angel`, `wind_burst_spear`, `runners_boots`, `kings_chestplate`, `archers_bow`, `advanced_axe`, `advanced_pickaxe`, `golden_crown`.
-
 ## Admin commands
 
 ```text
 /kingdomadmin artifact give thunder_axe
 /kingdomadmin artifact give guardian_angel
-/kingdomadmin artifact give golden_crown
 /kingdomadmin artifact give runners_boots
 /kingdomadmin artifact give advanced_pickaxe
 /kingdomadmin artifact set advancedOreMaxBlocks 64
@@ -133,7 +122,5 @@ Type IDs: `thunder_axe`, `thorns_shield`, `frostbite_sword`, `multi_pickaxe`, `v
 The old catalogue is replaced once when loading its configuration. Overall AirDrop artifact odds and fixer settings remain intact. Removed identities are retired and lose their abilities when encountered. Shared old types adopt the new mechanics, preserving their IDs, owners and upgrades; old remaining-use percentages become native durability on their item stacks. Current-version administrator changes survive reloads. Migration also covers records inside pending transactions. Kingdom/world/AirDrop files are not deleted.
 
 ## Expanded catalogue (1.11.0)
-
-Six types are added without replacing the previous eight or changing overall artifact/fixer chances. `expandedCatalogVersion` records the one-time addition; keep it at `1`. Existing type customizations and identities remain intact. The Golden Crown is excluded from automatic artifact rolls even if it is the only enabled type; its `airDropEligible` setting must stay false. Staff command issuance remains available. Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe and Advanced Pickaxe are enabled for AirDrops by default, each with Legendary rarity and weight 35. The crown has Mythic rarity. Archer's Bow has no Netherite upgrade; native diamond armor/tools and the crown can use the existing three-ingot upgrade menu.
 
 Void Scythe (1.11.0) now handles fully blocked shield hits and all ordinary/native spear item-action paths. Existing valid Scythes receive the behavior change without reissuing. If an old item already lost its authenticated identity before the repair fix, staff must issue a replacement with `/kingdomadmin artifact give void_scythe`; names/lore alone are not proof of identity.

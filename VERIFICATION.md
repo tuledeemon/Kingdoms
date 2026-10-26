@@ -2,26 +2,6 @@
 
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
-## Golden Crown kill progression and binding — 1.12.0
-
-**130 unit tests and 770 dedicated-server checks passed**, on Minecraft 26.2 / Java 25 with Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
-
-- Native player deaths attributed to the crown wearer increase maximum/current health by four HP each, reach exactly 40 HP after five distinct victims and give nothing for repeat/self kills or kills beyond the cap. Saved unique victims belong to the player UUID.
-- Native armor-menu pickup, shift/drop/hotbar actions, direct inventory/equipment removal, right-click helmet swaps and creative slot packets cannot remove the crown while alive. A native wearer death clears saved progress and the dedicated max-health modifier while allowing the head slot to empty through vanilla drops.
-- Native player NBT save/load retains 40 maximum/current HP and binding on reconnect. Death reset is verified in the artifact file. A new wearer starts without the previous player's kills. Missing legacy crown-state collections load safely.
-- The native Unbreakable component and durability hook preserve the crown after 100,000 damage attempts. Golden Crown upgrades retain Unbreakable, compatible enchantments and gold appearance. Glowing is reapplied when removed; crown Strength is absent.
-- Existing artifacts, liquid/piston boundaries, claims, wars, cores and AirDrop regression checks pass. The former crown locator implementation is absent from the production JAR, and the server stops normally.
-
-## Golden Crown private locator — 1.11.3
-
-**126 unit tests and 762 dedicated-server checks passed**, on Minecraft 26.2 / Java 25 with Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used; PacketEvents was not required by the test runtime.
-
-- Real native waypoint packets are encoded and decoded through Minecraft's registry-aware codec, then applied to a tracked-waypoint client model. A crown wearer receives private markers with the global rule off, while a non-wearer receives none and the rule remains unchanged.
-- Checks cover native distant azimuth markers, sneaking/invisibility, reappearance, icon-color changes, unequip, ordinary helmets, artifact disable, target logout, spectator mode, global-on handoff and shutdown. Protocol reconfiguration produces no play waypoint packets and returning to play recreates tracks.
-- Crown Strength is absent, refreshed lore describes the locator bar, and legitimate Strength II remains unchanged after unequipping. Existing armor, upgrade, appearance, enchantment, AirDrop-exclusion and artifact-identity checks continue passing.
-- Minecraft 26.2's native HUD code was inspected: contextual-bar selection checks the client waypoint manager, so private packets can activate the locator display without enabling the world rule. Actual graphical appearance still needs a live client check. Marker IDs are separate from vanilla player waypoint IDs, and no player waypoint attributes are modified.
-- Full liquid, piston, claim, war, core, AirDrop and artifact regression coverage passes; the server stops normally.
-
 ## Towny-style liquid and machine boundaries — 1.11.2
 
 **126 unit tests and 745 dedicated-server checks passed**, using Minecraft 26.2, Java 25, Fabric Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0 and C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
@@ -45,8 +25,8 @@ The final source was compiled with Java 25 and tested on an isolated Minecraft 2
 
 **124 unit tests and 688 dedicated-server checks passed**, with C2ME 0.4.1-beta.1.0+26.2. No graphical client or production server was used.
 
-- Actual worn effects coexist, heal at Regeneration I cadence, preserve Speed II/Regeneration II and longer/hidden legitimate potion effects, and clean up only owned armor effects. Crown components match native Diamond armor stats/durability and built-in gold assets; compatible helmet books work. A real three-ingot upgrade produces Netherite stats while retaining enchantments, wear percentage and gold appearance.
-- Native bow releases create two arrows using one ammo, preserve Flame and Infinity, make the bonus projectile uncollectable and charge normal wear per arrow; ordinary bows still shoot once. The crown is excluded even as the only enabled automatic type, but staff issuance works.
+- Actual worn effects coexist, heal at Regeneration I cadence, preserve Speed II/Regeneration II and longer/hidden legitimate potion effects, and clean up only owned armor effects.
+- Native bow releases create two arrows using one ammo, preserve Flame and Infinity, make the bonus projectile uncollectable and charge normal wear per arrow; ordinary bows still shoot once.
 - Native connected harvesting covers logs, equivalent deepslate ores, Silk Touch drops, exact wear, loaded-terrain limits, cap boundaries and stopping on break. Actual BlockItem placement is tracked while growth-style changes are not. Protected neighboring claims remain intact without extra drops/wear.
 - A real shield-blocked PvP hit reproduced the prior Void failure before the fix. The final build covers shield interruption, ordinary damage hits, native melee/stab/start-use/item-use denial, visible cooldown packets, newly held items, longer preexisting cooldowns, the real two-second expiry and successful attacks afterward.
 - Catalogue migration retains customized odds/settings and old identities. Full claims, wars, cores, AirDrops, existing artifacts and repair regression checks pass; the test server stops normally. A stale Java 21 Gradle daemon initially failed to start compiler workers; the successful build used Java 25 and an isolated ASCII Gradle distribution/build path, retaining the authoritative Unicode project path.

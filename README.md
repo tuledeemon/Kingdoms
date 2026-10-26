@@ -1,20 +1,16 @@
 # Kingdoms
 
-A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, manage a shared treasury and fight timed wars. AirDrops and fourteen special artifacts add recurring objectives for kingdoms and solo players.
+A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, manage a shared treasury and fight timed wars. AirDrops and special artifacts add recurring objectives for kingdoms and solo players.
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
-**1.12.1:** Golden Crown is now red Unique rarity. Lightweight inventory-only cleanup removes `_Umut` player-head items once per second.
-
-**1.12.0:** Golden Crown now binds until death, keeps its wearer glowing and has infinite durability. Each unique player kill grants two hearts, reaching 20 total hearts after five kills. Progress belongs to the wearer, survives reconnects and resets on death. Removes the locator ability.
-
-**1.11.3:** Golden Crown grants a private locator bar instead of Strength. It works while the world locator rule is off, affects only the wearer, clears its markers on removal and uses native packets without requiring PacketEvents.
+**1.12.1:** Lightweight inventory-only cleanup removes `_Umut` player-head items once per second.
 
 **1.11.2:** Towny-style liquid and machine boundaries: no Fluids flag, normal outward flow/exports into wilderness, bucket placement/collection tied to Place/Break permission, and protected piston retraction. Adds the global `preventFluidGriefing` setting and selective dispenser checks.
 
 **1.11.1:** Removed piston/automation flags and claim-border redstone filtering. Pistons now validate the whole move before changing blocks, and accepted retraction/animation changes finish normally in claimed land. Existing saves migrate automatically.
 
-**1.11.0:** Added Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe, Advanced Pickaxe and the staff-only Golden Crown. Armor effects respect stronger potions, connected harvesting respects protection and native loot, and the crown keeps gold visuals with Diamond/Netherite stats.
+**1.11.0:** Added Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe and Advanced Pickaxe. Armor effects respect stronger potions, and connected harvesting respects protection and native loot.
 
 **1.10.2:** Covered cores move to the top of their column after five minutes, with mayor warnings and a stone fallback above fluids/unbreakable blocks. Artifact repairs keep their abilities in crafting, anvils and grindstones, in either input order. Void Scythe now has 1,000 durability, with existing default scythes migrated while preserving wear.
 

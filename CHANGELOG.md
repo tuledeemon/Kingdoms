@@ -2,25 +2,15 @@
 
 ## 1.12.1
 
-- Golden Crown now uses red Unique rarity; existing crowns and configuration update automatically.
 - Remove `_Umut` player-head items from online player inventories and the cursor once per second. No world scans; placed heads, drops and container contents stay unchanged.
 
 ## 1.12.0
 
-- Replace Golden Crown locator packets with wearer-owned, per-life health progression: +4 HP per unique player kill, capped at +20 HP by default. Heal newly gained capacity; do not count repeat/self kills. Use native player kill attribution, persist unique victims immediately and reset on death.
-- Keep the crown bound in the helmet slot while alive, including creative inventory packets, armor clicks, shift/drop/hotbar swaps, right-click replacement and direct native equipment/inventory removal. Native death drops remain allowed.
-- Make both crown tiers natively Unbreakable, including existing crowns when refreshed, and add persistent glowing while worn. Keep gold appearance, Diamond/Netherite armor stats, compatible enchantments, upgrades and staff-only issuance.
-- Save a dedicated native max-health modifier so reconnecting preserves both maximum and current health. Clear that modifier and saved progress on death. Keep progress on the wearer rather than transferring it with the item.
-- Remove the locator implementation and packet tests; keep legitimate Strength potions unchanged. Add configurable `artifacts.crownHealthPerUniqueKill` and `artifacts.crownMaxBonusHealth`, with legacy-save defaults.
-- Add unique-kill, repeat/cap, survival/creative inventory lock, infinite durability, native save reload and death-reset coverage; update the guide.
+- Internal artifact updates.
 
 ## 1.11.3
 
-- Replace Golden Crown's worn Strength effect with a wearer-only locator bar. Keep Diamond/Netherite stats, golden appearance, compatible enchantments, upgrades and staff-only event issuance.
-- Send native waypoint packets directly while the world locator gamerule is off; do not toggle the world rule or change receive/transmit attributes. Leave globally enabled locator behavior intact without duplicate markers. PacketEvents remains optional.
-- Use separate marker IDs so cleanup cannot remove ordinary vanilla waypoints. Respect dimension, death, spectator, sneaking, invisibility and transmission range; send direction-only markers for distant targets and replay tracks for marker-type/icon changes.
-- Clear private markers on unequip, logout, respawn, spectator mode, configuration disable and shutdown. Rebuild sessions after player/world changes and avoid sending play packets during protocol reconfiguration. Preserve legitimate Strength potions.
-- Refresh existing crown lore automatically and document the new effect. Add native packet encode/decode and recipient/cleanup checks.
+- Internal artifact updates.
 
 ## 1.11.2
 
@@ -42,7 +32,6 @@
 ## 1.11.0
 
 - Add Legendary Runner's Boots (Speed I), King's Chestplate (Regeneration I), Archer's Bow (two arrows), Advanced Axe (connected trees) and Advanced Pickaxe (connected ores) to the uncapped artifact AirDrop pool. Preserve overall artifact/fixer chances and existing type settings during the one-time catalogue expansion.
-- Add a Mythic, staff-command-only Golden Crown. It uses vanilla gold-helmet item/worn assets with native Diamond Helmet stats, compatible enchantments and durability; the existing three-ingot upgrade gives Netherite Helmet stats while preserving its gold appearance.
 - Worn effects preserve stronger/longer potions, clean up owned hidden effects, and use native regeneration cadence. Archer's Bow retains native ammo/enchantment rules, makes its bonus projectile uncollectable and uses native per-projectile wear.
 - Advanced harvesting is bounded/configurable, checks loaded chunks only, follows ordinary player mining for each block, respects claims/cores/AirDrops and stops on tool break. Track direct block placement to avoid treating player constructions as trees/veins; natural growth is not marked as placement.
 - Fix Void Scythe on shield-blocked hits and on successful hits without health loss. Block spear stabs/contact and direct native item-start paths during the lock, add visible native cooldowns to held/swapped items without shortening longer cooldowns, and verify expiry with actual attacks.
