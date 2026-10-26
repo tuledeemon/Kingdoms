@@ -3709,7 +3709,7 @@
       "golden_crown": {
         "name": "Golden Crown",
         "baseItem": "minecraft:diamond_helmet",
-        "rarity": "mythic",
+        "rarity": "unique",
         "enabled": true,
         "netheriteUpgradeable": true,
         "airDropEligible": false,
@@ -3727,7 +3727,7 @@
             "value": 0.0,
             "durationSeconds": 0.0,
             "amplifier": 0,
-            "rarity": "mythic"
+            "rarity": "unique"
           }
         ]
       }

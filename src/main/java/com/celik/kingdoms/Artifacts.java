@@ -79,9 +79,10 @@ public final class Artifacts {
     public boolean depleted(ItemStack stack){Record r=record(stack);return r==null||r.type.equals("guardian_angel")&&r.uses<=0;}
     private Record cloneRecord(Record r){return Store.JSON.fromJson(Store.JSON.toJson(r),Record.class);}
     public ItemStack create(Record r){ItemStack stack=new ItemStack(item(r.upgraded?r.baseItem.replace("diamond_","netherite_"):r.baseItem));refresh(stack,r);return stack;}
-    private static ChatFormatting color(String rarity){return switch(rarity){case "mythic"->ChatFormatting.LIGHT_PURPLE;case "legendary"->ChatFormatting.GOLD;case "arcane"->ChatFormatting.AQUA;default->ChatFormatting.GRAY;};}
+    private static ChatFormatting color(String rarity){return switch(rarity){case "unique"->ChatFormatting.RED;case "mythic"->ChatFormatting.LIGHT_PURPLE;case "legendary"->ChatFormatting.GOLD;case "arcane"->ChatFormatting.AQUA;default->ChatFormatting.GRAY;};}
     private Component line(String text){return Component.literal(Ui.caps(text)).withStyle(ChatFormatting.GRAY);}
     public void refresh(ItemStack stack,Record r){
+        if(r.type.equals("golden_crown")&&!r.rarity.equals("unique")){r.rarity="unique";dirty=true;}
         migrateScytheDurability(stack,r);
         int catalog=stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getIntOr("kingdoms_catalog",0);
         stack.set(DataComponents.MAX_STACK_SIZE,1);stack.remove(DataComponents.UNBREAKABLE);

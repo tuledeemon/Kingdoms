@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.12.1
+
+- Golden Crown now uses red Unique rarity; existing crowns and configuration update automatically.
+- Remove `_Umut` player-head items from online player inventories and the cursor once per second. No world scans; placed heads, drops and container contents stay unchanged.
+
 ## 1.12.0
 
 - Replace Golden Crown locator packets with wearer-owned, per-life health progression: +4 HP per unique player kill, capped at +20 HP by default. Heal newly gained capacity; do not count repeat/self kills. Use native player kill attribution, persist unique victims immediately and reset on death.

@@ -52,11 +52,13 @@ public final class ArtifactConfig {
         m.put("archers_bow",new Type("Archer's Bow","bow","legendary",35,0,0,0));m.get("archers_bow").netheriteUpgradeable=false;
         m.put("advanced_axe",new Type("Advanced Axe","diamond_axe","legendary",35,0,0,0));
         m.put("advanced_pickaxe",new Type("Advanced Pickaxe","diamond_pickaxe","legendary",35,0,0,0));
-        m.put("golden_crown",new Type("Golden Crown","diamond_helmet","mythic",10,0,0,0));m.get("golden_crown").airDropEligible=false;
+        m.put("golden_crown",new Type("Golden Crown","diamond_helmet","unique",10,0,0,0));m.get("golden_crown").airDropEligible=false;
         return m;
     }
     public double chance(long day){return chanceByDay.entrySet().stream().filter(e->e.getKey()<=day).max(Map.Entry.comparingByKey()).map(Map.Entry::getValue).orElse(0d);}
     public void validate(){
+        Type crown=types==null?null:types.get("golden_crown");
+        if(crown!=null){crown.rarity="unique";if(crown.variants!=null)for(Variant v:crown.variants)if(v!=null)v.rarity="unique";}
         if(crownHealthPerUniqueKill<1||crownHealthPerUniqueKill>1000||crownMaxBonusHealth<1||crownMaxBonusHealth>1000)throw new IllegalArgumentException("Invalid crown health settings");
         if(expandedCatalogVersion!=1||advancedTreeMaxBlocks<1||advancedTreeMaxBlocks>4096||advancedOreMaxBlocks<1||advancedOreMaxBlocks>4096||advancedChainRadius<1||advancedChainRadius>64)throw new IllegalArgumentException("Invalid advanced artifact chain settings");
         if(abilityBalanceVersion!=2||fixerCount<1||fixerCount>64||repairLevels<1||repairLevels>39||upgradeIngots<1||upgradeIngots>64||!prob(fixerChance)||!prob(repairFraction)||repairFraction==0||fixerItem==null||chanceByDay==null||types==null||!types.keySet().equals(KEYS))throw new IllegalArgumentException("Invalid artifact settings");
@@ -67,7 +69,7 @@ public final class ArtifactConfig {
         }
         if(types.get("golden_crown").airDropEligible)throw new IllegalArgumentException("Golden Crown is staff-command-only and cannot be enabled for AirDrops");
     }
-    private static boolean rarity(String r){return r!=null&&Set.of("relic","arcane","legendary","mythic").contains(r);}
+    private static boolean rarity(String r){return r!=null&&Set.of("relic","arcane","legendary","mythic","unique").contains(r);}
     private static boolean value(double n){return Double.isFinite(n)&&n>=0&&n<=1;}
     private static boolean duration(double n){return Double.isFinite(n)&&n>=0&&n<=60;}
     private static boolean prob(double n){return Double.isFinite(n)&&n>=0&&n<=1;}

@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.12.1:** Golden Crown is now red Unique rarity. Lightweight inventory-only cleanup removes `_Umut` player-head items once per second.
+
 **1.12.0:** Golden Crown now binds until death, keeps its wearer glowing and has infinite durability. Each unique player kill grants two hearts, reaching 20 total hearts after five kills. Progress belongs to the wearer, survives reconnects and resets on death. Removes the locator ability.
 
 **1.11.3:** Golden Crown grants a private locator bar instead of Strength. It works while the world locator rule is off, affects only the wearer, clears its markers on removal and uses native packets without requiring PacketEvents.

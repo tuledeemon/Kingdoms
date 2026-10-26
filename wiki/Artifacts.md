@@ -19,7 +19,7 @@ Fourteen artifacts are available: thirteen can appear in AirDrops, and the Golde
 | Archer's Bow | Legendary / Bow | Fires two arrows per shot using one ammo; bonus arrow cannot be collected | No Netherite upgrade |
 | Advanced Axe | Legendary / Diamond Axe | Instantly fells connected tree logs, with normal drops/tool wear | Netherite Axe, same ability |
 | Advanced Pickaxe | Legendary / Diamond Pickaxe | Instantly mines connected matching ore veins, including deepslate equivalents | Netherite Pickaxe, same ability |
-| Golden Crown | Mythic / Diamond Helmet with gold appearance | +2 hearts per unique player kill, up to 20 total hearts; infinite durability; bound and glowing until death; staff-only | Netherite Helmet stats for three ingots; keeps gold appearance |
+| Golden Crown | Unique (red) / Diamond Helmet with gold appearance | +2 hearts per unique player kill, up to 20 total hearts; infinite durability; bound and glowing until death; staff-only | Netherite Helmet stats for three ingots; keeps gold appearance |
 
 All eligible triggers succeed by default; the former 50% activation rule is removed. Failed or protected hits do not trigger combat powers. Kingdom members, allies, pets and farm animals are excluded from hostile-hit powers. Kingdom protection still applies to lightning damage and terrain/fire changes.
 

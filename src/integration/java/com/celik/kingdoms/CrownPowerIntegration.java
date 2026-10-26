@@ -22,6 +22,16 @@ final class CrownPowerIntegration {
         var record=ArtifactIntegration.issue(s.artifacts,cfg,"golden_crown");ItemStack crown=s.artifacts.create(record);
         List<ServerPlayer> fixtures=new ArrayList<>();fixtures.add(wearer);s.server.getPlayerList().getPlayers().add(wearer);
         try{
+            check.accept(record.rarity.equals("unique")&&crown.get(DataComponents.CUSTOM_NAME).getStyle().getColor().getValue()==0xFF5555,"crown has Unique rarity and red name");
+            record.rarity="mythic";s.artifacts.refresh(crown,record);
+            check.accept(record.rarity.equals("unique")&&crown.get(DataComponents.LORE).lines().getFirst().getString().equals(Ui.caps("unique")),"existing crown refresh migrates rarity and lore");
+            var head=new ItemStack(Items.PLAYER_HEAD,8);head.set(DataComponents.PROFILE,net.minecraft.world.item.component.ResolvableProfile.createUnresolved("_Umut"));
+            var other=new ItemStack(Items.PLAYER_HEAD);other.set(DataComponents.PROFILE,net.minecraft.world.item.component.ResolvableProfile.createUnresolved("OtherPlayer"));
+            wearer.getInventory().setItem(10,head);wearer.getInventory().setItem(11,other);wearer.containerMenu.setCarried(head.copy());
+            var stored=head.copy();wearer.getEnderChestInventory().setItem(0,stored);HeadCleanup.clear(wearer);
+            check.accept(wearer.getInventory().getItem(10).isEmpty()&&wearer.containerMenu.getCarried().isEmpty(),"target heads are cleared from player inventory and cursor");
+            check.accept(wearer.getInventory().getItem(11)==other&&wearer.getEnderChestInventory().getItem(0)==stored,"other heads and stored container heads are untouched");
+            wearer.getInventory().setItem(11,ItemStack.EMPTY);wearer.getEnderChestInventory().setItem(0,ItemStack.EMPTY);
             wearer.setItemSlot(EquipmentSlot.HEAD,crown);s.artifacts.crown.sync(wearer);
             check.accept(wearer.getMaxHealth()==20&&wearer.hasEffect(MobEffects.GLOWING)&&!wearer.hasEffect(MobEffects.STRENGTH),"crown starts at ten hearts, glows while worn and grants no Strength");
             check.accept(crown.has(DataComponents.UNBREAKABLE),"Golden Crown uses native infinite durability");
