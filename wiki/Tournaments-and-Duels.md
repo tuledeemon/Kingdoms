@@ -27,6 +27,8 @@ Use `/eventhost arena` for the setup menu, or these commands:
 
 Setup is locked while a tournament is active or inventories still need recovery. `/eventhost arena unclaim` releases the arena when idle.
 
+**Banners never grant a shield.** If the kit has no shield, no item is added or replaced. Existing shields are decorated in their original inventory/main-hand/offhand slots; enchantments, durability, custom names and all other non-pattern properties are preserved.
+
 ## Public arena teleport
 
 Stand on safe spectator ground and run `/eventhost arena setlocation`, or use **Set public teleport spot** in the admin menu. During a tournament, `/eventhost setlocation` updates this same arena point and requires administrator permission.
@@ -39,7 +41,7 @@ Players open `/event` and click **Teleport to arena**. This moves them to the co
 /eventhost duel PlayerOne PlayerTwo
 ```
 
-Both players must be online, alive in Survival, out of staff mode, unfrozen and clear of combat/war/AirDrop restrictions. Their original inventory is saved before they receive the kit. A held banner is optional for staff-picked fighters; if present, it customizes their kit shield.
+Both players must be online, alive in Survival, out of staff mode, unfrozen and clear of combat/war/AirDrop restrictions. Their original inventory is saved before they receive the kit. A held banner is optional for staff-picked fighters; if present, it customizes shields already in their kit.
 
 The default countdown is ten seconds. Announcement titles/chat respect `eventTitles` and `eventChat`; sounds respect the global sound settings. Fighters cannot move, fight or break gates during it. At zero, the gates open and the fight begins. Titles, sounds, chat and a boss bar identify the match.
 
@@ -50,9 +52,9 @@ The default countdown is ten seconds. Announcement titles/chat respect `eventTit
 /eventhost tournament open 2v2 "Doubles cup"
 ```
 
-For **1v1**, choose Apply in `/tournament`, or use `/tournament apply`. **A banner is optional.** Holding one copies its color and patterns onto your kit shield without consuming it. With an empty hand or another item, you receive the unchanged admin kit.
+For **1v1**, choose Apply in `/tournament`, or use `/tournament apply`. **A banner is optional.** Holding one copies its color and patterns onto shields already in your kit without consuming the banner. With an empty hand or another item, you receive the unchanged admin kit.
 
-For **2v2**, the captain runs `/tournament invite Teammate` and the teammate uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. **Neither player needs a banner.** Each may optionally hold one when the team application is accepted to customize their own shield; otherwise their admin kit is unchanged.
+For **2v2**, the captain runs `/tournament invite Teammate` and the teammate uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. **Neither player needs a banner.** Each may optionally hold one when the team application is accepted to customize their existing kit shields; otherwise their admin kit is unchanged.
 
 Use the Applicants button or `/tournament entries` to view application order. Staff can remove an entry with `/eventhost tournament remove PlayerName` while applications are open.
 

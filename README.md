@@ -61,4 +61,4 @@ Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, an
 
 ## Tournament addon
 
-[KingdomsCombat 1.3.2](https://github.com/tuledeemon/KingdomsCombat/releases/tag/v1.3.2) adds hosted duels, 1v1/2v2 tournaments, saved kits, gates, banner shields, shared Elo and optional voice moderation. [Setup and commands](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels).
+[KingdomsCombat 1.3.3](https://github.com/tuledeemon/KingdomsCombat/releases/tag/v1.3.3) adds hosted duels, 1v1/2v2 tournaments, saved kits, gates, banner shields, shared Elo and optional voice moderation. [Setup and commands](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels).
