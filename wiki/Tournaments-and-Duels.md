@@ -43,9 +43,9 @@ The default countdown is ten seconds. Announcement titles/chat respect `eventTit
 /eventhost tournament open 2v2 "Doubles cup"
 ```
 
-For **1v1**, hold your banner and choose Apply in `/tournament`, or use `/tournament apply`. Your banner is copied, not consumed, and its color and patterns appear on your kit shield.
+For **1v1**, choose Apply in `/tournament`, or use `/tournament apply`. **A banner is optional.** Holding one copies its color and patterns onto your kit shield without consuming it. With an empty hand or another item, you receive the unchanged admin kit.
 
-For **2v2**, the captain holds a banner and runs `/tournament invite Teammate`. The teammate holds their own banner and uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. Acceptance registers the complete team; each member keeps their own shield banner.
+For **2v2**, the captain runs `/tournament invite Teammate` and the teammate uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. **Neither player needs a banner.** Each may optionally hold one when the team application is accepted to customize their own shield; otherwise their admin kit is unchanged.
 
 Use the Applicants button or `/tournament entries` to view application order. Staff can remove an entry with `/eventhost tournament remove PlayerName` while applications are open.
 
