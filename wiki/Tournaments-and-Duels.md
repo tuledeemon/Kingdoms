@@ -22,12 +22,29 @@ Use `/eventhost arena` for the setup menu, or these commands:
 
 1. Select opposite corners using your current block positions, then claim the cuboid. The selection automatically includes the floor block below the lower corner and two blocks of headroom above the higher corner. Existing arena selections receive this padding once on load. Include the walls and spectator areas you want protected. The arena must be in wilderness; kingdom creation, expansion and outposts cannot overlap its chunks afterward.
 2. Stand at the first spawn facing the opponent and set spawn 1. Do the same for spawn 2. Each spawn needs two clear blocks above solid ground. Doubles place the teammate 1.2 blocks to the side, so leave enough space.
-3. Equip the exact kit in your inventory, armor and offhand, then save it. The template is copied without consuming staff items. Tracked artifacts, core tokens, fixers and storage items cannot be copied into kits.
+3. For kit mode, equip the exact kit in your inventory, armor and offhand, then save it. The template is copied without consuming staff items. Tracked artifacts, core tokens, fixers and storage items cannot be copied into kits.
 4. Look at each gate block within six blocks and add it. Gates must be breakable, solid blocks without inventories or fluids. Repeat for all gate blocks. They remain closed during preparation, disappear without item drops when the countdown ends, and return after the match.
 
 Setup is locked while a tournament is active or inventories still need recovery. `/eventhost arena unclaim` releases the arena when idle.
 
-**Banners never grant a shield.** If the kit has no shield, no item is added or replaced. Existing shields are decorated in their original inventory/main-hand/offhand slots; enchantments, durability, custom names and all other non-pattern properties are preserved.
+**Banners never grant a shield.** If the selected loadout has no shield, no item is added or replaced. Existing shields are decorated in their original inventory/main-hand/offhand slots; enchantments, durability, custom names and all other non-pattern properties are preserved.
+
+## Choose the gear mode
+
+Kit mode remains the default. Hosts can choose personal equipment instead:
+
+```text
+/eventhost tournament open 1v1 "Own gear cup" own
+/eventhost tournament open 2v2 "Own gear doubles" own
+/eventhost tournament gear own
+/eventhost tournament gear kit
+```
+
+The optional final `own` or `kit` argument selects that tournament's mode. Without it, the saved default applies. `tournament gear` changes an event while applications are open; when no event is active, it saves the default for future tournaments and `/eventhost duel`. The host menu has the same gear switch. Once the tournament starts, the mode is locked. Own-gear mode needs the arena and spawns, but does not need an admin kit.
+
+Personal equipment is taken from each fighter's inventory at the start of their match, including armor and offhand. The complete original inventory is saved first. Original components, durability and consumable counts return afterward, so arena supplies and wear do not permanently consume personal equipment. Artifacts can be used during own-gear fights. Their saved identities, ability charges and cooldown state are restored with the original items, even if an artifact breaks during the match. Artifact fixers and kingdom core tokens remain safely in the backup and return afterward. Banners decorate existing shields in either loadout without adding a shield.
+
+Every match clears status effects, fire, freezing and absorption; fills health, air, hunger and saturation; and resets hunger exhaustion during preparation and again immediately before gates open. Original health, hunger and effects are restored after the match along with the inventory. Ordinary equipment bonuses may apply again through their normal mechanics.
 
 ## Public arena teleport
 
@@ -41,7 +58,7 @@ Players open `/event` and click **Teleport to arena**. This moves them to the co
 /eventhost duel PlayerOne PlayerTwo
 ```
 
-Both players must be online, alive in Survival, out of staff mode, unfrozen and clear of combat/war/AirDrop restrictions. Their original inventory is saved before they receive the kit. A held banner is optional for staff-picked fighters; if present, it customizes shields already in their kit.
+Both players must be online, alive in Survival, out of staff mode, unfrozen and clear of combat/war/AirDrop restrictions. Their original inventory is saved before they receive the kit or their backed-up personal loadout, according to the saved gear mode. A held banner is optional for staff-picked fighters; if present, it customizes shields already in their kit.
 
 The default countdown is ten seconds. Announcement titles/chat respect `eventTitles` and `eventChat`; sounds respect the global sound settings. Fighters cannot move, fight or break gates during it. At zero, the gates open and the fight begins. Titles, sounds, chat and a boss bar identify the match.
 
@@ -52,9 +69,9 @@ The default countdown is ten seconds. Announcement titles/chat respect `eventTit
 /eventhost tournament open 2v2 "Doubles cup"
 ```
 
-For **1v1**, choose Apply in `/tournament`, or use `/tournament apply`. **A banner is optional.** Holding one copies its color and patterns onto shields already in your kit without consuming the banner. With an empty hand or another item, you receive the unchanged admin kit.
+For **1v1**, choose Apply in `/tournament`, or use `/tournament apply`. **A banner is optional.** Holding one copies its color and patterns onto shields already in your kit without consuming the banner. With an empty hand or another item, your selected loadout is unchanged.
 
-For **2v2**, the captain runs `/tournament invite Teammate` and the teammate uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. **Neither player needs a banner.** Each may optionally hold one when the team application is accepted to customize their existing kit shields; otherwise their admin kit is unchanged.
+For **2v2**, the captain runs `/tournament invite Teammate` and the teammate uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. **Neither player needs a banner.** Each may optionally hold one when the team application is accepted to customize their existing kit shields; otherwise their selected loadout is unchanged.
 
 Use the Applicants button or `/tournament entries` to view application order. Staff can remove an entry with `/eventhost tournament remove PlayerName` while applications are open.
 
@@ -97,7 +114,7 @@ The configured cuboid remains protected between events. Unrelated environmental 
 
 Teleport commands and other unapproved commands are blocked during matches. Combat mobility can teleport a fighting player within the arena, but cannot teleport them out. Leaving its bounds forfeits participation. Opponents cannot teleport into an active arena from elsewhere.
 
-Lethal damage is handled as an arena defeat: the player stays alive, no kit items or XP drop, and their original items, armor, offhand, health, hunger, effects, experience and location are restored. In doubles, the remaining teammate continues fighting; an eliminated player has no fighter permissions. Dropping kit items, collecting outside items, equipping props and opening storage are blocked. Temporary projectiles expire when their match ends, including those in unloaded chunks; arrows cannot be collected outside the arena.
+Lethal damage is handled as an arena defeat: the player stays alive, no kit items or XP drop, and their original items, armor, offhand, health, hunger, effects, experience and location are restored. In doubles, the remaining teammate continues fighting; an eliminated player has no fighter permissions. Dropping arena items, collecting outside items, equipping props and opening storage (including the private event chest) are blocked. Temporary projectiles expire when their match ends, including those in unloaded chunks; arrows cannot be collected outside the arena.
 
 **Disconnecting forfeits the entire current side.** The remaining side advances. Arena participants are exempt from the ordinary combat-log death while their original inventory is being recovered. The original inventory is restored before logout when possible, otherwise on reconnect. A saved receipt prevents restoration from duplicating old items.
 
@@ -145,4 +162,4 @@ Settings live in `config/kingdoms-combat/config.json`. Scalar values can be chan
 | `staffMuteVoice` | `true` |
 | `arenaAllowedCommands` | `event`, `tournament`, `combat`, `msg`, `tell`, `reply`, `r` |
 
-The arena, kit, gates, ordered entries, brackets, shared Elo and pending inventory backups are saved at `<world>/kingdoms-combat/arena.json`. Do not remove that file while an inventory restore is pending. Chunk tickets are temporary, limited to the configured arena, and released after matches.
+The arena, kit, saved gear-mode default, event gear mode, gates, ordered entries, brackets, shared Elo and pending inventory backups are saved at `<world>/kingdoms-combat/arena.json`. Do not remove that file while an inventory restore is pending. Chunk tickets are temporary, limited to the configured arena, and released after matches.
