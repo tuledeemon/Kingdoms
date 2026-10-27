@@ -203,3 +203,7 @@ Version 1.1.1 serializes writes and uses a unique temporary file for each save. 
 Ordinary restricted teleports remain blocked during the outage. A logout death whose penalty cannot be saved is deferred; the pending penalty stays in memory for retry. A player with that pending penalty cannot finish recovery/login until the journal can be saved. Once storage works, the changes are saved and normal penalty recovery resumes. Existing bypass settings still apply to teleport access.
 
 Correct disk-space, path or filesystem-permission problems shown in the server log. Do not delete `state.json` or its pending penalties. Unsaved in-memory changes cannot survive a forced shutdown during a continuing storage outage. Startup refuses an unreadable or unwritable state file rather than silently replacing it. Legacy `state.json.tmp` files are left untouched for manual recovery; new saves do not reuse them.
+
+## Arena tournaments
+
+[KingdomsCombat tournaments and duels](Tournaments-and-Duels) use separate kit inventories and arena defeat/forfeit handling. Only current fighters have arena permissions; original items restore after the match. Ordinary combat-log drops and teleport rules continue applying outside these matches.

@@ -1,0 +1,137 @@
+# Tournaments and 1v1s
+
+Kingdoms Combat supports hosted 1v1 duels and single-elimination 1v1 or 2v2 tournaments. One arena runs one match at a time. Open `/tournament`, or `/event` while a tournament is active, for sign-ups, brackets, your Elo and the leaderboard. Menus, dialogs, titles and boss bars use the same small-caps style as Kingdoms.
+
+## Set up the arena
+
+Arena setup requires `kingdomscombat.admin` or the configured OP level. Recognized staff must enable `/staffmode` to regain those permissions. Tournament hosting uses `kingdomscombat.eventhost`.
+
+Use `/eventhost arena` for the setup menu, or these commands:
+
+```text
+/eventhost arena pos1
+/eventhost arena pos2
+/eventhost arena claim
+/eventhost arena spawn 1
+/eventhost arena spawn 2
+/eventhost arena kit
+/eventhost arena gate add
+/eventhost arena gate remove
+```
+
+1. Select opposite corners using your current block positions, then claim the cuboid. Include the floor, walls, headroom and spectator areas you want protected. The arena must be in wilderness; kingdom creation, expansion and outposts cannot overlap its chunks afterward.
+2. Stand at the first spawn facing the opponent and set spawn 1. Do the same for spawn 2. Each spawn needs two clear blocks above solid ground. Doubles place the teammate 1.2 blocks to the side, so leave enough space.
+3. Equip the exact kit in your inventory, armor and offhand, then save it. The template is copied without consuming staff items. Tracked artifacts, core tokens, fixers and storage items cannot be copied into kits.
+4. Look at each gate block within six blocks and add it. Gates must be breakable, solid blocks without inventories or fluids. Repeat for all gate blocks. They remain closed during preparation, disappear without item drops when the countdown ends, and return after the match.
+
+Setup is locked while a tournament is active or inventories still need recovery. `/eventhost arena unclaim` releases the arena when idle.
+
+## Host a direct 1v1
+
+```text
+/eventhost duel PlayerOne PlayerTwo
+```
+
+Both players must be online, alive in Survival, out of staff mode, unfrozen and clear of combat/war/AirDrop restrictions. Their original inventory is saved before they receive the kit. A held banner is optional for staff-picked fighters; if present, it customizes their kit shield.
+
+The default countdown is ten seconds. Announcement titles/chat respect `eventTitles` and `eventChat`; sounds respect the global sound settings. Fighters cannot move, fight or break gates during it. At zero, the gates open and the fight begins. Titles, sounds, chat and a boss bar identify the match.
+
+## Tournament sign-ups
+
+```text
+/eventhost tournament open 1v1 "Saturday duels"
+/eventhost tournament open 2v2 "Doubles cup"
+```
+
+For **1v1**, hold your banner and choose Apply in `/tournament`, or use `/tournament apply`. Your banner is copied, not consumed, and its color and patterns appear on your kit shield.
+
+For **2v2**, the captain holds a banner and runs `/tournament invite Teammate`. The teammate holds their own banner and uses `/tournament accept`. Both must be online, eligible and unregistered when accepting. Acceptance registers the complete team; each member keeps their own shield banner.
+
+Use the Applicants button or `/tournament entries` to view application order. Staff can remove an entry with `/eventhost tournament remove PlayerName` while applications are open.
+
+Players can withdraw while applications are open with `/tournament leave`. Withdrawing removes the complete team. Using it while fighting forfeits the player's participation.
+
+Staff can enter fighters manually:
+
+```text
+/eventhost tournament add PlayerOne
+/eventhost tournament add Captain Teammate
+```
+
+When entries close, the **earliest power-of-two number of complete entries** is kept. For example, 6 solo entrants becomes 4, and 7 doubles teams becomes 4 teams. The latest excess entries are excluded and notified. There are no byes. At least two complete entries are required.
+
+## Brackets and hosting
+
+Set any opening-round pairings manually, using registered captain names:
+
+```text
+/eventhost tournament bracket CaptainOne CaptainTwo
+/eventhost tournament start
+```
+
+Starting closes applications, excludes late excess entries and auto-pairs entrants not already in manual pairings. A manual pairing involving an excluded late entry is removed; its retained opponent returns to the automatic pool. Winners advance through a fixed single-elimination bracket. Waiting matches run sequentially, with a fifteen-second interval by default.
+
+```text
+/eventhost tournament
+/eventhost tournament next
+/eventhost tournament winner CaptainName
+/eventhost tournament stop
+```
+
+The hosting menu provides dialogs for choosing fighters and manual opening pairs, plus start, next, stop and current-match winner buttons. `next` resumes a paused bracket or replays a voided match. `winner` adjudicates the current match and updates Elo. `stop` cancels the unfinished match without an Elo result and restores original inventories. `/eventhost stop` also stops the active tournament.
+
+## Arena permissions and combat
+
+Only the **current match's active, non-eliminated fighters** can place/break blocks or damage their opponents. Registration alone grants no permissions. Waiting entrants and spectators cannot build, interfere with PvP or access arena containers. Teammates cannot damage one another. Staff/admins can manage the area, but cannot damage an official fighter to change the result.
+
+The configured cuboid remains protected between events. Environmental terrain changes and explosion block drops are blocked there. Fighter changes to ordinary blocks are tracked and restored between matches. Block entities and storage blocks cannot be created or destroyed by fighters. The configured change cap bounds the reset work.
+
+Teleport commands and other unapproved commands are blocked during matches. Combat mobility can teleport a fighting player within the arena, but cannot teleport them out. Leaving its bounds forfeits participation. Opponents cannot teleport into an active arena from elsewhere.
+
+Lethal damage is handled as an arena defeat: the player stays alive, no kit items or XP drop, and their original items, armor, offhand, health, hunger, effects, experience and location are restored. In doubles, the remaining teammate continues fighting; an eliminated player has no fighter permissions. Dropping kit items, collecting outside items, equipping props and opening storage are blocked. Temporary projectiles expire when their match ends, including those in unloaded chunks; arrows cannot be collected outside the arena.
+
+**Disconnecting forfeits the entire current side.** The remaining side advances. Arena participants are exempt from the ordinary combat-log death while their original inventory is being recovered. The original inventory is restored before logout when possible, otherwise on reconnect. A saved receipt prevents restoration from duplicating old items.
+
+The default fight limit is ten minutes. A timeout voids the unfinished match, restores inventories and pauses the bracket for staff to replay it; it does not award arbitrary Elo. Server shutdown/restart also voids an interrupted match, preserves the bracket, restores items and leaves the tournament paused for `/eventhost tournament next`.
+
+## Elo
+
+There is **one shared individual rating** for duels and doubles. Default starting Elo is 1,000, K is 32 and the rating scale is 400. Equal-rated sides exchange 16 points. Upsets award more and expected wins award less. Doubles use each team's average Elo, applying the same result change to both teammates. Ratings never fall below zero. Only resolved matches count; applications, exclusions, voids and restarts grant no points.
+
+Use `/tournament elo` for the leaderboard. Placeholders:
+
+```text
+%kingdomscombat:elo%
+%kingdomscombat:arena_fighting%
+%kingdomscombat:tournament_name%
+```
+
+## Voice chat and staff mutes
+
+The optional [Simple Voice Chat integration](https://dev.modrepo.de/minecraft/voicechat/api/getting_started) targets Fabric 26.2 Simple Voice Chat 2.6.22. It is installed separately. Current-match players and admins/staff can use voice inside the arena; waiting entrants and spectators inside cannot send or receive it. Current players can talk during the countdown. Staff mutes also block microphone/group speech server-wide, while allowing muted players to listen outside restricted spectator areas. Expiry and `/staff unmute` restore speech.
+
+No extra client mod is needed for the tournament features. Voice audio naturally requires the server's existing voice-chat client support. A graphical client and live microphone connection were not used in the automated verification.
+
+## Configuration
+
+Settings live in `config/kingdoms-combat/config.json`. Scalar values can be changed with `/combatadmin set <key> <value>`; list values are edited in JSON, then `/combatadmin reload`.
+
+| Setting | Default |
+|---|---|
+| `arenaEnabled` | `true`; disabling stops an active tournament safely |
+| `arenaCountdownSeconds` | `10` |
+| `arenaBetweenMatchesSeconds` | `15` |
+| `arenaMaxFightSeconds` | `600` |
+| `arenaAutoNext` | `true`; disable to have staff start each match |
+| `arenaBuildAllowed` | `true`; only active current fighters qualify |
+| `arenaMaxTeams` | `64` complete entries |
+| `arenaMaxGates` | `512` blocks |
+| `arenaMaxChangedBlocks` | `4096` unique changed positions per match |
+| `arenaMaxRegionVolume` | `4000000` blocks |
+| `arenaMaxRegionChunks` | `256` intersecting chunks |
+| `arenaEloStart`, `arenaEloK`, `arenaEloScale` | `1000`, `32`, `400` |
+| `arenaVoiceRestricted` | `true` |
+| `staffMuteVoice` | `true` |
+| `arenaAllowedCommands` | `event`, `tournament`, `combat`, `msg`, `tell`, `reply`, `r` |
+
+The arena, kit, gates, ordered entries, brackets, shared Elo and pending inventory backups are saved at `<world>/kingdoms-combat/arena.json`. Do not remove that file while an inventory restore is pending. Chunk tickets are temporary, limited to the configured arena, and released after matches.

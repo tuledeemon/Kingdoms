@@ -203,3 +203,7 @@ Moderation and permission restrictions operate independently of the combat `enab
 | `eventStartMessage`, `eventEndMessage`, `eventStopMessage` | Custom announcement text, supporting `{name}`, `{host}` and `{time}` |
 
 Event sounds also respect the global `sounds`/`soundVolume` settings and use `tagSound`/`endSound`. Event hosting is independent of the combat system's `enabled` toggle.
+
+## Tournaments and voice moderation
+
+See [Tournaments and Duels](Tournaments-and-Duels) for the KingdomsCombat 1.3.0 arena, kits, gates, applications, brackets and shared Elo. Only current fighters receive arena permissions. Staff mutes also block Simple Voice Chat speech when its optional integration is installed; `staffMuteVoice` controls this. Arena spectator voice restrictions are independently configurable.

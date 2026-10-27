@@ -98,3 +98,5 @@ Settings are shared with the combat addon in `config/kingdoms-combat/config.json
 | `eventStartMessage`, `eventEndMessage`, `eventStopMessage` | Custom announcement text, supporting `{name}`, `{host}` and `{time}` |
 
 Event sounds also respect the global `sounds`/`soundVolume` settings and use `tagSound`/`endSound`. Event hosting is independent of the combat system's `enabled` toggle.
+
+For the arena, saved kits, gates, tournament applications, brackets and Elo, see [Tournaments and Duels](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels). The optional voice integration also applies staff mutes to microphone/group speech.

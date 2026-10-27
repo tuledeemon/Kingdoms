@@ -9,9 +9,10 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - **[How Kingdoms Works](How-Kingdoms-Works)** — the complete walkthrough, from your first claim to wars and captured cores.
 - **[Alliances and joint wars](Alliances)** — forming alliances and fighting together.
 - **[AirDrops](AirDrops)** — finding crates, capturing them and collecting rewards.
-- **[Artifacts](Artifacts)** — the fourteen special items, their abilities, repairs and upgrades.
+- **[Artifacts](Artifacts)** — special items, their abilities, repairs and upgrades.
 - **[Commands](Commands)** — a quick reference when you need a specific command.
 - **[Combat and teleports](Combat-and-Teleports)** — the optional Kingdoms Combat addon's timers, logout rules and teleport restrictions.
+- **[Tournaments and duels](Tournaments-and-Duels)** — arena kits, gate setup, 1v1/2v2 sign-ups, brackets and Elo.
 - **[Staff mode and events](Staff-Mode-and-Events)** — staff exemptions, event hosting and the event information/teleport dialog.
 
 ## For server owners
@@ -24,4 +25,4 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - [Placeholders](Placeholders)
 - [BlueMap territories](BlueMap)
 
-This guide covers Kingdoms 1.10.1. Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
+Prices, timers and limits describe default settings; server owners can change them. Check your server's menus and rules for its current settings.
