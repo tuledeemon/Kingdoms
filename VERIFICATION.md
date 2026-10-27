@@ -1,5 +1,9 @@
 # Verification
 
+## 1.12.2
+
+130 unit tests and 772 dedicated-server checks passed after removing the player-head cleanup and its periodic inventory scan. The production JAR has no cleanup class or caller. KingdomsCombat 1.3.2 also passed its 79 unit tests and 241 server checks with this main-mod JAR. No production server or graphical client was used.
+
 The final source was compiled with Java 25 and tested on an isolated Minecraft 26.2 Fabric server using Loader 0.19.5, Fabric API 0.160.0+26.2 and the real EconomyCraft 1.10.0 API.
 
 ## Towny-style liquid and machine boundaries — 1.11.2

@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.12.2:** Removed player-head inventory cleanup. All player heads remain untouched.
+
 **1.12.1:** Lightweight inventory-only cleanup removes `_Umut` player-head items once per second.
 
 **1.11.2:** Towny-style liquid and machine boundaries: no Fluids flag, normal outward flow/exports into wilderness, bucket placement/collection tied to Place/Break permission, and protected piston retraction. Adds the global `preventFluidGriefing` setting and selective dispenser checks.
@@ -59,4 +61,4 @@ Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, an
 
 ## Tournament addon
 
-[KingdomsCombat 1.3.1](https://github.com/tuledeemon/KingdomsCombat/releases/tag/v1.3.1) adds hosted duels, 1v1/2v2 tournaments, saved kits, gates, banner shields, shared Elo and optional voice moderation. [Setup and commands](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels).
+[KingdomsCombat 1.3.2](https://github.com/tuledeemon/KingdomsCombat/releases/tag/v1.3.2) adds hosted duels, 1v1/2v2 tournaments, saved kits, gates, banner shields, shared Elo and optional voice moderation. [Setup and commands](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels).

@@ -72,5 +72,3 @@ Items that already lost their identity before the update cannot safely be matche
 Five types join the AirDrop pool without changing overall artifact/fixer chances. `expandedCatalogVersion` records the catalogue expansion; keep it at `1`. Existing type customizations and identities remain intact. Runner's Boots, King's Chestplate, Archer's Bow, Advanced Axe and Advanced Pickaxe are enabled for AirDrops by default, each with Legendary rarity and weight 35. Archer's Bow has no Netherite upgrade; diamond armor/tools can use the existing three-ingot upgrade menu.
 
 Void Scythe (1.11.0) now handles fully blocked shield hits and all ordinary/native spear item-action paths. Existing valid Scythes receive the behavior change without reissuing. If an old item already lost its authenticated identity before the repair fix, staff must issue a replacement with `/kingdomadmin artifact give void_scythe`; names/lore alone are not proof of identity.
-
-The server also clears `_Umut` player-head items from online player inventories and their cursor once per second; placed heads, dropped items and stored container contents are untouched.

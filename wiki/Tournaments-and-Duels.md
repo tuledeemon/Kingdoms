@@ -14,17 +14,24 @@ Use `/eventhost arena` for the setup menu, or these commands:
 /eventhost arena claim
 /eventhost arena spawn 1
 /eventhost arena spawn 2
+/eventhost arena setlocation
 /eventhost arena kit
 /eventhost arena gate add
 /eventhost arena gate remove
 ```
 
-1. Select opposite corners using your current block positions, then claim the cuboid. Include the floor, walls, headroom and spectator areas you want protected. The arena must be in wilderness; kingdom creation, expansion and outposts cannot overlap its chunks afterward.
+1. Select opposite corners using your current block positions, then claim the cuboid. The selection automatically includes the floor block below the lower corner and two blocks of headroom above the higher corner. Existing arena selections receive this padding once on load. Include the walls and spectator areas you want protected. The arena must be in wilderness; kingdom creation, expansion and outposts cannot overlap its chunks afterward.
 2. Stand at the first spawn facing the opponent and set spawn 1. Do the same for spawn 2. Each spawn needs two clear blocks above solid ground. Doubles place the teammate 1.2 blocks to the side, so leave enough space.
 3. Equip the exact kit in your inventory, armor and offhand, then save it. The template is copied without consuming staff items. Tracked artifacts, core tokens, fixers and storage items cannot be copied into kits.
 4. Look at each gate block within six blocks and add it. Gates must be breakable, solid blocks without inventories or fluids. Repeat for all gate blocks. They remain closed during preparation, disappear without item drops when the countdown ends, and return after the match.
 
 Setup is locked while a tournament is active or inventories still need recovery. `/eventhost arena unclaim` releases the arena when idle.
+
+## Public arena teleport
+
+Stand on safe spectator ground and run `/eventhost arena setlocation`, or use **Set public teleport spot** in the admin menu. During a tournament, `/eventhost setlocation` updates this same arena point and requires administrator permission.
+
+Players open `/event` and click **Teleport to arena**. This moves them to the configured viewing point without granting fighter permissions. Combat, war, nearby AirDrop locks and staff freezes still apply, and active fighters cannot use it to leave their match. Queued arrivals recheck the event, destination and restrictions after chunk loading.
 
 ## Host a direct 1v1
 
@@ -84,7 +91,7 @@ The hosting menu provides dialogs for choosing fighters and manual opening pairs
 
 Only the **current match's active, non-eliminated fighters** can place/break blocks or damage their opponents. Registration alone grants no permissions. Waiting entrants and spectators cannot build, interfere with PvP or access arena containers. Teammates cannot damage one another. Staff/admins can manage the area, but cannot damage an official fighter to change the result.
 
-The configured cuboid remains protected between events. Environmental terrain changes and explosion block drops are blocked there. Fighter changes to ordinary blocks are tracked and restored between matches. Block entities and storage blocks cannot be created or destroyed by fighters. The configured change cap bounds the reset work.
+The configured cuboid remains protected between events. Unrelated environmental terrain changes and explosion block drops are blocked there. Water and lava can flow within the arena; neither can flow across its boundary. Their sources, spread and resulting terrain changes are restored after the match. Set `arenaFluidFlow` to false to disable this flow. Fighter changes to ordinary blocks are tracked and restored between matches. Block entities and storage blocks cannot be created or destroyed by fighters. The configured change cap bounds the reset work.
 
 Teleport commands and other unapproved commands are blocked during matches. Combat mobility can teleport a fighting player within the arena, but cannot teleport them out. Leaving its bounds forfeits participation. Opponents cannot teleport into an active arena from elsewhere.
 
@@ -108,7 +115,7 @@ Use `/tournament elo` for the leaderboard. Placeholders:
 
 ## Voice chat and staff mutes
 
-The optional [Simple Voice Chat integration](https://dev.modrepo.de/minecraft/voicechat/api/getting_started) targets Fabric 26.2 Simple Voice Chat 2.6.22. It is installed separately. Current-match players and admins/staff can use voice inside the arena; waiting entrants and spectators inside cannot send or receive it. Current players can talk during the countdown. Staff mutes also block microphone/group speech server-wide, while allowing muted players to listen outside restricted spectator areas. Expiry and `/staff unmute` restore speech.
+The optional [Simple Voice Chat integration](https://dev.modrepo.de/minecraft/voicechat/api/getting_started) targets Fabric 26.2 Simple Voice Chat 2.6.22. It is installed separately. Current-match players, admins/staff and permitted event hosts can use voice inside the arena. Waiting entrants and spectators cannot speak, but can hear staff/hosts through normal voice-chat distance and group routing. They cannot hear fighters or other spectators. Set `arenaSpectatorsHearStaff` to false to also block staff audio for spectators. Current players can talk during the countdown. Staff mutes also block microphone/group speech server-wide, while allowing muted players to listen outside restricted spectator areas. Expiry and `/staff unmute` restore speech.
 
 No extra client mod is needed for the tournament features. Voice audio naturally requires the server's existing voice-chat client support. A graphical client and live microphone connection were not used in the automated verification.
 
@@ -131,6 +138,8 @@ Settings live in `config/kingdoms-combat/config.json`. Scalar values can be chan
 | `arenaMaxRegionChunks` | `256` intersecting chunks |
 | `arenaEloStart`, `arenaEloK`, `arenaEloScale` | `1000`, `32`, `400` |
 | `arenaVoiceRestricted` | `true` |
+| `arenaSpectatorsHearStaff` | `true`; spectators hear staff/hosts but cannot speak |
+| `arenaFluidFlow` | `true`; permit water/lava flow within arena bounds |
 | `staffMuteVoice` | `true` |
 | `arenaAllowedCommands` | `event`, `tournament`, `combat`, `msg`, `tell`, `reply`, `r` |
 

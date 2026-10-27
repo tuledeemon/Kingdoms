@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.12.2
+
+- Remove the player-head cleanup class and its periodic inventory scan. Player heads, including `_Umut` heads, are no longer deleted.
+
 ## 1.12.1
 
 - Remove `_Umut` player-head items from online player inventories and the cursor once per second. No world scans; placed heads, drops and container contents stay unchanged.
