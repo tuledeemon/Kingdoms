@@ -1,6 +1,6 @@
 # Suspicion flags and staff review
 
-Kingdoms Combat 1.4.0 adds server-side observations for unusual clicking and repeated movement/farming routines. It requires no client mod. These are **review flags, not proof of cheating**: no check cancels actions, kicks, bans, freezes, teleports or changes player items.
+Kingdoms Combat 1.4.1 adds server-side observations for unusual clicking and repeated movement/farming routines. It requires no client mod. These are **review flags, not proof of cheating**: no check cancels actions, kicks, bans, freezes, teleports or changes player items.
 
 ## Open the review menu
 
@@ -24,6 +24,10 @@ Player lists, player detail headers, ranked entries and history cards use actual
 **Fast clicking:** repeated windows of main-hand swings while recently attempting to attack a living entity. Defaults require more than 24 clicks per second over three separate 128-click windows. Attack damage cooldowns do not erase attempted swings. Air swings without recent attack context, block mining, held-use actions, severe packet bursts and short timing windows are excluded.
 
 **Click timing:** very consistent swing intervals across several independent windows, at a minimum click rate. Defaults require an interval standard deviation at most 1.2 ms, at least 4 CPS and three windows lasting at least eight seconds each. Input that mostly arrives on exact 50 ms boundaries is skipped because client tick scheduling can create that pattern normally. Arrival timestamps are recorded when packets are constructed, before server-tick batching.
+
+**Slow attack timing:** a separate check for repeated attacks at 0.5–2 CPS, including exactly one hit per second. It requires three independent 64-interval windows with interval deviation no greater than 3 ms. At one hit per second this takes about three minutes of consistently repeated timing. Long breaks, mining, held-use actions, lag and ordinary timing variation interrupt or fail the evidence window. Tick-aligned input is eligible here because the check requires multiple long windows; it remains only an observation for human review.
+
+**Four CPS is not a cheating cutoff.** It is the minimum speed for the separate faster timing check. Slow attack timing works independently and is enabled when upgrading an existing configuration.
 
 **Repeated action loops:** substantially identical cycles of movement, turns, selected slot and attacks/block uses/successful mining. Defaults sample every ten server ticks and require five cycles of 24–120 samples each, matching at least 98% of samples. Each cycle also needs movement, several turns, varied states and performed actions. Standing idle, moving in a straight line or simply holding an input is insufficient. Teleports, dimension changes, riding, flying with an elytra and arena countdowns reset/exclude the relevant samples. Artifact-assisted mining excludes the nearby movement/mining sequence.
 
@@ -62,6 +66,12 @@ Settings are in `config/kingdoms-combat/config.json`. Change scalar values with 
 | `antiCheatRetentionDays` | `14` | Saved history retention |
 | `antiCheatClickSamples` | `128` | Intervals per independent clicking window |
 | `antiCheatClickWindows` | `3` | Consecutive suspicious windows required |
+| `antiCheatSlowTiming` | `true` | Enable independent slow-attack timing analysis |
+| `antiCheatSlowSamples` | `64` | Intervals in each slow timing window |
+| `antiCheatSlowWindows` | `3` | Consecutive slow timing windows required |
+| `antiCheatSlowMinCps` | `0.5` | Slow timing minimum rate |
+| `antiCheatSlowMaxCps` | `2` | Slow timing maximum rate |
+| `antiCheatSlowStdMs` | `3` | Maximum slow interval deviation |
 | `antiCheatMaxCps` | `24.0` | Fast-click threshold |
 | `antiCheatRegularMinCps` | `4.0` | Minimum rate for timing regularity |
 | `antiCheatRegularStdMs` | `1.2` | Maximum interval deviation for timing regularity |
