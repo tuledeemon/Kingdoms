@@ -11,6 +11,7 @@
 - [Commands](Commands)
 - [Combat and teleports](Combat-and-Teleports)
 - [Staff mode and events](Staff-Mode-and-Events)
+- [Suspicion flags and review](Suspicion-Flags)
 - [Tournaments and duels](Tournaments-and-Duels)
 
 **Server owners**

@@ -22,6 +22,10 @@ An account counts as staff if it is OP or has `kingdomscombat.staffmode`, `kingd
 
 **Requires LuckPerms Fabric 5.5.85+ for Minecraft 26.2, installed separately.** This release uses its permission-cache integration; it does not bundle LuckPerms. Mods that authorize actions through unrelated custom rank systems are outside LuckPerms permission checks.
 
+## Suspicion review
+
+Open **Most suspicious players** in `/staff`, or use `/staff flags`, to review a ranked list of recent clicking and repeated movement/farming flags. Click a player’s head for the evidence. Staff lists and detail headers now use each player’s own head. These checks only notify staff and record observations; they do not punish or block gameplay. See [Suspicion flags and staff review](https://github.com/tuledeemon/Kingdoms/wiki/Suspicion-Flags) for checks, settings and review commands.
+
 ## Moderation tools
 
 1. Enable **`/staffmode`**.
@@ -59,7 +63,7 @@ Kicks and bans do not pardon existing combat penalties: a target currently in no
 
 Every tool requires active staff mode. Tools are allowed to an authorized active staff member by default; explicitly set a node to `false` to disable that tool for a role. Grant `kingdomscombat.staffmode` only to trusted staff. The `staff.tools` classification node alone does not authorize entering staff mode.
 
-Tool nodes use the `kingdomscombat.staff.` prefix and these suffixes: `menu`, `freeze`, `warn`, `mute`, `kick`, `ban`, `notes`, `chat`. `freeze` covers unfreeze, `mute` covers unmute and `ban` covers unban. `notes` covers both reading and adding notes.
+Tool nodes use the `kingdomscombat.staff.` prefix and these suffixes: `menu`, `freeze`, `warn`, `mute`, `kick`, `ban`, `notes`, `chat`, `flags`. `freeze` covers unfreeze, `mute` covers unmute and `ban` covers unban. `notes` covers both reading and adding notes.
 
 An explicit `kingdomscombat.staff.immune=true` protects a player from new punishments. Active staff are protected too; staff cannot punish themselves. Reversing a punishment and adding a note do not require the target to lose immunity.
 
@@ -206,4 +210,4 @@ Event sounds also respect the global `sounds`/`soundVolume` settings and use `ta
 
 ## Tournaments and voice moderation
 
-See [Tournaments and Duels](Tournaments-and-Duels) for the KingdomsCombat 1.3.0 arena, kits, gates, applications, brackets and shared Elo. Only current fighters receive arena permissions. Staff mutes also block Simple Voice Chat speech when its optional integration is installed; `staffMuteVoice` controls this. Arena spectator voice restrictions are independently configurable.
+See [Tournaments and Duels](TOURNAMENTS_GUIDE.md) for arena setup, kits, gates, applications, manual brackets and Elo. Staff mutes also silence Simple Voice Chat microphone/group speech when the optional integration is installed; `staffMuteVoice` controls it. Arena spectator voice restrictions are separate and configurable.
