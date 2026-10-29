@@ -50,6 +50,23 @@ Players may use the public command by default. Deny `kingdomscombat.baltop` with
 | `baltopMaxEntries` | `10000` | Maximum ranked/displayed accounts |
 | `baltopPageSize` | `28` | Entries per page, maximum 28 |
 
+## Check an item's worth
+
+Kingdoms Combat 1.6.1 adds:
+
+```text
+/worth diamond
+/worth minecraft:iron_ingot
+/worth iron ingot
+/worth
+```
+
+`/worth <itemname>` shows the current dynamic price for one item and a full stack, plus its starting price. Namespaced IDs, ordinary item names with spaces or underscores, and EconomyCraft price aliases such as `potion_of_healing_1` are supported. Tab completion offers configured price keys. `/worth` checks the item in your main hand and also quotes the amount held. Console must provide an item name.
+
+Stack totals include the price pressure caused by each item in that batch, matching `/sell`; they are not simply the single-item price multiplied by the stack size. Stack sizes follow the item, such as 16 pearls or one potion. Quotes are estimates before applicable tribute and can change before checkout. Lookups never consume items, pay money or alter supply pressure.
+
+Held named, protected, filled or otherwise unsellable items are rejected using the same validation as `/sell`. Looking up `diamond` refers to an ordinary diamond even when you hold a named one. The permission is `kingdomscombat.worth`, enabled by default and separate from `kingdomscombat.sell`. Price lookups can be used during combat and arena matches because they do not open storage or move items.
+
 ## Dynamic sell market
 
 Run `/sell`, click or shift-click inventory stacks into the top three rows, then close the menu to sell them. Clicking a deposited stack takes it back. The footer shows the estimated total; the chest button returns items and cancels, and the door button closes and sells. Cursor dragging, number-key swaps and creative cloning are intentionally blocked; the menu moves entire stacks directly so every transfer can be saved safely. Normal inventory clicking works without holding an item on the cursor.

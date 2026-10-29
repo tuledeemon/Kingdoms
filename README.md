@@ -61,4 +61,4 @@ Version **1.7.1** passed **102 unit tests**, **545 dedicated-server checks**, an
 
 ## Tournament addon
 
-[KingdomsCombat 1.6.0](https://github.com/tuledeemon/KingdomsCombat/releases/tag/v1.6.0) adds hosted duels, 1v1/2v2 tournaments, saved kits or personal gear with artifact recovery, gates, banner shields, shared Elo, optional voice moderation, playtime Discord roles and `/baltop`. [Setup and commands](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels).
+[KingdomsCombat 1.6.1](https://github.com/tuledeemon/KingdomsCombat/releases/tag/v1.6.1) adds hosted duels, 1v1/2v2 tournaments, saved kits or personal gear with artifact recovery, gates, banner shields, shared Elo, optional voice moderation, playtime Discord roles and `/baltop`. [Setup and commands](https://github.com/tuledeemon/Kingdoms/wiki/Tournaments-and-Duels).
