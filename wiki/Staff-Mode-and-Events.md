@@ -211,3 +211,48 @@ Event sounds also respect the global `sounds`/`soundVolume` settings and use `ta
 ## Tournaments and voice moderation
 
 See [Tournaments and Duels](TOURNAMENTS_GUIDE.md) for arena setup, kits, gates, applications, manual brackets and Elo. Staff mutes also silence Simple Voice Chat microphone/group speech when the optional integration is installed; `staffMuteVoice` controls it. Arena spectator voice restrictions are separate and configurable.
+
+## Permanent event areas
+
+Kingdoms Combat 1.7.0 adds independently configured, permanent event areas. They are exact three-dimensional cuboids, not chunk claims. You can create multiple areas in the same chunk, and there is no hard-coded number-of-areas or chunk-volume cap. Minecraft's coordinate and build-height limits still apply. Areas never expire when an event ends or the server restarts.
+
+Select two opposite corners, including the floor and ceiling you want protected:
+
+```text
+/eventhost area pos1
+/eventhost area pos2
+/eventhost area claim Courtyard
+```
+
+Each position command uses your current block position, including its Y coordinate. You can also specify exact coordinates, with relative coordinates supported:
+
+```text
+/eventhost area pos1 100 60 100
+/eventhost area pos2 140 90 140
+/eventhost area claim Courtyard
+```
+
+Both selected blocks are included. The area does not silently extend to the rest of either chunk, below its selected floor, or above its selected ceiling. Both corners must be in the same dimension. Selections belong to the administrator who made them and clear on logout; claimed areas are saved permanently.
+
+**Stand inside an area and run `/eventhost area` to configure that place.** The menu shows its name, bounds and individual flags. Clicking a flag toggles only that area's setting. The **Unclaim this area** button opens a confirmation, then removes only that selected area. No terrain is deleted.
+
+Outside an area, `/eventhost area` opens the selection menu, with first-corner, second-corner, claim and saved-area buttons. `/eventhost area list` lists all saved areas; click one to configure it remotely. `/eventhost area unclaim` directly unclaims the area you are standing inside. These commands and menu actions require `kingdomscombat.admin` under the existing staff-mode permission rules.
+
+| Per-area flag | Default | Meaning |
+| --- | --- | --- |
+| Block breaking | Blocked | Player block breaking and damage to decorations |
+| Block placing | Blocked | Player placement of blocks, mobs, vehicles and decorations |
+| PvP | Allowed | Player-versus-player damage; denied if either player is in a PvP-disabled area |
+| Interactions | Allowed | Buttons, doors and ordinary entity interactions |
+| Containers | Allowed | Container access and internal automated inventory transfers |
+| Explosion block damage | Blocked | Explosions destroying terrain; does not make players immune to explosions |
+| Fire | Blocked | Ignition and fire spread; does not grant fire-damage immunity |
+| Fluid flow | Allowed internally | Internal flow; fluid crossings over the area's boundary remain blocked |
+| Pistons | Blocked | When enabled, piston movement is allowed only inside the same area |
+| Mob griefing | Blocked | Entity-caused terrain changes; does not control mob spawning |
+
+Staff with the existing arena/admin build authorization can edit blocks and interact without enabling those permissions for everyone. Environmental controls such as explosion terrain damage, fire and piston motion remain controlled by the area's flags. Other protection systems can still deny an action.
+
+Event areas cannot overlap one another, making the in-place menu unambiguous. Vertically separate areas are supported. Creation rejects existing kingdom claims, and subsequent kingdom chunk claims cannot overlap an event area. Overlap with the configured tournament arena is permitted: inside that arena, existing tournament protections and current-fighter permissions take precedence. A generic event area does not create another tournament arena, another bracket, a teleport destination, a voice-chat restriction or an automatic terrain reset. Changes explicitly allowed by its flags remain in the world.
+
+The registry uses an interval index, without scanning or loading every block/chunk in a selection. Areas and their flags are stored in the world's `kingdoms-combat/event-areas.json`; keep it in server backups. The global `eventAreasEnabled` setting defaults to `true` and can be changed using `/combatadmin set eventAreasEnabled false` to temporarily disable generic area protection. It does not disable the separate tournament arena.
