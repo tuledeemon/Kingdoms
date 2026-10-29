@@ -114,6 +114,10 @@ Only the **current match's active, non-eliminated fighters** can place/break blo
 
 The configured cuboid remains protected between events. Unrelated environmental terrain changes and explosion block drops are blocked there. Water and lava can flow within the arena; neither can flow across its boundary. Their sources, spread and resulting terrain changes are restored after the match. Set `arenaFluidFlow` to false to disable this flow. Fighter changes to ordinary blocks are tracked and restored between matches. Block entities and storage blocks cannot be created or destroyed by fighters. The configured change cap bounds the reset work.
 
+Current active fighters can place minecarts on rails, including normal, TNT, furnace, chest and hopper carts. Waiting players and countdown participants cannot. Non-storage match carts can be used by active fighters; chest/hopper inventories and automatic item transfers stay disabled. Cart drops are suppressed and match carts are removed afterward, including carts that travel out of the immediate arena area. Disable new cart placement with `/combatadmin set arenaMinecarts false`. Explosion damage to arena terrain remains blocked.
+
+Stone and wooden buttons release after their normal delay. Button placement/removal still follows the arena’s fighter permissions and terrain changes reset after the round.
+
 Teleport commands and other unapproved commands are blocked during matches. Combat mobility can teleport a fighting player within the arena, but cannot teleport them out. Leaving its bounds forfeits participation. Opponents cannot teleport into an active arena from elsewhere.
 
 Lethal damage is handled as an arena defeat: the player stays alive, no kit items or XP drop, and their original items, armor, offhand, health, hunger, effects, experience and location are restored. In doubles, the remaining teammate continues fighting; an eliminated player has no fighter permissions. Dropping arena items, collecting outside items, equipping props and opening storage (including the private event chest) are blocked. Temporary projectiles expire when their match ends, including those in unloaded chunks; arrows cannot be collected outside the arena.
@@ -160,6 +164,7 @@ Settings live in `config/kingdoms-combat/config.json`. Scalar values can be chan
 | `arenaEloStart`, `arenaEloK`, `arenaEloScale` | `1000`, `32`, `400` |
 | `arenaVoiceRestricted` | `true` |
 | `arenaSpectatorsHearStaff` | `true`; spectators hear staff/hosts but cannot speak |
+| `arenaMinecarts` | `true`; temporary carts may be placed by current active fighters |
 | `arenaFluidFlow` | `true`; permit water/lava flow within arena bounds |
 | `staffMuteVoice` | `true` |
 | `arenaAllowedCommands` | `event`, `tournament`, `combat`, `msg`, `tell`, `reply`, `r` |
