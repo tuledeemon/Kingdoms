@@ -207,3 +207,9 @@ Correct disk-space, path or filesystem-permission problems shown in the server l
 ## Arena tournaments
 
 [KingdomsCombat tournaments and duels](Tournaments-and-Duels) use separate kit inventories and arena defeat/forfeit handling. Only current fighters have arena permissions; original items restore after the match. Ordinary combat-log drops and teleport rules continue applying outside these matches.
+
+## Ender chests during PvP combat
+
+Ender chests cannot be opened while a player's PvP combat tag is active. Receiving a tag closes an already-open ender chest, and stale menu clicks are refused. This includes commands/mods that open the player's ordinary ender-chest inventory. Inventory contents remain unchanged.
+
+Ordinary chests remain available under their existing protection rules. War-only and AirDrop-only teleport restrictions do not block ender chests. Staff mode retains its existing combat exemption. Set `blockEnderChestsInCombat` to `false` with `/combatadmin set` to disable this rule.

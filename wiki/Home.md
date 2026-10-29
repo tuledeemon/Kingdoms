@@ -14,7 +14,7 @@ Kingdoms is a server-side Minecraft mod for building kingdoms, claiming land and
 - **[Combat and teleports](Combat-and-Teleports)** — the optional Kingdoms Combat addon's timers, logout rules and teleport restrictions.
 - **[Tournaments and duels](Tournaments-and-Duels)** — arena kits, gate setup, 1v1/2v2 sign-ups, brackets and Elo.
 - **[Staff mode and events](Staff-Mode-and-Events)** — staff exemptions, event hosting and the event information/teleport dialog.
-- **[Suspicion flags and review](Suspicion-Flags)** — staff review queue, clicking/macro observations and settings.
+- [Playtime roles and wallet leaderboard](Playtime-Roles-and-Baltop)
 
 ## For server owners
 

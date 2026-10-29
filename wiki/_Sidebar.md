@@ -11,7 +11,7 @@
 - [Commands](Commands)
 - [Combat and teleports](Combat-and-Teleports)
 - [Staff mode and events](Staff-Mode-and-Events)
-- [Suspicion flags and review](Suspicion-Flags)
+- [Playtime roles and wallet leaderboard](Playtime-Roles-and-Baltop)
 - [Tournaments and duels](Tournaments-and-Duels)
 
 **Server owners**
