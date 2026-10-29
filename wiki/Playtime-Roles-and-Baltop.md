@@ -1,6 +1,6 @@
-# Playtime Discord roles and balance leaderboard
+# Economy and playtime utilities
 
-These server-side features are included in Kingdoms Combat 1.5.0 for Fabric 26.2. Keep Kingdoms, EconomyCraft 1.10.0 and the addon's existing dependencies installed. No client mod is needed.
+These server-side features are included in Kingdoms Combat for Fabric 26.2. The dynamic sell market requires 1.6.0 or newer. Keep Kingdoms, EconomyCraft 1.10.0 and the addon's existing dependencies installed. No client mod is needed.
 
 ## Discord role after playtime
 
@@ -49,3 +49,59 @@ Players may use the public command by default. Deny `kingdomscombat.baltop` with
 | `baltopCacheSeconds` | `30` | Shared snapshot refresh interval |
 | `baltopMaxEntries` | `10000` | Maximum ranked/displayed accounts |
 | `baltopPageSize` | `28` | Entries per page, maximum 28 |
+
+## Dynamic sell market
+
+Run `/sell`, click or shift-click inventory stacks into the top three rows, then close the menu to sell them. Clicking a deposited stack takes it back. The footer shows the estimated total; the chest button returns items and cancels, and the door button closes and sells. Cursor dragging, number-key swaps and creative cloning are intentionally blocked; the menu moves entire stacks directly so every transfer can be saved safely. Normal inventory clicking works without holding an item on the cursor.
+
+Items with a custom name, including an anvil name or custom item-name component, cannot be sold. Kingdoms artifacts, fixers and core tokens are rejected as well. Containers with contents are never sold; EconomyCraft's item resolution and damaged-item restrictions still apply. Unrecognized or disabled prices are not accepted. Removing a price before checkout retains the deposited items for retrieval.
+
+The included price list uses the supplied 1,695 starting prices with **all eleven leaf types reduced from $3 to $1 each**. Other starting prices remain unchanged. The file is copied into `config/kingdoms-combat/sell-prices.json` only when it does not already exist. Your EconomyCraft buy-price file is not overwritten.
+
+Supply pressure is separate for each price key and shared by all players. Each item sold advances pressure; each item in a batch uses its own next marginal price, so splitting a batch into many sales does not increase its total payout at the same time. Prices recover with real elapsed time, including time while the server is offline. Pressure is calculated lazily, without a repeating scan of every priced item.
+
+| Setting in `sell-settings.json` | Default | Meaning |
+| --- | --- | --- |
+| `enabled` | `true` | Enable the custom market |
+| `blockInCombat` | `true` | Prevent opening while PvP combat tagged |
+| `defaults.floorMultiplier` | `0.25` | Minimum price multiplier, from 0 exclusive to 1 inclusive |
+| `defaults.volumeForFloor` | `16384` | Net items sold before reaching the floor, per item key |
+| `defaults.recoveryPerHour` | `4096` | Items of pressure removed per real hour; zero disables recovery |
+| `items` | `{}` | Per-price-key policy overrides |
+
+Whole-unit prices round up with an absolute minimum of $1. Leaves therefore remain at $1 even when their supply pressure rises. Default pressure reaches the floor after 256 stacks of the same item and recovers completely from the floor in four hours with no further sales. Quotes are estimates until closing; another player's sale or a price edit can change the checkout total.
+
+The administrator commands use `kingdomscombat.admin` and the existing staff-mode permission rules:
+
+```text
+/combatadmin market
+/combatadmin market set volumeForFloor 16384
+/combatadmin market set recoveryPerHour 4096
+/combatadmin market set floorMultiplier 0.25
+/combatadmin market set blockInCombat true
+/combatadmin market price minecraft:oak_leaves 1
+/combatadmin market price minecraft:diamond 420
+/combatadmin market reset minecraft:diamond
+/combatadmin market reload
+```
+
+`price <key> 0` disables an existing price key. `reset <key>` clears only that item's pressure. Reload reads both market settings and prices without deleting saved deposits, pressure or pending payments. Use `/combatadmin market set enabled false` to stop selling; re-enable it to retrieve any unsold deposits that remain saved.
+
+Edit `config/kingdoms-combat/sell-settings.json` for per-item policies, then reload. For example:
+
+```json
+{
+  "enabled": true,
+  "blockInCombat": true,
+  "defaults": { "floorMultiplier": 0.25, "volumeForFloor": 16384, "recoveryPerHour": 4096 },
+  "items": {
+    "minecraft:diamond": { "floorMultiplier": 0.5, "volumeForFloor": 1024, "recoveryPerHour": 128 }
+  }
+}
+```
+
+The public permission is `kingdomscombat.sell`, allowed by default. Arena participants, frozen players and spectators cannot use sell storage. Taking damage cancels the open menu and returns its deposits before damage is processed. Server shutdown also cancels open menus. Inventory overflow or a failed checkout remains saved for retrieval with `/sell`; reconnecting does not automatically sell it. Retrieve saved unsold deposits before entering an arena.
+
+Selling pays EconomyCraft player wallets through Kingdoms' existing receipt-backed cash journal, including applicable core tribute. The receipt makes a queued payment safe to retry after a restart. A failed payment remains queued rather than issuing the items again. Inputs and player inventory transfers use verified player saves; failed saves retain a recovery journal. Keep the world's `kingdoms-combat/sell-market.json`, `sell-transaction.json` if present, player data and Kingdoms data together in backups. Do not delete these files to reset prices.
+
+EconomyCraft's sell menu and shop sell actions redirect into this market while it is enabled. Buying, auctions and player-to-player orders keep their normal behavior. This market uses its own supply curve and does not apply EconomyCraft's wealth multiplier, daily-sell limit or automatic order fulfillment. Original base-price buy/sell differences remain as supplied; server owners should review those separately when balancing purchases against sales.
