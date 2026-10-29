@@ -120,6 +120,8 @@ Stone and wooden buttons release after their normal delay. Button placement/remo
 
 Teleport commands and other unapproved commands are blocked during matches. Combat mobility can teleport a fighting player within the arena, but cannot teleport them out. Leaving its bounds forfeits participation. Opponents cannot teleport into an active arena from elsewhere.
 
+Totems of Undying activate normally from either hand in kit and own-gear matches. A successful activation consumes the totem, applies its normal recovery effects and keeps the fighter in the match. Own-gear totems consumed during a round return with the original inventory afterward. Damage that normally bypasses totems still causes an arena defeat. Disconnecting still forfeits the side.
+
 Lethal damage is handled as an arena defeat: the player stays alive, no kit items or XP drop, and their original items, armor, offhand, health, hunger, effects, experience and location are restored. In doubles, the remaining teammate continues fighting; an eliminated player has no fighter permissions. Dropping arena items, collecting outside items, equipping props and opening storage (including the private event chest) are blocked. Temporary projectiles expire when their match ends, including those in unloaded chunks; arrows cannot be collected outside the arena.
 
 **Disconnecting forfeits the entire current side.** The remaining side advances. Arena participants are exempt from the ordinary combat-log death while their original inventory is being recovered. The original inventory is restored before logout when possible, otherwise on reconnect. A saved receipt prevents restoration from duplicating old items.
