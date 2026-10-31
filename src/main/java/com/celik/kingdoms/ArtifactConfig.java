@@ -6,6 +6,9 @@ public final class ArtifactConfig {
     public int abilityBalanceVersion=2;
     public int durabilityBalanceVersion=1;
     public int expandedCatalogVersion=1;
+    public int replantCatalogVersion=1;
+    public int instantFlintCatalogVersion=1,instantFlintCooldownSeconds=10;
+    public double instantTntDamageMultiplier=1,instantTntMaxDamage=20;
     public int crownHealthPerUniqueKill=4,crownMaxBonusHealth=20;
     public int advancedTreeMaxBlocks=256,advancedOreMaxBlocks=64,advancedChainRadius=16;
     public boolean advancedTreeRequireLeaves=true,advancedProtectPlacedBlocks=true;
@@ -34,8 +37,8 @@ public final class ArtifactConfig {
             upgradedValue=value;upgradedDurationSeconds=duration;variants.add(new Variant(value,duration,rarity));
         }
     }
-    public static final Set<String> ADDITIONAL_KEYS=Set.of("runners_boots","kings_chestplate","archers_bow","advanced_axe","advanced_pickaxe","golden_crown");
-    public static final Set<String> KEYS=Set.of("thunder_axe","thorns_shield","frostbite_sword","multi_pickaxe","vampire_sword","void_scythe","guardian_angel","wind_burst_spear","runners_boots","kings_chestplate","archers_bow","advanced_axe","advanced_pickaxe","golden_crown");
+    public static final Set<String> ADDITIONAL_KEYS=Set.of("runners_boots","kings_chestplate","archers_bow","advanced_axe","advanced_pickaxe","golden_crown","replant_hoe","instant_flint");
+    public static final Set<String> KEYS=Set.of("thunder_axe","thorns_shield","frostbite_sword","multi_pickaxe","vampire_sword","void_scythe","guardian_angel","wind_burst_spear","runners_boots","kings_chestplate","archers_bow","advanced_axe","advanced_pickaxe","golden_crown","replant_hoe","instant_flint");
     static final Set<String> LEGACY_KEYS=Set.of("smelter_pickaxe","healing_hoe","unbreakable_pickaxe","unbreakable_sword","berserker_axe","phantom_bow","treasure_digger","guardian_shield","miners_fortune","soulbound_pickaxe","chrono_tool");
     static Map<String,Type> defaults(){
         Map<String,Type> m=new LinkedHashMap<>();
@@ -53,10 +56,13 @@ public final class ArtifactConfig {
         m.put("advanced_axe",new Type("Advanced Axe","diamond_axe","legendary",35,0,0,0));
         m.put("advanced_pickaxe",new Type("Advanced Pickaxe","diamond_pickaxe","legendary",35,0,0,0));
         m.put("golden_crown",new Type("Golden Crown","diamond_helmet","unique",10,0,0,0));m.get("golden_crown").airDropEligible=false;
+        m.put("replant_hoe",new Type("Replant Hoe","diamond_hoe","legendary",35,0,0,0));
+        m.put("instant_flint",new Type("Instant Flint","flint_and_steel","legendary",35,0,0,0));m.get("instant_flint").netheriteUpgradeable=false;
         return m;
     }
     public double chance(long day){return chanceByDay.entrySet().stream().filter(e->e.getKey()<=day).max(Map.Entry.comparingByKey()).map(Map.Entry::getValue).orElse(0d);}
     public void validate(){
+        if(instantFlintCooldownSeconds<0||instantFlintCooldownSeconds>604800||!Double.isFinite(instantTntDamageMultiplier)||instantTntDamageMultiplier<0||instantTntDamageMultiplier>100||!Double.isFinite(instantTntMaxDamage)||instantTntMaxDamage<0||instantTntMaxDamage>10000)throw new IllegalArgumentException("Invalid Instant Flint settings");
         Type crown=types==null?null:types.get("golden_crown");
         if(crown!=null){crown.rarity="unique";if(crown.variants!=null)for(Variant v:crown.variants)if(v!=null)v.rarity="unique";}
         if(crownHealthPerUniqueKill<1||crownHealthPerUniqueKill>1000||crownMaxBonusHealth<1||crownMaxBonusHealth>1000)throw new IllegalArgumentException("Invalid crown health settings");

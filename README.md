@@ -4,6 +4,8 @@ A server-side **Fabric mod for Minecraft 26.2**. Build kingdoms, claim land, man
 
 Players join with normal Minecraft clients. No client mod or resource pack is required.
 
+**1.13.0:** Added Replant Hoe with harvest-funded, permission-aware replanting, and Instant Flint with zero-fuse TNT, configurable entity damage and persistent cooldown. [Settings and commands](ARTIFACTS_GUIDE.md#replant-hoe-and-instant-flint-1130).
+
 **1.12.2:** Removed player-head inventory cleanup. All player heads remain untouched.
 
 **1.12.1:** Lightweight inventory-only cleanup removes `_Umut` player-head items once per second.

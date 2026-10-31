@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.13.0
+
+- Add Replant Hoe: mature crop replanting funded by one planting item from the actual native harvest. No inventory transfers, loot rerolls, crop scans or deferred tasks; require Break and Place permission.
+- Add Instant Flint: native zero-fuse TNT ignition, configurable entity damage multiplier/cap and identity-bound persistent cooldown. Ordinary and chain TNT remain vanilla.
+- Migrate existing artifact configurations without replacing custom balance or identities.
+- Match the integration task name without case sensitivity so Turkish JVM locale cannot skip test setup and result validation.
+
 ## 1.12.2
 
 - Remove the player-head cleanup class and its periodic inventory scan. Player heads, including `_Umut` heads, are no longer deleted.

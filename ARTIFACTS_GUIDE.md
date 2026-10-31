@@ -1,6 +1,6 @@
-# Artifacts — Kingdoms 1.11.0
+# Artifacts — Kingdoms 1.13.0
 
-Thirteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server with ordinary clients. In-game names and short lore use small caps.
+Fifteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server with ordinary clients. In-game names and short lore use small caps.
 
 ## Catalogue
 
@@ -18,6 +18,8 @@ Thirteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server wit
 | King's Chestplate | Legendary / Diamond Chestplate | Regeneration I while worn; stronger potions take priority | Netherite Chestplate, same effect |
 | Archer's Bow | Legendary / Bow | Fires two arrows per shot using one ammo; bonus arrow cannot be collected | No Netherite upgrade |
 | Advanced Axe | Legendary / Diamond Axe | Instantly fells connected tree logs, with normal drops/tool wear | Netherite Axe, same ability |
+| Replant Hoe | Legendary / Diamond Hoe | Replants mature crops using one seed from their actual harvest drops | Netherite Hoe, same ability |
+| Instant Flint | Legendary / Flint and Steel | Primes directly clicked TNT with a zero-tick fuse, configurable damage and cooldown | No Netherite upgrade |
 | Advanced Pickaxe | Legendary / Diamond Pickaxe | Instantly mines connected matching ore veins, including deepslate equivalents | Netherite Pickaxe, same ability |
 
 All eligible triggers succeed by default; the former 50% activation rule is removed. Failed or protected hits do not trigger combat powers. Kingdom members, allies, pets and farm animals are excluded from hostile-hit powers. Kingdom protection still applies to lightning damage and terrain/fire changes.
@@ -124,3 +126,21 @@ The old catalogue is replaced once when loading its configuration. Overall AirDr
 ## Expanded catalogue (1.11.0)
 
 Void Scythe (1.11.0) now handles fully blocked shield hits and all ordinary/native spear item-action paths. Existing valid Scythes receive the behavior change without reissuing. If an old item already lost its authenticated identity before the repair fix, staff must issue a replacement with `/kingdomadmin artifact give void_scythe`; names/lore alone are not proof of identity.
+
+## Replant Hoe and Instant Flint (1.13.0)
+
+`/kingdomadmin artifact give replant_hoe` gives a Replant Hoe. Mature wheat, carrots, potatoes, beetroot, nether wart and cocoa replant at age zero if the harvest contains their planting item. One planting item is deducted from that same vanilla loot result; Fortune still affects the original harvest. Cocoa retains its facing. Immature crops, unsupported plants, creative breaks, missing seeds and invalid soil do not replant. Both Break and Place permission are required. No inventory seeds are taken, no extra loot roll occurs, and loot previews do not change the world. A full inventory does not affect it. Normal durability, repair, enchantment and Netherite upgrade rules apply. No area scans, delayed replant tasks or per-tick crop checks are added.
+
+`/kingdomadmin artifact give instant_flint` gives Instant Flint. Right-click a TNT block with it to consume that TNT and prime exactly one vanilla TNT entity with fuse zero: detonation occurs on its first server tick (normally within 50 ms). TNT/entity bans, detonation rules, claim protection, native attribution and flint durability remain enforced. Redstone TNT, ordinary flint, TNT minecarts and secondary chain TNT keep vanilla behavior and damage. The ability does not change explosion radius, terrain destruction or knockback.
+
+Configure the ability globally, including already-issued flints:
+
+```text
+/kingdomadmin artifact set instantTntDamageMultiplier 2
+/kingdomadmin artifact set instantTntMaxDamage 20
+/kingdomadmin artifact set instantFlintCooldownSeconds 10
+```
+
+Damage is `min(vanilla explosion damage × multiplier, maximum)` per entity, **before armor, resistance, shields and absorption**. Two damage points equal one heart. Defaults are multiplier 1, maximum 20 and cooldown 10 seconds. Zero damage/multiplier disables entity damage; zero cooldown permits every valid use. Accepted ranges: multiplier 0–100, maximum 0–10000, cooldown 0–604800 seconds. These settings do not affect ordinary TNT. A primed entity snapshots and saves its policy, so a later configuration change does not rewrite that explosion.
+
+Cooldown belongs to the authenticated artifact identity, follows transfers and survives reconnect/restart. It is persisted before the explosive spawns. A failed spawn may spend the cooldown rather than permit repeated attempts. Cooling-down TNT clicks fail without falling back to ordinary ignition. Lighting ordinary fire does not use the TNT cooldown. Other artifact repairs and duplication checks remain unchanged. Both artifacts join the normal weighted AirDrop pool without changing the overall artifact-drop chance. Existing configurations gain only the missing types and preserve custom settings.

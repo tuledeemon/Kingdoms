@@ -30,6 +30,8 @@ final class ArtifactIntegration {
    cfg.fixerChance=0;check.accept(a.roll(UUID.randomUUID(),7,new Random(14)).size()==1,"artifact drops remain free of cash and ordinary loot");
    for(String key:ArtifactConfig.KEYS){Record r=issue(a,cfg,key);ItemStack s=a.create(r);check.accept(a.record(s)==r&&s.getMaxStackSize()==1,"authentic new artifact: "+key);check.accept(s.has(DataComponents.UNBREAKABLE)==key.equals("golden_crown")&&s.getOrDefault(DataComponents.LORE,net.minecraft.world.item.component.ItemLore.EMPTY).lines().size()<=3,"short lore and native durability: "+key);}
    ExpandedArtifactsIntegration.run(service,player,cfg,check);
+   ReplantHoeIntegration.run(service,player,cfg,check);
+   InstantFlintIntegration.run(service,player,cfg,check);
    VoidScytheIntegration.run(service,player,cfg,check);
    Record thunder=issue(a,cfg,"thunder_axe");ItemStack axe=a.create(thunder);player.setItemInHand(InteractionHand.MAIN_HAND,axe);
    check.accept(axe.getMaxDamage()==512,"Thunder Axe starts with 512 vanilla durability");axe.hurtAndBreak(1,level,player,x->{});a.refresh(axe,thunder);check.accept(axe.getDamageValue()==1,"refresh preserves vanilla damage");
