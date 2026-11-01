@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.1
+
+- Buff the Advanced AirDrop preset with 10–14 rolls, 8–16-diamond rewards, level IV equipment/books, larger supplies and improved rare checks.
+- Add `/kingdomadmin airdrop advancedbuff` for explicit application to existing configs; preserve other tiers, unlock days, cash, variants, artifact odds and saved crates.
+- Keep later-tier rare probabilities intact when applying the preset to custom tier dates.
+
 ## 1.13.0
 
 - Add Replant Hoe: mature crop replanting funded by one planting item from the actual native harvest. No inventory transfers, loot rerolls, crop scans or deferred tasks; require Break and Place permission.

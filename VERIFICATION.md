@@ -1,5 +1,9 @@
 # Verification
 
+## 1.13.1
+
+140 unit tests and 824 dedicated-server checks passed with the same Java 25 / Minecraft 26.2 / Fabric / EconomyCraft / C2ME versions listed below. New checks verify the Advanced preset command, persisted existing-config updates, repeat-command idempotence, preservation of other tiers and cash/variant/artifact settings, custom tier dates and later rare thresholds, and generated loot with End rewards locked until day 30. The 960-crate regression checks still validate stack limits, unique rewards, unlocks and at most one selected rare type. No production-server, graphical-client or 100-connected-player load test was performed.
+
 ## 1.13.0
 
 135 unit tests and 820 dedicated-server checks passed with C2ME 0.4.1-beta.1.0+26.2, Minecraft 26.2, Java 25, Loader 0.19.5, Fabric API 0.160.0+26.2, EconomyCraft 1.10.0, Architectury 21.1.9 and Placeholder API 3.1.0-beta.1+26.2. The earlier non-C2ME pass completed 816 checks; the final C2ME pass additionally covers three new replant/TNT checks and the existing C2ME-specific check.

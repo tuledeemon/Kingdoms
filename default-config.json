@@ -1550,14 +1550,14 @@
       {
         "name": "advanced",
         "fromDay": 5,
-        "minRolls": 7,
-        "maxRolls": 12,
+        "minRolls": 10,
+        "maxRolls": 14,
         "entries": [
           {
             "item": "minecraft:iron_ingot",
             "weight": 100,
-            "minCount": 8,
-            "maxCount": 24,
+            "minCount": 12,
+            "maxCount": 36,
             "minDay": 1,
             "chance": 1.0,
             "enchantments": {},
@@ -1569,8 +1569,8 @@
           {
             "item": "minecraft:cooked_beef",
             "weight": 100,
-            "minCount": 8,
-            "maxCount": 24,
+            "minCount": 12,
+            "maxCount": 36,
             "minDay": 1,
             "chance": 1.0,
             "enchantments": {},
@@ -1582,8 +1582,8 @@
           {
             "item": "minecraft:arrow",
             "weight": 80,
-            "minCount": 8,
-            "maxCount": 32,
+            "minCount": 12,
+            "maxCount": 48,
             "minDay": 1,
             "chance": 1.0,
             "enchantments": {},
@@ -1595,8 +1595,8 @@
           {
             "item": "minecraft:coal",
             "weight": 80,
-            "minCount": 8,
-            "maxCount": 24,
+            "minCount": 12,
+            "maxCount": 36,
             "minDay": 1,
             "chance": 1.0,
             "enchantments": {},
@@ -1614,8 +1614,8 @@
               {
                 "item": "minecraft:cooked_beef",
                 "weight": 120,
-                "minCount": 8,
-                "maxCount": 24,
+                "minCount": 12,
+                "maxCount": 36,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1627,8 +1627,8 @@
               {
                 "item": "minecraft:arrow",
                 "weight": 100,
-                "minCount": 8,
-                "maxCount": 32,
+                "minCount": 12,
+                "maxCount": 48,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1640,8 +1640,8 @@
               {
                 "item": "minecraft:string",
                 "weight": 60,
-                "minCount": 4,
-                "maxCount": 12,
+                "minCount": 6,
+                "maxCount": 18,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1679,8 +1679,8 @@
               {
                 "item": "minecraft:ender_pearl",
                 "weight": 40,
-                "minCount": 2,
-                "maxCount": 6,
+                "minCount": 3,
+                "maxCount": 9,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1698,8 +1698,8 @@
               {
                 "item": "minecraft:iron_ingot",
                 "weight": 120,
-                "minCount": 16,
-                "maxCount": 28,
+                "minCount": 24,
+                "maxCount": 42,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1711,8 +1711,8 @@
               {
                 "item": "minecraft:coal",
                 "weight": 100,
-                "minCount": 8,
-                "maxCount": 24,
+                "minCount": 12,
+                "maxCount": 36,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1724,8 +1724,8 @@
               {
                 "item": "minecraft:copper_ingot",
                 "weight": 90,
-                "minCount": 16,
-                "maxCount": 32,
+                "minCount": 24,
+                "maxCount": 48,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1737,8 +1737,8 @@
               {
                 "item": "minecraft:iron_block",
                 "weight": 30,
-                "minCount": 1,
-                "maxCount": 5,
+                "minCount": 2,
+                "maxCount": 8,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1750,8 +1750,8 @@
               {
                 "item": "minecraft:obsidian",
                 "weight": 60,
-                "minCount": 6,
-                "maxCount": 12,
+                "minCount": 9,
+                "maxCount": 18,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1769,8 +1769,8 @@
               {
                 "item": "minecraft:gold_ingot",
                 "weight": 100,
-                "minCount": 12,
-                "maxCount": 20,
+                "minCount": 18,
+                "maxCount": 30,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1782,8 +1782,8 @@
               {
                 "item": "minecraft:gold_block",
                 "weight": 30,
-                "minCount": 1,
-                "maxCount": 3,
+                "minCount": 2,
+                "maxCount": 5,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1795,8 +1795,8 @@
               {
                 "item": "minecraft:redstone",
                 "weight": 100,
-                "minCount": 8,
-                "maxCount": 24,
+                "minCount": 12,
+                "maxCount": 36,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1808,8 +1808,8 @@
               {
                 "item": "minecraft:lapis_lazuli",
                 "weight": 100,
-                "minCount": 8,
-                "maxCount": 24,
+                "minCount": 12,
+                "maxCount": 36,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1821,8 +1821,8 @@
               {
                 "item": "minecraft:emerald_block",
                 "weight": 1,
-                "minCount": 1,
-                "maxCount": 3,
+                "minCount": 2,
+                "maxCount": 5,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1835,13 +1835,13 @@
           },
           {
             "key": "diamonds",
-            "chance": 0.45,
+            "chance": 0.6,
             "entries": [
               {
                 "item": "minecraft:diamond",
                 "weight": 100,
-                "minCount": 4,
-                "maxCount": 12,
+                "minCount": 8,
+                "maxCount": 16,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1854,13 +1854,13 @@
           },
           {
             "key": "enchantment",
-            "chance": 0.45,
+            "chance": 0.6,
             "entries": [
               {
                 "item": "minecraft:experience_bottle",
                 "weight": 140,
-                "minCount": 6,
-                "maxCount": 14,
+                "minCount": 12,
+                "maxCount": 24,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -1890,7 +1890,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:protection": 3
+                  "minecraft:protection": 4
                 },
                 "potion": "",
                 "name": "",
@@ -1905,7 +1905,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:sharpness": 3
+                  "minecraft:sharpness": 4
                 },
                 "potion": "",
                 "name": "",
@@ -1920,7 +1920,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:efficiency": 3
+                  "minecraft:efficiency": 4
                 },
                 "potion": "",
                 "name": "",
@@ -1935,7 +1935,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:power": 3
+                  "minecraft:power": 4
                 },
                 "potion": "",
                 "name": "",
@@ -1954,12 +1954,27 @@
                 "name": "",
                 "lore": [],
                 "glint": false
+              },
+              {
+                "item": "minecraft:enchanted_book",
+                "weight": 45,
+                "minCount": 1,
+                "maxCount": 1,
+                "minDay": 1,
+                "chance": 1,
+                "enchantments": {
+                  "minecraft:unbreaking": 3
+                },
+                "potion": "",
+                "name": "",
+                "lore": [],
+                "glint": false
               }
             ]
           },
           {
             "key": "combat",
-            "chance": 0.55,
+            "chance": 0.7,
             "entries": [
               {
                 "item": "minecraft:diamond_sword",
@@ -1969,7 +1984,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:sharpness": 3
+                  "minecraft:sharpness": 4
                 },
                 "potion": "",
                 "name": "",
@@ -1984,7 +1999,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:protection": 3
+                  "minecraft:protection": 4
                 },
                 "potion": "",
                 "name": "",
@@ -1999,7 +2014,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:efficiency": 3
+                  "minecraft:efficiency": 4
                 },
                 "potion": "",
                 "name": "",
@@ -2014,7 +2029,7 @@
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {
-                  "minecraft:power": 3
+                  "minecraft:power": 4
                 },
                 "potion": "",
                 "name": "",
@@ -2050,8 +2065,8 @@
               {
                 "item": "minecraft:arrow",
                 "weight": 100,
-                "minCount": 16,
-                "maxCount": 32,
+                "minCount": 32,
+                "maxCount": 64,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2064,13 +2079,13 @@
           },
           {
             "key": "potions",
-            "chance": 0.4,
+            "chance": 0.5,
             "entries": [
               {
                 "item": "minecraft:potion",
                 "weight": 100,
-                "minCount": 1,
-                "maxCount": 2,
+                "minCount": 2,
+                "maxCount": 3,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2082,8 +2097,8 @@
               {
                 "item": "minecraft:potion",
                 "weight": 60,
-                "minCount": 1,
-                "maxCount": 2,
+                "minCount": 2,
+                "maxCount": 3,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2095,8 +2110,8 @@
               {
                 "item": "minecraft:potion",
                 "weight": 60,
-                "minCount": 1,
-                "maxCount": 2,
+                "minCount": 2,
+                "maxCount": 3,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2108,8 +2123,8 @@
               {
                 "item": "minecraft:blaze_rod",
                 "weight": 90,
-                "minCount": 2,
-                "maxCount": 4,
+                "minCount": 3,
+                "maxCount": 6,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2121,8 +2136,8 @@
               {
                 "item": "minecraft:nether_wart",
                 "weight": 90,
-                "minCount": 2,
-                "maxCount": 8,
+                "minCount": 3,
+                "maxCount": 12,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2134,8 +2149,8 @@
               {
                 "item": "minecraft:quartz",
                 "weight": 100,
-                "minCount": 8,
-                "maxCount": 24,
+                "minCount": 12,
+                "maxCount": 36,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2148,13 +2163,13 @@
           },
           {
             "key": "netherite",
-            "chance": 0.15,
+            "chance": 0.25,
             "entries": [
               {
                 "item": "minecraft:netherite_scrap",
                 "weight": 10,
-                "minCount": 1,
-                "maxCount": 3,
+                "minCount": 2,
+                "maxCount": 5,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2166,8 +2181,8 @@
               {
                 "item": "minecraft:quartz",
                 "weight": 120,
-                "minCount": 8,
-                "maxCount": 24,
+                "minCount": 12,
+                "maxCount": 36,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -2179,8 +2194,8 @@
               {
                 "item": "minecraft:obsidian",
                 "weight": 120,
-                "minCount": 4,
-                "maxCount": 12,
+                "minCount": 6,
+                "maxCount": 18,
                 "minDay": 1,
                 "chance": 1.0,
                 "enchantments": {},
@@ -3164,7 +3179,7 @@
         "chanceByDay": {
           "1": 0.005,
           "3": 0.03,
-          "5": 0.08,
+          "5": 0.12,
           "7": 0.15
         },
         "variants": []
@@ -3187,7 +3202,7 @@
         "chanceByDay": {
           "1": 0.0,
           "3": 0.0005,
-          "5": 0.0025,
+          "5": 0.005,
           "7": 0.01
         },
         "variants": []
@@ -3210,7 +3225,7 @@
         "chanceByDay": {
           "1": 0.0,
           "3": 0.001,
-          "5": 0.005,
+          "5": 0.01,
           "7": 0.02
         },
         "variants": []
@@ -3235,7 +3250,7 @@
         "chanceByDay": {
           "1": 0.0,
           "3": 0.001,
-          "5": 0.005,
+          "5": 0.01,
           "7": 0.02
         },
         "variants": []
@@ -3258,7 +3273,7 @@
         "chanceByDay": {
           "1": 0.0,
           "3": 0.002,
-          "5": 0.01,
+          "5": 0.02,
           "7": 0.03
         },
         "variants": []
@@ -3281,7 +3296,7 @@
         "chanceByDay": {
           "1": 0.0,
           "3": 0.001,
-          "5": 0.005,
+          "5": 0.01,
           "7": 0.02
         },
         "variants": []
@@ -3327,7 +3342,7 @@
         "chanceByDay": {
           "1": 0.0,
           "3": 0.0,
-          "5": 0.001,
+          "5": 0.002,
           "7": 0.005
         },
         "variants": []
