@@ -1,6 +1,6 @@
 # Artifacts
 
-Thirteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server with ordinary clients. In-game names and short lore use small caps.
+Fifteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server with ordinary clients. In-game names and short lore use small caps.
 
 ## Catalogue
 
@@ -18,6 +18,8 @@ Thirteen artifacts can appear in AirDrops. They work on a Fabric 26.2 server wit
 | King's Chestplate | Legendary / Diamond Chestplate | Regeneration I while worn; stronger potions take priority | Netherite Chestplate, same effect |
 | Archer's Bow | Legendary / Bow | Fires two arrows per shot using one ammo; bonus arrow cannot be collected | No Netherite upgrade |
 | Advanced Axe | Legendary / Diamond Axe | Instantly fells connected tree logs, with normal drops/tool wear | Netherite Axe, same ability |
+| Replant Hoe | Legendary / Diamond Hoe | Replants mature crops using one seed from their actual harvest drops | Netherite Hoe, same ability |
+| Instant Flint | Legendary / Flint and Steel | Primes directly clicked TNT with a zero-tick fuse, configurable damage and cooldown | No Netherite upgrade |
 | Advanced Pickaxe | Legendary / Diamond Pickaxe | Instantly mines connected matching ore veins, including deepslate equivalents | Netherite Pickaxe, same ability |
 
 All eligible triggers succeed by default; the former 50% activation rule is removed. Failed or protected hits do not trigger combat powers. Kingdom members, allies, pets and farm animals are excluded from hostile-hit powers. Kingdom protection still applies to lightning damage and terrain/fire changes.

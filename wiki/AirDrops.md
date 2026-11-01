@@ -81,3 +81,23 @@ Each check is made once per eligible crate, never independently for every slot. 
 ## More information
 
 [Admin commands and configuration](AirDrop-Administration).
+
+
+## Advanced loot buff (1.13.1)
+
+New configurations use the stronger Advanced preset. Existing servers can apply it with:
+
+```text
+/kingdomadmin airdrop advancedbuff
+```
+
+This replaces the tier named `advanced` with the preset, keeping its configured starting day. It saves immediately and affects future crates. Existing crates, other tiers, cash, crate-variant weights, artifact odds and dimension unlocks are preserved. In particular, an `endUnlockDay` of 30 stays 30. Running the command repeatedly does not increase rewards again. Back up custom Advanced settings before intentionally replacing them; the command is a preset, not a multiplier applied to custom loot.
+
+- Loot rolls: 10–14 instead of 7–12.
+- Diamond category: 60% instead of 45%, with 8–16 diamonds instead of 4–12 when selected.
+- Enchanting category: 60% instead of 45%; level IV books plus Unbreaking III, with 12–24 XP bottles when selected.
+- Combat category: 70% instead of 55%; level IV diamond equipment/bows and 32–64 arrows when selected.
+- Ordinary resources/supplies: approximately 50% larger stacks, capped at 64 per configured entry. Potions category rises to 50%; Netherite-material category to 25%.
+- Advanced rare-check probabilities: golden apples 12%, enchanted golden apples 0.5%, totems 1%, tridents 1%, upgrade templates 2%, Netherite ingots 1%, beacons 0.2%.
+
+Rare values are checks before crate multipliers and selection of at most one successful rare reward; they are not guaranteed final item chances. Endgame rare chances are preserved. End rewards are not added to Advanced. Existing `endUnlockDay` and item-specific unlocks continue to filter all generated loot.

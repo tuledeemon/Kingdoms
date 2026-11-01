@@ -125,6 +125,8 @@ public final class Artifacts {
         case "golden_crown"->"+"+(config().crownHealthPerUniqueKill/2d)+" hearts per unique kill • Resets on death";
         case "archers_bow"->"Fires two arrows per shot";
         case "advanced_axe"->"Fells connected tree logs";
+        case "instant_flint"->"Instant TNT • Configured damage and cooldown";
+        case "replant_hoe"->"Replants mature crops using one harvested seed";
         case "advanced_pickaxe"->"Mines connected ore veins";
         default->"Retired artifact";
     };}
@@ -238,6 +240,7 @@ public final class Artifacts {
         reflected.set(true);try{attacker.hurtServer(p.level(),p.damageSources().thorns(p),blocked*(float)value(r));activated(r);}finally{reflected.remove();}
         return blocked;
     }
+    public void armInstantFlint(Record r){check();if(r.readyAt>service.now())throw new IllegalStateException("Artifact is cooling down");r.readyAt=service.now()+config().instantFlintCooldownSeconds*1000L;r.revision++;save();}
     private void activated(Record r){if(r.cooldownSeconds>0){r.readyAt=service.now()+r.cooldownSeconds*1000L;r.revision++;save();}}
     public boolean freeDurability(ItemStack stack,ServerLevel level){Record r=record(stack);if(r!=null&&r.type.equals("golden_crown"))return true;return healthy&&config().enabled&&r!=null&&r.type.equals("thunder_axe")&&config().types.get(r.type).enabled&&lease(stack,r)&&r.upgraded&&level.isThundering();}
     public boolean webImmune(ServerPlayer p){return guardian.active(p);}

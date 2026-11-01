@@ -22,6 +22,7 @@ final class AirDropIntegration {
         @Override public void send(net.minecraft.network.protocol.Packet<?> packet,io.netty.channel.ChannelFutureListener listener,boolean flush){packets.add(packet);}
     }
     static void run(KingdomService s,ServerPlayer mayor,ServerPlayer enemy,BiConsumer<Boolean,String> check)throws Exception {
+        AdvancedBuffIntegration.run(s,check);
         AirDropConfig original=s.config.airDrops;
         int originalSpawnRadius=s.config.spawnClaimProtectionChunks;s.config.spawnClaimProtectionChunks=16;
         var originalState=s.store.copy(s.state);

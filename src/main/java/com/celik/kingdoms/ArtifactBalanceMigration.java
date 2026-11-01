@@ -39,6 +39,16 @@ final class ArtifactBalanceMigration implements TypeAdapterFactory {
                         if(types!=null)for(String key:ArtifactConfig.ADDITIONAL_KEYS)if(!types.has(key))types.add(key,gson.toJsonTree(ArtifactConfig.defaults().get(key)));
                         obj.addProperty("expandedCatalogVersion",1);
                     }
+                    if(config&&(!obj.has("replantCatalogVersion")||obj.get("replantCatalogVersion").getAsInt()<1)){
+                        JsonObject types=obj.getAsJsonObject("types");
+                        if(types!=null&&!types.has("replant_hoe"))types.add("replant_hoe",gson.toJsonTree(ArtifactConfig.defaults().get("replant_hoe")));
+                        obj.addProperty("replantCatalogVersion",1);
+                    }
+                    if(config&&(!obj.has("instantFlintCatalogVersion")||obj.get("instantFlintCatalogVersion").getAsInt()<1)){
+                        JsonObject types=obj.getAsJsonObject("types");
+                        if(types!=null&&!types.has("instant_flint"))types.add("instant_flint",gson.toJsonTree(ArtifactConfig.defaults().get("instant_flint")));
+                        obj.addProperty("instantFlintCatalogVersion",1);
+                    }
                     if(!obj.has("durabilityBalanceVersion")){
                         if(config){
                             JsonObject types=obj.has("types")?obj.getAsJsonObject("types"):null;

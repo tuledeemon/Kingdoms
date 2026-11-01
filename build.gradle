@@ -1,5 +1,5 @@
 plugins { id 'net.fabricmc.fabric-loom' version '1.16.3' }
-version = '1.12.2'
+version = '1.13.1'
 group = 'com.celik.kingdoms'
 base { archivesName = 'kingdoms' }
 repositories {
@@ -44,7 +44,7 @@ loom {
         }
     }
 }
-tasks.named('runIntegration') {
+tasks.matching { it.name.equalsIgnoreCase('runIntegration') }.configureEach {
     doFirst {
         file('run-test').mkdirs()
         file('run-test/integration-result.txt').text = 'RUNNING\n'

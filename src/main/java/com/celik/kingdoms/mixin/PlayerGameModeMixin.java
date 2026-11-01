@@ -27,6 +27,8 @@ public abstract class PlayerGameModeMixin {
  }
  @WrapMethod(method="useItemOn")
  private InteractionResult useOn(ServerPlayer p,Level l,ItemStack stack,InteractionHand hand,BlockHitResult hit,Operation<InteractionResult> original){
+  // Reject before vanilla can fall through from the TNT block to flint's fire placement.
+  if(l.getBlockState(hit.getBlockPos()).is(net.minecraft.world.level.block.Blocks.TNT)&&InstantFlint.blocked(p,stack))return InteractionResult.FAIL;
   if(KingdomsMod.service!=null){InteractionResult result=KingdomsMod.service.artifacts.use(p,hand);if(result!=InteractionResult.PASS)return result;}
   try(var interaction=WarRestrictions.interaction(l,hit.getBlockPos());var scope=Protection.scope(l,hit.getBlockPos(),p.getUUID(),p,Protection.Cause.PLAYER)){return original.call(p,l,stack,hand,hit);}
  }
